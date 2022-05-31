@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../models/app_state_manager.dart';
 
 class SkipButton extends StatelessWidget {
   const SkipButton({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final appState = Provider.of<AppStateManager>(context);
@@ -20,11 +20,13 @@ class SkipButton extends StatelessWidget {
               onPressed: () {
                 appState.completeOnboarding();
               },
-              child: const Text(
+              child: Text(
                 'Skip',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
+                style: GoogleFonts.jost(
+                  textStyle: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
@@ -35,7 +37,6 @@ class SkipButton extends StatelessWidget {
     );
   }
 }
-
 
 class OnboardindWidget extends StatelessWidget {
   const OnboardindWidget({
@@ -66,15 +67,22 @@ class OnboardindWidget extends StatelessWidget {
         SizedBox(height: sheight),
         Text(
           title,
-          style: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 24,
+          style: GoogleFonts.jost(
+            textStyle: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 24,
+            ),
           ),
         ),
         const SizedBox(height: 16),
         Text(
           subtitle,
-          style: const TextStyle(),
+          style: GoogleFonts.jost(
+            textStyle: const TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+            ),
+          ),
           textAlign: TextAlign.center,
         ),
       ],
