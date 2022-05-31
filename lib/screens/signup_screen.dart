@@ -31,12 +31,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(appImage, width: 75, height: 75),
-                const SizedBox(height: 12),
+                const SizedBox(height: 15),
                 Text(
                   "Login to your Account",
                   style: textStyleOne,
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 15),
                 inputContainer(
                   borderColor: inputContainrBrdrColor,
                   color: inputWhite,
