@@ -2,8 +2,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +26,28 @@ class LoginScreen extends StatelessWidget {
                 inputContainer(
                   color: inputWhite,
                   child: TextField(
-                    decoration: inputDecoration(
-                      labelText: "Email",
-                    ),
+                    decoration: inputDecoration(labelText: "Full Name"),
                   ),
                 ),
                 const SizedBox(height: 16),
                 inputContainer(
                   color: inputWhite,
                   child: TextField(
-                    decoration: inputDecoration(labelText: "Password"),
-                    obscureText: true,
+                    decoration: inputDecoration(labelText: "Phone Number"),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                inputContainer(
+                  color: inputWhite,
+                  child: TextField(
+                    decoration: inputDecoration(labelText: "Home Address"),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                inputContainer(
+                  color: inputWhite,
+                  child: TextField(
+                    decoration: inputDecoration(labelText: "State"),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -51,23 +62,21 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 Container(
                   height: 52,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(minimumSize: Size.infinite),
                     child:
-                        const Text("Sign in", style: TextStyle(fontSize: 20)),
+                        const Text("Sign up", style: TextStyle(fontSize: 20)),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Wrap(
                   children: [
-                    const Text("Don't have an account? ",
+                    const Text("Already have an account? ",
                         style: TextStyle(fontSize: 16)),
                     GestureDetector(
-                        child: Text("Sign up",
+                        child: Text("Sign in",
                             style: TextStyle(fontSize: 16, color: colorGreen)))
                   ],
                 ),
@@ -83,6 +92,10 @@ class LoginScreen extends StatelessWidget {
                       Expanded(child: Divider(thickness: 1, color: lineColor)),
                     ],
                   ),
+                ),
+                const SizedBox(height: 20),
+                const SizedBox(
+                  child: Text("Login using Social Networks"),
                 ),
                 const SizedBox(height: 20),
                 Wrap(
