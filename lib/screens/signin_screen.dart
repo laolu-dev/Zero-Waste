@@ -72,7 +72,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       const BoxConstraints(maxWidth: 400, maxHeight: 52),
                   child: ElevatedButton(
                     onPressed: () {},
-                    style: ElevatedButton.styleFrom(minimumSize: Size.infinite),
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size.infinite, primary: colorGreen),
                     child: Text("Sign in", style: btntxtStyle()),
                   ),
                 ),

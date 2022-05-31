@@ -2,23 +2,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/screens/signin_screen.dart';
-import 'package:zero_waste/screens/why_are_here_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
-
-  @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
-  Color inputContainrBrdrColor = inputBorderColor;
-
-  void changeBorder() {
-    setState(() {
-      inputContainrBrdrColor = colorGreen;
-    });
-  }
+class WhyAreYouHere extends StatelessWidget {
+  const WhyAreYouHere({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,55 +24,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: textStyleOne,
                 ),
                 const SizedBox(height: 15),
-                inputContainer(
-                  borderColor: inputContainrBrdrColor,
-                  color: inputWhite,
-                  child: TextField(
-                    decoration: inputDecoration(labelText: "Full Name"),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                inputContainer(
-                  borderColor: inputContainrBrdrColor,
-                  color: inputWhite,
-                  child: TextField(
-                    decoration: inputDecoration(labelText: "Phone Number"),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                inputContainer(
-                  borderColor: inputContainrBrdrColor,
-                  color: inputWhite,
-                  child: TextField(
-                    decoration: inputDecoration(labelText: "Home Address"),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                inputContainer(
-                  borderColor: inputContainrBrdrColor,
-                  color: inputWhite,
-                  child: TextField(
-                    onChanged: (value) => changeBorder(),
-                    decoration: inputDecoration(labelText: "State"),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Container(
-                  constraints:
-                      const BoxConstraints.expand(height: 15, width: 400),
-                  child: Text(
-                    "Forget password",
-                    style: forgtpwdStyle(),
-                  ),
-                ),
                 const SizedBox(height: 24),
                 Container(
                   height: 52,
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: ElevatedButton(
-                    onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => const WhyAreYouHere())),
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size.infinite, primary: colorGreen),
                     child: Text("Next", style: btntxtStyle()),
