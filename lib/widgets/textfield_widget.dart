@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:zero_waste/constants/constant.dart';
 
 class UserInput extends StatefulWidget {
   const UserInput({Key? key}) : super(key: key);
@@ -8,15 +10,10 @@ class UserInput extends StatefulWidget {
 }
 
 class _UserInputState extends State<UserInput> {
-  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: TextFormField(
-        decoration: const InputDecoration(
-            hintText: 'Full Name', focusedBorder: OutlineInputBorder()),
-      ),
+    return TextField(
+      decoration: inputDecoration(labelText: 'Full Name'),
     );
   }
 }

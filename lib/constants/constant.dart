@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
-String appImage = "images/appImage.svg";
-
-String fbSvg = "images/facebook.svg";
-
-String googleSvg = "images/google.svg";
-
-String linklnSvg = "images/linkln.svg";
+import 'package:google_fonts/google_fonts.dart';
+String appImage = "assets/images/appImage.svg";
+String fbSvg = "assets/images/facebook.svg";
+String googleSvg = "assets/images/google.svg";
+String linklnSvg = "assets/images/linkln.svg";
 
 const inputWhite = Color.fromRGBO(252, 252, 252, 1);
 
@@ -14,10 +11,66 @@ const hintColor = Color.fromRGBO(151, 151, 151, 1);
 
 const inputBorderColor = Color.fromRGBO(226, 226, 226, 1);
 
-TextStyle textStyleOne = const TextStyle(
+TextStyle textStyleOne = GoogleFonts.jost(
+  textStyle: const TextStyle(
     color: Color.fromARGB(255, 0, 0, 0),
     fontSize: 24,
-    fontWeight: FontWeight.w700);
+    fontWeight: FontWeight.w700,
+  ),
+);
+
+TextStyle textStyleTwo = GoogleFonts.jost(
+  textStyle: const TextStyle(
+    color: Color.fromARGB(255, 34, 34, 34),
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle textStyleThree = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: colorGreen,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle textStyleFour = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: colorGreen,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle buttonTextStyleOne = GoogleFonts.jost(
+  textStyle: const TextStyle(
+    color: inputWhite,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle buttonTextStyleTwo = GoogleFonts.jost(
+  textStyle: const TextStyle(
+    color: inputBorderColor,
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
+ButtonStyle elevatedButtonStyleOne = ElevatedButton.styleFrom(
+  primary: colorGreen,
+  textStyle: buttonTextStyleTwo,
+);
+
+ButtonStyle elevatedButtonStyleTwo = ElevatedButton.styleFrom(
+  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+  minimumSize: Size.infinite,
+  primary: colorGreen,
+  textStyle: buttonTextStyleTwo,
+);
+
 
 Container inputContainer({required Widget child, Color? color}) {
   return Container(
