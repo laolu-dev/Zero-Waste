@@ -1,9 +1,22 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/screens/signup_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  Color inputContainrBrdrColor = inputBorderColor;
+  void changeBorder() {
+    setState(() {
+      inputContainrBrdrColor = colorGreen;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +37,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 38),
                 inputContainer(
+                  borderColor: inputContainrBrdrColor,
                   color: inputWhite,
                   child: TextField(
                     decoration: inputDecoration(
@@ -33,6 +47,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 inputContainer(
+                  borderColor: inputContainrBrdrColor,
                   color: inputWhite,
                   child: TextField(
                     decoration: inputDecoration(labelText: "Password"),
@@ -45,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                       const BoxConstraints.expand(height: 15, width: 400),
                   child: Text(
                     "Forget password",
-                    style: TextStyle(color: colorGreen, fontSize: 14),
+                    style: forgtpwdStyle(),
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -53,20 +68,25 @@ class LoginScreen extends StatelessWidget {
                   height: 52,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                  constraints: const BoxConstraints(maxWidth: 400),
+                  constraints:
+                      const BoxConstraints(maxWidth: 400, maxHeight: 52),
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(minimumSize: Size.infinite),
-                    child:
-                        const Text("Sign in", style: TextStyle(fontSize: 20)),
+                    child: Text("Sign in", style: btntxtStyle()),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Wrap(
                   children: [
-                    const Text("Don't have an account? ",
-                        style: TextStyle(fontSize: 16)),
+                    Text(
+                      "Don't have an account? ",
+                      style: havAcc(),
+                    ),
                     GestureDetector(
+                        onTap: () => Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpScreen())),
                         child: Text("Sign up",
                             style: TextStyle(fontSize: 16, color: colorGreen)))
                   ],
@@ -78,13 +98,23 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Expanded(child: Divider(thickness: 1, color: lineColor)),
                       const SizedBox(width: 15),
-                      const Text("OR"),
+                      Text(
+                        "OR",
+                        style: orStyle(),
+                      ),
                       const SizedBox(width: 15),
                       Expanded(child: Divider(thickness: 1, color: lineColor)),
                     ],
                   ),
                 ),
                 const SizedBox(height: 20),
+                SizedBox(
+                  child: Text(
+                    "Login using Social Networks",
+                    style: socntwkStyle(),
+                  ),
+                ),
+                const SizedBox(height: 16),
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: [

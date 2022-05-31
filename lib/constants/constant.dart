@@ -19,15 +19,45 @@ TextStyle textStyleOne = const TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700);
 
-Container inputContainer({required Widget child, Color? color}) {
+TextStyle socntwkStyle() {
+  return const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: Color.fromRGBO(77, 77, 77, 1));
+}
+
+TextStyle forgtpwdStyle() {
+  return TextStyle(
+      color: colorGreen, fontSize: 14, fontWeight: FontWeight.w400);
+}
+
+TextStyle btntxtStyle() {
+  return const TextStyle(
+      fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white);
+}
+
+TextStyle havAcc() {
+  return const TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black);
+}
+
+TextStyle orStyle() {
+  return const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: Color.fromRGBO(22, 22, 29, 1));
+}
+
+Container inputContainer(
+    {required Widget child, Color? color, required Color borderColor}) {
   return Container(
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
-      color: color,
-    ),
+        borderRadius: BorderRadius.circular(12),
+        color: color,
+        border: Border.all(color: borderColor)),
     constraints: const BoxConstraints(
       maxWidth: 400,
-      minHeight: 52,
+      maxHeight: 52,
     ),
     child: child,
   );
@@ -35,21 +65,15 @@ Container inputContainer({required Widget child, Color? color}) {
 
 Color colorGreen = const Color.fromRGBO(10, 157, 86, 1);
 
-Color lineColor = const Color.fromRGBO(22, 22, 29, 1);
+Color lineColor = const Color.fromRGBO(229, 229, 229, 1);
 
 InputDecoration inputDecoration({required String labelText}) {
   return InputDecoration(
-    labelStyle: const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w400, color: hintColor),
-    labelText: labelText,
-    contentPadding: const EdgeInsets.only(top: 16, bottom: 16, left: 22),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: colorGreen),
-    ),
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: inputBorderColor),
-    ),
-  );
+      labelStyle: const TextStyle(
+          fontSize: 14, fontWeight: FontWeight.w400, color: hintColor),
+      labelText: labelText,
+      contentPadding: const EdgeInsets.only(left: 22, top: 5),
+      border: InputBorder.none);
 }
 
 circleContainer({required Widget child, Color? color}) {

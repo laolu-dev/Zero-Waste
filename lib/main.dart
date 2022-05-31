@@ -8,7 +8,7 @@ void main() {
     const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',
-      home: SignUpScreen(),
+      home: LoginScreen(),
     ),
   );
 }

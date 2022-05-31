@@ -1,9 +1,23 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/screens/signin_screen.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  Color inputContainrBrdrColor = inputBorderColor;
+
+  void changeBorder() {
+    setState(() {
+      inputContainrBrdrColor = colorGreen;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,19 +25,20 @@ class SignUpScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(appImage, width: 75, height: 75),
-                const SizedBox(height: 15),
+                const SizedBox(height: 12),
                 Text(
                   "Login to your Account",
                   style: textStyleOne,
                 ),
-                const SizedBox(height: 38),
+                const SizedBox(height: 24),
                 inputContainer(
+                  borderColor: inputContainrBrdrColor,
                   color: inputWhite,
                   child: TextField(
                     decoration: inputDecoration(labelText: "Full Name"),
@@ -31,6 +46,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 inputContainer(
+                  borderColor: inputContainrBrdrColor,
                   color: inputWhite,
                   child: TextField(
                     decoration: inputDecoration(labelText: "Phone Number"),
@@ -38,6 +54,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 inputContainer(
+                  borderColor: inputContainrBrdrColor,
                   color: inputWhite,
                   child: TextField(
                     decoration: inputDecoration(labelText: "Home Address"),
@@ -45,8 +62,10 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 inputContainer(
+                  borderColor: inputContainrBrdrColor,
                   color: inputWhite,
                   child: TextField(
+                    onChanged: (value) => changeBorder(),
                     decoration: inputDecoration(labelText: "State"),
                   ),
                 ),
@@ -56,7 +75,7 @@ class SignUpScreen extends StatelessWidget {
                       const BoxConstraints.expand(height: 15, width: 400),
                   child: Text(
                     "Forget password",
-                    style: TextStyle(color: colorGreen, fontSize: 14),
+                    style: forgtpwdStyle(),
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -66,16 +85,17 @@ class SignUpScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(minimumSize: Size.infinite),
-                    child:
-                        const Text("Sign up", style: TextStyle(fontSize: 20)),
+                    child: Text("Next", style: btntxtStyle()),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Wrap(
                   children: [
-                    const Text("Already have an account? ",
-                        style: TextStyle(fontSize: 16)),
+                    Text("Already have an account? ", style: havAcc()),
                     GestureDetector(
+                        onTap: () => Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => const LoginScreen())),
                         child: Text("Sign in",
                             style: TextStyle(fontSize: 16, color: colorGreen)))
                   ],
@@ -87,17 +107,23 @@ class SignUpScreen extends StatelessWidget {
                     children: [
                       Expanded(child: Divider(thickness: 1, color: lineColor)),
                       const SizedBox(width: 15),
-                      const Text("OR"),
+                      Text(
+                        "OR",
+                        style: orStyle(),
+                      ),
                       const SizedBox(width: 15),
                       Expanded(child: Divider(thickness: 1, color: lineColor)),
                     ],
                   ),
                 ),
                 const SizedBox(height: 20),
-                const SizedBox(
-                  child: Text("Login using Social Networks"),
+                SizedBox(
+                  child: Text(
+                    "Login using Social Networks",
+                    style: socntwkStyle(),
+                  ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 16),
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: [
