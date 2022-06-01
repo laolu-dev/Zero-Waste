@@ -68,8 +68,11 @@ class Onboarding extends StatelessWidget {
                   ? ElevatedButton(
                       onPressed: () {
                         appState.completeOnboarding();
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: ((context) => const LoginScreen()),),);
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: ((context) => const LoginScreen()),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                           primary: const Color(0xff0A9D56),
@@ -83,8 +86,7 @@ class Onboarding extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                         ),
-                    
-                  ),
+                      ),
                     )
                   : ElevatedButton(
                       style: ElevatedButton.styleFrom(

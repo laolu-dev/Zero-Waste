@@ -1,22 +1,45 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:zero_waste/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/screens/login_screen.dart';
-import 'package:zero_waste/screens/why_are_here_screen.dart';
+import 'package:zero_waste/screens/verify_phone_screen.dart';
 
-import '../widgets/textfield_widget.dart';
-
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class WhyAreYouHere extends StatefulWidget {
+  const WhyAreYouHere({Key? key}) : super(key: key);
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<WhyAreYouHere> createState() => _WhyAreYouHereState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  Color inputContainerBorderColor = inputBorderColor;
+class _WhyAreYouHereState extends State<WhyAreYouHere> {
+  bool _hasBeenPressed = false;
+
+  Container farmerType(String textContent) {
+    return Container(
+      width: 153,
+      height: 103,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        border: Border.all(color: lineColor, width: 2.5),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(12),
+        ),
+      ),
+      child: TextButton(
+        onPressed: () {
+          setState(() {
+            _hasBeenPressed = !_hasBeenPressed;
+          });
+        },
+        style: TextButton.styleFrom(
+          backgroundColor: _hasBeenPressed ? lightGreen : Colors.white,
+          primary: wauhBoxtxtColor,
+          minimumSize: Size.infinite,
+        ),
+        child: Text(textContent),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,40 +56,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SvgPicture.asset(appImage, width: 75, height: 75),
                   const SizedBox(height: 15),
                   Text(
-                    "Register an Account",
-                    style: textStyleOne,
+                    "Why are you here? ",
+                    style: textStyleTwo,
                   ),
-                  const SizedBox(height: 15),
-                  userInput('Full Name', false, false),
-                  const SizedBox(height: 16),
-                  userInput('Phone Number', false, true),
-                  const SizedBox(height: 16),
-                  userInput('Address', false, false),
-                  const SizedBox(height: 16),
-                  userInput('State', false, false),
-                  const SizedBox(height: 16),
-                  userInput('Password', true, false),
-                  const SizedBox(height: 16),
-                  Container(
-                    constraints:
-                        const BoxConstraints.expand(height: 15, width: 400),
-                    child: Text(
-                      "Forgot password",
-                      style: userTextStyleOne,
-                    ),
+                  const SizedBox(height: 27),
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    runSpacing: 16,
+                    spacing: 18,
+                    children: [
+                      farmerType(contentOne),
+                      farmerType(contentTwo),
+                      farmerType(contentThree),
+                      farmerType(contentFour)
+                    ],
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 55),
                   Container(
                     height: 52,
-                    constraints: const BoxConstraints(maxWidth: 400),
+                    constraints: const BoxConstraints(maxWidth: 327),
                     child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).push(
+                      onPressed: () => Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => const WhyAreYouHere(),
+                          builder: (context) => const VerifyPhoneScreen(),
                         ),
                       ),
                       style: elevatedButtonStyleTwo,
-                      child: const Text("Next"),
+                      child: const Text("Sign in"),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -79,8 +95,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             builder: (context) => const LoginScreen(),
                           ),
                         ),
-                        child: Text("Sign in", style: textStyleThree),
-                      )
+                        child: Text("Login", style: textStyleThree),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 13),
