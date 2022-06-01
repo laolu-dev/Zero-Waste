@@ -8,11 +8,23 @@ String googleSvg = "images/google.svg";
 
 String linklnSvg = "images/linkln.svg";
 
+String accValidSvg = 'images/accValid.svg';
+
 const inputWhite = Color.fromRGBO(252, 252, 252, 1);
 
 const hintColor = Color.fromRGBO(151, 151, 151, 1);
 
 const inputBorderColor = Color.fromRGBO(226, 226, 226, 1);
+
+Color colorGreen = const Color.fromRGBO(10, 157, 86, 1);
+
+Color lineColor = const Color.fromRGBO(229, 229, 229, 1);
+
+Color lightGreen = const Color.fromRGBO(136, 255, 222, 1);
+
+Color wauhBoxtxtColor = const Color.fromRGBO(128, 128, 128, 1);
+
+Color verTxtColor = const Color.fromRGBO(115, 115, 119, 1);
 
 TextStyle textStyleOne = const TextStyle(
     color: Color.fromARGB(255, 0, 0, 0),
@@ -48,6 +60,42 @@ TextStyle orStyle() {
       color: Color.fromRGBO(22, 22, 29, 1));
 }
 
+TextStyle verTxtStyle() {
+  return TextStyle(
+      color: verTxtColor, fontSize: 16, fontWeight: FontWeight.w400);
+}
+
+codeTextBox({required Widget child}) {
+  return Container(
+    alignment: Alignment.center,
+    width: 64,
+    height: 64,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: hintColor)),
+  );
+}
+
+codeInputStyle() {
+  return const InputDecoration(border: InputBorder.none);
+}
+
+Padding boxText(text) {
+  return Padding(
+    padding: const EdgeInsets.all(24.0),
+    child: Text(
+      text,
+      softWrap: true,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        color: wauhBoxtxtColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+      ),
+    ),
+  );
+}
+
 Container inputContainer(
     {required Widget child, Color? color, required Color borderColor}) {
   return Container(
@@ -62,10 +110,6 @@ Container inputContainer(
     child: child,
   );
 }
-
-Color colorGreen = const Color.fromRGBO(10, 157, 86, 1);
-
-Color lineColor = const Color.fromRGBO(229, 229, 229, 1);
 
 InputDecoration inputDecoration({required String labelText}) {
   return InputDecoration(
@@ -82,6 +126,20 @@ circleContainer({required Widget child, Color? color}) {
     width: 55,
     height: 55,
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+    child: child,
+  );
+}
+
+Container wauhContainer(
+    {required Color bgColor, required Color bdColor, required Widget child}) {
+  return Container(
+    width: 153,
+    height: 103,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+        border: Border.all(color: bdColor),
+        color: bgColor,
+        borderRadius: const BorderRadius.all(Radius.circular(12))),
     child: child,
   );
 }

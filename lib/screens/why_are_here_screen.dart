@@ -2,6 +2,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/screens/signin_screen.dart';
+import 'package:zero_waste/screens/verify_phone_screen.dart';
 
 class WhyAreYouHere extends StatelessWidget {
   const WhyAreYouHere({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class WhyAreYouHere extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(left: 24, right: 24, top: 45),
+            padding: const EdgeInsets.only(left: 24, right: 24, top: 60),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -20,19 +21,44 @@ class WhyAreYouHere extends StatelessWidget {
                 SvgPicture.asset(appImage, width: 75, height: 75),
                 const SizedBox(height: 15),
                 Text(
-                  "Login to your Account",
+                  "Why are you here? ",
                   style: textStyleOne,
                 ),
-                const SizedBox(height: 15),
-                const SizedBox(height: 24),
+                const SizedBox(height: 27),
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  runSpacing: 16,
+                  spacing: 18,
+                  children: [
+                    wauhContainer(
+                        bgColor: lightGreen,
+                        bdColor: lightGreen,
+                        child: boxText('Crop Farmer')),
+                    wauhContainer(
+                        bgColor: Colors.white,
+                        bdColor: hintColor,
+                        child: boxText('Black Solder Fly Farmer')),
+                    wauhContainer(
+                        bgColor: Colors.white,
+                        bdColor: hintColor,
+                        child: boxText('Fish/Poultry Farmer')),
+                    wauhContainer(
+                        bgColor: Colors.white,
+                        bdColor: hintColor,
+                        child: boxText('Manual Labourer')),
+                  ],
+                ),
+                const SizedBox(height: 55),
                 Container(
                   height: 52,
-                  constraints: const BoxConstraints(maxWidth: 400),
+                  constraints: const BoxConstraints(maxWidth: 327),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                            builder: (context) => const VerifyPhoneScreen())),
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size.infinite, primary: colorGreen),
-                    child: Text("Next", style: btntxtStyle()),
+                    child: Text("Sign in", style: btntxtStyle()),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -43,7 +69,7 @@ class WhyAreYouHere extends StatelessWidget {
                         onTap: () => Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                                 builder: (context) => const LoginScreen())),
-                        child: Text("Sign in",
+                        child: Text("Login",
                             style: TextStyle(fontSize: 16, color: colorGreen)))
                   ],
                 ),
