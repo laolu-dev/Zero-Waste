@@ -8,6 +8,7 @@ String googleSvg = "images/google.svg";
 
 String linklnSvg = "images/linkln.svg";
 
+
 const inputWhite = Color.fromRGBO(252, 252, 252, 1);
 
 const hintColor = Color.fromRGBO(151, 151, 151, 1);

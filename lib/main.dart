@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 // <<<<<<< main
 import 'package:provider/provider.dart';
+import 'package:zero_waste/screens/feed_screen.dart';
+import 'package:zero_waste/screens/signup_screen.dart';
 
 import './screens/onboarding_screen.dart';
 import './screens/splash_screen.dart';
@@ -24,11 +26,11 @@ class ZeroWaste extends StatelessWidget {
         // debugShowMaterialGrid: true,
         debugShowCheckedModeBanner: false,
         title: 'Zero Waste',
-        home: Onboarding(),
+        home: FeedsPage(),
       ),
     );
   }
-=======
+//=======
 // import 'package:zero_waste/screens/signin_screen.dart';
 // import 'package:zero_waste/screens/splash_screen.dart';
 
@@ -41,4 +43,4 @@ class ZeroWaste extends StatelessWidget {
 //     ),
 //   );
 // >>>>>>> main
-// }
+}
