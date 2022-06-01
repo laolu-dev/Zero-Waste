@@ -19,8 +19,10 @@ class SkipButton extends StatelessWidget {
             TextButton(
               onPressed: () {
                 appState.completeOnboarding();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignUp()),);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                );
               },
               child: Text(
                 'Skip',

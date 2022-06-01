@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/screens/profile_screen.dart';
 import './screens/splash_screen.dart';
 import './models/app_state_manager.dart';
 import 'package:zero_waste/screens/splash_screen.dart';
@@ -20,10 +19,9 @@ class ZeroWaste extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => _appStateManager),
       ],
       child: const MaterialApp(
-        // debugShowMaterialGrid: true,
         debugShowCheckedModeBanner: false,
         title: 'Zero Waste',
-        home: UserAccount(),
+        home: SplashScreen(),
       ),
     );
   }
