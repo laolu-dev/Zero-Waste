@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 String appImage = "assets/images/appImage.svg";
 String fbSvg = "assets/images/facebook.svg";
 String googleSvg = "assets/images/google.svg";
@@ -43,6 +44,14 @@ TextStyle textStyleFour = GoogleFonts.jost(
   ),
 );
 
+TextStyle userTextStyleOne = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: colorGreen,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
 TextStyle buttonTextStyleOne = GoogleFonts.jost(
   textStyle: const TextStyle(
     color: inputWhite,
@@ -70,7 +79,6 @@ ButtonStyle elevatedButtonStyleTwo = ElevatedButton.styleFrom(
   primary: colorGreen,
   textStyle: buttonTextStyleTwo,
 );
-
 
 Container inputContainer({required Widget child, Color? color}) {
   return Container(
