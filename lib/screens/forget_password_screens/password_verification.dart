@@ -41,6 +41,7 @@ class PasswordVerification extends StatelessWidget {
               pinTheme: PinTheme(
                 activeColor: colorGreen,
                 selectedColor: colorGreen,
+                inactiveColor: const Color(0xffEBEAED),
                 shape: PinCodeFieldShape.box,
                 fieldHeight: 64,
                 fieldWidth: 64,
