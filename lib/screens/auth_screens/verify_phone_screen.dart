@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/validated_account_screen.dart';
-import 'package:zero_waste/screens/login_screen.dart';
+import 'package:zero_waste/screens/auth_screens/validated_account_screen.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 // import 'package:zero_waste/screens/signin_screen.dart';
 
 class VerifyPhoneScreen extends StatefulWidget {
@@ -51,10 +51,6 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        codeTextBox(
-                            child: TextField(
-                          keyboardType: TextInputType.number,
-                        )),
                         codeTextBox(child: TextField(maxLength: 1)),
                         codeTextBox(child: TextField(maxLength: 1)),
                         codeTextBox(child: TextField(maxLength: 1)),

@@ -1,13 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
-class SignupScreenProvider extends ChangeNotifier {
-  String username = '';
-  int userPhone = 0;
-  String userAddress = '';
-  String userState = '';
+class SignUp extends ChangeNotifier {
+  bool _visiblePassword = false;
+  bool _obscureText = true;
 
-  void updateName(String name) {
-    username = name;
+  bool get visiblePassword => _visiblePassword;
+  bool get obscureText => _obscureText;
+
+  void showPassword() {
+    _visiblePassword = !_visiblePassword;
+    notifyListeners();
+  }
+
+  textShow() {
+    _obscureText = !_obscureText;
     notifyListeners();
   }
 }

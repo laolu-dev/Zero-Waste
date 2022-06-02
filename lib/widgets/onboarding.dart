@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/screens/signup_screen.dart';
-import '../models/app_state_manager.dart';
+import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
+import '../providers/app_state_manager.dart';
 
 class SkipButton extends StatelessWidget {
   const SkipButton({Key? key}) : super(key: key);

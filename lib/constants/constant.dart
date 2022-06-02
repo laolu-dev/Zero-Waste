@@ -11,6 +11,8 @@ String fbSvg = "assets/images/facebook.svg";
 String googleSvg = "assets/images/google.svg";
 String linklnSvg = "assets/images/linkln.svg";
 String accValidSvg = "assets/images/acct_valid.svg";
+String noteSvg = "assets/images/notes.svg";
+String backGroundJpeg = "assets/images/background.jpeg";
 
 const inputWhite = Color.fromRGBO(252, 252, 252, 1);
 const hintColor = Color.fromRGBO(151, 151, 151, 1);

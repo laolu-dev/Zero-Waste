@@ -16,26 +16,27 @@ class _UserAccountState extends State<UserAccount> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: userAppBar(context),
-          body: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  userInfo(),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      profileButtons('My Posts', false),
-                      profileButtons('Saved Posts', true)
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                ],
-              ),
+        appBar: userAppBar(context),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                userInfo(),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    profileButtons('My Posts', false),
+                    profileButtons('Saved Posts', true)
+                  ],
+                ),
+                const SizedBox(height: 10),
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

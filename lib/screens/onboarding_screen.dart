@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:zero_waste/screens/login_screen.dart';
-import '../models/app_state_manager.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
+import '../providers/app_state_manager.dart';
 import '../widgets/onboarding.dart';
 
 class Onboarding extends StatelessWidget {

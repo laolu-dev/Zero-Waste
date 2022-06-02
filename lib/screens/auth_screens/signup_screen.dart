@@ -1,88 +1,75 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:zero_waste/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/login_screen.dart';
-import 'package:zero_waste/screens/verify_phone_screen.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
+import 'package:zero_waste/screens/auth_screens/why_are_here_screen.dart';
 
-class WhyAreYouHere extends StatefulWidget {
-  const WhyAreYouHere({Key? key}) : super(key: key);
+import '../../widgets/text_field_widget.dart';
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<WhyAreYouHere> createState() => _WhyAreYouHereState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _WhyAreYouHereState extends State<WhyAreYouHere> {
-  bool _hasBeenPressed = false;
-
-  Container farmerType(String textContent) {
-    return Container(
-      width: 153,
-      height: 103,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        border: Border.all(color: lineColor, width: 2.5),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(12),
-        ),
-      ),
-      child: TextButton(
-        onPressed: () {
-          setState(() {
-            _hasBeenPressed = !_hasBeenPressed;
-          });
-        },
-        style: TextButton.styleFrom(
-          backgroundColor: _hasBeenPressed ? lightGreen : Colors.white,
-          primary: wauhBoxtxtColor,
-          minimumSize: Size.infinite,
-        ),
-        child: Text(textContent),
-      ),
-    );
-  }
+class _SignUpScreenState extends State<SignUpScreen> {
+  Color inputContainerBorderColor = inputBorderColor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 24, right: 24, top: 20),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 24, right: 24, top: 45),
+            child: Form(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(appImage, width: 75, height: 75),
                   const SizedBox(height: 15),
-                  Text(
-                    "Why are you here? ",
-                    style: textStyleTwo,
+                  Text("Register an Account", style: textStyleOne),
+                  //
+                  const SizedBox(height: 15),
+                  const TextFields(
+                      label: 'Full Name', showText: false, phoneField: false),
+                  const SizedBox(height: 16),
+                  const TextFields(
+                      label: 'PhoneNumber', showText: false, phoneField: true),
+                  const SizedBox(height: 16),
+                  const TextFields(
+                      label: 'Address', showText: false, phoneField: false),
+                  const SizedBox(height: 16),
+                  const TextFields(
+                      label: 'State', showText: false, phoneField: false),
+                  const SizedBox(height: 16),
+                  const TextFields(
+                      label: 'Password', showText: true, phoneField: false),
+                  const SizedBox(height: 16),
+                  Container(
+                    constraints:
+                        const BoxConstraints.expand(height: 15, width: 400),
+                    child: Text(
+                      "Forgot password",
+                      style: userTextStyleOne,
+                    ),
                   ),
-                  const SizedBox(height: 27),
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    runSpacing: 16,
-                    spacing: 18,
-                    children: [
-                      farmerType(contentOne),
-                      farmerType(contentTwo),
-                      farmerType(contentThree),
-                      farmerType(contentFour)
-                    ],
-                  ),
-                  const SizedBox(height: 55),
+                  const SizedBox(height: 24),
                   Container(
                     height: 52,
-                    constraints: const BoxConstraints(maxWidth: 327),
+                    constraints: const BoxConstraints(maxWidth: 400),
                     child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).pushReplacement(
+                      onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const VerifyPhoneScreen(),
+                          builder: (context) => const WhyAreYouHere(),
                         ),
                       ),
                       style: elevatedButtonStyleTwo,
-                      child: const Text("Sign in"),
+                      child: const Text("Next"),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -95,8 +82,8 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                             builder: (context) => const LoginScreen(),
                           ),
                         ),
-                        child: Text("Login", style: textStyleThree),
-                      ),
+                        child: Text("Sign in", style: textStyleThree),
+                      )
                     ],
                   ),
                   const SizedBox(height: 13),
