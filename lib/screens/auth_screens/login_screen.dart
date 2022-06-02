@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
 import '../../widgets/text_field_widget.dart';
+import '../forget_password_screens/forget_password.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -40,9 +41,19 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 constraints:
                     const BoxConstraints.expand(height: 15, width: 400),
-                child: Text(
-                  "Forget password",
-                  style: userTextStyleOne,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ForgetPassword(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Forget password",
+                    style: userTextStyleOne,
+                  ),
                 ),
               ),
               const SizedBox(height: 24),

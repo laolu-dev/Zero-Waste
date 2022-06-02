@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/screens/profile_screen.dart';
+
 import './screens/splash_screen.dart';
-import 'providers/app_state_manager.dart';
-import 'providers/signup_provider.dart';
-import 'package:zero_waste/screens/splash_screen.dart';
+import './providers/app_state_manager.dart';
+import './providers/signup_provider.dart';
 
 void main() {
   runApp(
