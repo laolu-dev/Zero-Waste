@@ -1,15 +1,13 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
-import 'package:zero_waste/screens/profile_screen.dart';
-
+import '../utils/user_preferences.dart';
 import 'chat_message.dart';
 
 class ChatData extends ChangeNotifier {
   final List<ChatMessage> _chatMessage = [];
 
-  void addChatMessage(UserAccount userProfile, String messageContent, bool isMe,
-      bool isMessage) {
+  void addChatMessage(UserPreferences userProfile, String messageContent,
+      bool isMe, bool isMessage) {
     _chatMessage.add(ChatMessage(
         userProfile: userProfile,
         messageContent: messageContent,
@@ -21,7 +19,7 @@ class ChatData extends ChangeNotifier {
   UnmodifiableListView<ChatMessage> get chatMessage =>
       UnmodifiableListView(_chatMessage);
 
-  UserAccount getChatSender(int index) => _chatMessage[index].userProfile;
+  UserPreferences getChatSender(int index) => _chatMessage[index].userProfile;
 
   String getChatMessage(int index) => _chatMessage[index].messageContent;
 

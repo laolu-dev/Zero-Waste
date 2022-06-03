@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:zero_waste/screens/profile_screen.dart';
+import '../utils/user_preferences.dart';
 
 class ChatMessage {
-  final UserAccount userProfile;
+  final UserPreferences userProfile;
   final String messageContent;
   final bool isMe;
   final bool isMessage;
