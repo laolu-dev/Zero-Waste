@@ -19,21 +19,21 @@ class Onboarding extends StatelessWidget {
           controller: controller,
           onPageChanged: (index) => appState.onboardingLastPage(index == 2),
           children: const [
-            OnboardindWidget(
+            OnBoardingWidget(
                 isFirst: true,
                 image: 'assets/images/Farmer-rafiki.svg',
                 title: 'Exchange Waste Product',
                 subtitle:
                     'Exchange your farm waste for organic manure \nby supplying a black soldier fly farmer.',
                 sheight: 30.75),
-            OnboardindWidget(
+            OnBoardingWidget(
               image: 'assets/images/Farmer-amico.svg',
               title: 'Connect With Labourers',
               subtitle:
                   'Opportunity to get co-workers and connect with \nlaboures to sort out bad crops and waste on \nfarms.',
               sheight: 36,
             ),
-            OnboardindWidget(
+            OnBoardingWidget(
                 image: 'assets/images/Farmer-pana.svg',
                 title: 'Get Source for Feed ',
                 subtitle: 'Get a rich source of insect protein for feeds. ',
