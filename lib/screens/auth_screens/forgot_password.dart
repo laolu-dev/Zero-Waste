@@ -1,77 +1,58 @@
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/auth_screens/forgot_password.dart';
-import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
-import '../../widgets/text_field_widget.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:zero_waste/widgets/text_field_widget.dart';
+import '../../constants/constant.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ForgotPassword extends StatelessWidget {
+  const ForgotPassword({Key? key}) : super(key: key);
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 76),
+            padding: const EdgeInsets.only(left: 24, right: 24, top: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(appImage, width: 75, height: 75),
                 const SizedBox(height: 15),
-                Text(
-                  "Login to your Account",
-                  style: headerText,
-                ),
-                const SizedBox(height: 38),
-                const TextFields(
-                    label: 'Username', showText: false, phoneField: false),
+                Text("Forgot Password", style: headerText),
                 const SizedBox(height: 16),
-                const TextFields(
-                    label: 'Password', showText: true, phoneField: false),
-                const SizedBox(height: 16),
-                Container(
-                  constraints:
-                      const BoxConstraints.expand(height: 15, width: 400),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ForgotPassword()));
-                    },
-                    child: Text("Forgot password?", style: forgotPasswordText),
+                SizedBox(
+                  width: 327,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      'Enter the phone number you use to register',
+                      style: verifyTextStyle(),
+                      textAlign: TextAlign.center,
+                      softWrap: true,
+                    ),
                   ),
                 ),
+                const SizedBox(height: 32),
+                const TextFields(
+                    label: 'Phone Number', showText: false, phoneField: true),
                 const SizedBox(height: 24),
                 Container(
                   height: 52,
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.pushReplacementNamed(
+                        context, '/PasswordReset'),
                     style: elevatedButtonStyleTwo,
-                    child: const Text("Login"),
+                    child: const Text("Reset"),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Wrap(
                   children: [
-                    Text("Don't have an Account? ", style: contentText),
+                    Text("Already have an account? ", style: contentText),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignUpScreen(),
-                          ),
-                        );
-                      },
-                      child: Text("Sign up", style: linkText),
+                      onTap: () => Navigator.pushNamed(context, '/Login'),
+                      child: Text("Login", style: linkText),
                     )
                   ],
                 ),

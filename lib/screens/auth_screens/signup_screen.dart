@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:flutter/material.dart';
-import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/auth_screens/login_screen.dart';
-import 'package:zero_waste/screens/auth_screens/why_are_here_screen.dart';
 
 import '../../widgets/text_field_widget.dart';
 
@@ -16,7 +12,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  Color inputContainerBorderColor = inputBorderColor;
+  Color inputContainerBorderColor = buttonTextColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,30 +28,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   SvgPicture.asset(appImage, width: 75, height: 75),
                   const SizedBox(height: 15),
-                  Text("Register an Account", style: textStyleOne),
-                  //
+                  Text("Register an Account", style: headerText),
                   const SizedBox(height: 15),
                   const TextFields(
                       label: 'Full Name', showText: false, phoneField: false),
                   const SizedBox(height: 16),
                   const TextFields(
-                      label: 'PhoneNumber', showText: false, phoneField: true),
+                      label: 'Phone Number', showText: false, phoneField: true),
                   const SizedBox(height: 16),
                   const TextFields(
-                      label: 'Address', showText: false, phoneField: false),
+                      label: 'Home Address',
+                      showText: false,
+                      phoneField: false),
                   const SizedBox(height: 16),
                   const TextFields(
                       label: 'State', showText: false, phoneField: false),
                   const SizedBox(height: 16),
                   const TextFields(
                       label: 'Password', showText: true, phoneField: false),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   Container(
                     constraints:
                         const BoxConstraints.expand(height: 15, width: 400),
-                    child: Text(
-                      "Forgot password",
-                      style: userTextStyleOne,
+                    child: GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/ForgotPassword'),
+                      child:
+                          Text("Forgot password?", style: forgotPasswordText),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -63,11 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 52,
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const WhyAreYouHere(),
-                        ),
-                      ),
+                      onPressed: () => Navigator.pushNamed(context, '/Reason'),
                       style: elevatedButtonStyleTwo,
                       child: const Text("Next"),
                     ),
@@ -75,14 +70,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 16),
                   Wrap(
                     children: [
-                      Text("Already have an account? ", style: textStyleTwo),
+                      Text("Already have an account? ", style: contentText),
                       GestureDetector(
-                        onTap: () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        ),
-                        child: Text("Sign in", style: textStyleThree),
+                        onTap: () => Navigator.pushNamed(context, '/Login'),
+                        child: Text("Login", style: linkText),
                       )
                     ],
                   ),
@@ -92,13 +83,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Divider(thickness: 1, color: lineColor),
+                          child: Divider(thickness: 1, color: dividerColor),
                         ),
                         const SizedBox(width: 15),
-                        Text("OR", style: textStyleFive),
+                        Text("OR", style: orTextStyle),
                         const SizedBox(width: 15),
                         Expanded(
-                          child: Divider(thickness: 1, color: lineColor),
+                          child: Divider(thickness: 1, color: dividerColor),
                         ),
                       ],
                     ),
@@ -107,22 +98,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(
                     child: Text(
                       "Login using Social Networks",
-                      style: textStyleTwo,
+                      style: contentText,
                     ),
                   ),
                   const SizedBox(height: 16),
                   Wrap(
                     alignment: WrapAlignment.center,
                     children: [
-                      circleContainer(
+                      socialLoginContainer(
                         child: SvgPicture.asset(fbSvg),
                       ),
                       const SizedBox(width: 12),
-                      circleContainer(
+                      socialLoginContainer(
                         child: SvgPicture.asset(googleSvg),
                       ),
                       const SizedBox(width: 12),
-                      circleContainer(
+                      socialLoginContainer(
                         child: SvgPicture.asset(linklnSvg),
                       ),
                     ],

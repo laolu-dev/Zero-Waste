@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
-import '../providers/app_state_manager.dart';
+import '../providers/onboarding.dart';
 
 class SkipButton extends StatelessWidget {
   const SkipButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<AppStateManager>(context);
+    final appState = Provider.of<OnBoarding>(context);
     return Column(
       children: [
         const SizedBox(height: 80.5),
@@ -19,10 +18,7 @@ class SkipButton extends StatelessWidget {
             TextButton(
               onPressed: () {
                 appState.completeOnboarding();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
-                );
+                Navigator.pushReplacementNamed(context, '/Signup');
               },
               child: Text(
                 'Skip',

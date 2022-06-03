@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../constants/constant.dart';
-import 'onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,14 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 3),
-      () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => Onboarding(),
-          ),
-        );
-      },
+      const Duration(seconds: 4),
+      () => Navigator.pushReplacementNamed(context, '/OnBoarding'),
     );
   }
 
@@ -33,10 +26,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(backGroundJpeg), fit: BoxFit.cover),
+            image: AssetImage(backGroundJpeg),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(blend, BlendMode.srcOver),
+          ),
         ),
         child: Center(
-          child: SvgPicture.asset(appImage, width: 75, height: 75),
+          child: SvgPicture.asset(appImage, width: 168, height: 168),
         ),
       ),
     );

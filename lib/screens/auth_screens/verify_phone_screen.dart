@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/auth_screens/validated_account_screen.dart';
-import 'package:zero_waste/screens/auth_screens/login_screen.dart';
-// import 'package:zero_waste/screens/signin_screen.dart';
+import 'package:zero_waste/widgets/text_field_widget.dart';
 
 class VerifyPhoneScreen extends StatefulWidget {
   const VerifyPhoneScreen({Key? key}) : super(key: key);
@@ -28,10 +25,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                 children: [
                   SvgPicture.asset(appImage, width: 75, height: 75),
                   const SizedBox(height: 15),
-                  Text(
-                    "Verify your phone number",
-                    style: textStyleTwo,
-                  ),
+                  Text("Verify your phone number", style: headerText),
                   const SizedBox(height: 8),
                   SizedBox(
                     width: 327,
@@ -39,34 +33,41 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         'Please, enter the code sent to +2349099343499 via SMS to validate your account.',
-                        style: verTxtStyle(),
+                        style: verifyTextStyle(),
                         textAlign: TextAlign.center,
                         softWrap: true,
                       ),
                     ),
                   ),
                   const SizedBox(height: 81),
-                  SizedBox(
-                    width: 327,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        codeTextBox(child: TextField(maxLength: 1)),
-                        codeTextBox(child: TextField(maxLength: 1)),
-                        codeTextBox(child: TextField(maxLength: 1)),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 64,
+                        child: passwordReset(),
+                      ),
+                      SizedBox(
+                        width: 64,
+                        child: passwordReset(),
+                      ),
+                      SizedBox(
+                        width: 64,
+                        child: passwordReset(),
+                      ),
+                      SizedBox(
+                        width: 64,
+                        child: passwordReset(),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 82),
                   Container(
                     height: 52,
                     constraints: const BoxConstraints(maxWidth: 327),
                     child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const AccountValidScreen(),
-                        ),
-                      ),
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, '/ValidateAcc'),
                       style: elevatedButtonStyleTwo,
                       child: const Text("Proceed"),
                     ),
@@ -74,16 +75,12 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                   const SizedBox(height: 8),
                   Wrap(
                     children: [
-                      Text("Don't receive code? ", style: havAcc()),
+                      Text("Don't receive code? ", style: haveAccTextStyle()),
                       GestureDetector(
-                        onTap: () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        ),
+                        onTap: () {},
                         child: Text(
                           "Resend code",
-                          style: TextStyle(fontSize: 16, color: colorGreen),
+                          style: linkText,
                         ),
                       )
                     ],

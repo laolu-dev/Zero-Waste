@@ -8,7 +8,7 @@ class AccountValidScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 24, right: 24),
           child: Column(
@@ -21,12 +21,45 @@ class AccountValidScreen extends StatelessWidget {
                 height: 52,
                 constraints: const BoxConstraints(maxWidth: 327),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.pushReplacementNamed(context, '/Login'),
                   style: elevatedButtonStyleTwo,
                   child: const Text("Proceed"),
                 ),
               ),
-              const SizedBox(height: 8),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PasswordResetSuccess extends StatelessWidget {
+  const PasswordResetSuccess({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 24, right: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(successSvg),
+              const SizedBox(height: 57.5),
+              Container(
+                height: 52,
+                constraints: const BoxConstraints(maxWidth: 327),
+                child: ElevatedButton(
+                  onPressed: () =>
+                      Navigator.pushReplacementNamed(context, '/Login'),
+                  style: elevatedButtonStyleTwo,
+                  child: const Text("Login"),
+                ),
+              ),
             ],
           ),
         ),
