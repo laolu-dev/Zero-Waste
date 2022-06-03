@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:zero_waste/screens/login_screen.dart';
-import '../models/app_state_manager.dart';
+import '../providers/onboarding.dart';
 import '../widgets/onboarding.dart';
 
 class Onboarding extends StatelessWidget {
@@ -12,7 +11,7 @@ class Onboarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<AppStateManager>(context);
+    final appState = Provider.of<OnBoarding>(context);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(bottom: 120, right: 24, left: 24),
@@ -20,21 +19,21 @@ class Onboarding extends StatelessWidget {
           controller: controller,
           onPageChanged: (index) => appState.onboardingLastPage(index == 2),
           children: const [
-            OnboardindWidget(
+            OnBoardingWidget(
                 isFirst: true,
                 image: 'assets/images/Farmer-rafiki.svg',
                 title: 'Exchange Waste Product',
                 subtitle:
                     'Exchange your farm waste for organic manure \nby supplying a black soldier fly farmer.',
                 sheight: 30.75),
-            OnboardindWidget(
+            OnBoardingWidget(
               image: 'assets/images/Farmer-amico.svg',
               title: 'Connect With Labourers',
               subtitle:
                   'Opportunity to get co-workers and connect with \nlaboures to sort out bad crops and waste on \nfarms.',
               sheight: 36,
             ),
-            OnboardindWidget(
+            OnBoardingWidget(
                 image: 'assets/images/Farmer-pana.svg',
                 title: 'Get Source for Feed ',
                 subtitle: 'Get a rich source of insect protein for feeds. ',
@@ -68,8 +67,7 @@ class Onboarding extends StatelessWidget {
                   ? ElevatedButton(
                       onPressed: () {
                         appState.completeOnboarding();
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: ((context) => const LoginScreen()),),);
+                        Navigator.pushReplacementNamed(context, '/Login');
                       },
                       style: ElevatedButton.styleFrom(
                           primary: const Color(0xff0A9D56),
@@ -83,8 +81,7 @@ class Onboarding extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                         ),
-                    
-                  ),
+                      ),
                     )
                   : ElevatedButton(
                       style: ElevatedButton.styleFrom(
