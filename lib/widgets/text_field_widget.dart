@@ -4,15 +4,14 @@ import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/authentication.dart';
 
 class TextFields extends StatelessWidget {
-  const TextFields(
-      {Key? key,
-      required this.label,
-      required this.showText,
-      required this.phoneField,
-      this.validator,
-      this.controller,
-      })
-      : super(key: key);
+  const TextFields({
+    Key? key,
+    required this.label,
+    required this.showText,
+    required this.phoneField,
+    this.validator,
+    this.controller,
+  }) : super(key: key);
   final String label;
   final bool showText;
   final bool phoneField;
@@ -63,22 +62,4 @@ class TextFields extends StatelessWidget {
       decoration: formFieldDecoration(showText, label, context),
     );
   }
-}
-
-TextFormField passwordReset() {
-  return TextFormField(
-    keyboardType: TextInputType.number,
-    cursorColor: hintTextColor,
-    decoration: InputDecoration(
-      border: const OutlineInputBorder(
-        borderSide:
-            BorderSide(color: Color.fromRGBO(226, 226, 226, 1), width: 10),
-        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: primaryColor),
-        borderRadius: const BorderRadius.all(Radius.circular(12.0)),
-      ),
-    ),
-  );
 }

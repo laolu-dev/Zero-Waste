@@ -49,6 +49,14 @@ TextStyle contentText = GoogleFonts.jost(
   ),
 );
 
+TextStyle contentTextTwo = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: contentThreeColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
 TextStyle linkText = GoogleFonts.jost(
   textStyle: TextStyle(
     color: primaryColor,
@@ -109,14 +117,6 @@ TextStyle haveAccTextStyle() {
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: headerTextColor,
-  );
-}
-
-TextStyle verifyTextStyle() {
-  return TextStyle(
-    color: contentTwoColor,
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
   );
 }
 

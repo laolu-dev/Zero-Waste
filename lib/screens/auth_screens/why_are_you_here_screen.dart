@@ -75,7 +75,8 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                   height: 52,
                   constraints: const BoxConstraints(maxWidth: 327),
                   child: ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(context, '/Verify'),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, '/VerifyPhone'),
                     style: elevatedButtonStyleTwo,
                     child: const Text("Sign In"),
                   ),

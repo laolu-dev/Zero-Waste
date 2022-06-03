@@ -12,7 +12,19 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  Color inputContainerBorderColor = buttonTextColor;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _phoneNo = TextEditingController();
+  final TextEditingController _homeAddress = TextEditingController();
+  final TextEditingController _state = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
+  void _submitDetails() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.pushNamed(context, '/Reason');
+      super.dispose();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,30 +34,54 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Padding(
             padding: const EdgeInsets.only(left: 24, right: 24, top: 45),
             child: Form(
+              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(appImage, width: 75, height: 75),
                   const SizedBox(height: 15),
                   Text("Register an Account", style: headerText),
                   const SizedBox(height: 15),
-                  const TextFields(
-                      label: 'Full Name', showText: false, phoneField: false),
+                  TextFields(
+                    controller: _name,
+                    label: 'Full Name',
+                    showText: false,
+                    phoneField: false,
+                  ),
                   const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'Phone Number', showText: false, phoneField: true),
+                  TextFields(
+                    controller: _phoneNo,
+                    label: 'Phone Number',
+                    showText: false,
+                    phoneField: true,
+                  ),
                   const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'Home Address',
-                      showText: false,
-                      phoneField: false),
+                  TextFields(
+                    controller: _homeAddress,
+                    label: 'Home Address',
+                    showText: false,
+                    phoneField: false,
+                  ),
                   const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'State', showText: false, phoneField: false),
+                  TextFields(
+                    controller: _state,
+                    label: 'State',
+                    showText: false,
+                    phoneField: false,
+                  ),
                   const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'Password', showText: true, phoneField: false),
+                  TextFields(
+                    controller: _password,
+                    label: 'Password',
+                    showText: true,
+                    phoneField: false,
+                    validator: (value) {
+                      if (value!.length < 8) {
+                        return 'Password must be at least 8 characters';
+                      }
+                      return null;
+                    },
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     constraints:
@@ -62,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 52,
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: ElevatedButton(
-                      onPressed: () => Navigator.pushNamed(context, '/Reason'),
+                      onPressed: () => _submitDetails(),
                       style: elevatedButtonStyleTwo,
                       child: const Text("Next"),
                     ),
