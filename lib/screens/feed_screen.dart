@@ -84,8 +84,6 @@ class FeedsPage extends StatelessWidget {
         pictureOfProduct:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
   ];
-  // onPressed: () => Navigator.of(context).push(
-  // MaterialPageRoute(builder: (context) => ChatScreen())),
 
   @override
   Widget build(BuildContext context) {
@@ -109,9 +107,11 @@ class FeedsPage extends StatelessWidget {
                 Text(
                   'New Conversation',
                   style: TextStyle(
-                      fontFamily: 'Jost',
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500),
+                    fontFamily: 'Jost',
+                    fontSize: 14.0,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -120,23 +120,32 @@ class FeedsPage extends StatelessWidget {
                 const Text(
                   'Chats',
                   style: TextStyle(
-                      color: Colors.green,
-                      fontFamily: 'Jost',
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500),
+                    color: Colors.green,
+                    fontFamily: 'Jost',
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(width: 5.0),
-                Card(
-                  elevation: 15,
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ChatScreen())),
                   child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 20.0,
+                        )
+                      ],
+                    ),
                     child: Image.asset(
                       'assets/images/chat_icon.png',
                       color: Colors.green,
-                      height: 41.99,
-                      width: 45,
+                      height: 51.99,
+                      width: 55,
                     ),
                   ),
-                  clipBehavior: Clip.antiAlias,
                 )
               ],
             ),

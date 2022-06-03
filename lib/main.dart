@@ -3,9 +3,6 @@ import 'package:provider/provider.dart';
 
 import 'package:zero_waste/screens/feed_screen.dart';
 
-
-
-
 import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
@@ -29,7 +26,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => OnBoarding()),
         ChangeNotifierProvider(create: (context) => Authentication())
       ],
-      child: const ZeroWaste(),
+      child: MaterialApp(home: FeedsPage()),
     ),
   );
 }
@@ -58,5 +55,4 @@ class ZeroWaste extends StatelessWidget {
       title: 'Zero Waste',
     );
   }
-
 }

@@ -15,11 +15,12 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final textFieldController = TextEditingController();
   String textValue = '';
+  int _selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             children: [
@@ -56,92 +57,153 @@ class _ChatScreenState extends State<ChatScreen> {
               const Divider(color: Colors.green),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: Material(
-              elevation: 20.0,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(5.0),
-                topRight: Radius.circular(5.0),
-                bottomLeft: Radius.circular(20.0),
-                bottomRight: Radius.circular(20.0),
-              ),
-              // color: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: textFieldController,
-                      decoration: const InputDecoration(
-                        labelText: 'Message Here',
-                        labelStyle: TextStyle(color: Colors.grey),
-                        hintText: 'Message Here',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        fillColor: Colors.green,
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5.0),
-                              topRight: Radius.circular(5.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            )),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5.0),
-                              topRight: Radius.circular(5.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            )),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5.0),
-                              topRight: Radius.circular(5.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            )),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5.0),
-                              topRight: Radius.circular(5.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            )),
-                        disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5.0),
-                              topRight: Radius.circular(5.0),
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0),
-                            )),
-                      ),
-                      onChanged: (value) => setState(() => textValue = value),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 10.0),
+                child: Material(
+                  elevation: 20.0,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(5.0),
+                    topRight: Radius.circular(5.0),
+                    bottomLeft: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
+                  ),
+                  // color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: textFieldController,
+                            decoration: const InputDecoration(
+                              labelText: 'Message Here',
+                              labelStyle: TextStyle(color: Colors.grey),
+                              hintText: 'Message Here',
+                              hintStyle: TextStyle(color: Colors.grey),
+                              fillColor: Colors.green,
+                              border: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5.0),
+                                    topRight: Radius.circular(5.0),
+                                    bottomLeft: Radius.circular(20.0),
+                                    bottomRight: Radius.circular(20.0),
+                                  )),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5.0),
+                                    topRight: Radius.circular(5.0),
+                                    bottomLeft: Radius.circular(20.0),
+                                    bottomRight: Radius.circular(20.0),
+                                  )),
+                              errorBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5.0),
+                                    topRight: Radius.circular(5.0),
+                                    bottomLeft: Radius.circular(20.0),
+                                    bottomRight: Radius.circular(20.0),
+                                  )),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5.0),
+                                    topRight: Radius.circular(5.0),
+                                    bottomLeft: Radius.circular(20.0),
+                                    bottomRight: Radius.circular(20.0),
+                                  )),
+                              disabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5.0),
+                                    topRight: Radius.circular(5.0),
+                                    bottomLeft: Radius.circular(20.0),
+                                    bottomRight: Radius.circular(20.0),
+                                  )),
+                            ),
+                            onChanged: (value) =>
+                                setState(() => textValue = value),
+                          ),
+                        ),
+                        textValue == ''
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: const [
+                                  Icon(
+                                    Icons.add,
+                                    size: 30,
+                                    color: Colors.grey,
+                                  ),
+                                  SizedBox(width: 5.0),
+                                  Icon(Icons.emoji_emotions,
+                                      size: 25, color: Colors.grey),
+                                  SizedBox(width: 5.0),
+                                  Icon(
+                                    Icons.camera_alt,
+                                    size: 25,
+                                    color: Colors.grey,
+                                  ),
+                                ],
+                              )
+                            : Image.asset(
+                                'assets/images/send_icon.png',
+                                height: 22.5,
+                                width: 22.47,
+                                color: Colors.blue,
+                              ),
+                      ],
                     ),
                   ),
-                  textValue == ''
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
-                            Icon(Icons.add, size: 30),
-                            SizedBox(width: 5.0),
-                            Icon(Icons.emoji_emotions, size: 25),
-                            SizedBox(width: 5.0),
-                            Icon(Icons.camera_alt, size: 25),
-                          ],
-                        )
-                      : const Icon(Icons.send),
-                ],
+                ),
               ),
-            ),
+              const SizedBox(height: 10.0)
+            ],
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.grey,
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/images/feed_icon.png',
+                height: 22.5,
+                width: 22.47,
+                color: _selectedIndex == 1 ? Colors.green : Colors.grey,
+              ),
+              label: 'Feed'),
+          BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/images/product_icon.png',
+                height: 22.5,
+                width: 22.47,
+                color: _selectedIndex == 2 ? Colors.green : Colors.grey,
+              ),
+              label: 'Home'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: 'Account'),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green,
+        onTap: _onItemTapped,
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }
 
