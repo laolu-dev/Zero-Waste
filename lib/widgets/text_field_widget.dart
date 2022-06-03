@@ -4,15 +4,17 @@ import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/signup_provider.dart';
 
 class TextFields extends StatelessWidget {
-  const TextFields(
-      {Key? key,
-      required this.label,
-      required this.showText,
-      required this.phoneField})
-      : super(key: key);
+  const TextFields({
+    Key? key,
+    required this.label,
+    required this.showText,
+    required this.phoneField,
+    required this.controller,
+  }) : super(key: key);
   final String label;
   final bool showText;
   final bool phoneField;
+  final TextEditingController controller;
 
   Widget showVisibilityEye(BuildContext context) {
     final showPasswordText = Provider.of<SignUp>(context);
@@ -48,7 +50,11 @@ class TextFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final obscureText = Provider.of<SignUp>(context);
-    final bool textDown = obscureText.obscureText;
+    bool textDown = obscureText.obscureText;
+
+    if (label != "Password") {
+      textDown = false;
+    }
     return TextFormField(
       keyboardType: phoneField ? TextInputType.phone : TextInputType.text,
       cursorColor: hintColor,

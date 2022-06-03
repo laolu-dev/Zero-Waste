@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/screens/auth_screens/verify_phone_screen.dart';
 import 'package:zero_waste/screens/profile_screen.dart';
 import './screens/splash_screen.dart';
 import 'providers/app_state_manager.dart';
@@ -23,10 +25,11 @@ class ZeroWaste extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.green),
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

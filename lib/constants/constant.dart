@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 String contentOne = "Crop Farmer";
@@ -34,7 +35,7 @@ TextStyle textStyleOne = GoogleFonts.jost(
 
 TextStyle textStyleTwo = GoogleFonts.jost(
   textStyle: const TextStyle(
-    color: Color.fromARGB(255, 34, 34, 34),
+    color: Color.fromARGB(255, 34, 34, 1),
     fontSize: 16,
     fontWeight: FontWeight.w400,
   ),
@@ -149,20 +150,41 @@ TextStyle verTxtStyle() {
       color: verTxtColor, fontSize: 16, fontWeight: FontWeight.w400);
 }
 
+TextStyle codeTextStyle = GoogleFonts.jost(
+  textStyle: const TextStyle(
+    color: Colors.black,
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
 codeTextBox({required Widget child}) {
-  return Container(
-    alignment: Alignment.center,
+  return SizedBox(
     width: 64,
     height: 64,
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: hintColor)),
+    child: child,
   );
 }
 
-codeInputStyle() {
-  return const InputDecoration(border: InputBorder.none);
+inputCodeSqr() {
+  return TextField(
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+          focusColor: colorGreen,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(color: hintColor))),
+      keyboardType: TextInputType.number,
+      style: codeTextStyle,
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(1),
+        FilteringTextInputFormatter.digitsOnly
+      ]);
 }
+
+// codeInputStyle() {
+//   return const InputDecoration(border: InputBorder.none);
+// }
 
 Padding boxText(text) {
   return Padding(

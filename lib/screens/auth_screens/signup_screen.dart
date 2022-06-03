@@ -16,7 +16,13 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  Color inputContainerBorderColor = inputBorderColor;
+  bool isLoading = false;
+  final formKey = GlobalKey<FormState>();
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
+  TextEditingController passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,20 +41,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Text("Register an Account", style: textStyleOne),
                   //
                   const SizedBox(height: 15),
-                  const TextFields(
-                      label: 'Full Name', showText: false, phoneField: false),
-                  const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'PhoneNumber', showText: false, phoneField: true),
-                  const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'Address', showText: false, phoneField: false),
-                  const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'State', showText: false, phoneField: false),
-                  const SizedBox(height: 16),
-                  const TextFields(
-                      label: 'Password', showText: true, phoneField: false),
+                  Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          TextFields(
+                              controller: fullNameController,
+                              label: 'Full Name',
+                              showText: false,
+                              phoneField: false),
+                          const SizedBox(height: 16),
+                          TextFields(
+                              controller: phoneController,
+                              label: 'PhoneNumber',
+                              showText: false,
+                              phoneField: true),
+                          const SizedBox(height: 16),
+                          TextFields(
+                              controller: addressController,
+                              label: 'Address',
+                              showText: false,
+                              phoneField: false),
+                          const SizedBox(height: 16),
+                          TextFields(
+                              controller: stateController,
+                              label: 'State',
+                              showText: false,
+                              phoneField: false),
+                          const SizedBox(height: 16),
+                          TextFields(
+                              controller: passwordTextController,
+                              label: 'Password',
+                              showText: true,
+                              phoneField: false),
+                        ],
+                      )),
+
                   const SizedBox(height: 16),
                   Container(
                     constraints:

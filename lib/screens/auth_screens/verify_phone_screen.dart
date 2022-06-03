@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zero_waste/constants/constant.dart';
@@ -51,9 +52,10 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        codeTextBox(child: TextField(maxLength: 1)),
-                        codeTextBox(child: TextField(maxLength: 1)),
-                        codeTextBox(child: TextField(maxLength: 1)),
+                        codeTextBox(child: inputCodeSqr()),
+                        codeTextBox(child: inputCodeSqr()),
+                        codeTextBox(child: inputCodeSqr()),
+                        codeTextBox(child: inputCodeSqr())
                       ],
                     ),
                   ),

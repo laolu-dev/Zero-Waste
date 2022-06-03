@@ -2,6 +2,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
+import 'package:zero_waste/screens/profile_screen.dart';
 import '../../widgets/text_field_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,7 +13,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Color inputContainrBrdrColor = inputBorderColor;
+  bool isLoading = false;
+  final formKey = GlobalKey<FormState>();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +35,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: textStyleTwo,
               ),
               const SizedBox(height: 38),
-              const TextFields(
-                  label: 'Username', showText: false, phoneField: false),
-              const SizedBox(height: 16),
-              const TextFields(
-                  label: 'Password', showText: true, phoneField: false),
+              Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      TextFields(
+                          controller: usernameController,
+                          label: 'Username',
+                          showText: false,
+                          phoneField: false),
+                      const SizedBox(height: 16),
+                      TextFields(
+                          controller: passwordTextController,
+                          label: 'Password',
+                          showText: true,
+                          phoneField: false),
+                    ],
+                  )),
               const SizedBox(height: 16),
               Container(
                 constraints:
@@ -50,7 +66,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 52,
                 constraints: const BoxConstraints(maxWidth: 400),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const UserAccount(),
+                          ),
+                        );
+                  },
                   style: elevatedButtonStyleTwo,
                   child: const Text("Sign in"),
                 ),

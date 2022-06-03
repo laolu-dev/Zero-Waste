@@ -57,7 +57,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                   const SizedBox(height: 15),
                   Text(
                     "Why are you here? ",
-                    style: textStyleTwo,
+                    style: textStyleOne,
                   ),
                   const SizedBox(height: 27),
                   Wrap(
