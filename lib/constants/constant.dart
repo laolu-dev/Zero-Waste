@@ -18,6 +18,7 @@ String contentThree = "Fish/Poultry Farmer";
 String contentFour = "Manual Labourers";
 
 //Colors
+Color inputWhite = const Color.fromRGBO(252, 252, 252, 1);
 Color primaryColor = const Color.fromRGBO(10, 157, 86, 1);
 Color hintTextColor = const Color.fromRGBO(151, 151, 151, 1);
 Color buttonTextColor = const Color.fromRGBO(255, 255, 255, 1);
@@ -41,6 +42,8 @@ TextStyle headerText = GoogleFonts.jost(
   ),
 );
 
+
+
 TextStyle contentText = GoogleFonts.jost(
   textStyle: TextStyle(
     color: contentOneColor,
@@ -48,6 +51,7 @@ TextStyle contentText = GoogleFonts.jost(
     fontWeight: FontWeight.w400,
   ),
 );
+
 
 TextStyle contentTextTwo = GoogleFonts.jost(
   textStyle: TextStyle(

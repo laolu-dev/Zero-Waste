@@ -38,8 +38,8 @@ class SkipButton extends StatelessWidget {
   }
 }
 
-class OnboardindWidget extends StatelessWidget {
-  const OnboardindWidget({
+class OnBoardingWidget extends StatelessWidget {
+  const OnBoardingWidget({
     Key? key,
     this.isFirst = false,
     required this.image,
