@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/models/feed_data.dart';
+import 'package:zero_waste/models/feed.dart';
 
 class FeedWidget extends StatelessWidget {
   const FeedWidget({Key? key, required this.feed}) : super(key: key);

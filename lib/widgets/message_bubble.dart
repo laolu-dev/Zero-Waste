@@ -35,10 +35,12 @@ class _MessageBubbleState extends State<MessageBubble> {
               borderRadius: widget.isMe
                   ? const BorderRadius.only(
                       topLeft: Radius.circular(30.0),
+                      topRight: Radius.circular(10.0),
                       bottomLeft: Radius.circular(30.0),
                       bottomRight: Radius.circular(30.0))
                   : const BorderRadius.only(
                       topRight: Radius.circular(30.0),
+                      topLeft: Radius.circular(10.0),
                       bottomLeft: Radius.circular(30.0),
                       bottomRight: Radius.circular(30.0)),
               elevation: 5.0,

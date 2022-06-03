@@ -3,7 +3,7 @@ import 'package:zero_waste/constants/constant.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:zero_waste/widgets/feed_widget.dart';
 import 'package:ionicons/ionicons.dart';
-import '../models/feed_data.dart';
+import '../models/feed.dart';
 import '../widgets/Feed_app_bar_widget.dart';
 import '../widgets/notification_widget.dart';
 import 'chat_screen.dart';
