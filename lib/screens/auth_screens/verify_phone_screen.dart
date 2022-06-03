@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/widgets/text_field_widget.dart';
 
 class VerifyPhoneScreen extends StatefulWidget {
   const VerifyPhoneScreen({Key? key}) : super(key: key);
@@ -33,33 +33,32 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         'Please, enter the code sent to +2349099343499 via SMS to validate your account.',
-                        style: verifyTextStyle(),
+                        style: contentTextTwo,
                         textAlign: TextAlign.center,
                         softWrap: true,
                       ),
                     ),
                   ),
                   const SizedBox(height: 81),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: 64,
-                        child: passwordReset(),
-                      ),
-                      SizedBox(
-                        width: 64,
-                        child: passwordReset(),
-                      ),
-                      SizedBox(
-                        width: 64,
-                        child: passwordReset(),
-                      ),
-                      SizedBox(
-                        width: 64,
-                        child: passwordReset(),
-                      ),
-                    ],
+                  PinCodeTextField(
+                    appContext: context,
+                    length: 4,
+                    onChanged: (value) {},
+                    keyboardType: TextInputType.phone,
+                    autoFocus: true,
+                    textStyle: headerText.copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 28,
+                    ),
+                    pinTheme: PinTheme(
+                      activeColor: primaryColor,
+                      selectedColor: primaryColor,
+                      inactiveColor: const Color(0xffEBEAED),
+                      shape: PinCodeFieldShape.box,
+                      fieldHeight: 64,
+                      fieldWidth: 64,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                   const SizedBox(height: 82),
                   Container(
@@ -67,7 +66,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                     constraints: const BoxConstraints(maxWidth: 327),
                     child: ElevatedButton(
                       onPressed: () => Navigator.pushReplacementNamed(
-                          context, '/ValidateAcc'),
+                          context, '/AccountValid'),
                       style: elevatedButtonStyleTwo,
                       child: const Text("Proceed"),
                     ),

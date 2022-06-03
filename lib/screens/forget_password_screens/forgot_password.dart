@@ -20,17 +20,11 @@ class ForgotPassword extends StatelessWidget {
                 const SizedBox(height: 15),
                 Text("Forgot Password", style: headerText),
                 const SizedBox(height: 16),
-                SizedBox(
-                  width: 327,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      'Enter the phone number you use to register',
-                      style: verifyTextStyle(),
-                      textAlign: TextAlign.center,
-                      softWrap: true,
-                    ),
-                  ),
+                Text(
+                  'Enter the phone number you use to register',
+                  style: contentTextTwo,
+                  textAlign: TextAlign.center,
+                  softWrap: true,
                 ),
                 const SizedBox(height: 32),
                 const TextFields(
@@ -41,7 +35,7 @@ class ForgotPassword extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: ElevatedButton(
                     onPressed: () => Navigator.pushReplacementNamed(
-                        context, '/PasswordReset'),
+                        context, '/PasswordVerification'),
                     style: elevatedButtonStyleTwo,
                     child: const Text("Reset"),
                   ),
