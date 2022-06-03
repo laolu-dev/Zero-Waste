@@ -11,7 +11,7 @@ class FeedWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: ListView.builder(
         itemBuilder: (context, index) => Container(
-          height: 210,
+          height: 240,
           width: double.infinity,
           margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
           decoration: BoxDecoration(
@@ -98,7 +98,7 @@ class FeedWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   child: Image.network(
                     feed[index].pictureOfProduct,
-                    height: 88.0,
+                    height: 130.0,
                     width: double.infinity,
                     alignment: Alignment.center,
                     fit: BoxFit.fill,
@@ -172,6 +172,46 @@ class FeedWidget extends StatelessWidget {
         ),
         itemCount: feed.length,
       ),
+    );
+  }
+}
+
+class CustomUserInfo extends StatelessWidget {
+  final String? imageUrl;
+  final String userName;
+  final Widget subTitle;
+  final Widget? trailingWidget;
+  const CustomUserInfo({
+    Key? key,
+    this.imageUrl,
+    required this.userName,
+    required this.subTitle,
+    this.trailingWidget,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor: Colors.grey,
+        child: imageUrl == null
+            ? const Icon(
+                Icons.account_circle_outlined,
+                color: Colors.white,
+                // size: 32,
+              )
+            : Image.network(imageUrl!),
+      ),
+      title: Text(
+        userName,
+        style: const TextStyle(
+            fontFamily: 'Jost',
+            fontSize: 16.0,
+            fontWeight: FontWeight.w900,
+            color: Colors.black),
+      ),
+      subtitle: subTitle,
+      trailing: trailingWidget,
     );
   }
 }
