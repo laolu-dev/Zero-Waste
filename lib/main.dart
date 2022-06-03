@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:zero_waste/screens/auth_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 import 'package:zero_waste/screens/auth_screens/password_verification.dart';
@@ -13,6 +14,7 @@ import './screens/splash_screen.dart';
 import 'providers/onboarding.dart';
 import 'providers/authentication.dart';
 import 'package:zero_waste/screens/splash_screen.dart';
+
 
 void main() {
   runApp(

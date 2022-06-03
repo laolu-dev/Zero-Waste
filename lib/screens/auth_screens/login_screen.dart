@@ -4,6 +4,7 @@ import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/screens/auth_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
 import '../../widgets/text_field_widget.dart';
+import '../forget_password_screens/forget_password.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   "Login to your Account",
                   style: headerText,
+
                 ),
                 const SizedBox(height: 38),
                 const TextFields(

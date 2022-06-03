@@ -8,11 +8,16 @@ class TextFields extends StatelessWidget {
       {Key? key,
       required this.label,
       required this.showText,
-      required this.phoneField})
+      required this.phoneField,
+      this.validator,
+      this.controller,
+      })
       : super(key: key);
   final String label;
   final bool showText;
   final bool phoneField;
+  final FormFieldValidator<String>? validator;
+  final TextEditingController? controller;
 
   Widget showVisibilityEye(BuildContext context) {
     final showPasswordText = Provider.of<Authentication>(context);
@@ -50,6 +55,8 @@ class TextFields extends StatelessWidget {
     final obscureText = Provider.of<Authentication>(context);
     final bool textDown = obscureText.obscureText;
     return TextFormField(
+      controller: controller,
+      validator: validator,
       keyboardType: phoneField ? TextInputType.phone : TextInputType.text,
       cursorColor: hintTextColor,
       obscureText: textDown,
