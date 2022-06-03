@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/utils/user_preferences.dart';
 
@@ -30,7 +29,7 @@ Container userInfo() {
   return Container(
     height: 300,
     decoration: BoxDecoration(
-        color: colorGreen,
+        color: primaryColor,
         borderRadius: const BorderRadius.all(Radius.circular(10))),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -50,7 +49,7 @@ Container userInfo() {
           ],
         ),
         const SizedBox(height: 30),
-        ElevatedButton(onPressed: () {}, child: Text('Edit Profile'))
+        ElevatedButton(onPressed: () {}, child: const Text('Edit Profile'))
       ],
     ),
   );
@@ -61,7 +60,8 @@ ElevatedButton profileButtons(String buttonText, bool canSavePost) {
     onPressed: () {},
     style: ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      primary: canSavePost ? Color.fromRGBO(233, 233, 233, 1) : colorGreen,
+      primary:
+          canSavePost ? const Color.fromRGBO(233, 233, 233, 1) : primaryColor,
       textStyle: buttonTextStyleTwo,
     ),
     child: Text(

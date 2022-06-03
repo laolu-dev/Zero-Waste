@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:zero_waste/screens/auth_screens/login_screen.dart';
-import '../providers/app_state_manager.dart';
+import '../providers/onboarding.dart';
 import '../widgets/onboarding.dart';
 
 class Onboarding extends StatelessWidget {
@@ -12,7 +11,7 @@ class Onboarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<AppStateManager>(context);
+    final appState = Provider.of<OnBoarding>(context);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(bottom: 120, right: 24, left: 24),
@@ -68,11 +67,7 @@ class Onboarding extends StatelessWidget {
                   ? ElevatedButton(
                       onPressed: () {
                         appState.completeOnboarding();
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: ((context) => const LoginScreen()),
-                          ),
-                        );
+                        Navigator.pushReplacementNamed(context, '/Login');
                       },
                       style: ElevatedButton.styleFrom(
                           primary: const Color(0xff0A9D56),

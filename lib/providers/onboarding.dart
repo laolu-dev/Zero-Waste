@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class AppStateManager extends ChangeNotifier {
+class OnBoarding extends ChangeNotifier {
   bool _isOnboardingLastPage = false;
   bool _onboardingComplete = false;
 
