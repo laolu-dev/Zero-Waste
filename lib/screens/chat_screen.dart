@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zero_waste/widgets/messge_stream.dart';
 
 import '../widgets/Feed_app_bar_widget.dart';
 import '../widgets/feed_widget.dart';
@@ -59,6 +60,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           Column(
             children: [
+              const MessagesStream(),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 10.0),
                 child: Material(
