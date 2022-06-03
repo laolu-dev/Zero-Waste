@@ -1,64 +1,153 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-String appImage = "images/appImage.svg";
+//App Images
+String appImage = "assets/images/appImage.svg";
+String fbSvg = "assets/images/facebook.svg";
+String googleSvg = "assets/images/google.svg";
+String linklnSvg = "assets/images/linkln.svg";
+String accValidSvg = "assets/images/acct_valid.svg";
+String successSvg = "assets/images/success.svg";
+String noteSvg = "assets/images/notes.svg";
+String backGroundJpeg = "assets/images/background.jpeg";
 
-String fbSvg = "images/facebook.svg";
+//User Type
+String contentOne = "Crop Farmer";
+String contentTwo = "Black Solder Fly Farmer";
+String contentThree = "Fish/Poultry Farmer";
+String contentFour = "Manual Labourers";
 
-String googleSvg = "images/google.svg";
+//Colors
+Color inputWhite = const Color.fromRGBO(252, 252, 252, 1);
+Color primaryColor = const Color.fromRGBO(10, 157, 86, 1);
+Color hintTextColor = const Color.fromRGBO(151, 151, 151, 1);
+Color buttonTextColor = const Color.fromRGBO(255, 255, 255, 1);
+Color headerTextColor = const Color.fromRGBO(0, 0, 0, 1);
+Color contentOneColor = const Color.fromRGBO(34, 34, 34, 1);
+Color contentTwoColor = const Color.fromRGBO(115, 115, 119, 1);
+Color contentThreeColor = const Color.fromRGBO(77, 77, 77, 1);
+Color dividerColor = const Color.fromRGBO(229, 229, 229, 1);
+Color orColor = const Color.fromRGBO(22, 22, 29, 1);
+Color userTypeColor = const Color.fromRGBO(136, 255, 222, 1);
+Color userTypeTextColor1 = const Color.fromRGBO(128, 128, 128, 1);
+Color userTypeTextColor2 = const Color.fromRGBO(64, 64, 64, 1);
+Color blend = const Color.fromRGBO(7, 110, 82, 0.8);
 
-String linklnSvg = "images/linkln.svg";
-
-
-const inputWhite = Color.fromRGBO(252, 252, 252, 1);
-
-const hintColor = Color.fromRGBO(151, 151, 151, 1);
-
-const inputBorderColor = Color.fromRGBO(226, 226, 226, 1);
-
-TextStyle textStyleOne = const TextStyle(
-    color: Color.fromARGB(255, 0, 0, 0),
+//TextStyles
+TextStyle headerText = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: headerTextColor,
     fontSize: 24,
-    fontWeight: FontWeight.w700);
+    fontWeight: FontWeight.w700,
+  ),
+);
 
-Container inputContainer({required Widget child, Color? color}) {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
-      color: color,
-    ),
-    constraints: const BoxConstraints(
-      maxWidth: 400,
-      minHeight: 52,
-    ),
-    child: child,
+
+
+TextStyle contentText = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: contentOneColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+
+TextStyle contentTextTwo = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: contentThreeColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle linkText = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: primaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
+TextStyle orTextStyle = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: orColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  ),
+);
+
+TextStyle userTypeStyle = GoogleFonts.jost(
+  textStyle: const TextStyle(
+    color: Color.fromRGBO(22, 22, 29, 1),
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
+TextStyle forgotPasswordText = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: primaryColor,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle labelTextStyle = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: hintTextColor,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle buttonTextStyleOne = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: buttonTextColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle buttonTextStyleTwo = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: buttonTextColor,
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  ),
+);
+TextStyle haveAccTextStyle() {
+  return TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: headerTextColor,
   );
 }
 
-Color colorGreen = const Color.fromRGBO(10, 157, 86, 1);
+//Button Styles
+ButtonStyle elevatedButtonStyleOne = ElevatedButton.styleFrom(
+  primary: primaryColor,
+  textStyle: buttonTextStyleTwo,
+);
 
-Color lineColor = const Color.fromRGBO(22, 22, 29, 1);
+ButtonStyle elevatedButtonStyleTwo = ElevatedButton.styleFrom(
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10.0),
+  ),
+  minimumSize: Size.infinite,
+  primary: primaryColor,
+  textStyle: buttonTextStyleTwo,
+);
 
-InputDecoration inputDecoration({required String labelText}) {
-  return InputDecoration(
-    labelStyle: const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w400, color: hintColor),
-    labelText: labelText,
-    contentPadding: const EdgeInsets.only(top: 16, bottom: 16, left: 22),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: colorGreen),
-    ),
-    border: const OutlineInputBorder(
-      borderSide: BorderSide(color: inputBorderColor),
-    ),
-  );
-}
-
-circleContainer({required Widget child, Color? color}) {
+// Container Styles
+socialLoginContainer({required Widget child, Color? color}) {
   return Container(
     color: color,
     width: 55,
     height: 55,
-    decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(50),
+    ),
     child: child,
   );
 }
