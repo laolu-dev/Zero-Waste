@@ -1,10 +1,10 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/models/chat_data.dart';
 
 import 'package:zero_waste/screens/feed_screen.dart';
-
-
-
 
 import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
@@ -27,9 +27,10 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => OnBoarding()),
-        ChangeNotifierProvider(create: (context) => Authentication())
+        ChangeNotifierProvider(create: (context) => Authentication()),
+        ChangeNotifierProvider(create: (context) => ChatData())
       ],
-      child: const ZeroWaste(),
+      child: MaterialApp(home: FeedsPage()),
     ),
   );
 }
@@ -58,5 +59,4 @@ class ZeroWaste extends StatelessWidget {
       title: 'Zero Waste',
     );
   }
-
 }
