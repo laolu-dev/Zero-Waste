@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../models/app_state_manager.dart';
+import '../providers/onboarding.dart';
 import '../widgets/onboarding.dart';
 
 class Onboarding extends StatelessWidget {
@@ -12,7 +11,7 @@ class Onboarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<AppStateManager>(context);
+    final appState = Provider.of<OnBoarding>(context);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(bottom: 120, right: 24, left: 24),
@@ -44,13 +43,10 @@ class Onboarding extends StatelessWidget {
         ),
       ),
       bottomSheet: Container(
-        // color: Colors.red,
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        height: 120,
         child: Padding(
-          padding: const EdgeInsets.only(top: 22, bottom: 70),
+          padding: const EdgeInsets.only(top: 22, bottom: 70, right: 10),
           child: Row(
-            // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SmoothPageIndicator(
@@ -71,16 +67,15 @@ class Onboarding extends StatelessWidget {
                   ? ElevatedButton(
                       onPressed: () {
                         appState.completeOnboarding();
+                        Navigator.pushReplacementNamed(context, '/Login');
                       },
                       style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(120, 43),
                           primary: const Color(0xff0A9D56),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(10),
                           )),
                       child: const Text(
                         'Get Started',
-                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -91,7 +86,7 @@ class Onboarding extends StatelessWidget {
                   : ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xff0A9D56),
-                        fixedSize: const Size(30, 30),
+                        fixedSize: const Size(35, 35),
                         shape: const CircleBorder(),
                       ),
                       child: const Icon(

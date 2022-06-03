@@ -1,47 +1,62 @@
 import 'package:flutter/material.dart';
-// <<<<<<< main
 import 'package:provider/provider.dart';
-import 'package:zero_waste/screens/chat_screen.dart';
-import 'package:zero_waste/screens/feed_screen.dart';
-import 'package:zero_waste/screens/signup_screen.dart';
 
-import './screens/onboarding_screen.dart';
+import 'package:zero_waste/screens/feed_screen.dart';
+
+
+
+
+import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
+import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
+import 'package:zero_waste/screens/auth_screens/validated_account_screen.dart';
+import 'package:zero_waste/screens/auth_screens/verify_phone_screen.dart';
+import 'package:zero_waste/screens/auth_screens/why_are_you_here_screen.dart';
+import 'package:zero_waste/screens/forget_password_screens/password_verification.dart';
+import 'package:zero_waste/screens/forget_password_screens/reset_password.dart';
+import 'package:zero_waste/screens/forget_password_screens/reset_success.dart';
+import 'package:zero_waste/screens/onboarding_screen.dart';
+
 import './screens/splash_screen.dart';
-import './models/app_state_manager.dart';
+import 'providers/onboarding.dart';
+import 'providers/authentication.dart';
+import 'package:zero_waste/screens/splash_screen.dart';
 
 void main() {
-  runApp(ZeroWaste());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => OnBoarding()),
+        ChangeNotifierProvider(create: (context) => Authentication())
+      ],
+      child: const ZeroWaste(),
+    ),
+  );
 }
 
 class ZeroWaste extends StatelessWidget {
-  ZeroWaste({Key? key}) : super(key: key);
-  final _appStateManager = AppStateManager();
+  const ZeroWaste({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => _appStateManager),
-      ],
-      child: MaterialApp(
-        // debugShowMaterialGrid: true,
-        debugShowCheckedModeBanner: false,
-        title: 'Zero Waste',
-        home: FeedsPage(),
-      ),
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/OnBoarding': (context) => Onboarding(),
+        '/Login': (context) => const LoginScreen(),
+        '/Signup': (context) => const SignUpScreen(),
+        '/ForgotPassword': (context) => const ForgotPassword(),
+        '/Reason': (context) => const WhyAreYouHere(),
+        '/VerifyPhone': (context) => const VerifyPhoneScreen(),
+        '/ResetPassword': (context) => const ResetPassword(),
+        '/PasswordVerification': (context) => const PasswordVerification(),
+        '/AccountValid': (context) => const AccountValidScreen(),
+        '/ResetSuccess': (context) => const ResetSuccess(),
+      },
+      debugShowCheckedModeBanner: false,
+      title: 'Zero Waste',
     );
   }
-//=======
-// import 'package:zero_waste/screens/signin_screen.dart';
-// import 'package:zero_waste/screens/splash_screen.dart';
 
-// void main() {
-//   runApp(
-//     const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Zero Waste',
-//       home: LoginScreen(),
-//     ),
-//   );
-// >>>>>>> main
 }
