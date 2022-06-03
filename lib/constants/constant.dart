@@ -20,8 +20,9 @@ String contentFour = "Manual Labourers";
 //Colors
 Color primaryColor = const Color.fromRGBO(10, 157, 86, 1);
 Color hintTextColor = const Color.fromRGBO(151, 151, 151, 1);
-Color buttonTextColor = const Color.fromRGBO(255, 255, 255, 1);
-Color headerTextColor = const Color.fromRGBO(0, 0, 0, 1);
+Color white = const Color.fromRGBO(255, 255, 255, 1);
+Color headColor = const Color.fromRGBO(0, 0, 0, 1);
+Color tileColor = const Color.fromRGBO(226, 226, 226, 1);
 Color contentOneColor = const Color.fromRGBO(34, 34, 34, 1);
 Color contentTwoColor = const Color.fromRGBO(115, 115, 119, 1);
 Color contentThreeColor = const Color.fromRGBO(77, 77, 77, 1);
@@ -30,12 +31,13 @@ Color orColor = const Color.fromRGBO(22, 22, 29, 1);
 Color userTypeColor = const Color.fromRGBO(136, 255, 222, 1);
 Color userTypeTextColor1 = const Color.fromRGBO(128, 128, 128, 1);
 Color userTypeTextColor2 = const Color.fromRGBO(64, 64, 64, 1);
+Color profileButtonColor = const Color.fromRGBO(157, 51, 10, 1);
 Color blend = const Color.fromRGBO(7, 110, 82, 0.8);
 
 //TextStyles
 TextStyle headerText = GoogleFonts.jost(
   textStyle: TextStyle(
-    color: headerTextColor,
+    color: headColor,
     fontSize: 24,
     fontWeight: FontWeight.w700,
   ),
@@ -97,9 +99,17 @@ TextStyle labelTextStyle = GoogleFonts.jost(
   ),
 );
 
+TextStyle tileTextStyle = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: headColor,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  ),
+);
+
 TextStyle buttonTextStyleOne = GoogleFonts.jost(
   textStyle: TextStyle(
-    color: buttonTextColor,
+    color: white,
     fontSize: 16,
     fontWeight: FontWeight.w400,
   ),
@@ -107,16 +117,16 @@ TextStyle buttonTextStyleOne = GoogleFonts.jost(
 
 TextStyle buttonTextStyleTwo = GoogleFonts.jost(
   textStyle: TextStyle(
-    color: buttonTextColor,
-    fontSize: 20,
-    fontWeight: FontWeight.w700,
+    color: white,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
   ),
 );
 TextStyle haveAccTextStyle() {
   return TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: headerTextColor,
+    color: headColor,
   );
 }
 

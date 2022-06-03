@@ -30,8 +30,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
           pressed.selectType();
         },
         style: TextButton.styleFrom(
-          backgroundColor:
-              pressed.hasBeenPressed ? userTypeColor : buttonTextColor,
+          backgroundColor: pressed.hasBeenPressed ? userTypeColor : white,
           primary:
               pressed.hasBeenPressed ? userTypeTextColor2 : userTypeTextColor1,
           minimumSize: Size.infinite,

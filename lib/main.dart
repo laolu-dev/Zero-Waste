@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/screens/account_screen.dart';
 import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
@@ -10,6 +11,7 @@ import 'package:zero_waste/screens/forget_password_screens/password_verification
 import 'package:zero_waste/screens/forget_password_screens/reset_password.dart';
 import 'package:zero_waste/screens/forget_password_screens/reset_success.dart';
 import 'package:zero_waste/screens/onboarding_screen.dart';
+import 'package:zero_waste/screens/profile_screen.dart';
 import './screens/splash_screen.dart';
 import 'providers/onboarding.dart';
 import 'providers/authentication.dart';
@@ -46,6 +48,8 @@ class ZeroWaste extends StatelessWidget {
         '/PasswordVerification': (context) => const PasswordVerification(),
         '/AccountValid': (context) => const AccountValidScreen(),
         '/ResetSuccess': (context) => const ResetSuccess(),
+        '/MyAccount': (context) => const MyAccount(),
+        '/ProfileAccount': (context) => const ProfileAccount(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',

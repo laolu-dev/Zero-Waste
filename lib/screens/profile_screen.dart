@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:zero_waste/utils/user_preferences.dart';
 import 'package:zero_waste/widgets/profile_widget.dart';
 
-class UserAccount extends StatefulWidget {
-  const UserAccount({Key? key}) : super(key: key);
+class ProfileAccount extends StatefulWidget {
+  const ProfileAccount({Key? key}) : super(key: key);
 
   @override
-  State<UserAccount> createState() => _UserAccountState();
+  State<ProfileAccount> createState() => _ProfileAccountState();
 }
 
-class _UserAccountState extends State<UserAccount> {
+class _ProfileAccountState extends State<ProfileAccount> {
   final user = UserPreferences.myUser;
 
   @override

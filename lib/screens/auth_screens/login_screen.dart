@@ -80,6 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         _trySubmit();
+                        Navigator.pushReplacementNamed(context, '/MyAccount');
                       },
                       style: elevatedButtonStyleTwo,
                       child: const Text("Login"),
