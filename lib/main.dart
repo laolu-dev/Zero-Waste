@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // <<<<<<< main
 import 'package:provider/provider.dart';
+import 'package:zero_waste/screens/chat_screen.dart';
 import 'package:zero_waste/screens/feed_screen.dart';
 import 'package:zero_waste/screens/signup_screen.dart';
 
