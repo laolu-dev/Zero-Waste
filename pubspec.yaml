@@ -40,6 +40,12 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_native_splash: ^2.2.2
 
+  hexcolor: ^2.0.7
+  ionicons: ^0.1.2
+
+  pin_code_fields: ^7.4.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,13 +72,8 @@ flutter:
 # <<<<<<< main
   assets:
     - assets/images/
-    # - images/a_dot_ham.jpeg
-# =======
-
-#   assets:
-#   - assets/images/
-
-# >>>>>>> main
+    - assets/fonts/
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
