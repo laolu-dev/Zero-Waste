@@ -44,8 +44,6 @@ TextStyle headerText = GoogleFonts.jost(
   ),
 );
 
-
-
 TextStyle contentText = GoogleFonts.jost(
   textStyle: TextStyle(
     color: contentOneColor,
@@ -53,7 +51,6 @@ TextStyle contentText = GoogleFonts.jost(
     fontWeight: FontWeight.w400,
   ),
 );
-
 
 TextStyle contentTextTwo = GoogleFonts.jost(
   textStyle: TextStyle(
@@ -133,6 +130,14 @@ TextStyle haveAccTextStyle() {
     color: headColor,
   );
 }
+
+TextStyle buttonText = GoogleFonts.jost(
+  textStyle: TextStyle(
+    color: headColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
 
 //Button Styles
 ButtonStyle elevatedButtonStyleOne = ElevatedButton.styleFrom(

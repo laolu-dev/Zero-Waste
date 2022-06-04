@@ -1,7 +1,6 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import '../../widgets/text_field_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -65,10 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     constraints:
                         const BoxConstraints.expand(height: 15, width: 400),
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const ForgotPassword()));
-                      },
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/ForgotPassword'),
                       child:
                           Text("Forgot password?", style: forgotPasswordText),
                     ),
