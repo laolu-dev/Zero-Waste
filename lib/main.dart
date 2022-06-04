@@ -2,6 +2,9 @@ import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:zero_waste/screens/Home.dart';
+
 import 'package:zero_waste/models/chat_data.dart';
 
 import 'package:zero_waste/screens/feed_screen.dart';
@@ -40,6 +43,7 @@ class ZeroWaste extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       initialRoute: '/',
       routes: {
@@ -57,6 +61,7 @@ class ZeroWaste extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',
+
     );
   }
 }
