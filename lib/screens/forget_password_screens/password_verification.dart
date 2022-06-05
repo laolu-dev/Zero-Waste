@@ -60,7 +60,7 @@ class PasswordVerification extends StatelessWidget {
               const SizedBox(height: 8),
               Wrap(
                 children: [
-                  Text("Didn’t Receive Code ? ", style: haveAccTextStyle()),
+                  Text("Didn't Receive Code ? ", style: haveAccTextStyle()),
                   GestureDetector(
                     onTap: () {},
                     child: Text(

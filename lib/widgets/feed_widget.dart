@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/models/feed_data.dart';
 
 class FeedWidget extends StatelessWidget {
@@ -10,9 +11,78 @@ class FeedWidget extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: ListView.builder(
+        // itemBuilder: (context, index) {
+        //   return Card(
+        //     elevation: 3,
+        //     shape: const RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.all(Radius.circular(10))),
+        //     child: Column(
+        //       crossAxisAlignment: CrossAxisAlignment.center,
+        //       children: [
+        //         ListTile(
+        //           leading: const Icon(Icons.account_circle),
+        //           title: const Text('Name'),
+        //           subtitle: Wrap(
+        //             direction: Axis.vertical,
+        //             children: const [
+        //               Text('Lagos, Nigeria'),
+        //               Text('Posted at 8:06am')
+        //             ],
+        //           ),
+        //           trailing: Wrap(
+        //             direction: Axis.vertical,
+        //             children: const [Text('Grains'), Text('1kg')],
+        //           ),
+        //         ),
+        //         const SizedBox(height: 8),
+        //         Container(
+        //           constraints:
+        //               const BoxConstraints(maxHeight: 88, maxWidth: 296),
+        //           decoration: BoxDecoration(
+        //               border: Border.all(color: Colors.transparent),
+        //               borderRadius:
+        //                   const BorderRadius.all(Radius.circular(10))),
+        //           child: Image.asset('assets/images/background.jpeg'),
+        //         ),
+        //         const SizedBox(height: 9),
+        //         const Divider(thickness: 2, indent: 20, endIndent: 20),
+        //         Padding(
+        //           padding: const EdgeInsets.only(left: 20, right: 20),
+        //           child: Row(
+        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //             children: [
+        //               GestureDetector(
+        //                 onTap: () {},
+        //                 child: Wrap(
+        //                   children: [
+        //                     Stack(
+        //                       children: [
+        //                         Icon(Icons.thumb_up, color: primaryColor)
+        //                       ],
+        //                     ),
+        //                     const Text('Comment'),
+        //                   ],
+        //                 ),
+        //               ),
+        //               GestureDetector(
+        //                 onTap: () {},
+        //                 child: Wrap(
+        //                   children: [
+        //                     Icon(Icons.thumb_up, color: hintTextColor),
+        //                     const Text('Likes'),
+        //                   ],
+        //                 ),
+        //               )
+        //             ],
+        //           ),
+        //         )
+        //       ],
+        //     ),
+        //   );
+        // },
         itemBuilder: (context, index) => Container(
-          height: 240,
-          width: double.infinity,
+          height: 198,
+          width: 325,
           margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
           decoration: BoxDecoration(
             boxShadow: [

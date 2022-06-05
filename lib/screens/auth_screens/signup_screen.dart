@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zero_waste/constants/constant.dart';
-
 import '../../widgets/text_field_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -22,7 +21,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void _submitDetails() {
     if (_formKey.currentState!.validate()) {
       Navigator.pushNamed(context, '/Reason');
-      super.dispose();
     }
   }
 
@@ -42,6 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 15),
                   Text("Register an Account", style: headerText),
                   const SizedBox(height: 15),
+                  //Name
                   TextFields(
                     controller: _name,
                     label: 'Full Name',
@@ -49,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     phoneField: false,
                   ),
                   const SizedBox(height: 16),
+                  //Phone Number
                   TextFields(
                     controller: _phoneNo,
                     label: 'Phone Number',
@@ -56,6 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     phoneField: true,
                   ),
                   const SizedBox(height: 16),
+                  //Home Address
                   TextFields(
                     controller: _homeAddress,
                     label: 'Home Address',
@@ -63,6 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     phoneField: false,
                   ),
                   const SizedBox(height: 16),
+                  //State
                   TextFields(
                     controller: _state,
                     label: 'State',
@@ -70,6 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     phoneField: false,
                   ),
                   const SizedBox(height: 16),
+                  //Password
                   TextFields(
                     controller: _password,
                     label: 'Password',
@@ -131,12 +134,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  SizedBox(
-                    child: Text(
-                      "Login using Social Networks",
-                      style: contentText,
-                    ),
-                  ),
+                  Text("Login using Social Networks", style: contentText),
                   const SizedBox(height: 16),
                   Wrap(
                     alignment: WrapAlignment.center,

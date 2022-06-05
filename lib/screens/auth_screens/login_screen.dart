@@ -1,7 +1,6 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import '../../widgets/text_field_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -52,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     phoneField: false,
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password must not be empty';
+                        return 'Password cannot not be empty';
                       }
                       if (value.length < 8) {
                         return 'Your password must be at least 8 characters';
@@ -65,10 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     constraints:
                         const BoxConstraints.expand(height: 15, width: 400),
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const ForgotPassword()));
-                      },
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/ForgotPassword'),
                       child:
                           Text("Forgot password?", style: forgotPasswordText),
                     ),
@@ -80,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         _trySubmit();
+                        Navigator.pushNamed(context, '/Home');
                       },
                       style: elevatedButtonStyleTwo,
                       child: const Text("Login"),

@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../providers/onboarding.dart';
-import '../widgets/onboarding.dart';
+import '../constants/constant.dart';
+import '../providers/boarding.dart';
+import '../widgets/boarding.dart';
 
-class Onboarding extends StatelessWidget {
-  Onboarding({Key? key}) : super(key: key);
-
+class OnBoarding extends StatelessWidget {
+  OnBoarding({Key? key}) : super(key: key);
   final controller = PageController();
 
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<OnBoarding>(context);
+    final appState = Provider.of<OnBoardingProvider>(context);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(bottom: 120, right: 24, left: 24),
         child: PageView(
           controller: controller,
-          onPageChanged: (index) => appState.onboardingLastPage(index == 2),
+          onPageChanged: (index) => appState.onBoardingLastPage(index == 2),
           children: const [
             OnBoardingWidget(
-                isFirst: true,
-                image: 'assets/images/Farmer-rafiki.svg',
-                title: 'Exchange Waste Product',
-                subtitle:
-                    'Exchange your farm waste for organic manure \nby supplying a black soldier fly farmer.',
-                sheight: 30.75),
+              isFirst: true,
+              image: 'assets/images/Farmer-rafiki.svg',
+              title: 'Exchange Waste Product',
+              subtitle:
+                  'Exchange your farm waste for organic manure \nby supplying a black soldier fly farmer.',
+              sheight: 30.75,
+            ),
             OnBoardingWidget(
               image: 'assets/images/Farmer-amico.svg',
               title: 'Connect With Labourers',
@@ -34,11 +35,12 @@ class Onboarding extends StatelessWidget {
               sheight: 36,
             ),
             OnBoardingWidget(
-                image: 'assets/images/Farmer-pana.svg',
-                title: 'Get Source for Feed ',
-                subtitle: 'Get a rich source of insect protein for feeds. ',
-                height: 215,
-                sheight: 76.67),
+              image: 'assets/images/Farmer-pana.svg',
+              title: 'Get Source for Feed ',
+              subtitle: 'Get a rich source of insect protein for feeds. ',
+              height: 215,
+              sheight: 76.67,
+            ),
           ],
         ),
       ),
@@ -63,35 +65,32 @@ class Onboarding extends StatelessWidget {
                   activeDotColor: Color(0xff0A9D56),
                 ),
               ),
-              appState.isOnboardingLastPage
+              appState.isOnBoardingLastPage
                   ? ElevatedButton(
                       onPressed: () {
-                        appState.completeOnboarding();
+                        appState.completeOnBoarding();
                         Navigator.pushReplacementNamed(context, '/Login');
                       },
                       style: ElevatedButton.styleFrom(
-                          primary: const Color(0xff0A9D56),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                      child: const Text(
-                        'Get Started',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
+                        primary: const Color(0xff0A9D56),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
+                      ),
+                      child: Text(
+                        'Get Started',
+                        style: buttonTextStyleOne,
                       ),
                     )
                   : ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: const Color(0xff0A9D56),
+                        primary: primaryColor,
                         fixedSize: const Size(35, 35),
                         shape: const CircleBorder(),
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_forward_ios,
-                        color: Color(0xffFFFFFF),
+                        color: white,
                         size: 16,
                       ),
                       onPressed: () => controller.nextPage(
