@@ -28,15 +28,16 @@ class ThemeHelper {
         disabledBorder: textFieldBorder,
       );
 
-  ButtonStyle buttonStyle() {
+  ButtonStyle buttonStyle(double buttonSize, double buttonRadius,
+      [Color? color]) {
     return ButtonStyle(
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(buttonRadius),
         ),
       ),
-      minimumSize: MaterialStateProperty.all(const Size(40.0, 40.0)),
-      backgroundColor: MaterialStateProperty.all(Colors.green),
+      minimumSize: MaterialStateProperty.all(Size(buttonSize, buttonSize)),
+      backgroundColor: MaterialStateProperty.all(color ?? Colors.green),
       shadowColor: MaterialStateProperty.all(Colors.transparent),
     );
   }

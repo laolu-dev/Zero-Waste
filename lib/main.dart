@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/providers/chat_data.dart';
 import 'package:zero_waste/providers/feed_data.dart';
+import 'package:zero_waste/providers/product_data.dart';
 
 import 'package:zero_waste/screens/feed_screen.dart';
 
@@ -17,6 +18,7 @@ import 'package:zero_waste/screens/forget_password_screens/password_verification
 import 'package:zero_waste/screens/forget_password_screens/reset_password.dart';
 import 'package:zero_waste/screens/forget_password_screens/reset_success.dart';
 import 'package:zero_waste/screens/onboarding_screen.dart';
+import 'package:zero_waste/screens/product_screen.dart';
 
 import './screens/splash_screen.dart';
 import 'providers/onboarding.dart';
@@ -31,8 +33,9 @@ void main() {
         ChangeNotifierProvider(create: (context) => Authentication()),
         ChangeNotifierProvider(create: (context) => ChatData()),
         ChangeNotifierProvider(create: (context) => FeedData()),
+        ChangeNotifierProvider(create: (context) => ProductData()),
       ],
-      child: MaterialApp(home: FeedsPage()),
+      child: MaterialApp(home: ProductScreen()),
     ),
   );
 }

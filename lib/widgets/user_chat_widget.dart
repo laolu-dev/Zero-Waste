@@ -22,7 +22,7 @@ class UserChatWidget extends StatelessWidget {
       children: [
         Expanded(child: customerUserInfo),
         ElevatedButton(
-          style: ThemeHelper().buttonStyle(),
+          style: ThemeHelper().buttonStyle(40.0, 30.0),
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => ChatScreen(
                     customerUserChatInfo: customerUserChatInfo,

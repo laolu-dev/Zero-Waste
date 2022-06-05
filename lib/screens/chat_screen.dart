@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/config/appTheme.dart';
 import 'package:zero_waste/providers/chat_data.dart';
+import 'package:zero_waste/utils/appBottomNavigationBar/bottom_navigation_bar.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
 import 'package:zero_waste/widgets/messge_stream.dart';
 import '../utils/user_preferences.dart';
@@ -21,7 +22,7 @@ class _ChatScreenState extends State<ChatScreen> {
   UserPreferences userPreferences = UserPreferences();
   final textFieldController = TextEditingController();
   String textValue = '';
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
   @override
   void dispose() {
@@ -123,41 +124,9 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.grey,
-          items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Image.asset(
-                  'assets/images/feed_icon.png',
-                  height: 22.5,
-                  width: 22.47,
-                  color: _selectedIndex == 1 ? Colors.green : Colors.grey,
-                ),
-                label: 'Feed'),
-            BottomNavigationBarItem(
-                icon: Image.asset(
-                  'assets/images/product_icon.png',
-                  height: 22.5,
-                  width: 22.47,
-                  color: _selectedIndex == 2 ? Colors.green : Colors.grey,
-                ),
-                label: 'Home'),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle), label: 'Account'),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.green,
-          onTap: _onItemTapped,
-        ),
+        bottomNavigationBar:
+            AppBottomNavigationBar().appBottomNavigationBar(_selectedIndex),
       ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 }

@@ -54,14 +54,6 @@ class ChatData extends ChangeNotifier {
         isMessage: isMessage));
     notifyListeners();
   }
-  //
-  // UserPreferences getChatSender(int index) => _chatMessage[index].userProfile;
-  //
-  // String getChatMessage(int index) => _chatMessage[index].messageContent;
-  //
-  // bool checkCurrentUser(int index) => _chatMessage[index].isMe;
-  //
-  // bool checkMessageType(int index) => _chatMessage[index].isMessage;
 
   int get length => _chatMessage.length;
 }
