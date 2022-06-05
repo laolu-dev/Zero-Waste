@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/utils/user_preferences.dart';
 
-const user = UserPreferences.myUser;
+import '../providers/authentication.dart';
 
 AppBar userAppBar(BuildContext context) {
   return AppBar(
@@ -29,7 +29,8 @@ Column userPopularity(String num, String category) {
   );
 }
 
-Container userInfo() {
+Container userInfo(BuildContext context) {
+  final userDetails = Provider.of<Authentication>(context);
   return Container(
     width: 327,
     height: 300,
@@ -51,11 +52,12 @@ Container userInfo() {
             socialLoginContainer(child: SvgPicture.asset(fbSvg)),
             const Text('Collen Morgan'),
             const SizedBox(height: 2),
-            const Text('CropFarmer'),
+            Text(userDetails.farmerType),
             const SizedBox(height: 2),
             const Text('Lagos, Nigeria'),
             const SizedBox(height: 16),
             Wrap(
+              spacing: 17,
               children: [
                 userPopularity('18k', 'Followers'),
                 userPopularity('11k', 'Following'),

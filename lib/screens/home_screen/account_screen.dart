@@ -14,10 +14,7 @@ class MyAccount extends StatelessWidget {
         backgroundColor: white,
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(
-            Icons.navigate_before,
-            color: headColor,
-          ),
+          icon: Icon(Icons.navigate_before, color: headColor),
         ),
         title: Text('My Account', style: headerText),
       ),
@@ -49,16 +46,17 @@ class MyAccount extends StatelessWidget {
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 17.5, vertical: 10),
-                                  maximumSize: const Size(137, 43),
                                   primary: white,
                                   side: BorderSide(color: primaryColor),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                 ),
-                                child: Text('Upload Images',
-                                    style: contentText.copyWith(
-                                        color: hintTextColor)),
+                                child: Text(
+                                  'Upload Images',
+                                  style: contentText.copyWith(
+                                      color: hintTextColor),
+                                ),
                               )
                             ],
                           ),
@@ -83,31 +81,31 @@ class MyAccount extends StatelessWidget {
                 const SizedBox(height: 24),
                 Column(
                   children: const [
-                    Tile(
+                    ProfileTile(
                       tileText: 'My Profile',
                       tileIcon: Icons.person_outline,
                       routeName: 'ProfileAccount',
                     ),
                     SizedBox(height: 16),
-                    Tile(
+                    ProfileTile(
                       tileText: 'Invite Farmers',
                       tileIcon: Icons.people_outline,
                       routeName: '',
                     ),
                     SizedBox(height: 16),
-                    Tile(
+                    ProfileTile(
                       tileText: 'Upload Content',
                       tileIcon: Icons.cloud_upload_outlined,
                       routeName: '',
                     ),
                     SizedBox(height: 16),
-                    Tile(
+                    ProfileTile(
                       tileText: 'Customer Support',
                       tileIcon: Icons.headset_mic,
                       routeName: '',
                     ),
                     SizedBox(height: 16),
-                    Tile(
+                    ProfileTile(
                       tileText: 'Settings',
                       tileIcon: Icons.settings,
                       routeName: '',

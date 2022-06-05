@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:zero_waste/screens/home_screen/account_screen.dart';
-import 'package:zero_waste/screens/home_screen/feed_screen.dart';
-
-import 'package:zero_waste/models/chat_data.dart';
-
+import 'package:zero_waste/providers/chat_data.dart';
+import 'package:zero_waste/screens/home_screen/chat_screen.dart';
+import 'package:zero_waste/screens/home_screen/home.dart';
 // import 'package:zero_waste/screens/feed_screen.dart';
-
+import 'package:zero_waste/screens/splash_screen.dart';
+import 'package:zero_waste/screens/home_screen/feed_screen.dart';
 import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
@@ -18,11 +17,10 @@ import 'package:zero_waste/screens/forget_password_screens/password_verification
 import 'package:zero_waste/screens/forget_password_screens/reset_password.dart';
 import 'package:zero_waste/screens/forget_password_screens/reset_success.dart';
 import 'package:zero_waste/screens/onboarding_screen.dart';
-import 'package:zero_waste/screens/profile_screen.dart';
+import 'package:zero_waste/screens/home_screen/profile_screen.dart';
 import './screens/splash_screen.dart';
 import 'providers/boarding.dart';
 import 'providers/authentication.dart';
-import 'package:zero_waste/screens/splash_screen.dart';
 
 void main() {
   runApp(
@@ -56,9 +54,11 @@ class ZeroWaste extends StatelessWidget {
         '/PasswordVerification': (context) => const PasswordVerification(),
         '/AccountValid': (context) => const AccountValidScreen(),
         '/ResetSuccess': (context) => const ResetSuccess(),
-        '/MyAccount': (context) => const MyAccount(),
+        // '/MyAccount': (context) => const MyAccount(),
         '/ProfileAccount': (context) => const ProfileAccount(),
         '/Feeds': (context) => FeedsPage(),
+        '/Home': (context) => const HomeScreen(),
+        '/Chats': (context) => const ChatScreen()
       },
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',

@@ -1,7 +1,7 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import '../utils/user_preferences.dart';
-import 'chat_message.dart';
+import '../models/chat_message.dart';
 
 class ChatData extends ChangeNotifier {
   final List<ChatMessage> _chatMessage = [];

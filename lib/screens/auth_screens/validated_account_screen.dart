@@ -21,7 +21,9 @@ class AccountValidScreen extends StatelessWidget {
                 height: 52,
                 constraints: const BoxConstraints(maxWidth: 327),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/Login');
+                  },
                   style: elevatedButtonStyleTwo,
                   child: const Text("Proceed"),
                 ),

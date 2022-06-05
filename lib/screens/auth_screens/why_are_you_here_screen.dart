@@ -27,7 +27,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
       ),
       child: TextButton(
         onPressed: () {
-          pressed.selectType();
+          pressed.selectType(textContent);
         },
         style: TextButton.styleFrom(
           backgroundColor: pressed.hasBeenPressed ? userTypeColor : white,

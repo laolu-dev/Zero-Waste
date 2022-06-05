@@ -123,6 +123,7 @@ TextStyle buttonTextStyleTwo = GoogleFonts.jost(
     fontWeight: FontWeight.w400,
   ),
 );
+
 TextStyle haveAccTextStyle() {
   return TextStyle(
     fontSize: 16,

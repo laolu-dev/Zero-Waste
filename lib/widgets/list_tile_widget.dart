@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 
-class Tile extends StatelessWidget {
-  const Tile(
+import '../models/market_items.dart';
+
+class ProfileTile extends StatelessWidget {
+  const ProfileTile(
       {Key? key,
       required this.tileText,
       required this.tileIcon,
