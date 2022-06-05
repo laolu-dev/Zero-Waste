@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppBottomNavigationBar {
-  BottomNavigationBar appBottomNavigationBar(int initialIndex) {
-    int selectedIndex = initialIndex;
+  BottomNavigationBar appBottomNavigationBar(
+      Function(int)? onTap, int selectedIndex) {
     return BottomNavigationBar(
       unselectedLabelStyle: const TextStyle(color: Colors.grey),
       selectedLabelStyle: const TextStyle(color: Colors.green),
@@ -30,7 +30,7 @@ class AppBottomNavigationBar {
       ],
       currentIndex: selectedIndex,
       selectedItemColor: Colors.green,
-      onTap: (index) => selectedIndex = index,
+      onTap: onTap,
     );
   }
 }

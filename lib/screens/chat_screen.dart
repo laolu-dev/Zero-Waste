@@ -22,7 +22,7 @@ class _ChatScreenState extends State<ChatScreen> {
   UserPreferences userPreferences = UserPreferences();
   final textFieldController = TextEditingController();
   String textValue = '';
-  final int _selectedIndex = 1;
+  int _selectedIndex = 1;
 
   @override
   void dispose() {
@@ -124,9 +124,11 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ],
         ),
-        bottomNavigationBar:
-            AppBottomNavigationBar().appBottomNavigationBar(_selectedIndex),
+        bottomNavigationBar: AppBottomNavigationBar()
+            .appBottomNavigationBar(changeIndex, _selectedIndex),
       ),
     );
   }
+
+  void changeIndex(int index) => setState(() => _selectedIndex = index);
 }

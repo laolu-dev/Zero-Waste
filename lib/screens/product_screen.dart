@@ -6,9 +6,15 @@ import 'package:zero_waste/widgets/product_builder.dart';
 
 import '../widgets/Feed_app_bar_widget.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
+  int _selectedIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +68,10 @@ class ProductScreen extends StatelessWidget {
           const Expanded(child: ProductBuilder()),
         ],
       ),
-      bottomNavigationBar: AppBottomNavigationBar().appBottomNavigationBar(2),
+      bottomNavigationBar: AppBottomNavigationBar()
+          .appBottomNavigationBar(changeIndex, _selectedIndex),
     );
   }
-  // void changeIndex() => setState(() => selectedIndex = index);
+
+  void changeIndex(int index) => setState(() => _selectedIndex = index);
 }
