@@ -1,189 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/constants/constant.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste/config/appTheme.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:zero_waste/widgets/feed_widget.dart';
-import 'package:ionicons/ionicons.dart';
-import '../models/feed.dart';
+import '../providers/feed_data.dart';
 import '../widgets/Feed_app_bar_widget.dart';
+import '../widgets/add_icon.dart';
+import '../widgets/chat_icon.dart';
 import '../widgets/notification_widget.dart';
-import 'chat_screen.dart';
 
 class FeedsPage extends StatelessWidget {
-  FeedsPage({Key? key}) : super(key: key);
-  final List<Feed> feeds = [
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-    Feed(0,
-        profileImage: null,
-        userName: 'Manoel Haim',
-        userLocation: 'Lagos, Nigeria',
-        postTime: '8:06am',
-        farmProduction: 'Grains',
-        weightOfProduct: '1kg',
-        pictureOfProduct:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU'),
-  ];
+  const FeedsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Color textFieldColor = HexColor('#E3FFF7');
-    return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 33.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: const [
-                FloatingActionButton(
-                  heroTag: null,
-                  backgroundColor: Colors.grey,
-                  onPressed: null,
-                  child: Icon(Icons.add, size: 45),
-                ),
-                SizedBox(width: 5.0),
-                Text(
-                  'New Conversation',
-                  style: TextStyle(
-                    fontFamily: 'Jost',
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const Text(
-                  'Chats',
-                  style: TextStyle(
-                    color: Colors.green,
-                    fontFamily: 'Jost',
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(width: 5.0),
-                GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const ChatScreen())),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 20.0,
-                        )
-                      ],
-                    ),
-                    child: Image.asset(
-                      'assets/images/chat_icon.png',
-                      color: Colors.green,
-                      height: 51.99,
-                      width: 55,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ],
+    return Consumer<FeedData>(
+      builder: (context, feedData, child) => Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(right: 33.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              AddIcon(alignTextToRight: true, isActive: true),
+              ChatIcon(isActive: true),
+            ],
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: FeedAppBar(
-                titleWidget: Text(
-                  'Feeds',
-                  style: TextStyle(
-                    fontFamily: 'Jost',
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(right: 10.0),
+                child: FeedAppBar(
+                  titleWidget: Text(
+                    'Feeds',
+                    style: TextStyle(
+                      fontFamily: 'Jost',
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black,
+                    ),
                   ),
+                  trailingWidget: NotificationWidget(),
                 ),
-                trailingWidget: NotificationWidget(),
               ),
-            ),
-            const SizedBox(height: 10.0),
-            Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.green,
+              const SizedBox(height: 10.0),
+              Container(
+                margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.green,
+                  ),
+                  borderRadius: BorderRadius.circular(100.0),
+                  color: textFieldColor,
                 ),
-                borderRadius: BorderRadius.circular(100.0),
-                color: textFieldColor,
-              ),
-              child: TextField(
-                cursorColor: Colors.green,
-                decoration: InputDecoration(
+                child: TextField(
+                  cursorColor: Colors.green,
+                  decoration: InputDecoration(
                     icon: const Icon(
                       Icons.search,
                       color: Colors.green,
@@ -196,15 +72,17 @@ class FeedsPage extends StatelessWidget {
                     ),
                     contentPadding:
                         const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.green.shade50,
-                            style: BorderStyle.none))),
+                    focusedBorder: ThemeHelper().textFieldBorder,
+                    errorBorder: ThemeHelper().textFieldBorder,
+                    enabledBorder: ThemeHelper().textFieldBorder,
+                    disabledBorder: ThemeHelper().textFieldBorder,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: 10.0),
-            FeedWidget(feed: feeds),
-          ],
+              const SizedBox(height: 10.0),
+              const FeedWidget(),
+            ],
+          ),
         ),
       ),
     );

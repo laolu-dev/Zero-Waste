@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/config/appTheme.dart';
 import 'package:zero_waste/providers/chat_data.dart';
-import 'package:zero_waste/screens/profile_screen.dart';
+import 'package:zero_waste/widgets/customer_user_info.dart';
 import 'package:zero_waste/widgets/messge_stream.dart';
-
 import '../utils/user_preferences.dart';
-import '../widgets/Feed_app_bar_widget.dart';
-import '../widgets/feed_widget.dart';
-import '../widgets/notification_widget.dart';
-import '../widgets/user_avatar.dart';
-import 'feed_screen.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  final CustomerUserInfo? customerUserChatInfo;
+  ChatScreen({
+    Key? key,
+    required this.customerUserChatInfo,
+  }) : super(key: key);
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -24,6 +22,14 @@ class _ChatScreenState extends State<ChatScreen> {
   final textFieldController = TextEditingController();
   String textValue = '';
   int _selectedIndex = 1;
+
+  @override
+  void dispose() {
+    textFieldController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatData>(
@@ -33,39 +39,14 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Column(
               children: [
-                FeedAppBar(
-                  titleWidget: Row(
-                    children: [
-                      GestureDetector(
-                          onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => const UserAccount())),
-                          child: const UserAvatar()),
-                      const SizedBox(width: 10.0),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Marthar Something',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.black),
-                          ),
-                          Text(
-                            'Online',
-                            style: TextStyle(
-                                fontFamily: 'Jost',
-                                fontSize: 14.0,
-                                color: Colors.blue),
-                          )
-                        ],
-                      )
-                    ],
+                ListTile(
+                  leading: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(Icons.arrow_back_ios,
+                        color: Colors.black, size: 25.0),
                   ),
-                  trailingWidget: const Icon(Icons.search, size: 32),
+                  title: widget.customerUserChatInfo,
+                  trailing: const Icon(Icons.search, size: 32),
                 ),
                 const Divider(color: Colors.green),
               ],
@@ -118,8 +99,11 @@ class _ChatScreenState extends State<ChatScreen> {
                                   )
                                 : GestureDetector(
                                     onTap: () => {
-                                      chatData.addChatMessage(userPreferences,
-                                          textValue, true, true),
+                                      setState(() {
+                                        textFieldController.clear();
+                                        chatData.addChatMessage(userPreferences,
+                                            textValue, true, true);
+                                      }),
                                     },
                                     child: Image.asset(
                                       'assets/images/send_icon.png',

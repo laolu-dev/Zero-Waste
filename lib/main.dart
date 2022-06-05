@@ -3,6 +3,7 @@ import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/providers/chat_data.dart';
+import 'package:zero_waste/providers/feed_data.dart';
 
 import 'package:zero_waste/screens/feed_screen.dart';
 
@@ -28,7 +29,8 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => OnBoarding()),
         ChangeNotifierProvider(create: (context) => Authentication()),
-        ChangeNotifierProvider(create: (context) => ChatData())
+        ChangeNotifierProvider(create: (context) => ChatData()),
+        ChangeNotifierProvider(create: (context) => FeedData()),
       ],
       child: MaterialApp(home: FeedsPage()),
     ),

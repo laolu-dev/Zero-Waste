@@ -19,7 +19,7 @@ class MessageBubble extends StatefulWidget {
 }
 
 class _MessageBubbleState extends State<MessageBubble> {
-  bool _isMessage() => widget.isMessage = true;
+  bool _isMessage() => widget.isMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +52,16 @@ class _MessageBubbleState extends State<MessageBubble> {
                     ? Text(
                         widget.messageContent,
                         style: TextStyle(
-                            fontSize: 15.0,
-                            color:
-                                widget.isMe ? Colors.grey[900] : Colors.green),
+                          fontSize: 15.0,
+                          color: widget.isMe ? Colors.grey[900] : Colors.green,
+                        ),
                       )
-                    : Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: Image.network(
-                            widget.messageContent,
-                            height: 130.0,
-                            width: double.infinity,
-                            alignment: Alignment.center,
-                            fit: BoxFit.fill,
-                          ),
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          widget.messageContent,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
                         ),
                       ),
               ),

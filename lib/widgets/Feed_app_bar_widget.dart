@@ -11,9 +11,10 @@ class FeedAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: const Icon(Icons.arrow_back_ios,
-              color: Colors.black, size: 25.0)),
+        onTap: () => Navigator.pop(context),
+        child:
+            const Icon(Icons.arrow_back_ios, color: Colors.black, size: 25.0),
+      ),
       title: titleWidget,
       trailing: trailingWidget,
     );

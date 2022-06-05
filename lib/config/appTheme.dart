@@ -27,4 +27,17 @@ class ThemeHelper {
         enabledBorder: textFieldBorder,
         disabledBorder: textFieldBorder,
       );
+
+  ButtonStyle buttonStyle() {
+    return ButtonStyle(
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+      minimumSize: MaterialStateProperty.all(const Size(40.0, 40.0)),
+      backgroundColor: MaterialStateProperty.all(Colors.green),
+      shadowColor: MaterialStateProperty.all(Colors.transparent),
+    );
+  }
 }
