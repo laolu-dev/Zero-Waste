@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,6 +26,7 @@ Color lineColor = const Color.fromRGBO(229, 229, 229, 1);
 Color lightGreen = const Color.fromRGBO(136, 255, 222, 1);
 Color wauhBoxtxtColor = const Color.fromRGBO(128, 128, 128, 1);
 Color verTxtColor = const Color.fromRGBO(115, 115, 119, 1);
+Color blackColor = const Color.fromRGBO(10, 10, 10, 1);
 
 TextStyle textStyleOne = GoogleFonts.jost(
   textStyle: const TextStyle(
@@ -33,10 +36,29 @@ TextStyle textStyleOne = GoogleFonts.jost(
   ),
 );
 
+TextStyle userCtextStyle = GoogleFonts.jost(
+  textStyle: const TextStyle(
+    color: Color.fromARGB(255, 0, 0, 0),
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  ),
+);
+
 TextStyle textStyleTwo = GoogleFonts.jost(
   textStyle: const TextStyle(
     color: Color.fromARGB(255, 34, 34, 1),
     fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ),
+);
+
+TextStyle chatTextStyle = GoogleFonts.jost(
+    color: inputWhite, fontSize: 16, fontWeight: FontWeight.w400);
+
+TextStyle statusStyle = GoogleFonts.jost(
+  textStyle: const TextStyle(
+    color: Color.fromRGBO(62, 112, 167, 1),
+    fontSize: 11,
     fontWeight: FontWeight.w400,
   ),
 );
@@ -254,5 +276,98 @@ Container wauhContainer({
       ),
     ),
     child: child,
+  );
+}
+
+Container productList(
+    {required String image,
+    required String title,
+    required String location,
+    required String time}) {
+  return Container(
+    padding: const EdgeInsets.only(left: 15),
+    decoration: BoxDecoration(
+        color: const Color.fromRGBO(227, 255, 247, 1),
+        borderRadius: BorderRadius.circular(12)),
+    alignment: Alignment.centerLeft,
+    height: 139,
+    constraints: const BoxConstraints(maxWidth: 400),
+    child: SizedBox(
+      height: 107,
+      child: Row(
+        children: [
+          Container(
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(12)),
+              child: SizedBox(
+                width: 114,
+                height: 102,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    image,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              )),
+          const SizedBox(
+            width: 15,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title,
+                  style: GoogleFonts.jost(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: const Color.fromRGBO(0, 0, 0, 1))),
+              Text('Location: $location',
+                  style: GoogleFonts.jost(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: const Color.fromRGBO(0, 0, 0, 1))),
+              Text('Harvest, $time',
+                  style: GoogleFonts.jost(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: const Color.fromRGBO(0, 0, 0, 1))),
+              Container(
+                constraints: const BoxConstraints(minWidth: 160),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("1Kg",
+                        style: GoogleFonts.jost(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: const Color.fromRGBO(0, 0, 0, 1))),
+                    const Icon(Icons.chevron_right)
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+respndBtn(
+    {required String text, required Color textColor, required Color bgColor}) {
+  return Container(
+    decoration:
+        BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(12)),
+    alignment: Alignment.center,
+    height: 52,
+    child: Text(
+      text,
+      style: TextStyle(
+        color: textColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
   );
 }

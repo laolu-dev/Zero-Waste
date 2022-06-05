@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/screens/auth_screens/verify_phone_screen.dart';
+import 'package:zero_waste/screens/chat_screen.dart';
+import 'package:zero_waste/screens/product_details.dart';
+import 'package:zero_waste/screens/products.dart';
 import 'package:zero_waste/screens/profile_screen.dart';
 import './screens/splash_screen.dart';
 import 'providers/app_state_manager.dart';
@@ -26,10 +29,10 @@ class ZeroWaste extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.green),
-      debugShowCheckedModeBanner: false,
-      title: 'Zero Waste',
-      home: const SplashScreen(),
-    );
+        theme: ThemeData(primarySwatch: Colors.green),
+        debugShowCheckedModeBanner: false,
+        title: 'Zero Waste',
+        home: const ChatScreen() //ProductDetailScreen(), // SplashScreen(),
+        );
   }
 }
