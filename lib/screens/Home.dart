@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zero_waste/screens/Types_of_farmers.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,7 +22,8 @@ class HomeScreen extends StatelessWidget {
                     //mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Image.asset(
-                        'assets/images/guy.png',scale: 0.25,
+                        'assets/images/guy.png',
+                        scale: 0.25,
                         height: 44,
                         width: 44,
                       ),
@@ -152,13 +154,23 @@ class HomeScreen extends StatelessWidget {
                                 color: Color(0xff0A9D56),
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: Center(
-                                child: Text(
-                                  'Get Chats',
-                                  style: TextStyle(
-                                    color: Color(0xffFFFFFF),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const Types()),
+                                  );
+                                },
+                                child: Center(
+                                  child: Text(
+                                    'Get Chats',
+                                    style: TextStyle(
+                                      color: Color(0xffFFFFFF),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -418,7 +430,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-
           type: BottomNavigationBarType.fixed,
           unselectedItemColor: Color(0xff808080),
           items: <BottomNavigationBarItem>[
