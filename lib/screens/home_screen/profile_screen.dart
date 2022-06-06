@@ -4,6 +4,8 @@ import 'package:zero_waste/providers/authentication.dart';
 import 'package:zero_waste/utils/user_preferences.dart';
 import 'package:zero_waste/widgets/profile_widget.dart';
 
+import '../../models/user.dart';
+
 class ProfileAccount extends StatefulWidget {
   const ProfileAccount({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class ProfileAccount extends StatefulWidget {
 }
 
 class _ProfileAccountState extends State<ProfileAccount> {
-  final user = UserPreferences.myUser;
+  final user = User();
 
   @override
   Widget build(BuildContext context) {
