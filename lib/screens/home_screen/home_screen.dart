@@ -24,12 +24,7 @@ class _HomeState extends State<Home> {
         date: '17/22/2003'),
   ];
 
-  User userProfile = const User(
-      imagePath: '',
-      name: 'Collen Morgan',
-      typeOfFarmer: '',
-      address: '',
-      location: '');
+  User userProfile = User();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -133,7 +128,8 @@ class _HomeState extends State<Home> {
                               softWrap: true,
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/Types'),
                               style: TextButton.styleFrom(
                                   minimumSize: const Size(87, 37),
                                   backgroundColor: primaryColor,

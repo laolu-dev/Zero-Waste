@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
 
 import '../providers/authentication.dart';
+import '../providers/user_data.dart';
 
 AppBar userAppBar(BuildContext context) {
   return AppBar(
@@ -31,6 +32,7 @@ Column userPopularity(String num, String category) {
 
 Container userInfo(BuildContext context) {
   final userDetails = Provider.of<Authentication>(context);
+  final user = Provider.of<CreateUser>(context);
   return Container(
     width: 327,
     height: 300,
@@ -50,11 +52,11 @@ Container userInfo(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             socialLoginContainer(child: SvgPicture.asset(fbSvg)),
-            const Text('Collen Morgan'),
+            Text(user.name),
             const SizedBox(height: 2),
             Text(userDetails.farmerType),
             const SizedBox(height: 2),
-            const Text('Lagos, Nigeria'),
+            Text('${user.state} , ${user.address}'),
             const SizedBox(height: 16),
             Wrap(
               spacing: 17,

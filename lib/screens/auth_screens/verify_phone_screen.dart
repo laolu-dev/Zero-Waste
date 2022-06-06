@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
+
+import '../../providers/user_data.dart';
 
 class VerifyPhoneScreen extends StatefulWidget {
   const VerifyPhoneScreen({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class VerifyPhoneScreen extends StatefulWidget {
 class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
   @override
   Widget build(BuildContext context) {
+    final userPhone = Provider.of<CreateUser>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -30,7 +34,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      'Please, enter the code sent to +2349099343499 via SMS to validate your account.',
+                      'Please, enter the code sent to ${userPhone.phoneNo} via SMS to validate your account.',
                       style: contentTextTwo,
                       textAlign: TextAlign.center,
                       softWrap: true,
