@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/utils/user_preferences.dart';
 
-const user = UserPreferences.myUser;
+import '../providers/authentication.dart';
+import '../providers/user_data.dart';
 
 AppBar userAppBar(BuildContext context) {
   return AppBar(
@@ -21,36 +23,68 @@ AppBar userAppBar(BuildContext context) {
 Column userPopularity(String num, String category) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: [Text(num), Text(category)],
+    children: [
+      Text(num, style: buttonTextStyleTwo),
+      Text(category, style: buttonTextStyleTwo),
+    ],
   );
 }
 
-Container userInfo() {
+Container userInfo(BuildContext context) {
+  final userDetails = Provider.of<Authentication>(context);
+  final user = Provider.of<CreateUser>(context);
   return Container(
+    width: 327,
     height: 300,
+    padding: const EdgeInsets.only(left: 24, right: 24, top: 0),
     decoration: BoxDecoration(
-        color: primaryColor,
-        borderRadius: const BorderRadius.all(Radius.circular(10))),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        const SizedBox(height: 10),
-        const Text('Collen Morgan'),
-        const Text('CropFarmer'),
-        const Text('Lagos, Nigeria'),
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      color: primaryColor,
+      borderRadius: const BorderRadius.all(
+        Radius.circular(10),
+      ),
+    ),
+    child: Expanded(
+      child: Container(
+        padding: const EdgeInsets.all(0),
+        width: 278,
+        height: 185,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            userPopularity('18k', 'Followers'),
-            userPopularity('11k', 'Following'),
-            userPopularity('180k', 'Posts'),
-            userPopularity('18k', 'Comments'),
+            socialLoginContainer(child: SvgPicture.asset(fbSvg)),
+            Text(user.name),
+            const SizedBox(height: 2),
+            Text(userDetails.farmerType),
+            const SizedBox(height: 2),
+            Text('${user.state} , ${user.address}'),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 17,
+              children: [
+                userPopularity('18k', 'Followers'),
+                userPopularity('11k', 'Following'),
+                userPopularity('180k', 'Posts'),
+                userPopularity('18k', 'Comments'),
+              ],
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 66.5, vertical: 10),
+                primary: profileButtonColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                textStyle: contentText.copyWith(
+                    color: white, fontWeight: FontWeight.w500),
+              ),
+              child: const Text('Edit Profile'),
+            )
           ],
         ),
-        const SizedBox(height: 30),
-        ElevatedButton(onPressed: () {}, child: const Text('Edit Profile'))
-      ],
+      ),
     ),
   );
 }

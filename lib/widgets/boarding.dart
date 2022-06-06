@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../providers/onboarding.dart';
+import 'package:zero_waste/constants/constant.dart';
+import '../providers/boarding.dart';
 
 class SkipButton extends StatelessWidget {
   const SkipButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<OnBoarding>(context);
+    final appState = Provider.of<OnBoardingProvider>(context);
     return Column(
       children: [
         const SizedBox(height: 80.5),
@@ -17,18 +17,10 @@ class SkipButton extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                appState.completeOnboarding();
+                appState.completeOnBoarding();
                 Navigator.pushReplacementNamed(context, '/Signup');
               },
-              child: Text(
-                'Skip',
-                style: GoogleFonts.jost(
-                  textStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
+              child: Text('Skip', style: buttonText),
             ),
           ],
         ),
@@ -60,29 +52,13 @@ class OnBoardingWidget extends StatelessWidget {
     return Column(
       children: [
         isFirst ? const SkipButton() : SizedBox(height: height),
-        SvgPicture.asset(
-          image,
-          fit: BoxFit.cover,
-        ),
+        SvgPicture.asset(image, fit: BoxFit.cover),
         SizedBox(height: sheight),
-        Text(
-          title,
-          style: GoogleFonts.jost(
-            textStyle: const TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 24,
-            ),
-          ),
-        ),
+        Text(title, style: headerText),
         const SizedBox(height: 16),
         Text(
           subtitle,
-          style: GoogleFonts.jost(
-            textStyle: const TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-            ),
-          ),
+          style: contentText,
           textAlign: TextAlign.center,
         ),
       ],

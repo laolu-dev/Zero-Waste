@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
-
+import 'package:zero_waste/providers/user_data.dart';
 import '../../widgets/text_field_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -13,21 +14,10 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _name = TextEditingController();
-  final TextEditingController _phoneNo = TextEditingController();
-  final TextEditingController _homeAddress = TextEditingController();
-  final TextEditingController _state = TextEditingController();
-  final TextEditingController _password = TextEditingController();
-
-  void _submitDetails() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, '/Reason');
-      super.dispose();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    final userDetails = Provider.of<CreateUser>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -42,36 +32,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 15),
                   Text("Register an Account", style: headerText),
                   const SizedBox(height: 15),
+                  //Name
                   TextFields(
-                    controller: _name,
+                    controller: userDetails.nameController,
                     label: 'Full Name',
                     showText: false,
                     phoneField: false,
                   ),
                   const SizedBox(height: 16),
+                  //Phone Number
                   TextFields(
-                    controller: _phoneNo,
+                    controller: userDetails.phoneController,
                     label: 'Phone Number',
                     showText: false,
                     phoneField: true,
                   ),
                   const SizedBox(height: 16),
+                  //Home Address
                   TextFields(
-                    controller: _homeAddress,
+                    controller: userDetails.addressController,
                     label: 'Home Address',
                     showText: false,
                     phoneField: false,
                   ),
                   const SizedBox(height: 16),
+                  //State
                   TextFields(
-                    controller: _state,
+                    controller: userDetails.stateController,
                     label: 'State',
                     showText: false,
                     phoneField: false,
                   ),
                   const SizedBox(height: 16),
+                  //Password
                   TextFields(
-                    controller: _password,
+                    controller: userDetails.passwordController,
                     label: 'Password',
                     showText: true,
                     phoneField: false,
@@ -98,7 +93,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 52,
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: ElevatedButton(
-                      onPressed: () => _submitDetails(),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          userDetails.getUserName();
+                          userDetails.getPhoneNo();
+                          userDetails.getAddress();
+                          userDetails.getState();
+                          userDetails.getPassword();
+                          Navigator.pushNamed(context, '/Reason');
+                        }
+                      },
                       style: elevatedButtonStyleTwo,
                       child: const Text("Next"),
                     ),
@@ -131,12 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  SizedBox(
-                    child: Text(
-                      "Login using Social Networks",
-                      style: contentText,
-                    ),
-                  ),
+                  Text("Login using Social Networks", style: contentText),
                   const SizedBox(height: 16),
                   Wrap(
                     alignment: WrapAlignment.center,

@@ -27,11 +27,10 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
       ),
       child: TextButton(
         onPressed: () {
-          pressed.selectType();
+          pressed.selectType(textContent);
         },
         style: TextButton.styleFrom(
-          backgroundColor:
-              pressed.hasBeenPressed ? userTypeColor : buttonTextColor,
+          backgroundColor: pressed.hasBeenPressed ? userTypeColor : white,
           primary:
               pressed.hasBeenPressed ? userTypeTextColor2 : userTypeTextColor1,
           minimumSize: Size.infinite,

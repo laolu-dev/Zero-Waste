@@ -10,7 +10,7 @@ class AccountValidScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 24, right: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +21,9 @@ class AccountValidScreen extends StatelessWidget {
                 height: 52,
                 constraints: const BoxConstraints(maxWidth: 327),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/Login');
+                  },
                   style: elevatedButtonStyleTwo,
                   child: const Text("Proceed"),
                 ),
