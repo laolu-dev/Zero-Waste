@@ -68,10 +68,10 @@ class _ProductScreenState extends State<ProductScreen> {
           const Expanded(child: ProductBuilder()),
         ],
       ),
-      bottomNavigationBar: AppBottomNavigationBar()
-          .appBottomNavigationBar(changeIndex, _selectedIndex),
+      // bottomNavigationBar: AppBottomNavigationBar()
+      //     .appBottomNavigationBar(changeIndex, _selectedIndex),
     );
   }
 
-  void changeIndex(int index) => setState(() => _selectedIndex = index);
+  // void changeIndex(int index) => setState(() => _selectedIndex = index);
 }

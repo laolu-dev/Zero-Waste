@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste/providers/authentication.dart';
 import '../../constants/constant.dart';
 import '../../widgets/text_field_widget.dart';
 
@@ -43,27 +45,31 @@ class _ResetPasswordState extends State<ResetPassword> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 50),
-                  TextFields(
-                    controller: _password,
-                    label: 'Password',
-                    showText: true,
-                    phoneField: false,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Password must not be empty';
-                      }
-                      if (value.length < 8) {
-                        return 'Your password must be at least 8 characters';
-                      }
-                      return null;
-                    },
+                  Consumer<Authentication>(
+                    builder: (context, auth, child) => TextFields(
+                      controller: _password,
+                      label: 'Password',
+                      showIcon: true,
+                      phoneField: false,
+                      obscureText: auth.visiblePassword,
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Password must not be empty';
+                        }
+                        if (value.length < 8) {
+                          return 'Your password must be at least 8 characters';
+                        }
+                        return null;
+                      },
+                    ),
                   ),
                   const SizedBox(height: 41),
                   TextFields(
                     controller: _confirmPassword,
                     label: 'Confirm Password',
-                    showText: true,
+                    showIcon: true,
                     phoneField: false,
+                    obscureText: false,
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
                         return 'Password must not be empty';

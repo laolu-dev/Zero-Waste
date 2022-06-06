@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/screens/home_screen/chat_screen.dart';
 import 'package:zero_waste/screens/home_screen/account_screen.dart';
-import 'package:zero_waste/screens/home_screen/feed_screen.dart';
+import 'package:zero_waste/screens/product_screen.dart';
+import '../feed_screen.dart';
 import 'home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,7 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List _children = [
     const Home(),
-    FeedsPage(),
+    const FeedsPage(),
+    const ProductScreen(),
     const MyAccount(),
   ];
 

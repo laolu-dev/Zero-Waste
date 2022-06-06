@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/models/user.dart';
+import 'package:zero_waste/providers/feed_data.dart';
+import 'package:zero_waste/providers/market_data.dart';
+import 'package:zero_waste/providers/product_data.dart';
+import 'package:zero_waste/widgets/Feed_app_bar_widget.dart';
+import 'package:zero_waste/widgets/market_view_builder.dart';
+import 'package:zero_waste/widgets/notification_widget.dart';
+import 'package:zero_waste/widgets/user_avatar.dart';
 import '../../models/market_items.dart';
 
 class Home extends StatefulWidget {
@@ -24,6 +32,17 @@ class _HomeState extends State<Home> {
         date: '17/22/2003'),
   ];
 
+  // AppBar(
+  // leading: GestureDetector(
+  // //Show User display picture
+  // child:
+  // Image.asset('assets/images/guy.png', height: 38, width: 38),
+  // onTap: () => Navigator.pushNamed(context, '/ProfileAccount'),
+  // ),
+  // title: Text('Welcome, ${userProfile.name}', style: headerText),
+  // elevation: 0,
+  // backgroundColor: Colors.transparent,
+  // )
   User userProfile = User();
   @override
   Widget build(BuildContext context) {
@@ -31,17 +50,7 @@ class _HomeState extends State<Home> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(18, 18, 18, 0),
         child: Scaffold(
-          appBar: AppBar(
-            leading: GestureDetector(
-              //Show User display picture
-              child:
-                  Image.asset('assets/images/guy.png', height: 38, width: 38),
-              onTap: () => Navigator.pushNamed(context, '/ProfileAccount'),
-            ),
-            title: Text('Welcome, ${userProfile.name}', style: headerText),
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-          ),
+          // appBar: FeedAppBar(leading: UserAvatar(userProfilePicture: 'assets/images/guy.png'),titleWidget:  Text('Welcome, ${userProfile.name}', style: headerText),trailingWidget: Notification(),),
           body: ConstrainedBox(
             constraints:
                 BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
@@ -49,6 +58,17 @@ class _HomeState extends State<Home> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  FeedAppBar(
+                    leading: GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/ProfileAccount'),
+                      child: const UserAvatar(
+                          userProfilePicture: 'assets/images/guy.png'),
+                    ),
+                    titleWidget:
+                        Text('Welcome, ${userProfile.name}', style: headerText),
+                    trailingWidget: const NotificationWidget(),
+                  ),
                   const SizedBox(height: 29),
                   Container(
                     constraints:
@@ -180,26 +200,7 @@ class _HomeState extends State<Home> {
                   const SizedBox(
                     height: 16,
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    child: ListView.builder(
-                      itemCount: _items.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(_items[index].cropType),
-                          subtitle: Text(_items[index].location),
-                          trailing: Column(
-                            children: [
-                              Text(_items[index].date),
-                              Text(_items[index].weight)
-                            ],
-                          ),
-                          leading: const Icon(Icons.account_box),
-                        );
-                      },
-                    ),
-                  )
+                  const MarketViewBuilder(),
                 ],
               ),
             ),
@@ -209,3 +210,10 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+// ListTile(
+// title: ,
+// subtitle:
+// trailing:
+// leading: const Icon(Icons.account_box),
+// );

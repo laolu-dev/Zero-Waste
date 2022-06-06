@@ -1,9 +1,9 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/providers/authentication.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
+
+import '../../widgets/farmer_type_widget.dart';
 
 class WhyAreYouHere extends StatefulWidget {
   const WhyAreYouHere({Key? key}) : super(key: key);
@@ -13,32 +13,33 @@ class WhyAreYouHere extends StatefulWidget {
 }
 
 class _WhyAreYouHereState extends State<WhyAreYouHere> {
-  Container farmerType(String textContent, context) {
-    final pressed = Provider.of<Authentication>(context);
-    return Container(
-      width: 153,
-      height: 103,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        border: Border.all(color: dividerColor, width: 2.5),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(12),
-        ),
-      ),
-      child: TextButton(
-        onPressed: () {
-          pressed.selectType(textContent);
-        },
-        style: TextButton.styleFrom(
-          backgroundColor: pressed.hasBeenPressed ? userTypeColor : white,
-          primary:
-              pressed.hasBeenPressed ? userTypeTextColor2 : userTypeTextColor1,
-          minimumSize: Size.infinite,
-        ),
-        child: Text(textContent),
-      ),
-    );
-  }
+  // Container farmerType(String textContent, context) {
+  //   // final pressed = Provider.of<Authentication>(context);
+  //   return Container(
+  //     width: 153,
+  //     height: 103,
+  //     alignment: Alignment.center,
+  //     decoration: BoxDecoration(
+  //       border: Border.all(color: dividerColor, width: 2.5),
+  //       borderRadius: const BorderRadius.all(
+  //         Radius.circular(12),
+  //       ),
+  //     ),
+  //     child: TextButton(
+  //       onPressed: () {
+  //         // pressed.selectType(textContent);
+  //       },
+  //       style: TextButton.styleFrom(
+  //         backgroundColor: pressed.hasBeenPressed ? userTypeColor : white,
+  //         primary:
+  //             pressed.hasBeenPressed ? userTypeTextColor2 : userTypeTextColor1,
+  //         minimumSize: Size.infinite,
+  //       ),
+  //       child: Text(textContent),
+  //     ),
+  //   );
+  // }
+  int isSelected = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +64,42 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                   runSpacing: 16,
                   spacing: 18,
                   children: [
-                    farmerType(contentOne, context),
-                    farmerType(contentTwo, context),
-                    farmerType(contentThree, context),
-                    farmerType(contentFour, context)
+                    // farmerType(contentOne, context),
+                    // farmerType(contentTwo, context),
+                    // farmerType(contentThree, context),
+                    // farmerType(contentFour, context)
+                    FarmerType(
+                      optionText: contentOne,
+                      isPressed: () => setState(() => isSelected = 1),
+                      isSelectedColor: isSelected == 1 ? userTypeColor : white,
+                      borderColor: isSelected == 1
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
+                    FarmerType(
+                      optionText: contentTwo,
+                      isPressed: () => setState(() => isSelected = 2),
+                      isSelectedColor: isSelected == 2 ? userTypeColor : white,
+                      borderColor: isSelected == 2
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
+                    FarmerType(
+                      optionText: contentThree,
+                      isPressed: () => setState(() => isSelected = 3),
+                      isSelectedColor: isSelected == 3 ? userTypeColor : white,
+                      borderColor: isSelected == 3
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
+                    FarmerType(
+                      optionText: contentFour,
+                      isPressed: () => setState(() => isSelected = 4),
+                      isSelectedColor: isSelected == 4 ? userTypeColor : white,
+                      borderColor: isSelected == 4
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 55),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
 
 class Authentication extends ChangeNotifier {
-  bool _visiblePassword = false;
+  bool _visiblePassword = true;
   bool _obscureText = true;
   bool _hasBeenPressed = false;
   String _userType = '';
@@ -18,10 +18,10 @@ class Authentication extends ChangeNotifier {
     notifyListeners();
   }
 
-  void textShow() {
-    _obscureText = !_obscureText;
-    notifyListeners();
-  }
+  // void textShow() {
+  //   _obscureText = !_obscureText;
+  //   notifyListeners();
+  // }
 
   selectType(String type) {
     _hasBeenPressed = !_hasBeenPressed;

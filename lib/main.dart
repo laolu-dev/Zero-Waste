@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:zero_waste/providers/chat_data.dart';
+import 'package:zero_waste/providers/feed_data.dart';
+import 'package:zero_waste/providers/market_data.dart';
+import 'package:zero_waste/providers/product_data.dart';
 import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/screens/Types_of_farmers.dart';
-import 'package:zero_waste/screens/home_screen/chat_screen.dart';
+import 'package:zero_waste/screens/feed_screen.dart';
 import 'package:zero_waste/screens/home_screen/home.dart';
-import 'package:zero_waste/screens/home_screen/home_screen.dart';
-// import 'package:zero_waste/screens/feed_screen.dart';
 import 'package:zero_waste/screens/splash_screen.dart';
-import 'package:zero_waste/screens/home_screen/feed_screen.dart';
 import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
@@ -32,7 +32,11 @@ void main() {
         ChangeNotifierProvider(create: (context) => OnBoardingProvider()),
         ChangeNotifierProvider(create: (context) => Authentication()),
         ChangeNotifierProvider(create: (context) => ChatData()),
-        ChangeNotifierProvider(create: (context) => CreateUser())
+        ChangeNotifierProvider(create: (context) => FeedData()),
+        ChangeNotifierProvider(create: (context) => ChatData()),
+        ChangeNotifierProvider(create: (context) => CreateUser()),
+        ChangeNotifierProvider(create: (context) => ProductData()),
+        ChangeNotifierProvider(create: (context) => MarketData()),
       ],
       child: const ZeroWaste(),
     ),
@@ -63,7 +67,6 @@ class ZeroWaste extends StatelessWidget {
         '/Feeds': (context) => FeedsPage(),
         '/Home': (context) => const HomeScreen(),
         '/Types': (context) => Types(),
-        '/Chats': (context) => const ChatScreen()
       },
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',

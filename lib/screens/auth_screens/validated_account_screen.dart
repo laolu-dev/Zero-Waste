@@ -11,24 +11,25 @@ class AccountValidScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(accValidSvg),
-              const SizedBox(height: 57.5),
-              Container(
-                height: 52,
-                constraints: const BoxConstraints(maxWidth: 327),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/Login');
-                  },
-                  style: elevatedButtonStyleTwo,
-                  child: const Text("Proceed"),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(accValidSvg),
+                const SizedBox(height: 57.5),
+                Container(
+                  height: 52,
+                  constraints: const BoxConstraints(maxWidth: 327),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/Login');
+                    },
+                    style: elevatedButtonStyleTwo,
+                    child: const Text("Proceed"),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

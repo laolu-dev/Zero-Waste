@@ -21,7 +21,7 @@ class ProductWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
       padding: const EdgeInsets.only(right: 20.0),
-      height: 193,
+      height: 173,
       decoration: BoxDecoration(
         border: Border.all(color: HexColor('#0A9D56')),
         boxShadow: [
@@ -42,8 +42,8 @@ class ProductWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
               child: Image.network(
                 productImage,
-                height: 152.0,
-                width: 174.0,
+                height: 132.0,
+                width: 154.0,
                 fit: BoxFit.fill,
               ),
             ),

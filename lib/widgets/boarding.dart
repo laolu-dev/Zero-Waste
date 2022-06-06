@@ -2,33 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/widgets/skip_button.dart';
 import '../providers/boarding.dart';
-
-class SkipButton extends StatelessWidget {
-  const SkipButton({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    final appState = Provider.of<OnBoardingProvider>(context);
-    return Column(
-      children: [
-        const SizedBox(height: 80.5),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextButton(
-              onPressed: () {
-                appState.completeOnBoarding();
-                Navigator.pushReplacementNamed(context, '/Signup');
-              },
-              child: Text('Skip', style: buttonText),
-            ),
-          ],
-        ),
-        const SizedBox(height: 50),
-      ],
-    );
-  }
-}
 
 class OnBoardingWidget extends StatelessWidget {
   const OnBoardingWidget({
