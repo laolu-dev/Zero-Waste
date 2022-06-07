@@ -7,9 +7,12 @@ import 'package:zero_waste/providers/market_data.dart';
 import 'package:zero_waste/providers/product_data.dart';
 import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/screens/home_screen/account/account_screen.dart';
-import 'package:zero_waste/screens/home_screen/home/Types_of_farmers.dart';
+import 'package:zero_waste/screens/home_screen/feed/chat_screen.dart';
 import 'package:zero_waste/screens/home_screen/feed/feed_screen.dart';
 import 'package:zero_waste/screens/home_screen/home.dart';
+import 'package:zero_waste/screens/home_screen/home/Connections.dart';
+import 'package:zero_waste/screens/home_screen/home/user_types.dart';
+import 'package:zero_waste/screens/home_screen/products/product_screen.dart';
 import 'package:zero_waste/screens/intro/splash_screen.dart';
 import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
@@ -64,11 +67,14 @@ class ZeroWaste extends StatelessWidget {
         '/PasswordVerification': (context) => const PasswordVerification(),
         '/AccountValid': (context) => const AccountValidScreen(),
         '/ResetSuccess': (context) => const ResetSuccess(),
-        '/MyAccount': (context) => const MyAccount(),
-        '/ProfileAccount': (context) => const ProfileAccount(),
-        '/Feeds': (context) => FeedsPage(),
         '/Home': (context) => const HomeScreen(),
-        '/Types': (context) => Types(),
+        '/Feeds': (context) => const FeedsPage(),
+        '/Products': (context) => const ProductScreen(),
+        '/MyAccount': (context) => const MyAccount(),
+        // '/Chats' : (context) => ChatScreen(customerUserChatInfo: customerUserChatInfo),
+        '/ProfileAccount': (context) => const ProfileAccount(),
+        '/Types': (context) => const UserCategories(),
+        '/Connections': (context) => const Connections(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',

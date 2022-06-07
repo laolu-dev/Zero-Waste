@@ -28,8 +28,8 @@ class TextFields extends StatelessWidget {
         // showPasswordText.textShow();
       },
       icon: showPasswordText.visiblePassword
-          ? Icon(Icons.visibility, color: hintTextColor)
-          : Icon(Icons.visibility_off, color: hintTextColor),
+          ? const Icon(Icons.visibility_off, color: hintTextColor)
+          : const Icon(Icons.visibility, color: hintTextColor),
     );
   }
 
@@ -44,17 +44,15 @@ class TextFields extends StatelessWidget {
             BorderSide(color: Color.fromRGBO(226, 226, 226, 1), width: 10),
         borderRadius: BorderRadius.all(Radius.circular(12.0)),
       ),
-      focusedBorder: OutlineInputBorder(
+      focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: primaryColor),
-        borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+        borderRadius: BorderRadius.all(Radius.circular(12.0)),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    // final obscureText = Provider.of<Authentication>(context);
-    // final bool textDown = obscureText.visiblePassword;
     return TextFormField(
       controller: controller,
       validator: validator,

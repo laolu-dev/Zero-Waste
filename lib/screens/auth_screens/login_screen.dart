@@ -17,6 +17,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _username = TextEditingController();
+  @override
+  void dispose() {
+    _password.dispose();
+    _username.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (_formKey.currentState!.validate() &&
                               userLogin.password == _password.text) {
                             //Nav to Home Page
-                            Navigator.pushNamed(context, '/Home');
+                            Navigator.pushNamed(context, '/Types');
                           }
                         },
                         style: elevatedButtonStyleTwo,

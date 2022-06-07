@@ -5,6 +5,7 @@ import 'package:zero_waste/models/user.dart';
 import 'package:zero_waste/providers/feed_data.dart';
 import 'package:zero_waste/providers/market_data.dart';
 import 'package:zero_waste/providers/product_data.dart';
+import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/widgets/Feed_app_bar_widget.dart';
 import 'package:zero_waste/widgets/market_view_builder.dart';
 import 'package:zero_waste/widgets/notification_widget.dart';
@@ -32,9 +33,9 @@ class _HomeState extends State<Home> {
         date: '17/22/2003'),
   ];
 
-  User userProfile = User();
   @override
   Widget build(BuildContext context) {
+    final _user = Provider.of<UserAuth>(context);
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(18, 18, 18, 0),
@@ -53,7 +54,7 @@ class _HomeState extends State<Home> {
                         userProfilePicture: 'assets/images/guy.png'),
                   ),
                   titleWidget:
-                      Text('Welcome, ${userProfile.name}', style: headerText),
+                      Text('Welcome, ${_user.name}', style: headerText),
                   trailingWidget: const NotificationWidget(),
                 ),
                 const SizedBox(height: 29),

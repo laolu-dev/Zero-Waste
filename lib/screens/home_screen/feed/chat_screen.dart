@@ -27,7 +27,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void dispose() {
     textFieldController.dispose();
-
     super.dispose();
   }
 

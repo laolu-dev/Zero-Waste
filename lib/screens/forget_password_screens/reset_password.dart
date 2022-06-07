@@ -64,24 +64,26 @@ class _ResetPasswordState extends State<ResetPassword> {
                     ),
                   ),
                   const SizedBox(height: 41),
-                  TextFields(
-                    controller: _confirmPassword,
-                    label: 'Confirm Password',
-                    showIcon: true,
-                    phoneField: false,
-                    obscureText: false,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Password must not be empty';
-                      }
-                      if (value.length < 8) {
-                        return 'Your password must be at least 8 character';
-                      }
-                      if (_password.text != _confirmPassword.text) {
-                        return 'Password and Confirm Password must be the same';
-                      }
-                      return null;
-                    },
+                  Consumer<Authentication>(
+                    builder: (context, auth, child) => TextFields(
+                      controller: _confirmPassword,
+                      label: 'Confirm Password',
+                      showIcon: true,
+                      phoneField: false,
+                      obscureText: auth.visiblePassword,
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Password must not be empty';
+                        }
+                        if (value.length < 8) {
+                          return 'Your password must be at least 8 character';
+                        }
+                        if (_password.text != _confirmPassword.text) {
+                          return 'Passwords must be the same';
+                        }
+                        return null;
+                      },
+                    ),
                   ),
                   const SizedBox(height: 50),
                   Container(

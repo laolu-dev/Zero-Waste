@@ -1,8 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:zero_waste/widgets/profile_widget.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste/widgets/profile_widget.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../constants/constant.dart';
 import '../../../models/user.dart';
+import '../../../providers/user_data.dart';
 
 class ProfileAccount extends StatefulWidget {
   const ProfileAccount({Key? key}) : super(key: key);
@@ -12,7 +16,79 @@ class ProfileAccount extends StatefulWidget {
 }
 
 class _ProfileAccountState extends State<ProfileAccount> {
-  final user = User();
+  late final XFile? _image;
+  final ImagePicker _picker = ImagePicker();
+
+  Future getImage() async {
+    XFile? image;
+    image = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
+  }
+
+  Container userInfo(BuildContext context) {
+    final user = Provider.of<UserAuth>(context);
+    return Container(
+      width: 327,
+      height: 300,
+      padding: const EdgeInsets.only(left: 24, right: 24, top: 0),
+      decoration: const BoxDecoration(
+        color: primaryColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+      child: Expanded(
+        child: Container(
+          padding: const EdgeInsets.all(0),
+          width: 278,
+          height: 185,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                child:
+                    socialLoginContainer(child: Image.file(File(_image!.path))),
+                onTap: getImage,
+              ),
+              Text(user.name),
+              const SizedBox(height: 2),
+              Text(user.userType),
+              const SizedBox(height: 2),
+              Text('${user.state} , ${user.address}'),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 17,
+                children: [
+                  userPopularity(5, 'Followers'),
+                  userPopularity(10, 'Following'),
+                  userPopularity(15, 'Posts'),
+                  userPopularity(20, 'Comments'),
+                ],
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 66.5, vertical: 10),
+                  primary: profileButtonColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  textStyle: contentText.copyWith(
+                      color: white, fontWeight: FontWeight.w500),
+                ),
+                child: const Text('Edit Profile'),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

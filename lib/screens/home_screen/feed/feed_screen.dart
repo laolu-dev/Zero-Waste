@@ -66,7 +66,6 @@ class FeedsPage extends StatelessWidget {
                         Icons.search,
                         color: Colors.green,
                       ),
-                      // labelText: ,
                       hintText: 'Search for farmers',
                       fillColor: textFieldColor,
                       labelStyle: const TextStyle(

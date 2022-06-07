@@ -1,8 +1,6 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:zero_waste/utils/user_preferences.dart';
-
 import '../models/chat_message.dart';
 
 class ChatData extends ChangeNotifier {
