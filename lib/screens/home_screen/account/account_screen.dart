@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/widgets/list_tile_widget.dart';
 
 class MyAccount extends StatelessWidget {
@@ -8,22 +10,23 @@ class MyAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserAuth>(context);
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: white,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.navigate_before, color: headColor),
-        ),
-        title: Text('My Account', style: headerText),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 24, right: 24, top: 25),
+            padding: const EdgeInsets.only(left: 24, right: 24, top: 10),
             child: Column(
               children: [
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pushNamed(context, '/Home'),
+                      icon: const Icon(Icons.navigate_before, color: headColor),
+                    ),
+                    Text('My Account', style: headerText)
+                  ],
+                ),
                 SizedBox(
                   width: 288,
                   height: 140,
@@ -47,7 +50,7 @@ class MyAccount extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 17.5, vertical: 10),
                                   primary: white,
-                                  side: BorderSide(color: primaryColor),
+                                  side: const BorderSide(color: primaryColor),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
@@ -66,11 +69,8 @@ class MyAccount extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Collen Morgan',
-                                style: orTextStyle,
-                              ),
-                              Text('Crop Farmer', style: labelTextStyle)
+                              Text(user.name, style: orTextStyle),
+                              Text(user.userType, style: labelTextStyle)
                             ],
                           ),
                         ),

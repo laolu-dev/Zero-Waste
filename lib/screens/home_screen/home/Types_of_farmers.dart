@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/screens/Connections.dart';
-import 'package:zero_waste/screens/Home.dart';
-
-import 'home_screen/home_screen.dart';
+import 'package:zero_waste/screens/home_screen/home/Connections.dart';
+import 'home_screen.dart';
 
 class Types extends StatelessWidget {
   const Types({Key? key}) : super(key: key);
@@ -13,12 +11,12 @@ class Types extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(14, 15, 4, 13),
+            padding: const EdgeInsets.fromLTRB(14, 15, 4, 13),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
+                SizedBox(
                   height: 46,
                   width: 367,
                   child: Row(
@@ -38,11 +36,11 @@ class Types extends StatelessWidget {
                         height: 46,
                         width: 251,
                         decoration: BoxDecoration(
-                          color: Color(0xffE3FFF7),
+                          color: const Color(0xffE3FFF7),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
-                          children: [
+                          children: const [
                             Icon(
                               Icons.search_sharp,
                               size: 20,
@@ -67,14 +65,14 @@ class Types extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 27),
+                const SizedBox(height: 27),
                 Center(
                   child: Container(
                     height: 149,
                     width: 327,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xff0A9D56),
+                        color: const Color(0xff0A9D56),
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -90,7 +88,7 @@ class Types extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Crop Farmers',
                                 style: TextStyle(
                                   color: Color(0xff000000),
@@ -98,7 +96,7 @@ class Types extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Stay connected with us',
                                 style: TextStyle(
                                   color: Color(0xff222323),
@@ -106,7 +104,7 @@ class Types extends StatelessWidget {
                                   fontSize: 16,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'and get your produce.',
                                 style: TextStyle(
                                   color: Color(0xff222323),
@@ -120,6 +118,10 @@ class Types extends StatelessWidget {
                                 child: Container(
                                   height: 33,
                                   width: 99,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff0A9D56),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                   child: Center(
                                     child: GestureDetector(
                                       onTap: () {
@@ -130,7 +132,7 @@ class Types extends StatelessWidget {
                                                   const Connections()),
                                         );
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Connect',
                                         style: TextStyle(
                                           color: Color(0xffFFFFFF),
@@ -139,10 +141,6 @@ class Types extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff0A9D56),
-                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                               )
@@ -153,14 +151,14 @@ class Types extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 27),
+                const SizedBox(height: 27),
                 Center(
                   child: Container(
                     height: 149,
                     width: 327,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xff0A9D56),
+                        color: const Color(0xff0A9D56),
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -178,7 +176,7 @@ class Types extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Black Soldier Fly',
                                 style: TextStyle(
                                   color: Color(0xff000000),
@@ -186,7 +184,7 @@ class Types extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Farmers',
                                 style: TextStyle(
                                   color: Color(0xff000000),
@@ -194,7 +192,7 @@ class Types extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Connect with your farmers.',
                                 style: TextStyle(
                                   color: Color(0xff222323),
@@ -208,6 +206,10 @@ class Types extends StatelessWidget {
                                 child: Container(
                                   height: 33,
                                   width: 99,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff0A9D56),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                   child: Center(
                                     child: GestureDetector(
                                       onTap: () {
@@ -218,7 +220,7 @@ class Types extends StatelessWidget {
                                                   const Connections()),
                                         );
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Connect',
                                         style: TextStyle(
                                           color: Color(0xffFFFFFF),
@@ -227,10 +229,6 @@ class Types extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff0A9D56),
-                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                               )
@@ -241,14 +239,14 @@ class Types extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 27),
+                const SizedBox(height: 27),
                 Center(
                   child: Container(
                     height: 149,
                     width: 327,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xff0A9D56),
+                        color: const Color(0xff0A9D56),
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -264,7 +262,7 @@ class Types extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Fish / Poultry',
                                 style: TextStyle(
                                   color: Color(0xff000000),
@@ -272,7 +270,7 @@ class Types extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Farmers',
                                 style: TextStyle(
                                   color: Color(0xff000000),
@@ -280,7 +278,7 @@ class Types extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Stay connected.',
                                 style: TextStyle(
                                   color: Color(0xff222323),
@@ -294,6 +292,10 @@ class Types extends StatelessWidget {
                                 child: Container(
                                   height: 33,
                                   width: 99,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff0A9D56),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                   child: Center(
                                     child: GestureDetector(
                                       onTap: () {
@@ -304,7 +306,7 @@ class Types extends StatelessWidget {
                                                   const Connections()),
                                         );
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Connect',
                                         style: TextStyle(
                                           color: Color(0xffFFFFFF),
@@ -313,10 +315,6 @@ class Types extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff0A9D56),
-                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                               )
@@ -327,14 +325,14 @@ class Types extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 27),
+                const SizedBox(height: 27),
                 Center(
                   child: Container(
                     height: 149,
                     width: 327,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xff0A9D56),
+                        color: const Color(0xff0A9D56),
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -350,7 +348,7 @@ class Types extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Mannual Labourers',
                                 style: TextStyle(
                                   color: Color(0xff000000),
@@ -358,7 +356,7 @@ class Types extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'Apply as a farm staff and',
                                 style: TextStyle(
                                   color: Color(0xff222323),
@@ -366,7 +364,7 @@ class Types extends StatelessWidget {
                                   fontSize: 16,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'worker today.',
                                 style: TextStyle(
                                   color: Color(0xff222323),
@@ -380,6 +378,10 @@ class Types extends StatelessWidget {
                                 child: Container(
                                   height: 33,
                                   width: 99,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff0A9D56),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                   child: Center(
                                     child: GestureDetector(
                                       onTap: () {
@@ -390,7 +392,7 @@ class Types extends StatelessWidget {
                                                   const Connections()),
                                         );
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Connect',
                                         style: TextStyle(
                                           color: Color(0xffFFFFFF),
@@ -399,10 +401,6 @@ class Types extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xff0A9D56),
-                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                               )
@@ -419,7 +417,7 @@ class Types extends StatelessWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          unselectedItemColor: Color(0xff808080),
+          unselectedItemColor: const Color(0xff808080),
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Image.asset('assets/images/homei.png'),
@@ -439,7 +437,7 @@ class Types extends StatelessWidget {
             ),
           ],
           currentIndex: 0,
-          selectedItemColor: Color(0xff0A9D56),
+          selectedItemColor: const Color(0xff0A9D56),
           //onTap: _onItemTapped,
         ),
       ),

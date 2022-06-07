@@ -4,8 +4,8 @@ import 'package:zero_waste/providers/feed_data.dart';
 import 'package:zero_waste/widgets/Feed_app_bar_widget.dart';
 import 'package:zero_waste/widgets/notification_widget.dart';
 import 'package:zero_waste/widgets/user_chat_builder.dart';
-import '../widgets/add_icon.dart';
-import '../widgets/chat_icon.dart';
+import '../../../widgets/add_icon.dart';
+import '../../../widgets/chat_icon.dart';
 
 class NewConversationScreen extends StatelessWidget {
   const NewConversationScreen({Key? key}) : super(key: key);

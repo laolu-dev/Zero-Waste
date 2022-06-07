@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../constants/constant.dart';
-import '../providers/boarding.dart';
-import '../widgets/boarding.dart';
+import '../../constants/constant.dart';
+import '../../providers/boarding.dart';
+import '../../widgets/boarding.dart';
 
 class OnBoarding extends StatelessWidget {
   OnBoarding({Key? key}) : super(key: key);
@@ -88,7 +88,7 @@ class OnBoarding extends StatelessWidget {
                         fixedSize: const Size(35, 35),
                         shape: const CircleBorder(),
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_forward_ios,
                         color: white,
                         size: 16,

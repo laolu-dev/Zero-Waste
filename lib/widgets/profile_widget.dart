@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
-
-import '../providers/authentication.dart';
 import '../providers/user_data.dart';
 
 AppBar userAppBar(BuildContext context) {
@@ -31,15 +29,14 @@ Column userPopularity(String num, String category) {
 }
 
 Container userInfo(BuildContext context) {
-  final userDetails = Provider.of<Authentication>(context);
-  final user = Provider.of<CreateUser>(context);
+  final user = Provider.of<UserAuth>(context);
   return Container(
     width: 327,
     height: 300,
     padding: const EdgeInsets.only(left: 24, right: 24, top: 0),
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: primaryColor,
-      borderRadius: const BorderRadius.all(
+      borderRadius: BorderRadius.all(
         Radius.circular(10),
       ),
     ),
@@ -54,7 +51,7 @@ Container userInfo(BuildContext context) {
             socialLoginContainer(child: SvgPicture.asset(fbSvg)),
             Text(user.name),
             const SizedBox(height: 2),
-            Text(userDetails.farmerType),
+            Text(user.userType),
             const SizedBox(height: 2),
             Text('${user.state} , ${user.address}'),
             const SizedBox(height: 16),

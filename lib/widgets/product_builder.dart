@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/providers/product_data.dart';
-import 'package:zero_waste/screens/second_product_screen.dart';
+import 'package:zero_waste/screens/home_screen/products/second_product_screen.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
 import 'package:zero_waste/widgets/product_widget.dart';
 import 'package:zero_waste/widgets/sub_user_info_widget.dart';

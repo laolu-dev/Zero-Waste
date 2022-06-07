@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste/providers/home_nav.dart';
 
 class AppBottomNavigationBar {
   BottomNavigationBar appBottomNavigationBar(
@@ -33,4 +35,47 @@ class AppBottomNavigationBar {
       onTap: onTap,
     );
   }
+}
+
+BottomNavigationBar homeBottomBar(int index, BuildContext context) {
+  final navTo = Provider.of<HomeNav>(context);
+  return BottomNavigationBar(
+    unselectedItemColor: Colors.grey,
+    type: BottomNavigationBarType.fixed,
+    items: <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Image.asset(
+          'assets/images/homei.png',
+          color: navTo.index == 0 ? const Color(0xff0A9D56) : Colors.grey,
+        ),
+        label: 'Home',
+      ),
+      BottomNavigationBarItem(
+        icon: Image.asset(
+          'assets/images/fed.png',
+          color: navTo.index == 1 ? const Color(0xff0A9D56) : Colors.grey,
+        ),
+        label: 'Feeds',
+      ),
+      BottomNavigationBarItem(
+        icon: Image.asset(
+          'assets/images/pi.png',
+          color: navTo.index == 2 ? const Color(0xff0A9D56) : Colors.grey,
+        ),
+        label: 'Products',
+      ),
+      BottomNavigationBarItem(
+        icon: Image.asset(
+          'assets/images/av.png',
+          color: navTo.index == 3 ? const Color(0xff0A9D56) : Colors.grey,
+        ),
+        label: 'Account',
+      ),
+    ],
+    currentIndex: navTo.index,
+    selectedItemColor: const Color(0xff0A9D56),
+    onTap: (index) {
+      navTo.setIndex(index);
+    },
+  );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/new_conversation_screen.dart';
+import '../screens/home_screen/feed/new_conversation_screen.dart';
 
 class AddIcon extends StatelessWidget {
   final bool alignTextToRight;

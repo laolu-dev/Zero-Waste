@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/screens/Home.dart';
-import 'package:zero_waste/screens/Types_of_farmers.dart';
+import 'package:zero_waste/screens/home_screen/home/Types_of_farmers.dart';
 
 class Connections extends StatelessWidget {
   const Connections({Key? key}) : super(key: key);

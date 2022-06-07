@@ -1,52 +1,48 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CreateUser extends ChangeNotifier {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController stateController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
+class UserAuth extends ChangeNotifier {
   String _name = '';
-  final String _phoneNo = '';
-  final String _address = '';
-  final String _state = '';
-  final String _password = '';
+  String _phoneNo = '';
+  String _address = '';
+  String _state = '';
+  String _password = '';
+  String _userType = '';
 
   String get name => _name;
   String get phoneNo => _phoneNo;
   String get address => _address;
   String get state => _state;
   String get password => _password;
+  String get userType => _userType;
 
-  void updateName(String name) {
-    _name = name;
+  void getName(String value) {
+    _name = value;
     notifyListeners();
   }
 
-  void getUserName() {
-    nameController.text = _name;
+  void getPhone(String value) {
+    _phoneNo = value;
     notifyListeners();
   }
 
-  void getPhoneNo() {
-    phoneController.text = _phoneNo;
+  void getAddress(String value) {
+    _address = value;
     notifyListeners();
   }
 
-  void getAddress() {
-    addressController.text = _address;
+  void getState(String value) {
+    _state = value;
     notifyListeners();
   }
 
-  void getState() {
-    stateController.text = _state;
+  void getPassword(String value) {
+    _password = value;
     notifyListeners();
   }
 
-  void getPassword() {
-    passwordController.text = _password;
+  void getUsertype(String value) {
+    _userType = value;
     notifyListeners();
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/providers/feed_data.dart';
+import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 
 import '../../widgets/farmer_type_widget.dart';
@@ -15,36 +15,11 @@ class WhyAreYouHere extends StatefulWidget {
 }
 
 class _WhyAreYouHereState extends State<WhyAreYouHere> {
-  // Container farmerType(String textContent, context) {
-  //   // final pressed = Provider.of<Authentication>(context);
-  //   return Container(
-  //     width: 153,
-  //     height: 103,
-  //     alignment: Alignment.center,
-  //     decoration: BoxDecoration(
-  //       border: Border.all(color: dividerColor, width: 2.5),
-  //       borderRadius: const BorderRadius.all(
-  //         Radius.circular(12),
-  //       ),
-  //     ),
-  //     child: TextButton(
-  //       onPressed: () {
-  //         // pressed.selectType(textContent);
-  //       },
-  //       style: TextButton.styleFrom(
-  //         backgroundColor: pressed.hasBeenPressed ? userTypeColor : white,
-  //         primary:
-  //             pressed.hasBeenPressed ? userTypeTextColor2 : userTypeTextColor1,
-  //         minimumSize: Size.infinite,
-  //       ),
-  //       child: Text(textContent),
-  //     ),
-  //   );
-  // }
   int isSelected = 0;
 
   @override
   Widget build(BuildContext context) {
+    final type = Provider.of<UserAuth>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -61,54 +36,56 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                   style: headerText,
                 ),
                 const SizedBox(height: 27),
-                Consumer<FeedData>(
-                  builder: (context, feedData, child) => Wrap(
-                    alignment: WrapAlignment.center,
-                    runSpacing: 16,
-                    spacing: 18,
-                    children: [
-                      // farmerType(contentOne, context),
-                      // farmerType(contentTwo, context),
-                      // farmerType(contentThree, context),
-                      // farmerType(contentFour, context)
-                      FarmerType(
-                        optionText: contentOne,
-                        isPressed: () => setState(() => isSelected = 1),
-                        isSelectedColor:
-                            isSelected == 1 ? userTypeColor : white,
-                        borderColor: isSelected == 1
-                            ? userTypeTextColor2
-                            : userTypeTextColor1,
-                      ),
-                      FarmerType(
-                        optionText: contentTwo,
-                        isPressed: () => setState(() => isSelected = 2),
-                        isSelectedColor:
-                            isSelected == 2 ? userTypeColor : white,
-                        borderColor: isSelected == 2
-                            ? userTypeTextColor2
-                            : userTypeTextColor1,
-                      ),
-                      FarmerType(
-                        optionText: contentThree,
-                        isPressed: () => setState(() => isSelected = 3),
-                        isSelectedColor:
-                            isSelected == 3 ? userTypeColor : white,
-                        borderColor: isSelected == 3
-                            ? userTypeTextColor2
-                            : userTypeTextColor1,
-                      ),
-                      FarmerType(
-                        optionText: contentFour,
-                        isPressed: () => setState(() => isSelected = 4),
-                        isSelectedColor:
-                            isSelected == 4 ? userTypeColor : white,
-                        borderColor: isSelected == 4
-                            ? userTypeTextColor2
-                            : userTypeTextColor1,
-                      ),
-                    ],
-                  ),
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  runSpacing: 16,
+                  spacing: 18,
+                  children: [
+                    FarmerType(
+                      optionText: contentOne,
+                      isPressed: () {
+                        type.getUsertype(contentOne);
+                        setState(() => isSelected = 1);
+                      },
+                      isSelectedColor: isSelected == 1 ? userTypeColor : white,
+                      borderColor: isSelected == 1
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
+                    FarmerType(
+                      optionText: contentTwo,
+                      isPressed: () {
+                        type.getUsertype(contentTwo);
+                        setState(() => isSelected = 2);
+                      },
+                      isSelectedColor: isSelected == 2 ? userTypeColor : white,
+                      borderColor: isSelected == 2
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
+                    FarmerType(
+                      optionText: contentThree,
+                      isPressed: () {
+                        type.getUsertype(contentThree);
+                        setState(() => isSelected = 3);
+                      },
+                      isSelectedColor: isSelected == 3 ? userTypeColor : white,
+                      borderColor: isSelected == 3
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
+                    FarmerType(
+                      optionText: contentFour,
+                      isPressed: () {
+                        type.getUsertype(contentFour);
+                        setState(() => isSelected = 4);
+                      },
+                      isSelectedColor: isSelected == 4 ? userTypeColor : white,
+                      borderColor: isSelected == 4
+                          ? userTypeTextColor2
+                          : userTypeTextColor1,
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 55),
                 Container(
@@ -140,13 +117,13 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Divider(thickness: 1, color: dividerColor),
                       ),
                       const SizedBox(width: 15),
                       Text("OR", style: orTextStyle),
                       const SizedBox(width: 15),
-                      Expanded(
+                      const Expanded(
                         child: Divider(thickness: 1, color: dividerColor),
                       ),
                     ],
@@ -163,16 +140,27 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: [
-                    socialLoginContainer(
-                      child: SvgPicture.asset(fbSvg),
+                    GestureDetector(
+                      onTap: () {},
+                      child: socialLoginContainer(
+                        child: SvgPicture.asset(fbSvg),
+                      ),
                     ),
                     const SizedBox(width: 12),
-                    socialLoginContainer(
-                      child: SvgPicture.asset(googleSvg),
+                    //Google Login
+                    GestureDetector(
+                      onTap: () {},
+                      child: socialLoginContainer(
+                        child: SvgPicture.asset(googleSvg),
+                      ),
                     ),
                     const SizedBox(width: 12),
-                    socialLoginContainer(
-                      child: SvgPicture.asset(linklnSvg),
+                    //LinkedIn Login
+                    GestureDetector(
+                      onTap: () {},
+                      child: socialLoginContainer(
+                        child: SvgPicture.asset(linklnSvg),
+                      ),
                     ),
                   ],
                 )

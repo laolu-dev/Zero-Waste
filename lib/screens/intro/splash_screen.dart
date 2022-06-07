@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../constants/constant.dart';
+import '../../constants/constant.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
           image: DecorationImage(
             image: AssetImage(backGroundJpeg),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(blend, BlendMode.srcOver),
+            colorFilter: const ColorFilter.mode(blend, BlendMode.srcOver),
           ),
         ),
         child: Center(

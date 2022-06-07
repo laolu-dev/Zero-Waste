@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/screens/chat_screen.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
 import 'package:zero_waste/widgets/product_widget.dart';
-
-import '../config/appTheme.dart';
-import '../widgets/Feed_app_bar_widget.dart';
-import '../widgets/notification_widget.dart';
-import '../widgets/product_builder.dart';
+import '../../../config/appTheme.dart';
+import '../../../widgets/Feed_app_bar_widget.dart';
+import '../../../widgets/notification_widget.dart';
+import '../feed/chat_screen.dart';
 
 class SecondProductScreen extends StatelessWidget {
   final CustomerUserInfo customerUserChatInfo;

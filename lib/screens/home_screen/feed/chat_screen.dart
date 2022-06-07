@@ -5,7 +5,7 @@ import 'package:zero_waste/providers/chat_data.dart';
 import 'package:zero_waste/utils/appBottomNavigationBar/bottom_navigation_bar.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
 import 'package:zero_waste/widgets/messge_stream.dart';
-import '../utils/user_preferences.dart';
+import '../../../utils/user_preferences.dart';
 
 class ChatScreen extends StatefulWidget {
   final CustomerUserInfo? customerUserChatInfo;

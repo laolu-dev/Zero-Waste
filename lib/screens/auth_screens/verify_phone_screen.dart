@@ -16,7 +16,7 @@ class VerifyPhoneScreen extends StatefulWidget {
 class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
   @override
   Widget build(BuildContext context) {
-    final userPhone = Provider.of<CreateUser>(context);
+    final userPhone = Provider.of<UserAuth>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

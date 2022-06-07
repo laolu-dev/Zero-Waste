@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/authentication.dart';
-import 'package:zero_waste/utils/user_preferences.dart';
 import 'package:zero_waste/widgets/profile_widget.dart';
 
-import '../../models/user.dart';
+import '../../../constants/constant.dart';
+import '../../../models/user.dart';
 
 class ProfileAccount extends StatefulWidget {
   const ProfileAccount({Key? key}) : super(key: key);
@@ -15,14 +13,12 @@ class ProfileAccount extends StatefulWidget {
 
 class _ProfileAccountState extends State<ProfileAccount> {
   final user = User();
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: userAppBar(context),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SingleChildScrollView(
             child: ConstrainedBox(
               constraints:
@@ -31,6 +27,23 @@ class _ProfileAccountState extends State<ProfileAccount> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/MyAccount');
+                          },
+                          icon: Icon(Icons.navigate_before)),
+                      Text(
+                        'Profile',
+                        style: headerText,
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 26,
+                  ),
                   userInfo(context),
                   const SizedBox(height: 10),
                   Row(

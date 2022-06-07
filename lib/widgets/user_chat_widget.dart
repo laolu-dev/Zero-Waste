@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste/config/appTheme.dart';
-import 'package:zero_waste/screens/chat_screen.dart';
+import 'package:zero_waste/screens/home_screen/feed/chat_screen.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
 
 class UserChatWidget extends StatelessWidget {

@@ -15,10 +15,15 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _stateController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final userDetails = Provider.of<CreateUser>(context);
+    final submitDetails = Provider.of<UserAuth>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -35,7 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 15),
                   //Name
                   TextFields(
-                    controller: userDetails.nameController,
+                    controller: _nameController,
                     label: 'Full Name',
                     showIcon: false,
                     phoneField: false,
@@ -44,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 16),
                   //Phone Number
                   TextFields(
-                    controller: userDetails.phoneController,
+                    controller: _phoneController,
                     label: 'Phone Number',
                     showIcon: false,
                     phoneField: true,
@@ -53,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 16),
                   //Home Address
                   TextFields(
-                    controller: userDetails.addressController,
+                    controller: _addressController,
                     label: 'Home Address',
                     showIcon: false,
                     phoneField: false,
@@ -62,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 16),
                   //State
                   TextFields(
-                    controller: userDetails.stateController,
+                    controller: _stateController,
                     label: 'State',
                     showIcon: false,
                     phoneField: false,
@@ -72,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   //Password
                   Consumer<Authentication>(
                     builder: (context, auth, child) => TextFields(
-                      controller: userDetails.passwordController,
+                      controller: _passwordController,
                       label: 'Password',
                       showIcon: true,
                       phoneField: false,
@@ -103,11 +108,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          userDetails.getUserName();
-                          userDetails.getPhoneNo();
-                          userDetails.getAddress();
-                          userDetails.getState();
-                          userDetails.getPassword();
+                          submitDetails.getName(_nameController.text);
+                          submitDetails.getPhone(_phoneController.text);
+                          submitDetails.getAddress(_addressController.text);
+                          submitDetails.getState(_stateController.text);
+                          submitDetails.getPassword(_passwordController.text);
                           Navigator.pushNamed(context, '/Reason');
                         }
                       },
@@ -130,13 +135,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Divider(thickness: 1, color: dividerColor),
                         ),
                         const SizedBox(width: 15),
                         Text("OR", style: orTextStyle),
                         const SizedBox(width: 15),
-                        Expanded(
+                        const Expanded(
                           child: Divider(thickness: 1, color: dividerColor),
                         ),
                       ],
@@ -148,16 +153,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Wrap(
                     alignment: WrapAlignment.center,
                     children: [
-                      socialLoginContainer(
-                        child: SvgPicture.asset(fbSvg),
+                      //Facebook Login
+                      GestureDetector(
+                        onTap: () {},
+                        child: socialLoginContainer(
+                          child: SvgPicture.asset(fbSvg),
+                        ),
                       ),
                       const SizedBox(width: 12),
-                      socialLoginContainer(
-                        child: SvgPicture.asset(googleSvg),
+                      //Google Login
+                      GestureDetector(
+                        onTap: () {},
+                        child: socialLoginContainer(
+                          child: SvgPicture.asset(googleSvg),
+                        ),
                       ),
                       const SizedBox(width: 12),
-                      socialLoginContainer(
-                        child: SvgPicture.asset(linklnSvg),
+                      //LinkedIn Login
+                      GestureDetector(
+                        onTap: () {},
+                        child: socialLoginContainer(
+                          child: SvgPicture.asset(linklnSvg),
+                        ),
                       ),
                     ],
                   )

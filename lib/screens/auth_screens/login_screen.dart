@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/authentication.dart';
+import 'package:zero_waste/providers/user_data.dart';
 import '../../widgets/text_field_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,14 +18,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _username = TextEditingController();
 
-  void _trySubmit() {
-    if (_formKey.currentState!.validate()) {
-      //Nav to Home Page
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final userLogin = Provider.of<UserAuth>(context);
     return Consumer<Authentication>(
       builder: (context, auth, child) => Scaffold(
         body: SafeArea(
@@ -40,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 15),
                     Text("Login to your Account", style: headerText),
                     const SizedBox(height: 38),
+                    //Username
                     TextFields(
                       controller: _username,
                       label: 'Username',
@@ -48,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       phoneField: false,
                     ),
                     const SizedBox(height: 16),
+                    //Password
                     TextFields(
                       controller: _password,
                       label: 'Password',
@@ -65,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     const SizedBox(height: 16),
+                    //Forgot Password
                     Container(
                       constraints:
                           const BoxConstraints.expand(height: 15, width: 400),
@@ -81,8 +80,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       constraints: const BoxConstraints(maxWidth: 400),
                       child: ElevatedButton(
                         onPressed: () {
-                          _trySubmit();
-                          Navigator.pushNamed(context, '/Home');
+                          if (_formKey.currentState!.validate() &&
+                              userLogin.password == _password.text) {
+                            //Nav to Home Page
+                            Navigator.pushNamed(context, '/Home');
+                          }
                         },
                         style: elevatedButtonStyleTwo,
                         child: const Text("Login"),
@@ -103,13 +105,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       constraints: const BoxConstraints(maxWidth: 400),
                       child: Row(
                         children: [
-                          Expanded(
+                          const Expanded(
                               child:
                                   Divider(thickness: 1, color: dividerColor)),
                           const SizedBox(width: 15),
                           Text("OR", style: orTextStyle),
                           const SizedBox(width: 15),
-                          Expanded(
+                          const Expanded(
                               child:
                                   Divider(thickness: 1, color: dividerColor)),
                         ],
@@ -118,19 +120,32 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 20),
                     Text("Login using Social Networks", style: contentText),
                     const SizedBox(height: 16),
+                    //Social Login
                     Wrap(
                       alignment: WrapAlignment.center,
                       children: [
-                        socialLoginContainer(
-                          child: SvgPicture.asset(fbSvg),
+                        //Facebook Login
+                        GestureDetector(
+                          onTap: () {},
+                          child: socialLoginContainer(
+                            child: SvgPicture.asset(fbSvg),
+                          ),
                         ),
                         const SizedBox(width: 12),
-                        socialLoginContainer(
-                          child: SvgPicture.asset(googleSvg),
+                        //Google Login
+                        GestureDetector(
+                          onTap: () {},
+                          child: socialLoginContainer(
+                            child: SvgPicture.asset(googleSvg),
+                          ),
                         ),
                         const SizedBox(width: 12),
-                        socialLoginContainer(
-                          child: SvgPicture.asset(linklnSvg),
+                        //LinkedIn Login
+                        GestureDetector(
+                          onTap: () {},
+                          child: socialLoginContainer(
+                            child: SvgPicture.asset(linklnSvg),
+                          ),
                         ),
                       ],
                     )
