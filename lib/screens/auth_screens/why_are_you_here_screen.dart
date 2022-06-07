@@ -1,6 +1,8 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/providers/feed_data.dart';
 import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 
 import '../../widgets/farmer_type_widget.dart';
@@ -59,48 +61,54 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                   style: headerText,
                 ),
                 const SizedBox(height: 27),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  runSpacing: 16,
-                  spacing: 18,
-                  children: [
-                    // farmerType(contentOne, context),
-                    // farmerType(contentTwo, context),
-                    // farmerType(contentThree, context),
-                    // farmerType(contentFour, context)
-                    FarmerType(
-                      optionText: contentOne,
-                      isPressed: () => setState(() => isSelected = 1),
-                      isSelectedColor: isSelected == 1 ? userTypeColor : white,
-                      borderColor: isSelected == 1
-                          ? userTypeTextColor2
-                          : userTypeTextColor1,
-                    ),
-                    FarmerType(
-                      optionText: contentTwo,
-                      isPressed: () => setState(() => isSelected = 2),
-                      isSelectedColor: isSelected == 2 ? userTypeColor : white,
-                      borderColor: isSelected == 2
-                          ? userTypeTextColor2
-                          : userTypeTextColor1,
-                    ),
-                    FarmerType(
-                      optionText: contentThree,
-                      isPressed: () => setState(() => isSelected = 3),
-                      isSelectedColor: isSelected == 3 ? userTypeColor : white,
-                      borderColor: isSelected == 3
-                          ? userTypeTextColor2
-                          : userTypeTextColor1,
-                    ),
-                    FarmerType(
-                      optionText: contentFour,
-                      isPressed: () => setState(() => isSelected = 4),
-                      isSelectedColor: isSelected == 4 ? userTypeColor : white,
-                      borderColor: isSelected == 4
-                          ? userTypeTextColor2
-                          : userTypeTextColor1,
-                    ),
-                  ],
+                Consumer<FeedData>(
+                  builder: (context, feedData, child) => Wrap(
+                    alignment: WrapAlignment.center,
+                    runSpacing: 16,
+                    spacing: 18,
+                    children: [
+                      // farmerType(contentOne, context),
+                      // farmerType(contentTwo, context),
+                      // farmerType(contentThree, context),
+                      // farmerType(contentFour, context)
+                      FarmerType(
+                        optionText: contentOne,
+                        isPressed: () => setState(() => isSelected = 1),
+                        isSelectedColor:
+                            isSelected == 1 ? userTypeColor : white,
+                        borderColor: isSelected == 1
+                            ? userTypeTextColor2
+                            : userTypeTextColor1,
+                      ),
+                      FarmerType(
+                        optionText: contentTwo,
+                        isPressed: () => setState(() => isSelected = 2),
+                        isSelectedColor:
+                            isSelected == 2 ? userTypeColor : white,
+                        borderColor: isSelected == 2
+                            ? userTypeTextColor2
+                            : userTypeTextColor1,
+                      ),
+                      FarmerType(
+                        optionText: contentThree,
+                        isPressed: () => setState(() => isSelected = 3),
+                        isSelectedColor:
+                            isSelected == 3 ? userTypeColor : white,
+                        borderColor: isSelected == 3
+                            ? userTypeTextColor2
+                            : userTypeTextColor1,
+                      ),
+                      FarmerType(
+                        optionText: contentFour,
+                        isPressed: () => setState(() => isSelected = 4),
+                        isSelectedColor:
+                            isSelected == 4 ? userTypeColor : white,
+                        borderColor: isSelected == 4
+                            ? userTypeTextColor2
+                            : userTypeTextColor1,
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 55),
                 Container(
