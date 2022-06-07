@@ -142,10 +142,13 @@ class SecondProductScreen extends StatelessWidget {
               ),
             ],
           ),
-          const Text(
-            'Excellent Harvest available for exchange',
-            style: TextStyle(
-                fontFamily: 'Jost', fontSize: 14.0, color: Colors.black),
+          const Padding(
+            padding: EdgeInsets.only(left: 10.0),
+            child: Text(
+              'Excellent Harvest available for exchange',
+              style: TextStyle(
+                  fontFamily: 'Jost', fontSize: 14.0, color: Colors.black),
+            ),
           ),
           ProductWidget(
             image: userProfilePicture!,
