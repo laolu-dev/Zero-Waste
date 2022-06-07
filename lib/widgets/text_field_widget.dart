@@ -7,14 +7,16 @@ class TextFields extends StatelessWidget {
   const TextFields({
     Key? key,
     required this.label,
-    required this.showText,
+    required this.showIcon,
     required this.phoneField,
     this.validator,
     this.controller,
+    required this.obscureText,
   }) : super(key: key);
   final String label;
-  final bool showText;
+  final bool showIcon;
   final bool phoneField;
+  final bool obscureText;
   final FormFieldValidator<String>? validator;
   final TextEditingController? controller;
 
@@ -23,7 +25,7 @@ class TextFields extends StatelessWidget {
     return IconButton(
       onPressed: () {
         showPasswordText.showPassword();
-        showPasswordText.textShow();
+        // showPasswordText.textShow();
       },
       icon: showPasswordText.visiblePassword
           ? Icon(Icons.visibility, color: hintTextColor)
@@ -51,15 +53,15 @@ class TextFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final obscureText = Provider.of<Authentication>(context);
-    final bool textDown = obscureText.obscureText;
+    // final obscureText = Provider.of<Authentication>(context);
+    // final bool textDown = obscureText.visiblePassword;
     return TextFormField(
       controller: controller,
       validator: validator,
       keyboardType: phoneField ? TextInputType.phone : TextInputType.text,
       cursorColor: hintTextColor,
-      obscureText: textDown,
-      decoration: formFieldDecoration(showText, label, context),
+      obscureText: obscureText,
+      decoration: formFieldDecoration(showIcon, label, context),
     );
   }
 }

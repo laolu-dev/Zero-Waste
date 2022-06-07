@@ -11,6 +11,7 @@ class MessagesStream extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ChatData>(
       builder: (context, chatData, child) => ListView.builder(
+        reverse: false,
         itemBuilder: (context, index) {
           final data = chatData.chatMessage[index];
           return MessageBubble(

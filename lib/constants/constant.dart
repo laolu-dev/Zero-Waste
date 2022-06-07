@@ -12,28 +12,28 @@ String noteSvg = "assets/images/notes.svg";
 String backGroundJpeg = "assets/images/background.jpeg";
 
 //User Type
-String contentOne = "Crop Farmer";
-String contentTwo = "Black Solder Fly Farmer";
-String contentThree = "Fish/Poultry Farmer";
-String contentFour = "Manual Labourers";
+const contentOne = "Crop Farmer";
+const contentTwo = "Black Solder Fly Farmer";
+const contentThree = "Fish/Poultry Farmer";
+const contentFour = "Manual Labourers";
 
 //Colors
-Color inputWhite = const Color.fromRGBO(252, 252, 252, 1);
-Color primaryColor = const Color.fromRGBO(10, 157, 86, 1);
-Color hintTextColor = const Color.fromRGBO(151, 151, 151, 1);
-Color white = const Color.fromRGBO(255, 255, 255, 1);
-Color headColor = const Color.fromRGBO(0, 0, 0, 1);
-Color tileColor = const Color.fromRGBO(226, 226, 226, 1);
-Color contentOneColor = const Color.fromRGBO(34, 34, 34, 1);
-Color contentTwoColor = const Color.fromRGBO(115, 115, 119, 1);
-Color contentThreeColor = const Color.fromRGBO(77, 77, 77, 1);
-Color dividerColor = const Color.fromRGBO(229, 229, 229, 1);
-Color orColor = const Color.fromRGBO(22, 22, 29, 1);
-Color userTypeColor = const Color.fromRGBO(136, 255, 222, 1);
-Color userTypeTextColor1 = const Color.fromRGBO(128, 128, 128, 1);
-Color userTypeTextColor2 = const Color.fromRGBO(64, 64, 64, 1);
-Color profileButtonColor = const Color.fromRGBO(157, 51, 10, 1);
-Color blend = const Color.fromRGBO(7, 110, 82, 0.8);
+const inputWhite = Color.fromRGBO(252, 252, 252, 1);
+const primaryColor = Color.fromRGBO(10, 157, 86, 1);
+const hintTextColor = Color.fromRGBO(151, 151, 151, 1);
+const white = Color.fromRGBO(255, 255, 255, 1);
+const headColor = Color.fromRGBO(0, 0, 0, 1);
+const tileColor = Color.fromRGBO(226, 226, 226, 1);
+const contentOneColor = Color.fromRGBO(34, 34, 34, 1);
+const contentTwoColor = Color.fromRGBO(115, 115, 119, 1);
+const contentThreeColor = Color.fromRGBO(77, 77, 77, 1);
+const dividerColor = Color.fromRGBO(229, 229, 229, 1);
+const orColor = Color.fromRGBO(22, 22, 29, 1);
+const userTypeColor = Color.fromRGBO(136, 255, 222, 1);
+const userTypeTextColor1 = Color.fromRGBO(128, 128, 128, 1);
+const userTypeTextColor2 = Color.fromRGBO(64, 64, 64, 1);
+const profileButtonColor = Color.fromRGBO(157, 51, 10, 1);
+const blend = Color.fromRGBO(7, 110, 82, 0.8);
 
 //TextStyles
 TextStyle headerText = GoogleFonts.jost(

@@ -1,10 +1,31 @@
 import 'dart:collection';
+
 import 'package:flutter/material.dart';
-import '../utils/user_preferences.dart';
+import 'package:zero_waste/utils/user_preferences.dart';
+
 import '../models/chat_message.dart';
 
 class ChatData extends ChangeNotifier {
-  final List<ChatMessage> _chatMessage = [];
+  final List<ChatMessage> _chatMessage = [
+    ChatMessage(
+        userProfile: UserPreferences(),
+        messageContent: '',
+        isMe: true,
+        isMessage: false),
+    ChatMessage(
+        userProfile: UserPreferences(),
+        messageContent: '',
+        isMe: true,
+        isMessage: false),
+    ChatMessage(
+        userProfile: UserPreferences(),
+        messageContent: '',
+        isMe: true,
+        isMessage: false),
+  ];
+
+  UnmodifiableListView<ChatMessage> get chatMessage =>
+      UnmodifiableListView(_chatMessage);
 
   void addChatMessage(UserPreferences userProfile, String messageContent,
       bool isMe, bool isMessage) {
@@ -15,17 +36,6 @@ class ChatData extends ChangeNotifier {
         isMessage: isMessage));
     notifyListeners();
   }
-
-  UnmodifiableListView<ChatMessage> get chatMessage =>
-      UnmodifiableListView(_chatMessage);
-
-  UserPreferences getChatSender(int index) => _chatMessage[index].userProfile;
-
-  String getChatMessage(int index) => _chatMessage[index].messageContent;
-
-  bool checkCurrentUser(int index) => _chatMessage[index].isMe;
-
-  bool checkMessageType(int index) => _chatMessage[index].isMessage;
 
   int get length => _chatMessage.length;
 }

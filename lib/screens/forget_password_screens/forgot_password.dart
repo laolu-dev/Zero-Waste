@@ -28,7 +28,10 @@ class ForgotPassword extends StatelessWidget {
                 ),
                 const SizedBox(height: 32),
                 const TextFields(
-                    label: 'Phone Number', showText: false, phoneField: true),
+                    obscureText: false,
+                    label: 'Phone Number',
+                    showIcon: false,
+                    phoneField: true),
                 const SizedBox(height: 24),
                 Container(
                   height: 52,
