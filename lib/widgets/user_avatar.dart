@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 
 class UserAvatar extends StatelessWidget {
   final String? userProfilePicture;
-  final double? size;
   const UserAvatar({
     Key? key,
     this.userProfilePicture,
-    this.size,
   }) : super(key: key);
 
   @override
@@ -14,13 +12,12 @@ class UserAvatar extends StatelessWidget {
     return CircleAvatar(
       backgroundColor: Colors.grey,
       child: userProfilePicture == null
-          ? Icon(
+          ? const Icon(
               Icons.account_circle_outlined,
               color: Colors.white,
-              size: size ?? 32,
-              // size: 32,
             )
-          : Image.network(userProfilePicture!),
+          : Image.network(userProfilePicture!,
+              height: 40.0, width: 40.0, fit: BoxFit.fill),
     );
   }
 }

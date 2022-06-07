@@ -22,8 +22,11 @@ class MarketViewBuilder extends StatelessWidget {
           itemBuilder: (context, index) {
             final data = marketData.item[index];
             return FeedAppBar(
-              leading: UserAvatar(
-                userProfilePicture: productData.products[index].productImage,
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: UserAvatar(
+                  userProfilePicture: productData.products[index].productImage,
+                ),
               ),
               titleWidget: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

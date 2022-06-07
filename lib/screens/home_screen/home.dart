@@ -30,19 +30,31 @@ class _HomeScreenState extends State<HomeScreen> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/homei.png'),
+            icon: Image.asset(
+              'assets/images/homei.png',
+              color: _currentIndex == 0 ? const Color(0xff0A9D56) : Colors.grey,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/fed.png'),
+            icon: Image.asset(
+              'assets/images/fed.png',
+              color: _currentIndex == 1 ? const Color(0xff0A9D56) : Colors.grey,
+            ),
             label: 'Feeds',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/pi.png'),
+            icon: Image.asset(
+              'assets/images/pi.png',
+              color: _currentIndex == 2 ? const Color(0xff0A9D56) : Colors.grey,
+            ),
             label: 'Products',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/av.png'),
+            icon: Image.asset(
+              'assets/images/av.png',
+              color: _currentIndex == 3 ? const Color(0xff0A9D56) : Colors.grey,
+            ),
             label: 'Account',
           ),
         ],

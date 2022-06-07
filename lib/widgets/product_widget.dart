@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ProductWidget extends StatelessWidget {
-  final String productImage;
-  final String productName;
-  final String userLocation;
-  final String harvestDate;
-  final String productWeight;
+  final String image;
+  final String title;
+  final String subtitle1;
+  final String subtitle2;
+  final Widget baseIcon;
   const ProductWidget({
     Key? key,
-    required this.productImage,
-    required this.productName,
-    required this.userLocation,
-    required this.harvestDate,
-    required this.productWeight,
+    required this.image,
+    required this.title,
+    required this.subtitle1,
+    required this.subtitle2,
+    required this.baseIcon,
   }) : super(key: key);
 
   @override
@@ -35,13 +35,15 @@ class ProductWidget extends StatelessWidget {
         color: HexColor('#E3FFF7'),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.network(
-                productImage,
+                image,
                 height: 132.0,
                 width: 154.0,
                 fit: BoxFit.fill,
@@ -57,7 +59,7 @@ class ProductWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    productName,
+                    title,
                     style: const TextStyle(
                         fontFamily: 'Jost',
                         fontSize: 20.0,
@@ -65,37 +67,20 @@ class ProductWidget extends StatelessWidget {
                         color: Colors.black),
                   ),
                   Text(
-                    'Location: $userLocation',
+                    subtitle1,
                     style: const TextStyle(
                         fontFamily: 'Jost',
                         fontSize: 14.0,
                         color: Colors.black),
                   ),
                   Text(
-                    'Harvest: $harvestDate',
+                    subtitle2,
                     style: const TextStyle(
                         fontFamily: 'Jost',
                         fontSize: 14.0,
                         color: Colors.black),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        productWeight,
-                        style: const TextStyle(
-                            fontFamily: 'Jost',
-                            fontWeight: FontWeight.w900,
-                            fontSize: 14.0,
-                            color: Colors.black),
-                      ),
-                      const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 20,
-                        color: Colors.black,
-                      )
-                    ],
-                  ),
+                  baseIcon,
                 ],
               ),
             ),

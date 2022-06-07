@@ -71,16 +71,18 @@ class _HomeState extends State<Home> {
                   ),
                   const SizedBox(height: 29),
                   Container(
-                    constraints:
-                        const BoxConstraints(maxWidth: 327, maxHeight: 120),
+                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                    constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width,
+                        maxHeight: 120),
                     color: primaryColor,
                     //First Container
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text(
                               'How to use the app.',
@@ -119,16 +121,17 @@ class _HomeState extends State<Home> {
                   //Second Container
                   const SizedBox(height: 24),
                   Container(
+                    padding: const EdgeInsets.only(right: 15.0, left: 15.0),
                     decoration: BoxDecoration(
                         border: Border.all(color: hintTextColor), color: white),
                     constraints:
                         const BoxConstraints(maxHeight: 148, maxWidth: 327),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const Text(
                               'Contract Farmer.',

@@ -14,7 +14,6 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  int _selectedIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +71,4 @@ class _ProductScreenState extends State<ProductScreen> {
       //     .appBottomNavigationBar(changeIndex, _selectedIndex),
     );
   }
-
-  // void changeIndex(int index) => setState(() => _selectedIndex = index);
 }

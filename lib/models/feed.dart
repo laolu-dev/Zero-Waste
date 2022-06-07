@@ -6,11 +6,10 @@ class Feed {
   final String farmProduction;
   final String weightOfProduct;
   final String pictureOfProduct;
+  final String typeOfFarmer;
   final int numberOfLikes;
   final bool isOnline;
-
-  Feed(
-    this.numberOfLikes, {
+  Feed({
     required this.profileImage,
     required this.userName,
     required this.userLocation,
@@ -18,6 +17,8 @@ class Feed {
     required this.farmProduction,
     required this.weightOfProduct,
     required this.pictureOfProduct,
+    required this.typeOfFarmer,
+    required this.numberOfLikes,
     required this.isOnline,
   });
 }
