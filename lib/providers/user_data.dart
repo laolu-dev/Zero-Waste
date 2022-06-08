@@ -50,7 +50,7 @@ class UserAuth extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getProfile(File value) {
+  void getProfile(File? value) {
     _profileImage = value;
     notifyListeners();
   }

@@ -104,27 +104,33 @@ class _MyAccountState extends State<MyAccount> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          image != null
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(1000),
-                                  child: Image.file(
-                                    image!,
+                          GestureDetector(
+                            onTap: () {
+                              user.getProfile(image!);
+                            },
+                            child: image != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(1000),
+                                    child: Image.file(
+                                      image!,
+                                      width: 50,
+                                      height: 50,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : Container(
                                     width: 50,
                                     height: 50,
-                                    fit: BoxFit.cover,
+                                    decoration: BoxDecoration(
+                                        color: hintTextColor,
+                                        borderRadius:
+                                            BorderRadius.circular(70)),
+                                    child: const Icon(
+                                      Icons.add_a_photo,
+                                      color: primaryColor,
+                                    ),
                                   ),
-                                )
-                              : Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      color: hintTextColor,
-                                      borderRadius: BorderRadius.circular(70)),
-                                  child: const Icon(
-                                    Icons.add_a_photo,
-                                    color: primaryColor,
-                                  ),
-                                ),
+                          ),
                           const SizedBox(width: 25),
                           TextButton(
                             onPressed: () {

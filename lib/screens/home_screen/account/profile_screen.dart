@@ -33,11 +33,18 @@ class _ProfileAccountState extends State<ProfileAccount> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // GestureDetector(
-              //   child:
-              //       socialLoginContainer(child: Image.file(File(_image!.path))),
-              //   onTap: getImage,
-              // ),
+              GestureDetector(
+                onTap: () {},
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(1000),
+                  child: Image.file(
+                    user.profileImage!,
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               Text(user.name),
               const SizedBox(height: 2),
               Text(user.userType),
