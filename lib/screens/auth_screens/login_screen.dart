@@ -4,9 +4,15 @@ import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/authentication.dart';
 import 'package:zero_waste/providers/user_data.dart';
+import 'package:zero_waste/screens/auth_screens/signup_screen.dart';
+import 'package:zero_waste/screens/home_screen/home.dart';
+import 'package:zero_waste/screens/home_screen/home/user_types.dart';
 import '../../widgets/text_field_widget.dart';
+import '../forget_password_screens/forgot_password.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const id = 'LoginScreen';
+
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -75,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const BoxConstraints.expand(height: 15, width: 400),
                       child: GestureDetector(
                         onTap: () =>
-                            Navigator.pushNamed(context, '/ForgotPassword'),
+                            Navigator.pushNamed(context, ForgotPassword.id),
                         child:
                             Text("Forgot password?", style: forgotPasswordText),
                       ),
@@ -86,11 +92,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       constraints: const BoxConstraints(maxWidth: 400),
                       child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate() &&
-                              userLogin.password == _password.text) {
-                            //Nav to Home Page
-                            Navigator.pushNamed(context, '/Types');
-                          }
+                          // if (_formKey.currentState!.validate() &&
+                          //     userLogin.password == _password.text) {
+                          //Nav to Home Page
+                          Navigator.pushNamed(context, HomeScreen.id);
+                          // }
                         },
                         style: elevatedButtonStyleTwo,
                         child: const Text("Login"),
@@ -101,7 +107,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text("Don't have an Account? ", style: contentText),
                         GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, '/Signup'),
+                          onTap: () =>
+                              Navigator.pushNamed(context, SignUpScreen.id),
                           child: Text("Sign up", style: linkText),
                         )
                       ],

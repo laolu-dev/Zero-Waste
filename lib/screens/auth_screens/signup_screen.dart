@@ -4,9 +4,14 @@ import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/authentication.dart';
 import 'package:zero_waste/providers/user_data.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
+import 'package:zero_waste/screens/auth_screens/why_are_you_here_screen.dart';
+import 'package:zero_waste/screens/forget_password_screens/forgot_password.dart';
 import '../../widgets/text_field_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
+  static const id = 'SignUpScreen';
+
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
@@ -96,7 +101,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const BoxConstraints.expand(height: 15, width: 400),
                     child: GestureDetector(
                       onTap: () =>
-                          Navigator.pushNamed(context, '/ForgotPassword'),
+                          Navigator.pushNamed(context, ForgotPassword.id),
                       child:
                           Text("Forgot password?", style: forgotPasswordText),
                     ),
@@ -113,7 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           submitDetails.getAddress(_addressController.text);
                           submitDetails.getState(_stateController.text);
                           submitDetails.getPassword(_passwordController.text);
-                          Navigator.pushNamed(context, '/Reason');
+                          Navigator.pushNamed(context, WhyAreYouHere.id);
                         }
                       },
                       style: elevatedButtonStyleTwo,
@@ -125,9 +130,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       Text("Already have an account? ", style: contentText),
                       GestureDetector(
-                        onTap: () => Navigator.pushNamed(context, '/Login'),
+                        onTap: () =>
+                            Navigator.pushNamed(context, LoginScreen.id),
                         child: Text("Login", style: linkText),
-                      )
+                      ),
                     ],
                   ),
                   const SizedBox(height: 13),

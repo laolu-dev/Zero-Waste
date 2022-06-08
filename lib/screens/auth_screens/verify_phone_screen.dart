@@ -3,10 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/screens/auth_screens/validated_account_screen.dart';
 
 import '../../providers/user_data.dart';
 
 class VerifyPhoneScreen extends StatefulWidget {
+  static const id = 'VerifyPhoneScreen';
+
   const VerifyPhoneScreen({Key? key}) : super(key: key);
 
   @override
@@ -68,7 +71,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                   constraints: const BoxConstraints(maxWidth: 327),
                   child: ElevatedButton(
                     onPressed: () => Navigator.pushReplacementNamed(
-                        context, '/AccountValid'),
+                        context, AccountValidScreen.id),
                     style: elevatedButtonStyleTwo,
                     child: const Text("Proceed"),
                   ),

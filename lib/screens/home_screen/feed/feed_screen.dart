@@ -10,6 +10,7 @@ import '../../../widgets/chat_icon.dart';
 import '../../../widgets/notification_widget.dart';
 
 class FeedsPage extends StatelessWidget {
+  static const id = 'FeedsPage';
   const FeedsPage({Key? key}) : super(key: key);
 
   @override

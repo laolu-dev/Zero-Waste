@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste/screens/home_screen/home/user_types.dart';
 import '../../../constants/constant.dart';
+import '../../../nav/bottom_bar_nav.dart';
 import '../../../widgets/notification_widget.dart';
+import '../../../widgets/user_chat_builder.dart';
 
 class Connections extends StatefulWidget {
+  static const id = 'Connection';
   const Connections({Key? key}) : super(key: key);
 
   @override
@@ -42,6 +45,7 @@ class _ConnectionsState extends State<Connections> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: const BottomBarNavigator(cIndex: 0),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(24, 20, 24, 20),
           child: Column(
@@ -49,7 +53,7 @@ class _ConnectionsState extends State<Connections> {
             children: [
               SizedBox(
                 height: 39,
-                width: 367,
+                width: MediaQuery.of(context).size.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -57,27 +61,30 @@ class _ConnectionsState extends State<Connections> {
                         icon:
                             const Icon(Icons.arrow_back_ios_outlined, size: 20),
                         onPressed: () =>
-                            Navigator.pushNamed(context, '/Types')),
-                    TextField(
-                      cursorColor: Colors.green,
-                      decoration: InputDecoration(
-                        constraints: const BoxConstraints(maxWidth: 251),
-                        prefixIcon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.search, color: Colors.grey)),
-                        suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.mic_none,
-                                color: Colors.black)),
-                        hintText: 'Search for farmers',
-                        filled: true,
-                        fillColor: const Color(0xffE3FFF7),
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                        border: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xffE3FFF7)),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(22))),
+                            Navigator.pushNamed(context, UserCategories.id)),
+                    Expanded(
+                      child: TextField(
+                        cursorColor: Colors.green,
+                        decoration: InputDecoration(
+                          constraints: const BoxConstraints(maxWidth: 251),
+                          prefixIcon: IconButton(
+                              onPressed: () {},
+                              icon:
+                                  const Icon(Icons.search, color: Colors.grey)),
+                          suffixIcon: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.mic_none,
+                                  color: Colors.black)),
+                          hintText: 'Search for farmers',
+                          filled: true,
+                          fillColor: const Color(0xffE3FFF7),
+                          contentPadding:
+                              const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          border: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xffE3FFF7)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(22))),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 7),
@@ -89,11 +96,7 @@ class _ConnectionsState extends State<Connections> {
               Container(
                 constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height - 200),
-                child: ListView.builder(
-                  itemBuilder: (context, index) =>
-                      connectUser('Usman', 'Crop Farmer', 'location'),
-                  itemCount: 20,
-                ),
+                child: const UserChatBuilder(),
               ),
             ],
           ),

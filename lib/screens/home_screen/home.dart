@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zero_waste/constants/main_nav_screens.dart';
 import 'package:zero_waste/screens/home_screen/account/account_screen.dart';
 import 'package:zero_waste/screens/home_screen/products/product_screen.dart';
 import 'package:zero_waste/utils/appBottomNavigationBar/bottom_navigation_bar.dart';
@@ -6,6 +7,8 @@ import 'feed/feed_screen.dart';
 import 'home/home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const id = 'Home';
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -15,17 +18,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final List _children = [
-    const Home(),
-    const FeedsPage(),
-    const ProductScreen(),
-    const MyAccount(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _children[_currentIndex],
+      body: navigators[_currentIndex],
       // bottomNavigationBar: homeBottomBar(_currentIndex, context),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,

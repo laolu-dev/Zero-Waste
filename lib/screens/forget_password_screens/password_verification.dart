@@ -4,6 +4,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../constants/constant.dart';
 
 class PasswordVerification extends StatelessWidget {
+  static const id = 'PasswordVerification';
+
   const PasswordVerification({Key? key}) : super(key: key);
 
   @override

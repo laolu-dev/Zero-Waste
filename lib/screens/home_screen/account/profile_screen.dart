@@ -9,6 +9,8 @@ import '../../../models/user.dart';
 import '../../../providers/user_data.dart';
 
 class ProfileAccount extends StatefulWidget {
+  static const id = 'ProfileAccount';
+
   const ProfileAccount({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +18,7 @@ class ProfileAccount extends StatefulWidget {
 }
 
 class _ProfileAccountState extends State<ProfileAccount> {
-  late final XFile? _image;
+  XFile? _image;
   final ImagePicker _picker = ImagePicker();
 
   Future getImage() async {

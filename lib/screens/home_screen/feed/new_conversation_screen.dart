@@ -26,22 +26,25 @@ class NewConversationScreen extends StatelessWidget {
           ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: const [
-              FeedAppBar(
-                titleWidget: Text(
-                  'Feeds',
-                  style: TextStyle(
-                    fontFamily: 'Jost',
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 15.0),
+            child: Column(
+              children: const [
+                FeedAppBar(
+                  titleWidget: Text(
+                    'Feeds',
+                    style: TextStyle(
+                      fontFamily: 'Jost',
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black,
+                    ),
                   ),
+                  trailingWidget: NotificationWidget(),
                 ),
-                trailingWidget: NotificationWidget(),
-              ),
-              UserChatBuilder(),
-            ],
+                UserChatBuilder(),
+              ],
+            ),
           ),
         ),
       ),
