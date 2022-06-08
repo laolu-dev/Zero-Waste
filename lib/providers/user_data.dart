@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +10,7 @@ class UserAuth extends ChangeNotifier {
   String _state = '';
   String _password = '';
   String _userType = '';
+  File? _profileImage;
 
   String get name => _name;
   String get phoneNo => _phoneNo;
@@ -15,6 +18,7 @@ class UserAuth extends ChangeNotifier {
   String get state => _state;
   String get password => _password;
   String get userType => _userType;
+  File? get profileImage => _profileImage;
 
   void getName(String value) {
     _name = value;
@@ -43,6 +47,11 @@ class UserAuth extends ChangeNotifier {
 
   void getUsertype(String value) {
     _userType = value;
+    notifyListeners();
+  }
+
+  void getProfile(File value) {
+    _profileImage = value;
     notifyListeners();
   }
 }

@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (_formKey.currentState!.validate() &&
                               userLogin.password == _password.text) {
                             //Nav to Home Page
-                            Navigator.pushNamed(context, '/Types');
+                            Navigator.pushNamed(context, '/Home');
                           }
                         },
                         style: elevatedButtonStyleTwo,

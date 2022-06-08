@@ -74,7 +74,7 @@ class _UserCategoriesState extends State<UserCategories> {
                       children: [
                         IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/Home');
+                            Navigator.popAndPushNamed(context, '/Home');
                           },
                           icon: const Icon(Icons.arrow_back_ios, size: 20),
                         ),
@@ -96,10 +96,15 @@ class _UserCategoriesState extends State<UserCategories> {
                             contentPadding: const EdgeInsets.fromLTRB(
                                 20.0, 10.0, 20.0, 10.0),
                             border: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xffE3FFF7)),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(22))),
+                              borderSide: BorderSide.none,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(22)),
+                            ),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(22)),
+                            ),
                           ),
                         ),
                         const SizedBox(width: 7),
