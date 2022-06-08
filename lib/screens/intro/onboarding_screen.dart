@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 import '../../constants/constant.dart';
 import '../../providers/boarding.dart';
 import '../../widgets/boarding.dart';
 
 class OnBoarding extends StatelessWidget {
+  static const id = 'OnBoarding';
+
   OnBoarding({Key? key}) : super(key: key);
   final controller = PageController();
 
@@ -69,7 +72,7 @@ class OnBoarding extends StatelessWidget {
                   ? ElevatedButton(
                       onPressed: () {
                         appState.completeOnBoarding();
-                        Navigator.pushReplacementNamed(context, '/Login');
+                        Navigator.pushReplacementNamed(context, LoginScreen.id);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xff0A9D56),

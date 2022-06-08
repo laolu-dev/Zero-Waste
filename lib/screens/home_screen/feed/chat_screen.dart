@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/config/appTheme.dart';
+import 'package:zero_waste/nav/bottom_bar_nav.dart';
 import 'package:zero_waste/providers/chat_data.dart';
 import 'package:zero_waste/utils/appBottomNavigationBar/bottom_navigation_bar.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
@@ -8,6 +9,7 @@ import 'package:zero_waste/widgets/messge_stream.dart';
 import '../../../utils/user_preferences.dart';
 
 class ChatScreen extends StatefulWidget {
+  static const id = 'ChatScreen';
   final CustomerUserInfo? customerUserChatInfo;
   ChatScreen({
     Key? key,
@@ -22,7 +24,6 @@ class _ChatScreenState extends State<ChatScreen> {
   UserPreferences userPreferences = UserPreferences();
   final textFieldController = TextEditingController();
   String textValue = '';
-  int _selectedIndex = 1;
 
   @override
   void dispose() {
@@ -34,6 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Consumer<ChatData>(
       builder: (context, chatData, child) => Scaffold(
+        bottomNavigationBar: const BottomBarNavigator(cIndex: 1),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -43,7 +45,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   leading: GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: const Icon(Icons.arrow_back_ios,
-                        color: Colors.black, size: 25.0),
+                        color: Colors.black, size: 20.0),
                   ),
                   title: widget.customerUserChatInfo,
                   trailing: const Icon(Icons.search, size: 32),

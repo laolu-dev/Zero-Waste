@@ -7,7 +7,13 @@ import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/widgets/list_tile_widget.dart';
 
-class MyAccount extends StatefulWidget {
+// <<<<<<< feeds_section
+class MyAccount extends StatelessWidget {
+  static const id = 'MyAccount';
+
+// =======
+// class MyAccount extends StatefulWidget {
+// >>>>>>> main
   const MyAccount({Key? key}) : super(key: key);
 
   @override

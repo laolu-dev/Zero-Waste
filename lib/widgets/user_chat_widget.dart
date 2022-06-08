@@ -18,21 +18,27 @@ class UserChatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(child: customerUserInfo),
-        ElevatedButton(
-          style: ThemeHelper().buttonStyle(40.0, 30.0),
-          onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ChatScreen(
-                    customerUserChatInfo: customerUserChatInfo,
-                  ))),
-          child: const Text(
-            'Chats',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: SizedBox(
+        child: Row(
+          children: [
+            Expanded(child: customerUserInfo),
+            ElevatedButton(
+              style: ThemeHelper().buttonStyle(40.0, 10.0),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ChatScreen(
+                        customerUserChatInfo: customerUserChatInfo,
+                      ))),
+              child: const Text(
+                'Chats',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:zero_waste/screens/intro/onboarding_screen.dart';
 import '../../constants/constant.dart';
 
 class SplashScreen extends StatefulWidget {
+  static const id = '/';
+
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 4),
-      () => Navigator.pushReplacementNamed(context, '/OnBoarding'),
+      () => Navigator.pushReplacementNamed(context, OnBoarding.id),
     );
   }
 

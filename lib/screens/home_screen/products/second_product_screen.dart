@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/nav/bottom_bar_nav.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
 import 'package:zero_waste/widgets/product_widget.dart';
 import '../../../config/appTheme.dart';
 import '../../../widgets/Feed_app_bar_widget.dart';
+import '../../../widgets/image_viewer_widget.dart';
 import '../../../widgets/notification_widget.dart';
 import '../feed/chat_screen.dart';
 
@@ -35,9 +37,9 @@ class SecondProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const BottomBarNavigator(cIndex: 2),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const FeedAppBar(
             titleWidget: Text(
@@ -83,35 +85,43 @@ class SecondProductScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 30.0),
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  productName,
-                  style: const TextStyle(
-                      fontFamily: 'Jost',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black),
+          const SizedBox(height: 10.0),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: SizedBox(
+                height: 40.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      productName,
+                      style: const TextStyle(
+                          fontFamily: 'Jost',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      productWeight,
+                      style: const TextStyle(
+                        fontFamily: 'Jost',
+                        fontWeight: FontWeight.w900,
+                        fontSize: 14.0,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Text(
+                      'Harvest: $userLocation',
+                      style: const TextStyle(
+                          fontFamily: 'Jost',
+                          fontSize: 14.0,
+                          color: Colors.black),
+                    ),
+                  ],
                 ),
-                Text(
-                  productWeight,
-                  style: const TextStyle(
-                    fontFamily: 'Jost',
-                    fontWeight: FontWeight.w900,
-                    fontSize: 14.0,
-                    color: Colors.green,
-                  ),
-                ),
-                Text(
-                  'Harvest: $userLocation',
-                  style: const TextStyle(
-                      fontFamily: 'Jost', fontSize: 14.0, color: Colors.black),
-                ),
-              ],
+              ),
             ),
           ),
           ImageViewerWidget(
@@ -123,23 +133,24 @@ class SecondProductScreen extends StatelessWidget {
               Expanded(
                 child: ImageViewerWidget(
                   productImage: productImage,
-                  height: 140.0,
+                  height: 120.0,
                 ),
               ),
               Expanded(
                 child: ImageViewerWidget(
                   productImage: productImage,
-                  height: 140.0,
+                  height: 120.0,
                 ),
               ),
               Expanded(
                 child: ImageViewerWidget(
                   productImage: productImage,
-                  height: 140.0,
+                  height: 120.0,
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 10.0),
           const Padding(
             padding: EdgeInsets.only(left: 10.0),
             child: Text(
@@ -148,6 +159,7 @@ class SecondProductScreen extends StatelessWidget {
                   fontFamily: 'Jost', fontSize: 14.0, color: Colors.black),
             ),
           ),
+          const SizedBox(height: 10.0),
           ProductWidget(
             image: userProfilePicture!,
             title: userName,
@@ -207,46 +219,6 @@ class SecondProductScreen extends StatelessWidget {
           ),
           // const Expanded(child: ProductBuilder()),
         ],
-      ),
-      // bottomNavigationBar: AppBottomNavigationBar()
-      //     .appBottomNavigationBar(changeIndex, _selectedIndex),
-    );
-  }
-}
-
-class ImageViewerWidget extends StatelessWidget {
-  final String productImage;
-  final double height;
-  const ImageViewerWidget({
-    Key? key,
-    required this.productImage,
-    required this.height,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-      // padding: const EdgeInsets.only(right: 20.0),
-      height: height,
-      decoration: BoxDecoration(
-        border: Border.all(color: primaryColor),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20.0,
-            offset: const Offset(0.0, 0.5),
-          ),
-        ],
-        borderRadius: BorderRadius.circular(20.0),
-        // color: primaryColor,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
-        child: Image.network(
-          productImage,
-          fit: BoxFit.fill,
-        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste/config/appTheme.dart';
+import 'package:zero_waste/nav/bottom_bar_nav.dart';
 import 'package:zero_waste/utils/appBottomNavigationBar/bottom_navigation_bar.dart';
 import 'package:zero_waste/widgets/notification_widget.dart';
 import 'package:zero_waste/widgets/product_builder.dart';
@@ -7,6 +8,7 @@ import 'package:zero_waste/widgets/product_builder.dart';
 import '../../../widgets/Feed_app_bar_widget.dart';
 
 class ProductScreen extends StatefulWidget {
+  static const id = 'ProductScreen';
   const ProductScreen({Key? key}) : super(key: key);
 
   @override
@@ -17,6 +19,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // bottomNavigationBar: const BottomBarNavigator(cIndex: 0),
       body: SafeArea(
         child: Column(
           children: [

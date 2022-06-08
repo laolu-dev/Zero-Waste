@@ -6,6 +6,8 @@ import '../../../constants/constant.dart';
 import '../../../providers/user_data.dart';
 
 class ProfileAccount extends StatefulWidget {
+  static const id = 'ProfileAccount';
+
   const ProfileAccount({Key? key}) : super(key: key);
 
   @override
@@ -13,6 +15,20 @@ class ProfileAccount extends StatefulWidget {
 }
 
 class _ProfileAccountState extends State<ProfileAccount> {
+// <<<<<<< feeds_section
+//   XFile? _image;
+//   final ImagePicker _picker = ImagePicker();
+
+//   Future getImage() async {
+//     XFile? image;
+//     image = await _picker.pickImage(source: ImageSource.gallery);
+//     setState(() {
+//       _image = image;
+//     });
+//   }
+
+// =======
+// >>>>>>> main
   Container userInfo(BuildContext context) {
     final user = Provider.of<UserAuth>(context);
     return Container(

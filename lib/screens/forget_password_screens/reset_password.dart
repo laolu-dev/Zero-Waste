@@ -6,6 +6,8 @@ import '../../constants/constant.dart';
 import '../../widgets/text_field_widget.dart';
 
 class ResetPassword extends StatefulWidget {
+  static const id = 'ResetPassword';
+
   const ResetPassword({Key? key}) : super(key: key);
 
   @override

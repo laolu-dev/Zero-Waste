@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zero_waste/constants/constant.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 
 class AccountValidScreen extends StatelessWidget {
+  static const id = 'AccountValidScreen';
+
   const AccountValidScreen({Key? key}) : super(key: key);
 
   @override
@@ -22,7 +25,7 @@ class AccountValidScreen extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 327),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/Login');
+                      Navigator.pushReplacementNamed(context, LoginScreen.id);
                     },
                     style: elevatedButtonStyleTwo,
                     child: const Text("Proceed"),

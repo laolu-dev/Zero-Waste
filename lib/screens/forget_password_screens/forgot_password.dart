@@ -4,6 +4,8 @@ import 'package:zero_waste/widgets/text_field_widget.dart';
 import '../../constants/constant.dart';
 
 class ForgotPassword extends StatelessWidget {
+  static const id = 'ForgotPassword';
+
   const ForgotPassword({Key? key}) : super(key: key);
 
   @override

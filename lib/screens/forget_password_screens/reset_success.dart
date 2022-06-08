@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../constants/constant.dart';
 
 class ResetSuccess extends StatelessWidget {
+  static const id = 'ResetSuccess';
+
   const ResetSuccess({Key? key}) : super(key: key);
 
   @override
