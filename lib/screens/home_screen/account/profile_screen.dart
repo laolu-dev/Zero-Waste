@@ -1,11 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/widgets/profile_widget.dart';
-import 'package:image_picker/image_picker.dart';
 import '../../../constants/constant.dart';
-import '../../../models/user.dart';
 import '../../../providers/user_data.dart';
 
 class ProfileAccount extends StatefulWidget {
@@ -18,17 +15,20 @@ class ProfileAccount extends StatefulWidget {
 }
 
 class _ProfileAccountState extends State<ProfileAccount> {
-  XFile? _image;
-  final ImagePicker _picker = ImagePicker();
+// <<<<<<< feeds_section
+//   XFile? _image;
+//   final ImagePicker _picker = ImagePicker();
 
-  Future getImage() async {
-    XFile? image;
-    image = await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      _image = image;
-    });
-  }
+//   Future getImage() async {
+//     XFile? image;
+//     image = await _picker.pickImage(source: ImageSource.gallery);
+//     setState(() {
+//       _image = image;
+//     });
+//   }
 
+// =======
+// >>>>>>> main
   Container userInfo(BuildContext context) {
     final user = Provider.of<UserAuth>(context);
     return Container(
@@ -50,9 +50,16 @@ class _ProfileAccountState extends State<ProfileAccount> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
-                child:
-                    socialLoginContainer(child: Image.file(File(_image!.path))),
-                onTap: getImage,
+                onTap: () {},
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(1000),
+                  child: Image.file(
+                    user.profileImage!,
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               Text(user.name),
               const SizedBox(height: 2),

@@ -51,33 +51,31 @@ class FeedsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10.0),
                 Container(
-                  margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.green,
-                    ),
-                    borderRadius: BorderRadius.circular(100.0),
-                    color: textFieldColor,
-                  ),
+                  constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 49),
                   child: TextField(
                     cursorColor: Colors.green,
                     decoration: InputDecoration(
-                      icon: const Icon(
-                        Icons.search,
-                        color: Colors.green,
-                      ),
+                      prefixIcon: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.search, color: Colors.grey)),
+                      suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon:
+                              const Icon(Icons.mic_none, color: Colors.black)),
                       hintText: 'Search for farmers',
-                      fillColor: textFieldColor,
-                      labelStyle: const TextStyle(
-                        color: Colors.grey,
-                      ),
+                      filled: true,
+                      fillColor: const Color(0xffE3FFF7),
                       contentPadding:
                           const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                      focusedBorder: ThemeHelper().textFieldBorder,
-                      errorBorder: ThemeHelper().textFieldBorder,
-                      enabledBorder: ThemeHelper().textFieldBorder,
-                      disabledBorder: ThemeHelper().textFieldBorder,
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(Radius.circular(22)),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(Radius.circular(22)),
+                      ),
                     ),
                   ),
                 ),
