@@ -45,6 +45,8 @@ dependencies:
 
   pin_code_fields: ^7.4.0
   image_picker: ^0.8.5+3
+  firebase_auth: ^3.3.19
+  firebase_core: ^1.17.1
 
 
 dev_dependencies:

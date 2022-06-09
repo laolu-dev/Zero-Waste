@@ -53,6 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       showIcon: false,
                       obscureText: false,
                       phoneField: false,
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Username cannot not be empty';
+                        }
+                        return null;
+                      },
                     ),
                     const SizedBox(height: 16),
                     //Password

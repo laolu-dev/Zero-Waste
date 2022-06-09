@@ -45,7 +45,3 @@ class MarketViewBuilder extends StatelessWidget {
     );
   }
 }
-
-// UserAvatar(
-// userProfilePicture: productData.products[index].productImage,
-// ),

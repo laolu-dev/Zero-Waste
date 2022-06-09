@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "543440423221",
+    "firebase_url": "https://zero-waste-87e69-default-rtdb.firebaseio.com",
+    "project_id": "zero-waste-87e69",
+    "storage_bucket": "zero-waste-87e69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543440423221:android:3d332841732e4b23ec247c",
+        "android_client_info": {
+          "package_name": "com.example.zero_waste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543440423221-qdk5i2phn1esvc1t77pak5v8on5lj34n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8q4m3peSK6wIOaInX3DYISv-VGfnytZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543440423221-qdk5i2phn1esvc1t77pak5v8on5lj34n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

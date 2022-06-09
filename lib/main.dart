@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/providers/chat_data.dart';
@@ -5,7 +6,6 @@ import 'package:zero_waste/providers/feed_data.dart';
 import 'package:zero_waste/providers/market_data.dart';
 import 'package:zero_waste/providers/product_data.dart';
 import 'package:zero_waste/providers/user_data.dart';
-import 'package:zero_waste/screens/home_screen/feed/chat_screen.dart';
 import 'package:zero_waste/screens/home_screen/feed/feed_screen.dart';
 import 'package:zero_waste/screens/home_screen/feed/new_conversation_screen.dart';
 import 'package:zero_waste/screens/home_screen/home/home.dart';
@@ -21,7 +21,6 @@ import 'package:zero_waste/screens/forget_password_screens/password_verification
 import 'package:zero_waste/screens/forget_password_screens/reset_password.dart';
 import 'package:zero_waste/screens/forget_password_screens/reset_success.dart';
 import 'package:zero_waste/screens/home_screen/home/connections.dart';
-import 'package:zero_waste/screens/home_screen/home/home_screen.dart';
 import 'package:zero_waste/screens/home_screen/home/user_types.dart';
 import 'package:zero_waste/screens/home_screen/products/product_screen.dart';
 import 'package:zero_waste/screens/intro/splash_screen.dart';
@@ -29,7 +28,9 @@ import 'package:zero_waste/screens/intro/onboarding_screen.dart';
 import 'providers/boarding.dart';
 import 'providers/authentication.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [

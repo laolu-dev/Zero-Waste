@@ -7,6 +7,9 @@ import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/screens/home_screen/account/profile_screen.dart';
 
+import '../../auth_screens/login_screen.dart';
+import '../home/home.dart';
+
 class MyAccount extends StatefulWidget {
   static const id = 'MyAccount';
 
@@ -109,7 +112,8 @@ class _MyAccountState extends State<MyAccount> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
-                        onPressed: () => Navigator.pushNamed(context, '/Home'),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, HomeScreen.id),
                         icon: const Icon(Icons.arrow_back_ios,
                             color: headColor, size: 20),
                       ),
@@ -219,7 +223,8 @@ class _MyAccountState extends State<MyAccount> {
                   height: 52,
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () =>
+                        Navigator.pushReplacementNamed(context, LoginScreen.id),
                     style: elevatedButtonStyleTwo,
                     child: const Text("Sign Out"),
                   ),
