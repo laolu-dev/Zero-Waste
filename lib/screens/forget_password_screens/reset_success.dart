@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
 import '../../constants/constant.dart';
 
 class ResetSuccess extends StatelessWidget {
@@ -22,7 +23,7 @@ class ResetSuccess extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 400),
                 child: ElevatedButton(
                   onPressed: () =>
-                      Navigator.pushReplacementNamed(context, '/Login'),
+                      Navigator.pushReplacementNamed(context, LoginScreen.id),
                   style: elevatedButtonStyleTwo,
                   child: const Text("Login"),
                 ),

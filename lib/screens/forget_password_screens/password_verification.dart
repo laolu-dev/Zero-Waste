@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:zero_waste/screens/forget_password_screens/reset_password.dart';
 import '../../constants/constant.dart';
 
-class PasswordVerification extends StatelessWidget {
+class PasswordVerification extends StatefulWidget {
   static const id = 'PasswordVerification';
 
   const PasswordVerification({Key? key}) : super(key: key);
+
+  @override
+  State<PasswordVerification> createState() => _PasswordVerificationState();
+}
+
+class _PasswordVerificationState extends State<PasswordVerification> {
+  final TextEditingController _codeController = TextEditingController();
+
+  @override
+  void dispose() {
+    _codeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +43,7 @@ class PasswordVerification extends StatelessWidget {
               ),
               const SizedBox(height: 96),
               PinCodeTextField(
+                controller: _codeController,
                 appContext: context,
                 length: 4,
                 onChanged: (value) {},
@@ -54,7 +69,7 @@ class PasswordVerification extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 400),
                 child: ElevatedButton(
                   onPressed: () =>
-                      Navigator.pushReplacementNamed(context, '/ResetPassword'),
+                      Navigator.pushReplacementNamed(context, ResetPassword.id),
                   style: elevatedButtonStyleTwo,
                   child: const Text("Proceed"),
                 ),

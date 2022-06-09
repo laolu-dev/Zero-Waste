@@ -27,6 +27,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    _passwordController.dispose();
+    _nameController.dispose();
+    _stateController.dispose();
+    _phoneController.dispose();
+    _addressController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final submitDetails = Provider.of<UserAuth>(context);
     return Scaffold(

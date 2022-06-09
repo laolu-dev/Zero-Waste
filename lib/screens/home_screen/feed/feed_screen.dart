@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/config/appTheme.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:zero_waste/widgets/feed_widget.dart';
 import '../../../providers/feed_data.dart';
 import '../../../widgets/Feed_app_bar_widget.dart';
 import '../../../widgets/add_icon.dart';
 import '../../../widgets/chat_icon.dart';
 import '../../../widgets/notification_widget.dart';
+import '../home/home.dart';
 
 class FeedsPage extends StatelessWidget {
   static const id = 'FeedsPage';
@@ -15,7 +14,6 @@ class FeedsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color textFieldColor = HexColor('#E3FFF7');
     return Consumer<FeedData>(
       builder: (context, feedData, child) => SafeArea(
         child: Scaffold(
@@ -47,6 +45,7 @@ class FeedsPage extends StatelessWidget {
                       ),
                     ),
                     trailingWidget: NotificationWidget(),
+                    location: HomeScreen.id,
                   ),
                 ),
                 const SizedBox(height: 10.0),

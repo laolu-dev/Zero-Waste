@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/providers/authentication.dart';
+import 'package:zero_waste/screens/forget_password_screens/reset_success.dart';
 import '../../constants/constant.dart';
 import '../../widgets/text_field_widget.dart';
 
@@ -21,8 +22,15 @@ class _ResetPasswordState extends State<ResetPassword> {
 
   void _trySubmit() {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, '/ResetSuccess');
+      Navigator.pushNamed(context, ResetSuccess.id);
     }
+  }
+
+  @override
+  void dispose() {
+    _password.dispose();
+    _confirmPassword.dispose();
+    super.dispose();
   }
 
   @override

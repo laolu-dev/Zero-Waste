@@ -22,9 +22,8 @@ class AddIcon extends StatelessWidget {
                     heroTag: null,
                     backgroundColor: Colors.grey,
                     onPressed: isActive
-                        ? () => Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                const NewConversationScreen()))
+                        ? () => Navigator.pushNamed(
+                            context, NewConversationScreen.id)
                         : null,
                     child: const Icon(Icons.add, size: 45),
                   ),
@@ -55,10 +54,8 @@ class AddIcon extends StatelessWidget {
                   FloatingActionButton(
                     heroTag: null,
                     backgroundColor: Colors.green,
-                    onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const NewConversationScreen())),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, NewConversationScreen.id),
                     child: const Icon(Icons.add, size: 45),
                   ),
                 ],

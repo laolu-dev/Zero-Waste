@@ -31,7 +31,9 @@ class UserAuth extends ChangeNotifier {
   }
 
   void getAddress(String value) {
-    _address = value;
+    List location = value.trim().split(' ');
+    final address = location[location.length - 1];
+    _address = address;
     notifyListeners();
   }
 
@@ -50,7 +52,7 @@ class UserAuth extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getProfile(File? value) {
+  void getProfile(File value) {
     _profileImage = value;
     notifyListeners();
   }

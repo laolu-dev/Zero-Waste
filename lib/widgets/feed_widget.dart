@@ -11,7 +11,7 @@ class FeedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<FeedData>(
       builder: (context, feedData, child) => SizedBox(
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height - 240,
         child: ListView.builder(
           itemBuilder: (context, index) {
             final feed = feedData.feeds[index];

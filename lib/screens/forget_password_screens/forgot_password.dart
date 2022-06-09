@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:zero_waste/screens/auth_screens/login_screen.dart';
+import 'package:zero_waste/screens/forget_password_screens/password_verification.dart';
 import 'package:zero_waste/widgets/text_field_widget.dart';
 import '../../constants/constant.dart';
 
-class ForgotPassword extends StatelessWidget {
+class ForgotPassword extends StatefulWidget {
   static const id = 'ForgotPassword';
-
   const ForgotPassword({Key? key}) : super(key: key);
+
+  @override
+  State<ForgotPassword> createState() => _ForgotPasswordState();
+}
+
+class _ForgotPasswordState extends State<ForgotPassword> {
+  final TextEditingController _phone = TextEditingController();
+
+  @override
+  void dispose() {
+    _phone.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +43,8 @@ class ForgotPassword extends StatelessWidget {
                   softWrap: true,
                 ),
                 const SizedBox(height: 32),
-                const TextFields(
+                TextFields(
+                    controller: _phone,
                     obscureText: false,
                     label: 'Phone Number',
                     showIcon: false,
@@ -40,7 +55,7 @@ class ForgotPassword extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: ElevatedButton(
                     onPressed: () => Navigator.pushReplacementNamed(
-                        context, '/PasswordVerification'),
+                        context, PasswordVerification.id),
                     style: elevatedButtonStyleTwo,
                     child: const Text("Reset"),
                   ),
@@ -50,7 +65,7 @@ class ForgotPassword extends StatelessWidget {
                   children: [
                     Text("Already have an account? ", style: contentText),
                     GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, '/Login'),
+                      onTap: () => Navigator.pushNamed(context, LoginScreen.id),
                       child: Text("Login", style: linkText),
                     )
                   ],
@@ -60,12 +75,12 @@ class ForgotPassword extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                           child: Divider(thickness: 1, color: dividerColor)),
                       const SizedBox(width: 15),
                       Text("OR", style: orTextStyle),
                       const SizedBox(width: 15),
-                      Expanded(
+                      const Expanded(
                           child: Divider(thickness: 1, color: dividerColor)),
                     ],
                   ),
@@ -76,16 +91,28 @@ class ForgotPassword extends StatelessWidget {
                 Wrap(
                   alignment: WrapAlignment.center,
                   children: [
-                    socialLoginContainer(
-                      child: SvgPicture.asset(fbSvg),
+                    //Facebook Login
+                    GestureDetector(
+                      onTap: () {},
+                      child: socialLoginContainer(
+                        child: SvgPicture.asset(fbSvg),
+                      ),
                     ),
                     const SizedBox(width: 12),
-                    socialLoginContainer(
-                      child: SvgPicture.asset(googleSvg),
+                    //Google Login
+                    GestureDetector(
+                      onTap: () {},
+                      child: socialLoginContainer(
+                        child: SvgPicture.asset(googleSvg),
+                      ),
                     ),
                     const SizedBox(width: 12),
-                    socialLoginContainer(
-                      child: SvgPicture.asset(linklnSvg),
+                    //LinkedIn Login
+                    GestureDetector(
+                      onTap: () {},
+                      child: socialLoginContainer(
+                        child: SvgPicture.asset(linklnSvg),
+                      ),
                     ),
                   ],
                 )

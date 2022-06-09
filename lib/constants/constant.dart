@@ -37,7 +37,7 @@ const blend = Color.fromRGBO(7, 110, 82, 0.8);
 
 //TextStyles
 TextStyle headerText = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: headColor,
     fontSize: 24,
     fontWeight: FontWeight.w700,
@@ -45,7 +45,7 @@ TextStyle headerText = GoogleFonts.jost(
 );
 
 TextStyle contentText = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: contentOneColor,
     fontSize: 16,
     fontWeight: FontWeight.w400,
@@ -53,7 +53,7 @@ TextStyle contentText = GoogleFonts.jost(
 );
 
 TextStyle contentTextTwo = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: contentThreeColor,
     fontSize: 16,
     fontWeight: FontWeight.w400,
@@ -61,7 +61,7 @@ TextStyle contentTextTwo = GoogleFonts.jost(
 );
 
 TextStyle linkText = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: primaryColor,
     fontSize: 16,
     fontWeight: FontWeight.w700,
@@ -69,7 +69,7 @@ TextStyle linkText = GoogleFonts.jost(
 );
 
 TextStyle orTextStyle = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: orColor,
     fontSize: 16,
     fontWeight: FontWeight.w600,
@@ -85,7 +85,7 @@ TextStyle userTypeStyle = GoogleFonts.jost(
 );
 
 TextStyle forgotPasswordText = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: primaryColor,
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -93,7 +93,7 @@ TextStyle forgotPasswordText = GoogleFonts.jost(
 );
 
 TextStyle labelTextStyle = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: hintTextColor,
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -101,7 +101,7 @@ TextStyle labelTextStyle = GoogleFonts.jost(
 );
 
 TextStyle tileTextStyle = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: headColor,
     fontSize: 14,
     fontWeight: FontWeight.w500,
@@ -109,7 +109,7 @@ TextStyle tileTextStyle = GoogleFonts.jost(
 );
 
 TextStyle buttonTextStyleOne = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: white,
     fontSize: 16,
     fontWeight: FontWeight.w400,
@@ -117,7 +117,7 @@ TextStyle buttonTextStyleOne = GoogleFonts.jost(
 );
 
 TextStyle buttonTextStyleTwo = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: white,
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -125,7 +125,7 @@ TextStyle buttonTextStyleTwo = GoogleFonts.jost(
 );
 
 TextStyle haveAccTextStyle() {
-  return TextStyle(
+  return const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: headColor,
@@ -133,7 +133,7 @@ TextStyle haveAccTextStyle() {
 }
 
 TextStyle buttonText = GoogleFonts.jost(
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: headColor,
     fontSize: 16,
     fontWeight: FontWeight.w400,

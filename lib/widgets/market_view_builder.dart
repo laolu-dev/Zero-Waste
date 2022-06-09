@@ -24,9 +24,7 @@ class MarketViewBuilder extends StatelessWidget {
             return FeedAppBar(
               leading: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
-                child: UserAvatar(
-                  userProfilePicture: productData.products[index].productImage,
-                ),
+                child: const UserAvatar(defineImageBorder: 1000),
               ),
               titleWidget: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +34,7 @@ class MarketViewBuilder extends StatelessWidget {
                   Text(data.location),
                 ],
               ),
+              location: null,
               trailingWidget: Column(
                 children: [Text(data.date), Text(data.weight)],
               ),
@@ -46,3 +45,7 @@ class MarketViewBuilder extends StatelessWidget {
     );
   }
 }
+
+// UserAvatar(
+// userProfilePicture: productData.products[index].productImage,
+// ),

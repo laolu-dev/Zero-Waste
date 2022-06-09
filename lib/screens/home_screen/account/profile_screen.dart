@@ -1,6 +1,7 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/providers/product_data.dart';
+import 'package:zero_waste/screens/home_screen/account/account_screen.dart';
 import 'package:zero_waste/widgets/profile_widget.dart';
 import '../../../constants/constant.dart';
 import '../../../providers/user_data.dart';
@@ -15,20 +16,6 @@ class ProfileAccount extends StatefulWidget {
 }
 
 class _ProfileAccountState extends State<ProfileAccount> {
-// <<<<<<< feeds_section
-//   XFile? _image;
-//   final ImagePicker _picker = ImagePicker();
-
-//   Future getImage() async {
-//     XFile? image;
-//     image = await _picker.pickImage(source: ImageSource.gallery);
-//     setState(() {
-//       _image = image;
-//     });
-//   }
-
-// =======
-// >>>>>>> main
   Container userInfo(BuildContext context) {
     final user = Provider.of<UserAuth>(context);
     return Container(
@@ -49,18 +36,27 @@ class _ProfileAccountState extends State<ProfileAccount> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {},
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(1000),
-                  child: Image.file(
-                    user.profileImage!,
-                    width: 50,
-                    height: 50,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              user.profileImage != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(1000),
+                      child: Image.file(
+                        user.profileImage!,
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: hintTextColor,
+                          borderRadius: BorderRadius.circular(70)),
+                      child: const Icon(
+                        Icons.add_a_photo,
+                        color: primaryColor,
+                      ),
+                    ),
               Text(user.name),
               const SizedBox(height: 2),
               Text(user.userType),
@@ -70,10 +66,10 @@ class _ProfileAccountState extends State<ProfileAccount> {
               Wrap(
                 spacing: 17,
                 children: [
-                  userPopularity(5, 'Followers'),
-                  userPopularity(10, 'Following'),
-                  userPopularity(15, 'Posts'),
-                  userPopularity(20, 'Comments'),
+                  userPopularity('18k', 'Followers'),
+                  userPopularity('11k', 'Following'),
+                  userPopularity('180k', 'Posts'),
+                  userPopularity('180.5k', 'Comments'),
                 ],
               ),
               const SizedBox(height: 30),
@@ -102,9 +98,9 @@ class _ProfileAccountState extends State<ProfileAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: ConstrainedBox(
               constraints:
                   BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
@@ -117,9 +113,9 @@ class _ProfileAccountState extends State<ProfileAccount> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/MyAccount');
+                            Navigator.popAndPushNamed(context, MyAccount.id);
                           },
-                          icon: Icon(Icons.navigate_before)),
+                          icon: const Icon(Icons.arrow_back_ios)),
                       Text(
                         'Profile',
                         style: headerText,
@@ -139,26 +135,26 @@ class _ProfileAccountState extends State<ProfileAccount> {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height / 2,
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      itemCount: 10,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 24,
-                        crossAxisSpacing: 18,
+                  Consumer<ProductData>(
+                    builder: (context, userPosts, child) => SizedBox(
+                      height: MediaQuery.of(context).size.height - 450,
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        itemCount: userPosts.products.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 24,
+                          crossAxisSpacing: 18,
+                        ),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                                userPosts.products[index].productImage),
+                          );
+                        },
                       ),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          alignment: Alignment.center,
-                          child: Text('Guyy'),
-                          decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(15)),
-                        );
-                      },
                     ),
                   )
                 ],

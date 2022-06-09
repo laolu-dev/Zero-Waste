@@ -5,15 +5,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
 import 'package:zero_waste/providers/user_data.dart';
-import 'package:zero_waste/widgets/list_tile_widget.dart';
+import 'package:zero_waste/screens/home_screen/account/profile_screen.dart';
 
-// <<<<<<< feeds_section
-class MyAccount extends StatelessWidget {
+class MyAccount extends StatefulWidget {
   static const id = 'MyAccount';
 
-// =======
-// class MyAccount extends StatefulWidget {
-// >>>>>>> main
   const MyAccount({Key? key}) : super(key: key);
 
   @override
@@ -74,6 +70,26 @@ class _MyAccountState extends State<MyAccount> {
     }
   }
 
+  ListTile settings(
+      {required String tileText,
+      required IconData tileIcon,
+      required String? routeId}) {
+    return ListTile(
+      onTap: () => Navigator.pushNamed(context, routeId!),
+      title: Text(tileText, style: tileTextStyle),
+      leading: Icon(tileIcon),
+      trailing: const Icon(Icons.navigate_next, color: headColor),
+      tileColor: white,
+      iconColor: primaryColor,
+      shape: const RoundedRectangleBorder(
+        side: BorderSide(color: hintTextColor),
+        borderRadius: BorderRadius.all(
+          Radius.circular(12),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserAuth>(context);
@@ -110,33 +126,27 @@ class _MyAccountState extends State<MyAccount> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              user.getProfile(image!);
-                            },
-                            child: image != null
-                                ? ClipRRect(
-                                    borderRadius: BorderRadius.circular(1000),
-                                    child: Image.file(
-                                      image!,
-                                      width: 50,
-                                      height: 50,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                : Container(
+                          image != null
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(1000),
+                                  child: Image.file(
+                                    image!,
                                     width: 50,
                                     height: 50,
-                                    decoration: BoxDecoration(
-                                        color: hintTextColor,
-                                        borderRadius:
-                                            BorderRadius.circular(70)),
-                                    child: const Icon(
-                                      Icons.add_a_photo,
-                                      color: primaryColor,
-                                    ),
+                                    fit: BoxFit.cover,
                                   ),
-                          ),
+                                )
+                              : Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      color: hintTextColor,
+                                      borderRadius: BorderRadius.circular(70)),
+                                  child: const Icon(
+                                    Icons.add_a_photo,
+                                    color: primaryColor,
+                                  ),
+                                ),
                           const SizedBox(width: 25),
                           TextButton(
                             onPressed: () {
@@ -172,36 +182,36 @@ class _MyAccountState extends State<MyAccount> {
                   ),
                 ),
                 Column(
-                  children: const [
-                    ProfileTile(
+                  children: [
+                    settings(
                       tileText: 'My Profile',
                       tileIcon: Icons.person_outline,
-                      routeName: 'ProfileAccount',
+                      routeId: ProfileAccount.id,
                     ),
-                    SizedBox(height: 16),
-                    ProfileTile(
+                    const SizedBox(height: 15),
+                    settings(
                       tileText: 'Invite Farmers',
-                      tileIcon: Icons.people_outline,
-                      routeName: '',
+                      tileIcon: Icons.person_add_outlined,
+                      routeId: null,
                     ),
-                    SizedBox(height: 16),
-                    ProfileTile(
+                    const SizedBox(height: 15),
+                    settings(
                       tileText: 'Upload Content',
                       tileIcon: Icons.cloud_upload_outlined,
-                      routeName: '',
+                      routeId: null,
                     ),
-                    SizedBox(height: 16),
-                    ProfileTile(
+                    const SizedBox(height: 15),
+                    settings(
                       tileText: 'Customer Support',
-                      tileIcon: Icons.headset_mic,
-                      routeName: '',
+                      tileIcon: Icons.headset_mic_outlined,
+                      routeId: null,
                     ),
-                    SizedBox(height: 16),
-                    ProfileTile(
+                    const SizedBox(height: 15),
+                    settings(
                       tileText: 'Settings',
                       tileIcon: Icons.settings,
-                      routeName: '',
-                    ),
+                      routeId: null,
+                    )
                   ],
                 ),
                 const SizedBox(height: 40),

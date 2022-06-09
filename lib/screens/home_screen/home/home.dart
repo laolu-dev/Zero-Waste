@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste/constants/main_nav_screens.dart';
-import 'package:zero_waste/screens/home_screen/account/account_screen.dart';
-import 'package:zero_waste/screens/home_screen/products/product_screen.dart';
-import 'package:zero_waste/utils/appBottomNavigationBar/bottom_navigation_bar.dart';
-import 'feed/feed_screen.dart';
-import 'home/home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const id = 'Home';
@@ -22,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigators[_currentIndex],
-      // bottomNavigationBar: homeBottomBar(_currentIndex, context),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,

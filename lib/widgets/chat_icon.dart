@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../screens/home_screen/feed/chat_screen.dart';
-
 class ChatIcon extends StatelessWidget {
   final bool isActive;
   const ChatIcon({

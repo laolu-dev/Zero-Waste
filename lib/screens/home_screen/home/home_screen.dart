@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/models/user.dart';
-import 'package:zero_waste/nav/bottom_bar_nav.dart';
-import 'package:zero_waste/providers/feed_data.dart';
-import 'package:zero_waste/providers/market_data.dart';
-import 'package:zero_waste/providers/product_data.dart';
 import 'package:zero_waste/providers/user_data.dart';
 import 'package:zero_waste/screens/home_screen/account/profile_screen.dart';
 import 'package:zero_waste/screens/home_screen/home/user_types.dart';
@@ -13,7 +8,6 @@ import 'package:zero_waste/widgets/Feed_app_bar_widget.dart';
 import 'package:zero_waste/widgets/market_view_builder.dart';
 import 'package:zero_waste/widgets/notification_widget.dart';
 import 'package:zero_waste/widgets/user_avatar.dart';
-import '../../../models/market_items.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -24,22 +18,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  // final List<MarketItems> _items = [
-  //   MarketItems(
-  //       cropType: 'Grains',
-  //       weight: '1Kg',
-  //       location: 'Lagos, Nigeria',
-  //       date: '17/22/2003'),
-  //   MarketItems(
-  //       cropType: 'Grains',
-  //       weight: '1Kg',
-  //       location: 'Lagos, Nigeria',
-  //       date: '17/22/2003'),
-  // ];
 
   @override
   Widget build(BuildContext context) {
-    final _user = Provider.of<UserAuth>(context);
+    final user = Provider.of<UserAuth>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -55,12 +37,12 @@ class _HomeState extends State<Home> {
                     leading: GestureDetector(
                       onTap: () =>
                           Navigator.pushNamed(context, ProfileAccount.id),
-                      child: const UserAvatar(
-                          userProfilePicture: 'assets/images/guy.png'),
+                      child: const UserAvatar(defineImageBorder: 1000),
                     ),
                     titleWidget:
-                        Text('Welcome, ${_user.name}', style: headerText),
+                        Text('Welcome, ${user.name}', style: headerText),
                     trailingWidget: const NotificationWidget(),
+                    location: null,
                   ),
                   const SizedBox(height: 29),
                   Container(
