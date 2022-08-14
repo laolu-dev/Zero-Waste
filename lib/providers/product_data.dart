@@ -30,7 +30,7 @@ class ProductData extends ChangeNotifier {
       userLocation: 'Lagos, Nigeria',
       harvestDate: 'May, 2022',
       productWeight: '1kg',
-      productRating: 3.5,
+      productRating: 4.0,
     ),
     Product(
       productImage:
@@ -39,7 +39,7 @@ class ProductData extends ChangeNotifier {
       userLocation: 'Lagos, Nigeria',
       harvestDate: 'May, 2022',
       productWeight: '1kg',
-      productRating: 4.5,
+      productRating: 4.7,
     ),
     Product(
       productImage:
@@ -48,7 +48,16 @@ class ProductData extends ChangeNotifier {
       userLocation: 'Lagos, Nigeria',
       harvestDate: 'May, 2022',
       productWeight: '1kg',
-      productRating: 4.3,
+      productRating: 4.0,
+    ),
+    Product(
+      productImage:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
+      productName: 'Grains',
+      userLocation: 'Lagos, Nigeria',
+      harvestDate: 'May, 2022',
+      productWeight: '1kg',
+      productRating: 4.7,
     ),
   ];
 

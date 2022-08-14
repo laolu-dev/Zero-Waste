@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/config/appTheme.dart';
-import 'package:zero_waste/screens/home_screen/feed/chat_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:zero_waste/config/app_theme.dart';
 import 'package:zero_waste/widgets/customer_user_info.dart';
+
+import '../views/home_screen/chat_screen.dart';
 
 class UserChatWidget extends StatelessWidget {
   final String userName;
@@ -19,21 +21,26 @@ class UserChatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: const EdgeInsets.only(bottom: 10.0, right: 20),
       child: SizedBox(
         child: Row(
           children: [
             Expanded(child: customerUserInfo),
             ElevatedButton(
               style: ThemeHelper().buttonStyle(40.0, 10.0),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
                   builder: (context) => ChatScreen(
-                        customerUserChatInfo: customerUserChatInfo,
-                      ))),
-              child: const Text(
+                    customerUserChatInfo: customerUserChatInfo,
+                  ),
+                ),
+              ),
+              child: Text(
                 'Chats',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: GoogleFonts.jost(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             )
           ],

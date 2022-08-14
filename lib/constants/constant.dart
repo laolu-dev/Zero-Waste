@@ -154,16 +154,3 @@ ButtonStyle elevatedButtonStyleTwo = ElevatedButton.styleFrom(
   primary: primaryColor,
   textStyle: buttonTextStyleTwo,
 );
-
-// Container Styles
-socialLoginContainer({required Widget child, Color? color}) {
-  return Container(
-    color: color,
-    width: 55,
-    height: 55,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(50),
-    ),
-    child: child,
-  );
-}

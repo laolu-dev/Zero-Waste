@@ -9,6 +9,7 @@ class Feed {
   final String typeOfFarmer;
   final int numberOfLikes;
   final bool isOnline;
+
   Feed({
     required this.profileImage,
     required this.userName,

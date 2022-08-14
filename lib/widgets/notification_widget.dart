@@ -1,35 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../res/res.dart';
+
 class NotificationWidget extends StatelessWidget {
-  const NotificationWidget({
-    Key? key,
-  }) : super(key: key);
+  const NotificationWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 38.0,
-      width: 38.0,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50.0),
-          border: Border.all(color: Colors.green)),
-      child: Center(
-        child: Stack(
-          children: const [
-            Icon(
-              Icons.notifications_outlined,
-              color: Colors.black,
-            ),
-            Positioned(
-              left: 16.0,
-              child: Icon(
-                Icons.brightness_1,
-                size: 9.0,
-                color: Colors.red,
-              ),
-            ),
-          ],
-        ),
+          borderRadius: BorderRadius.circular(38),
+          border: Border.all(color: Resources.color.primaryColor)),
+      child: IconButton(
+        onPressed: () {},
+        icon: Icon(Icons.notifications_none,
+            color: Resources.color.black, size: 30),
       ),
     );
   }

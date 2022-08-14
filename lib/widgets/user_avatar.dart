@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/providers/user_data.dart';
+import 'package:zero_waste/res/res.dart';
 
 class UserAvatar extends StatefulWidget {
   final int defineImageBorder;
@@ -30,11 +31,8 @@ class _UserAvatarState extends State<UserAvatar> {
               borderRadius: BorderRadius.circular(
                 widget.defineImageBorder.toDouble(),
               ),
-              child: const Icon(
-                Icons.account_circle,
-                color: Colors.grey,
-                size: 20,
-              ),
+              child: Icon(Icons.account_circle,
+                  color: Resources.color.primaryColor, size: 20),
             ),
     );
   }

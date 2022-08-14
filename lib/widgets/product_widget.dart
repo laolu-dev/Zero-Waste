@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ProductWidget extends StatelessWidget {
@@ -19,17 +20,15 @@ class ProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
-      padding: const EdgeInsets.only(right: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       height: 173,
       decoration: BoxDecoration(
         border: Border.all(color: HexColor('#0A9D56')),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20.0,
-            offset: const Offset(0.0, 0.5),
-          ),
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 20.0,
+              offset: const Offset(0.0, 0.5))
         ],
         borderRadius: BorderRadius.circular(20.0),
         color: HexColor('#E3FFF7'),
@@ -38,19 +37,12 @@ class ProductWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Image.network(
-                image,
-                height: 132.0,
-                width: 154.0,
-                fit: BoxFit.fill,
-              ),
-            ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Image.network(image,
+                height: 142.0, width: 138.0, fit: BoxFit.fill),
           ),
-          const SizedBox(width: 20.0),
+          const SizedBox(width: 15.0),
           Expanded(
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -60,25 +52,26 @@ class ProductWidget extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                        fontFamily: 'Jost',
+                    style: GoogleFonts.jost(
                         fontSize: 20.0,
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w600,
                         color: Colors.black),
                   ),
                   Text(
                     subtitle1,
-                    style: const TextStyle(
-                        fontFamily: 'Jost',
-                        fontSize: 14.0,
-                        color: Colors.black),
+                    style: GoogleFonts.jost(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
                   ),
                   Text(
                     subtitle2,
-                    style: const TextStyle(
-                        fontFamily: 'Jost',
-                        fontSize: 14.0,
-                        color: Colors.black),
+                    style: GoogleFonts.jost(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
                   ),
                   baseIcon,
                 ],

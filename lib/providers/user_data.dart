@@ -1,54 +1,39 @@
 import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:zero_waste/models/user.dart';
+import 'package:zero_waste/service/firebase_auth.dart';
+import '../views/auth/login_screen.dart';
 
 class UserAuth extends ChangeNotifier {
-  String _name = '';
-  String _phoneNo = '';
-  String _address = '';
-  String _state = '';
-  String _password = '';
-  String _userType = '';
+  final auth = UserAuthentication();
+  final farmer = UserAuthentication().getUser(email.text);
+  final _userForm = Farmer(
+    name: '',
+    phone: '',
+    address: '',
+    state: '',
+    typeOfFarmer: '',
+    email: '',
+  );
+
   File? _profileImage;
 
-  String get name => _name;
-  String get phoneNo => _phoneNo;
-  String get address => _address;
-  String get state => _state;
-  String get password => _password;
-  String get userType => _userType;
+  Farmer get userForm => _userForm;
   File? get profileImage => _profileImage;
 
-  void getName(String value) {
-    _name = value;
-    notifyListeners();
-  }
-
-  void getPhone(String value) {
-    _phoneNo = value;
-    notifyListeners();
-  }
-
-  void getAddress(String value) {
-    List location = value.trim().split(' ');
-    final address = location[location.length - 1];
-    _address = address;
-    notifyListeners();
-  }
-
-  void getState(String value) {
-    _state = value;
-    notifyListeners();
-  }
-
-  void getPassword(String value) {
-    _password = value;
-    notifyListeners();
+  void submitForm(String name, String phone, String address, String state) {
+    _userForm.name = name;
+    const countryCode = '+234';
+    final val = phone.substring(1);
+    final formattedPhone = countryCode + val;
+    _userForm.phone = formattedPhone;
+    _userForm.address = address;
+    _userForm.state = state;
   }
 
   void getUsertype(String value) {
-    _userType = value;
+    _userForm.typeOfFarmer = value;
     notifyListeners();
   }
 

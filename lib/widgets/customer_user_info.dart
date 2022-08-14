@@ -14,29 +14,20 @@ class CustomerUserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width - 100,
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.green[200],
           radius: 23,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30.0),
             child: imageUrl == null
-                ? const Icon(
-                    Icons.account_circle_outlined,
-                    color: Colors.white,
-                    // size: 32,
-                  )
-                : Image.network(
-                    imageUrl!,
-                    fit: BoxFit.fill,
-                    height: 50,
-                    width: 50,
-                  ),
+                ? const Icon(Icons.account_circle_outlined, color: Colors.white)
+                : Image.network(imageUrl!,
+                    fit: BoxFit.fill, height: 50, width: 50),
           ),
         ),
         title: title,
-        // subtitle: title,
         trailing: trailingWidget,
       ),
     );

@@ -14,18 +14,3 @@ Column userPopularity(String num, String category) {
     ],
   );
 }
-
-ElevatedButton profileButtons(String buttonText, bool canSavePost) {
-  return ElevatedButton(
-    onPressed: () {},
-    style: ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      primary:
-          canSavePost ? const Color.fromRGBO(233, 233, 233, 1) : primaryColor,
-      textStyle: buttonTextStyleTwo,
-    ),
-    child: Text(
-      buttonText,
-    ),
-  );
-}

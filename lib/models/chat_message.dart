@@ -5,6 +5,7 @@ class ChatMessage {
   final String messageContent;
   final bool isMe;
   final bool isMessage;
+
   ChatMessage({
     required this.userProfile,
     required this.messageContent,
