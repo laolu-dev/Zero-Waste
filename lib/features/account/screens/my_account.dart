@@ -6,15 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import '../../../constants/constant.dart';
-import '../../../main.dart';
-import '../../../features/auth/auth_state/user_data.dart';
-import '../../../shared/res.dart';
-import 'profile.dart';
-import '../../../widgets/app_bars/account_appbar.dart';
-import '../../../models/user.dart';
+import 'package:zero_waste/features/account/screens/profile.dart';
+import 'package:zero_waste/main.dart';
 
-import '../../../features/auth/screens/signup-login/login_screen.dart';
+import '../../../constants/constant.dart';
+import '../../../shared/res.dart';
+import '../../../widgets/app_bars/account_appbar.dart';
+import '../../auth/auth_state/user_data.dart';
+import '../../auth/screens/signup-login/login_screen.dart';
 
 class MyAccount extends StatefulWidget {
   static const id = 'MyAccount';
@@ -45,7 +44,7 @@ class _MyAccountState extends State<MyAccount> {
                 getImage(source: ImageSource.camera);
                 Navigator.pop(context);
               },
-              style: TextButton.styleFrom(primary: primary),
+              style: TextButton.styleFrom(foregroundColor: primary),
               child: const Text(
                 'Camera',
                 style: TextStyle(color: primary),
@@ -56,7 +55,7 @@ class _MyAccountState extends State<MyAccount> {
                 getImage(source: ImageSource.gallery);
                 Navigator.pop(context);
               },
-              style: TextButton.styleFrom(primary: primary),
+              style: TextButton.styleFrom(foregroundColor: primary),
               child: const Text(
                 'Gallery',
                 style: TextStyle(color: primary),
@@ -140,9 +139,8 @@ class _MyAccountState extends State<MyAccount> {
                           TextButton(
                             onPressed: () => _showAlertDialog(context),
                             style: TextButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
+                              foregroundColor: white, padding: const EdgeInsets.symmetric(
                                   horizontal: 17.5, vertical: 10),
-                              primary: white,
                               side: const BorderSide(color: primary),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(13.0),
@@ -176,7 +174,8 @@ class _MyAccountState extends State<MyAccount> {
                           //     }
                           //   },
                           // ),
-                          Text(user.userForm.typeOfFarmer, style: labelTextStyle)
+                          Text(user.userForm.typeOfFarmer,
+                              style: labelTextStyle)
                         ],
                       ),
                     ],
@@ -185,8 +184,10 @@ class _MyAccountState extends State<MyAccount> {
                 Column(
                   children: [
                     settings(
-                        () => pushNewScreen(context,
-                            screen: const ProfileAccount()),
+                        () => pushNewScreen(
+                              context,
+                              screen: const ProfileAccount(),
+                            ),
                         tileText: 'My Profile',
                         tileIcon: Icons.person_outline),
                     const SizedBox(height: 15),
@@ -202,7 +203,8 @@ class _MyAccountState extends State<MyAccount> {
                         tileText: 'Customer Support',
                         tileIcon: Icons.headset_mic_outlined),
                     const SizedBox(height: 15),
-                    settings(null, tileText: 'Settings', tileIcon: Icons.settings)
+                    settings(null,
+                        tileText: 'Settings', tileIcon: Icons.settings)
                   ],
                 ),
                 const SizedBox(height: 40),

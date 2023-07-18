@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../config/app_theme.dart';
-import '../views/home_screen/chat_screen.dart';
-import 'customer_user_info.dart';
+import '../features/chats/screens/chat_screen.dart';
+import '../features/chats/widgets/customer_user_info.dart';
 
 class UserChatWidget extends StatelessWidget {
   final String userName;
@@ -21,30 +21,28 @@ class UserChatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0, right: 20),
-      child: SizedBox(
-        child: Row(
-          children: [
-            Expanded(child: customerUserInfo),
-            ElevatedButton(
-              style: ThemeHelper().buttonStyle(40.0, 10.0),
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ChatScreen(
-                    customerUserChatInfo: customerUserChatInfo,
-                  ),
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Row(
+        children: [
+          Expanded(child: customerUserInfo),
+          ElevatedButton(
+            style: ThemeHelper().buttonStyle(40.0, 10.0),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ChatScreen(
+                  customerUserChatInfo: customerUserChatInfo,
                 ),
               ),
-              child: Text(
-                'Chats',
-                style: GoogleFonts.jost(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            child: Text(
+              'Chats',
+              style: GoogleFonts.jost(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

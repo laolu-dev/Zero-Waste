@@ -1,14 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../service/firebase_auth.dart';
 import '../../../../shared/res.dart';
 import 'password_verification.dart';
 import '../../../../widgets/app_button.dart';
 import '../../widgets/social_login.dart';
-import '../../widgets/auth/user_info_textfield.dart';
+import '../../widgets/user_info_textfield.dart';
 import '../../../../constants/constant.dart';
 import '../signup-login/login_screen.dart';
 

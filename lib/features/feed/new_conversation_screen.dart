@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../providers/feed_data.dart';
-import '../../../widgets/app_bars/page_appbar.dart';
-import '../../../widgets/list_views/user_chat_builder.dart';
+import '../../providers/feed_data.dart';
+import '../../widgets/app_bars/page_appbar.dart';
+import '../../widgets/list_views/user_chat_builder.dart';
 
-import '../../../shared/res.dart';
+import '../../shared/res.dart';
 
 
 class NewConversationScreen extends StatefulWidget {
@@ -47,7 +47,7 @@ class _NewConversationScreenState extends State<NewConversationScreen> {
                     ],
                   ),
                 ),
-                const UserChatBuilder(),
+                const UsersChatBuilder(),
               ],
             ),
           ),

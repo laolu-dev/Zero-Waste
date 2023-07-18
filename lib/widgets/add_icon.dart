@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import '../views/home_screen/feed/new_conversation_screen.dart';
+import '../features/feed/new_conversation_screen.dart';
 
 class ChatIcon extends StatelessWidget {
   const ChatIcon({Key? key}) : super(key: key);

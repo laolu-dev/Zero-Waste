@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../config/app_theme.dart';
-import '../../../shared/res.dart';
-import '../../../widgets/app_bars/page_appbar.dart';
+import '../../config/app_theme.dart';
+import '../../shared/res.dart';
+import '../../widgets/app_bars/page_appbar.dart';
 
-import '../../../widgets/product_builder.dart';
+import '../../widgets/product_builder.dart';
 
 
 class ProductScreen extends StatefulWidget {

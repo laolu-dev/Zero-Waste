@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'features/account/screens/my_account.dart';
+import 'features/account/screens/profile.dart';
+import 'features/home/screens/connections.dart';
+import 'features/home/screens/farmer_types.dart';
+import 'features/home/screens/tabs.dart';
 import 'models/user.dart';
 
 import 'features/auth/screens/signup-login/login_screen.dart';
@@ -10,17 +16,12 @@ import 'features/auth/screens/forget_password_screens/forgot_password.dart';
 import 'features/auth/screens/forget_password_screens/password_verification.dart';
 import 'features/auth/screens/forget_password_screens/reset_password.dart';
 import 'features/auth/screens/forget_password_screens/reset_success.dart';
-import 'views/home_screen/account/my_account.dart';
-import 'views/home_screen/account/profile.dart';
-import 'views/home_screen/feed/feeds.dart';
-import 'views/home_screen/feed/new_conversation_screen.dart';
-import 'views/home_screen/home/connections.dart';
-import 'views/home_screen/home/farmer_types.dart';
-import 'views/home_screen/products/products.dart';
+import 'features/feed/feeds.dart';
+import 'features/feed/new_conversation_screen.dart';
+import 'features/products/products.dart';
 import 'features/onboarding/screens/board.dart';
 import 'features/onboarding/screens/splash_screen.dart';
-import 'views/tabs.dart';
-import 'views/unknown_page.dart';
+import 'features/unknown_page.dart';
 
 Route<dynamic>? routes(RouteSettings settings) {
   switch (settings.name) {

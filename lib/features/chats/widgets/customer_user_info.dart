@@ -14,7 +14,7 @@ class CustomerUserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width - 100,
+      width: MediaQuery.of(context).size.width,
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: Colors.green[200],

@@ -6,17 +6,17 @@ import '../../shared/res.dart';
 import '../sub_user_info_widget.dart';
 import '../user_chat_widget.dart';
 
-import '../customer_user_info.dart';
+import '../../features/chats/widgets/customer_user_info.dart';
 
-class UserChatBuilder extends StatelessWidget {
-  const UserChatBuilder({Key? key}) : super(key: key);
+class UsersChatBuilder extends StatelessWidget {
+  const UsersChatBuilder({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Consumer<FeedData>(
-      builder: (context, feedData, child) => SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: ListView.builder(
+      builder: (context, feedData, child) {
+        return ListView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           itemBuilder: (context, index) {
             final feed = feedData.feeds[index];
             return UserChatWidget(
@@ -51,8 +51,8 @@ class UserChatBuilder extends StatelessWidget {
             );
           },
           itemCount: feedData.length,
-        ),
-      ),
+        );
+      },
     );
   }
 }

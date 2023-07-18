@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../providers/feed_data.dart';
 import '../providers/product_data.dart';
-import '../views/home_screen/products/product_details.dart';
-import 'customer_user_info.dart';
+import '../features/products/product_details.dart';
+import '../features/chats/widgets/customer_user_info.dart';
 import 'product_widget.dart';
 import 'sub_user_info_widget.dart';
 

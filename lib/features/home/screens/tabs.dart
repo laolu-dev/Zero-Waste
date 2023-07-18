@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-
-import '../shared/res.dart';
-import 'home_screen/account/my_account.dart';
-import 'home_screen/feed/feeds.dart';
-import 'home_screen/home/home.dart';
-import 'home_screen/products/products.dart';
+import 'package:zero_waste/features/account/screens/my_account.dart';
+import '../../../shared/res.dart';
+import '../../feed/feeds.dart';
+import '../../products/products.dart';
+import 'home.dart';
 
 class AppPages extends StatefulWidget {
   static const id = '/main_page_with_nav_bar';

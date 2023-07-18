@@ -43,11 +43,11 @@ class _OtpScreenState extends State<OtpScreen> {
             verificationId: verificationID, smsCode: _pinCode.text);
         try {
           await FirebaseAuth.instance.signInWithCredential(credential);
-        } on FirebaseAuthException catch (e) {
+        } on FirebaseAuthException {
           // ScaffoldMessenger.of(context).showSnackBar(
           //   SnackBar(content: Text(e.message!)),
           // );
-          print(e.message!);
+          
         }
       },
       codeAutoRetrievalTimeout: (String verificationID) {},

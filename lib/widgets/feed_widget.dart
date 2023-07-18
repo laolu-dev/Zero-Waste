@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/feed_data.dart';
 import '../shared/res.dart';
-import 'customer_user_info.dart';
+import '../features/chats/widgets/customer_user_info.dart';
 import 'sub_user_info_widget.dart';
 
 class FeedWidget extends StatelessWidget {

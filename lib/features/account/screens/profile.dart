@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../providers/product_data.dart';
-import '../../../shared/res.dart';
+import 'package:zero_waste/shared/res.dart';
+import '../../../constants/constant.dart';
+import '../../../providers/list_of_providers.dart';
 import '../../../widgets/app_bars/account_appbar.dart';
 import '../../../widgets/profile_widget.dart';
-import '../../../constants/constant.dart';
-import '../../../models/user.dart';
-import '../../../features/auth/auth_state/user_data.dart';
+
 
 class ProfileAccount extends StatefulWidget {
   static const id = 'ProfileAccount';
@@ -115,8 +114,7 @@ class _ProfileAccountState extends State<ProfileAccount> {
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 66.5, vertical: 10),
-                  primary: profileButtonColor,
+                      horizontal: 66.5, vertical: 10), backgroundColor: profileButtonColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.0),
                   ),
@@ -137,8 +135,7 @@ class _ProfileAccountState extends State<ProfileAccount> {
       onPressed: () {},
       style: ElevatedButton.styleFrom(
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-        primary: btnColor,
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)), backgroundColor: btnColor,
       ),
       child: Text(
         buttonText,
@@ -171,8 +168,7 @@ class _ProfileAccountState extends State<ProfileAccount> {
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          primary: Resources.color.primary),
+                          ), backgroundColor: Resources.color.primary),
                       child: Text(
                         'My Posts',
                         style: GoogleFonts.jost(
@@ -186,8 +182,7 @@ class _ProfileAccountState extends State<ProfileAccount> {
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          primary: const Color.fromRGBO(233, 233, 233, 1)),
+                          ), backgroundColor: const Color.fromRGBO(233, 233, 233, 1)),
                       child: Text(
                         'Saved Posts',
                         style: GoogleFonts.jost(

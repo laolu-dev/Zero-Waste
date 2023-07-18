@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../shared/res.dart';
-import '../../../widgets/customer_user_info.dart';
-import '../../../widgets/product_widget.dart';
-import '../../../config/app_theme.dart';
+import '../../shared/res.dart';
+import '../chats/widgets/customer_user_info.dart';
+import '../../widgets/product_widget.dart';
+import '../../config/app_theme.dart';
 
-import '../../../widgets/app_bars/page_appbar.dart';
-import '../../../widgets/image_viewer_widget.dart';
-import '../chat_screen.dart';
+import '../../widgets/app_bars/page_appbar.dart';
+import '../../widgets/image_viewer_widget.dart';
+import '../chats/screens/chat_screen.dart';
 
 class ProductDetails extends StatefulWidget {
   final CustomerUserInfo customerUserChatInfo;

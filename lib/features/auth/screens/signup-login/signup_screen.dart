@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zero_waste/features/auth/widgets/password_textfield.dart';
-import '../../../../models/user.dart';
 
 import '../../../../constants/constant.dart';
 import '../../../../shared/res.dart';
 import '../../../../widgets/app_button.dart';
 
 import '../../widgets/social_login.dart';
-import '../../widgets/auth/user_info_textfield.dart';
+import '../../widgets/user_info_textfield.dart';
 import '../forget_password_screens/forgot_password.dart';
 import 'login_screen.dart';
 import 'type_of_farmer.dart';

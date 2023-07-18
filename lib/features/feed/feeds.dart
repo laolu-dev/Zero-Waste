@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../widgets/app_bars/page_appbar.dart';
-import '../../../widgets/feed_widget.dart';
-import '../../../widgets/search_text_field.dart';
-import '../../../providers/feed_data.dart';
-import '../../../widgets/add_icon.dart';
+import '../../widgets/app_bars/page_appbar.dart';
+import '../../widgets/feed_widget.dart';
+import '../home/widget/search_text_field.dart';
+import '../../providers/feed_data.dart';
+import '../../widgets/add_icon.dart';
 
 class FeedsPage extends StatelessWidget {
   static const id = 'FeedsPage';

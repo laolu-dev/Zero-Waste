@@ -32,8 +32,7 @@ class UserAuthentication {
           await getUser(value.user?.email);
         },
       );
-    } on FirebaseAuthException catch (e) {
-      print(e.message!);
+    } on FirebaseAuthException {
     }
   }
 
@@ -47,7 +46,6 @@ class UserAuthentication {
     try {
       await database.doc(auth.currentUser?.email).set({'typeOfFarmer': 'Fish'});
     } catch (e) {
-      print(e);
     }
   }
 }

@@ -5,14 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:zero_waste/features/auth/widgets/password_textfield.dart';
 import '../../../../constants/constant.dart';
 import '../../../../shared/res.dart';
+import '../../../home/screens/tabs.dart';
+import '../../widgets/user_info_textfield.dart';
 import 'signup_screen.dart';
 import '../forget_password_screens/forgot_password.dart';
 import '../../../../widgets/app_button.dart';
 
 import '../../widgets/social_login.dart';
-import '../../widgets/auth/user_info_textfield.dart';
+
 import '../../../../models/user.dart';
-import '../../../../views/tabs.dart';
+
 
 class LoginScreen extends StatefulWidget {
   static const id = '/login_screen';

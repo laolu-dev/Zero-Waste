@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../config/app_theme.dart';
-import '../../constants/constant.dart';
-import '../../providers/chat_data.dart';
-import '../../widgets/customer_user_info.dart';
-import '../../widgets/messge_stream.dart';
-import '../../utils/user_preferences.dart';
+import '../../../config/app_theme.dart';
+import '../../../constants/constant.dart';
+import '../../../providers/chat_data.dart';
+import '../widgets/customer_user_info.dart';
+import '../../../widgets/messge_stream.dart';
+import '../../../utils/user_preferences.dart';
 
 class ChatScreen extends StatefulWidget {
   static const id = 'ChatScreen';
@@ -51,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             child: const Icon(Icons.arrow_back_ios,
                                 color: Colors.black, size: 20.0),
                           ),
-                          widget.customerUserChatInfo!,
+                          Flexible(child: widget.customerUserChatInfo!),
                           const Icon(Icons.search, size: 32)
                         ],
                       ),
@@ -85,10 +85,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                   ),
                                 ),
                                 textValue == ''
-                                    ? Row(
+                                    ? const Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
-                                        children: const [
+                                        children: [
                                           Icon(
                                             Icons.add,
                                             size: 30,

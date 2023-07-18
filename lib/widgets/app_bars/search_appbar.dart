@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../notification_widget.dart';
-import '../search_text_field.dart';
+import '../../features/home/widget/search_text_field.dart';
 
 import '../../shared/res.dart';
 
