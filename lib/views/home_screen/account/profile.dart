@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/product_data.dart';
-import 'package:zero_waste/widgets/app_bars/account_appbar.dart';
-import 'package:zero_waste/widgets/profile_widget.dart';
+import '../../../providers/product_data.dart';
+import '../../../shared/res.dart';
+import '../../../widgets/app_bars/account_appbar.dart';
+import '../../../widgets/profile_widget.dart';
 import '../../../constants/constant.dart';
 import '../../../models/user.dart';
-import '../../../providers/user_data.dart';
-import '../../../res/res.dart';
+import '../../../features/auth/auth_state/user_data.dart';
 
 class ProfileAccount extends StatefulWidget {
   static const id = 'ProfileAccount';
@@ -25,7 +25,7 @@ class _ProfileAccountState extends State<ProfileAccount> {
       height: 300,
       padding: const EdgeInsets.symmetric(horizontal: 24),
       decoration: const BoxDecoration(
-        color: primaryColor,
+        color: primary,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: Expanded(
@@ -54,26 +54,26 @@ class _ProfileAccountState extends State<ProfileAccount> {
                           borderRadius: BorderRadius.circular(70)),
                       child: const Icon(
                         Icons.add_a_photo,
-                        color: primaryColor,
+                        color: primary,
                       ),
                     ),
-              FutureBuilder<Farmer?>(
-                future: profile.farmer,
-                builder: (BuildContext context, snapshot) {
-                  if (snapshot.hasData) {
-                    final user = snapshot.data;
-                    return Text(
-                      user!.name,
-                      style: GoogleFonts.jost(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Resources.color.white),
-                    );
-                  } else {
-                    return const Text('');
-                  }
-                },
-              ),
+              // FutureBuilder<Farmer?>(
+              //   future: profile.farmer,
+              //   builder: (BuildContext context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       final user = snapshot.data;
+              //       return Text(
+              //         user!.name,
+              //         style: GoogleFonts.jost(
+              //             fontSize: 16,
+              //             fontWeight: FontWeight.w600,
+              //             color: Resources.color.white),
+              //       );
+              //     } else {
+              //       return const Text('');
+              //     }
+              //   },
+              // ),
               const SizedBox(height: 2),
               Text(
                 profile.userForm.typeOfFarmer,
@@ -83,23 +83,23 @@ class _ProfileAccountState extends State<ProfileAccount> {
                     color: Resources.color.white),
               ),
               const SizedBox(height: 2),
-              FutureBuilder<Farmer?>(
-                future: profile.farmer,
-                builder: (BuildContext context, snapshot) {
-                  if (snapshot.hasData) {
-                    final user = snapshot.data;
-                    return Text(
-                      '${user!.state}, ${user.address}',
-                      style: GoogleFonts.jost(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Resources.color.white),
-                    );
-                  } else {
-                    return const Text('');
-                  }
-                },
-              ),
+              // FutureBuilder<Farmer?>(
+              //   future: profile.farmer,
+              //   builder: (BuildContext context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       final user = snapshot.data;
+              //       return Text(
+              //         '${user!.state}, ${user.homeAddress}',
+              //         style: GoogleFonts.jost(
+              //             fontSize: 14,
+              //             fontWeight: FontWeight.w400,
+              //             color: Resources.color.white),
+              //       );
+              //     } else {
+              //       return const Text('');
+              //     }
+              //   },
+              // ),
               const SizedBox(height: 16),
               Wrap(
                 spacing: 17,
@@ -172,7 +172,7 @@ class _ProfileAccountState extends State<ProfileAccount> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          primary: Resources.color.primaryColor),
+                          primary: Resources.color.primary),
                       child: Text(
                         'My Posts',
                         style: GoogleFonts.jost(

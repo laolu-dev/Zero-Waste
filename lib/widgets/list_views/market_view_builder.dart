@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/market_data.dart';
-import 'package:zero_waste/providers/product_data.dart';
+
+import '../../providers/market_data.dart';
+import '../../providers/product_data.dart';
 import '../market_tile.dart';
 
 class MarketViewBuilder extends StatelessWidget {

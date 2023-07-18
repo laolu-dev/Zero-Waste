@@ -27,29 +27,29 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^4.8.3
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^4.7.0
+  firebase_core: ^2.15.0
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  flutter_svg: ^1.1.0
-  smooth_page_indicator: ^1.0.0+2
-  provider: ^6.0.3
-  google_fonts: ^3.0.1
-  hexcolor: ^2.0.7
-  ionicons: ^0.2.1
-  pin_code_fields: ^7.4.0
-  image_picker: ^0.8.5+3
-  firebase_auth: ^3.3.19
-  firebase_core: ^1.17.1
+  flutter_facebook_auth: ^6.0.0
   flutter_native_splash: ^2.2.5
+  flutter_rating_bar: ^4.0.1
+  flutter_svg: ^2.0.7
+  google_fonts: ^5.1.0
+  google_sign_in: ^6.1.4
+  image_picker: ^1.0.1
+  ionicons: ^0.2.1
   persistent_bottom_nav_bar_v2: ^4.2.4
-  google_sign_in: ^5.4.0
-  flutter_facebook_auth: ^4.4.0+1
-  cloud_firestore: ^3.4.2
+  pin_code_fields: ^8.0.1
+  provider: ^6.0.3
+  smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -58,15 +58,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/icons/
+    - assets/illustrations/
     - assets/images/
-    - assets/images/common_images/
-    - assets/images/intro_images/
-    - assets/images/app_images/
-    - assets/images/svg_images/
+    - assets/icons/nav_bar/
+    - assets/icons/social/
+    - assets/illustrations/onboard/
+    - assets/illustrations/types_of_farmers/
 
 flutter_native_splash:
   color: "#076e52"
-  image: assets/images/intro_images/app_icon_3x.png
+  image: assets/icons/logo_x3.png
   android_12:
     color: "#076e52"
-    image: assets/images/intro_images/app_icon_3x.png
+    image: assets/icons/logo_x3.png

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/res/res.dart';
+import '../shared/res.dart';
+
 
 class SearchTextField extends StatelessWidget {
   final double width;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/res/res.dart';
+
+import '../shared/res.dart';
 
 class AppButton extends StatelessWidget {
   final Function() btn;
@@ -17,7 +18,7 @@ class AppButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: btn,
       style: ElevatedButton.styleFrom(
-        primary: Resources.color.primaryColor,
+        primary: Resources.color.primary,
         minimumSize: const Size(double.infinity, 51),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),

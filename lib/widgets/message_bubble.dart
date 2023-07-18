@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/user_preferences.dart';
 
 class MessageBubble extends StatefulWidget {

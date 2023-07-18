@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../res/res.dart';
+import '../shared/res.dart';
 
 class NotificationWidget extends StatelessWidget {
   const NotificationWidget({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class NotificationWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(38),
-          border: Border.all(color: Resources.color.primaryColor)),
+          border: Border.all(color: Resources.color.primary)),
       child: IconButton(
         onPressed: () {},
         icon: Icon(Icons.notifications_none,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/widgets/app_bars/page_appbar.dart';
-import 'package:zero_waste/widgets/feed_widget.dart';
-import 'package:zero_waste/widgets/search_text_field.dart';
+import '../../../widgets/app_bars/page_appbar.dart';
+import '../../../widgets/feed_widget.dart';
+import '../../../widgets/search_text_field.dart';
 import '../../../providers/feed_data.dart';
 import '../../../widgets/add_icon.dart';
 

@@ -1,42 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/views/auth/login_screen.dart';
-import 'package:zero_waste/views/auth/signup_screen.dart';
-import 'package:zero_waste/views/auth/verified_account.dart';
-import 'package:zero_waste/views/auth/otp_screen.dart';
-import 'package:zero_waste/views/auth/why_are_you_here_screen.dart';
-import 'package:zero_waste/views/forget_password_screens/forgot_password.dart';
-import 'package:zero_waste/views/forget_password_screens/password_verification.dart';
-import 'package:zero_waste/views/forget_password_screens/reset_password.dart';
-import 'package:zero_waste/views/forget_password_screens/reset_success.dart';
-import 'package:zero_waste/views/home_screen/account/my_account.dart';
-import 'package:zero_waste/views/home_screen/account/profile.dart';
-import 'package:zero_waste/views/home_screen/feed/feeds.dart';
-import 'package:zero_waste/views/home_screen/feed/new_conversation_screen.dart';
-import 'package:zero_waste/views/tabs.dart';
-import 'package:zero_waste/views/home_screen/home/connections.dart';
-import 'package:zero_waste/views/home_screen/home/farmer_types.dart';
-import 'package:zero_waste/views/home_screen/products/products.dart';
-import 'package:zero_waste/views/intro/onboarding_screen.dart';
-import 'package:zero_waste/views/intro/splash_screen.dart';
+import 'models/user.dart';
 
-Map<String, Widget Function(BuildContext)> appRoutes = {
-  SplashScreen.id: (context) => const SplashScreen(),
-  OnBoardScreen.id: (context) => const OnBoardScreen(),
-  LoginScreen.id: (context) => const LoginScreen(),
-  SignUpScreen.id: (context) => const SignUpScreen(),
-  ForgotPassword.id: (context) => const ForgotPassword(),
-  WhyAreYouHere.id: (context) => const WhyAreYouHere(),
-  OtpScreen.id: (context) => const OtpScreen(),
-  ResetPassword.id: (context) => const ResetPassword(),
-  PasswordVerification.id: (context) => const PasswordVerification(),
-  VerifiedAccount.id: (context) => const VerifiedAccount(),
-  ResetSuccess.id: (context) => const ResetSuccess(),
-  UserCategories.id: (context) => const UserCategories(),
-  Connections.id: (context) => const Connections(),
-  MyAccount.id: (context) => const MyAccount(),
-  ProfileAccount.id: (context) => const ProfileAccount(),
-  FeedsPage.id: (context) => const FeedsPage(),
-  ProductScreen.id: (context) => const ProductScreen(),
-  AppPages.id: (context) => const AppPages(),
-  NewConversationScreen.id: (context) => const NewConversationScreen(),
-};
+import 'features/auth/screens/signup-login/login_screen.dart';
+import 'features/auth/screens/signup-login/otp_screen.dart';
+import 'features/auth/screens/signup-login/signup_screen.dart';
+import 'features/auth/screens/signup-login/verified_account.dart';
+import 'features/auth/screens/signup-login/type_of_farmer.dart';
+import 'features/auth/screens/forget_password_screens/forgot_password.dart';
+import 'features/auth/screens/forget_password_screens/password_verification.dart';
+import 'features/auth/screens/forget_password_screens/reset_password.dart';
+import 'features/auth/screens/forget_password_screens/reset_success.dart';
+import 'views/home_screen/account/my_account.dart';
+import 'views/home_screen/account/profile.dart';
+import 'views/home_screen/feed/feeds.dart';
+import 'views/home_screen/feed/new_conversation_screen.dart';
+import 'views/home_screen/home/connections.dart';
+import 'views/home_screen/home/farmer_types.dart';
+import 'views/home_screen/products/products.dart';
+import 'features/onboarding/screens/board.dart';
+import 'features/onboarding/screens/splash_screen.dart';
+import 'views/tabs.dart';
+import 'views/unknown_page.dart';
+
+Route<dynamic>? routes(RouteSettings settings) {
+  switch (settings.name) {
+    case SplashScreen.id:
+      return MaterialPageRoute(builder: (context) => const SplashScreen());
+    case OnBoardScreen.id:
+      return MaterialPageRoute(builder: (context) => const OnBoardScreen());
+    case LoginScreen.id:
+      return MaterialPageRoute(builder: (context) => const LoginScreen());
+    case ForgotPassword.id:
+      return MaterialPageRoute(builder: (context) => const ForgotPassword());
+    case SignUpScreen.id:
+      return MaterialPageRoute(builder: (context) => const SignUpScreen());
+    case WhyAreYouHere.id:
+      return MaterialPageRoute(
+          builder: (context) =>
+              WhyAreYouHere(user: settings.arguments as Farmer?));
+    case OtpScreen.id:
+      return MaterialPageRoute(
+          builder: (context) => OtpScreen(user: settings.arguments as Farmer?));
+    case ResetPassword.id:
+      return MaterialPageRoute(builder: (context) => const ResetPassword());
+    case PasswordVerification.id:
+      return MaterialPageRoute(
+          builder: (context) => const PasswordVerification());
+    case VerifiedAccount.id:
+      return MaterialPageRoute(builder: (context) => const VerifiedAccount());
+    case ResetSuccess.id:
+      return MaterialPageRoute(builder: (context) => const ResetSuccess());
+    case UserCategories.id:
+      return MaterialPageRoute(builder: (context) => const UserCategories());
+    case Connections.id:
+      return MaterialPageRoute(builder: (context) => const Connections());
+    case MyAccount.id:
+      return MaterialPageRoute(builder: (context) => const MyAccount());
+    case ProfileAccount.id:
+      return MaterialPageRoute(builder: (context) => const ProfileAccount());
+    case FeedsPage.id:
+      return MaterialPageRoute(builder: (context) => const FeedsPage());
+    case ProductScreen.id:
+      return MaterialPageRoute(builder: (context) => const ProductScreen());
+    case AppPages.id:
+      return MaterialPageRoute(builder: (context) => const AppPages());
+    case NewConversationScreen.id:
+      return MaterialPageRoute(
+          builder: (context) => const NewConversationScreen());
+  }
+  return MaterialPageRoute(builder: (context) => const UnknownPage());
+}

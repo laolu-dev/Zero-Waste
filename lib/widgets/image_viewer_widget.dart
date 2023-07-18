@@ -17,7 +17,7 @@ class ImageViewerWidget extends StatelessWidget {
       margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
       height: height,
       decoration: BoxDecoration(
-        border: Border.all(color: primaryColor),
+        border: Border.all(color: primary),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -26,7 +26,7 @@ class ImageViewerWidget extends StatelessWidget {
           ),
         ],
         borderRadius: BorderRadius.circular(20.0),
-        // color: primaryColor,
+        // color: primary,
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),

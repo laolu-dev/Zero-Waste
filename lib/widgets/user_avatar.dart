@@ -1,39 +1,19 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/user_data.dart';
-import 'package:zero_waste/res/res.dart';
+import '../features/auth/auth_state/user_data.dart';
+import '../shared/res.dart';
 
-class UserAvatar extends StatefulWidget {
-  final int defineImageBorder;
-  const UserAvatar({Key? key, required this.defineImageBorder})
+class UserAvatar extends StatelessWidget {
+  
+  const UserAvatar({Key? key})
       : super(key: key);
 
   @override
-  State<UserAvatar> createState() => _UserAvatarState();
-}
-
-class _UserAvatarState extends State<UserAvatar> {
-  @override
   Widget build(BuildContext context) {
-    final userProfile = Provider.of<UserAuth>(context);
-    File? user = userProfile.profileImage;
     return CircleAvatar(
-      backgroundColor: Colors.grey,
-      child: user != null
-          ? ClipRRect(
-              borderRadius: BorderRadius.circular(
-                widget.defineImageBorder.toDouble(),
-              ),
-              child: Image.file(user, fit: BoxFit.cover),
-            )
-          : ClipRRect(
-              borderRadius: BorderRadius.circular(
-                widget.defineImageBorder.toDouble(),
-              ),
-              child: Icon(Icons.account_circle,
-                  color: Resources.color.primaryColor, size: 20),
-            ),
+      child: Image.asset(Resources.iString.dummyUser),
+      radius: 38,
     );
   }
 }

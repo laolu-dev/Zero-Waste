@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/constants/constant.dart';
+import '../constants/constant.dart';
 
 Column userPopularity(String num, String category) {
   return Column(

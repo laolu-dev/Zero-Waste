@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/feed_data.dart';
-import 'package:zero_waste/widgets/sub_user_info_widget.dart';
-import 'package:zero_waste/widgets/user_chat_widget.dart';
-import '../../res/res.dart';
+import '../../providers/feed_data.dart';
+import '../../shared/res.dart';
+import '../sub_user_info_widget.dart';
+import '../user_chat_widget.dart';
+
 import '../customer_user_info.dart';
 
 class UserChatBuilder extends StatelessWidget {

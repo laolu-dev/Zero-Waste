@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/config/app_theme.dart';
-import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/providers/chat_data.dart';
-import 'package:zero_waste/widgets/customer_user_info.dart';
-import 'package:zero_waste/widgets/messge_stream.dart';
+import '../../config/app_theme.dart';
+import '../../constants/constant.dart';
+import '../../providers/chat_data.dart';
+import '../../widgets/customer_user_info.dart';
+import '../../widgets/messge_stream.dart';
 import '../../utils/user_preferences.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -56,7 +56,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         ],
                       ),
                     ),
-                    const Divider(color: primaryColor),
+                    const Divider(color: primary),
                   ],
                 ),
                 Expanded(

@@ -1,4 +1,4 @@
-package com.example.zero_waste;
+package com.zero.waste;
 
 import io.flutter.embedding.android.FlutterActivity;
 

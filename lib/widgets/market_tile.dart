@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../res/res.dart';
+import '../shared/res.dart';
 
 class MarketTile extends StatelessWidget {
   final String imageUrl;
@@ -50,7 +50,7 @@ class MarketTile extends StatelessWidget {
           const SizedBox(height: 6.0),
           Text(weight,
               style: GoogleFonts.jost(
-                  color: Resources.color.primaryColor,
+                  color: Resources.color.primary,
                   fontSize: 16,
                   fontWeight: FontWeight.w600))
         ],

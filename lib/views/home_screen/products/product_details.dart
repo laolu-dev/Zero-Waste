@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/widgets/customer_user_info.dart';
-import 'package:zero_waste/widgets/product_widget.dart';
+import '../../../shared/res.dart';
+import '../../../widgets/customer_user_info.dart';
+import '../../../widgets/product_widget.dart';
 import '../../../config/app_theme.dart';
-import '../../../res/res.dart';
+
 import '../../../widgets/app_bars/page_appbar.dart';
 import '../../../widgets/image_viewer_widget.dart';
 import '../chat_screen.dart';
@@ -103,7 +104,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             style: GoogleFonts.jost(
                               fontWeight: FontWeight.w400,
                               fontSize: 16.0,
-                              color: Resources.color.primaryColor,
+                              color: Resources.color.primary,
                             ),
                           ),
                           const SizedBox(height: 3),
@@ -163,7 +164,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             style: GoogleFonts.jost(
                               fontWeight: FontWeight.w600,
                               fontSize: 14.0,
-                              color: Resources.color.primaryColor,
+                              color: Resources.color.primary,
                             ),
                           ),
                           Expanded(

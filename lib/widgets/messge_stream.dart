@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/chat_data.dart';
+import '../providers/chat_data.dart';
 
 import 'message_bubble.dart';
 

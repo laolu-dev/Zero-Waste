@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/widgets/app_bars/search_appbar.dart';
 
 import '../../../widgets/list_views/user_chat_builder.dart';
 
@@ -21,7 +20,7 @@ class _ConnectionsState extends State<Connections> {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
             child: Column(
               children: const [
-                SearchBar(),
+                // SearchBar(),
                 SizedBox(height: 25),
                 UserChatBuilder(),
               ],

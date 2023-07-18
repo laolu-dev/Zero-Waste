@@ -1,3 +1,3 @@
-import 'package:zero_waste/models/user.dart';
+import '../models/user.dart';
 
 class UserPreferences {}

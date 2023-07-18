@@ -1,47 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:zero_waste/res/res.dart';
 
+import '../shared/res.dart';
 import 'home_screen/account/my_account.dart';
 import 'home_screen/feed/feeds.dart';
 import 'home_screen/home/home.dart';
 import 'home_screen/products/products.dart';
 
-final List<Widget> _screens = [
-  const Home(),
-  const FeedsPage(),
-  const ProductScreen(),
-  const MyAccount(),
-];
-
-final List<PersistentBottomNavBarItem> _navBarItems = [
-  PersistentBottomNavBarItem(
-      icon: const Icon(Icons.home_filled),
-      title: 'Home',
-      activeColorPrimary: Resources.color.primaryColor,
-      inactiveColorPrimary: Resources.color.tField),
-  PersistentBottomNavBarItem(
-      icon: const Icon(Icons.bar_chart),
-      title: 'Feeds',
-      activeColorPrimary: Resources.color.primaryColor,
-      inactiveColorPrimary: Resources.color.tField),
-  PersistentBottomNavBarItem(
-      icon: const Icon(Icons.paid_outlined),
-      title: 'Products',
-      activeColorPrimary: Resources.color.primaryColor,
-      inactiveColorPrimary: Resources.color.tField),
-  PersistentBottomNavBarItem(
-      icon: const Icon(Icons.account_circle),
-      title: 'Account',
-      activeColorPrimary: Resources.color.primaryColor,
-      inactiveColorPrimary: Resources.color.tField)
-];
-
-final PersistentTabController _controller =
-    PersistentTabController(initialIndex: 0);
-
 class AppPages extends StatefulWidget {
-  static const id = '/PersistentBottomBar';
+  static const id = '/main_page_with_nav_bar';
   const AppPages({Key? key}) : super(key: key);
 
   @override
@@ -49,19 +16,64 @@ class AppPages extends StatefulWidget {
 }
 
 class _AppPagesState extends State<AppPages> {
+  late PersistentTabController _controller;
+
+  List<Widget> _navScreens() {
+    return [
+      const Home(),
+      const FeedsPage(),
+      const ProductScreen(),
+      const MyAccount(),
+    ];
+  }
+
+  List<PersistentBottomNavBarItem> _navItems() {
+    return [
+      PersistentBottomNavBarItem(
+          icon: Image.asset(Resources.iString.home,
+              color: _controller.index == 0 ? Resources.color.primary : null),
+          title: 'Home',
+          activeColorPrimary: Resources.color.primary),
+      PersistentBottomNavBarItem(
+          icon: Image.asset(Resources.iString.feed,
+              color: _controller.index == 1 ? Resources.color.primary : null),
+          title: 'Feeds',
+          activeColorPrimary: Resources.color.primary),
+      PersistentBottomNavBarItem(
+          icon: Image.asset(Resources.iString.product,
+              color: _controller.index == 2 ? Resources.color.primary : null),
+          title: 'Products',
+          activeColorPrimary: Resources.color.primary),
+      PersistentBottomNavBarItem(
+          icon: Image.asset(Resources.iString.account,
+              color: _controller.index == 3 ? Resources.color.primary : null),
+          title: 'Account',
+          activeColorPrimary: Resources.color.primary)
+    ];
+  }
+
   @override
   void initState() {
-    _controller.index = 0;
     super.initState();
+    _controller = PersistentTabController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
-      screens: _screens,
       controller: _controller,
-      items: _navBarItems,
+      screens: _navScreens(),
+      items: _navItems(),
+      onItemSelected: (value) {
+        setState(() => _controller.index = value);
+      },
       navBarStyle: NavBarStyle.style6,
     );
   }

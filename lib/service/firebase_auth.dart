@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:zero_waste/models/user.dart';
+import '../models/user.dart';
 
 class UserAuthentication {
   final _auth = FirebaseAuth.instance;
@@ -12,7 +12,7 @@ class UserAuthentication {
     required String password,
     required String phone,
     required String name,
-    required String address,
+    required String homeAddress,
     required String state,
   }) async {
     try {
@@ -23,7 +23,7 @@ class UserAuthentication {
           final user = Farmer(
               name: name,
               phone: phone,
-              address: address,
+              homeAddress: homeAddress,
               state: state,
               typeOfFarmer: '',
               email: value.user!.email!);
@@ -43,11 +43,11 @@ class UserAuthentication {
     return Farmer.fromMap(info.data()!);
   }
 
-  // setUserType() async {
-  //   try {
-  //     await database.doc(auth.currentUser?.email).set({'typeOfFarmer': 'Fish'});
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+  setUserType() async {
+    try {
+      await database.doc(auth.currentUser?.email).set({'typeOfFarmer': 'Fish'});
+    } catch (e) {
+      print(e);
+    }
+  }
 }

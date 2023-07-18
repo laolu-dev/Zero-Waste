@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/config/app_theme.dart';
-import 'package:zero_waste/widgets/customer_user_info.dart';
 
+import '../config/app_theme.dart';
 import '../views/home_screen/chat_screen.dart';
+import 'customer_user_info.dart';
 
 class UserChatWidget extends StatelessWidget {
   final String userName;

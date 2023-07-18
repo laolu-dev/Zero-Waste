@@ -1,5 +1,6 @@
-import 'package:zero_waste/constants/constant.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/constant.dart';
 
 class ThemeHelper {
   BorderRadius textFieldBorderRadius = const BorderRadius.only(
@@ -38,7 +39,7 @@ class ThemeHelper {
         ),
       ),
       minimumSize: MaterialStateProperty.all(Size(buttonSize, buttonSize)),
-      backgroundColor: MaterialStateProperty.all(color ?? primaryColor),
+      backgroundColor: MaterialStateProperty.all(color ?? primary),
       shadowColor: MaterialStateProperty.all(Colors.transparent),
     );
   }

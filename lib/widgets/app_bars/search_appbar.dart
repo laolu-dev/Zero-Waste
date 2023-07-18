@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/widgets/notification_widget.dart';
-import 'package:zero_waste/widgets/search_text_field.dart';
+import '../notification_widget.dart';
+import '../search_text_field.dart';
 
-import '../../res/res.dart';
+import '../../shared/res.dart';
+
+
 
 class SearchBar extends StatelessWidget {
   const SearchBar({Key? key}) : super(key: key);

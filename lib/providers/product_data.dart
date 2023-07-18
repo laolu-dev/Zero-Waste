@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:zero_waste/models/product.dart';
+import '../models/product.dart';
 
 class ProductData extends ChangeNotifier {
   final List<Product> _products = [

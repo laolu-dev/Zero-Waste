@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/feed_data.dart';
-import 'package:zero_waste/res/res.dart';
-import 'package:zero_waste/widgets/customer_user_info.dart';
-import 'package:zero_waste/widgets/sub_user_info_widget.dart';
+
+import '../providers/feed_data.dart';
+import '../shared/res.dart';
+import 'customer_user_info.dart';
+import 'sub_user_info_widget.dart';
 
 class FeedWidget extends StatelessWidget {
   const FeedWidget({Key? key}) : super(key: key);

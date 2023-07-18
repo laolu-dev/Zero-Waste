@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/models/user.dart';
-import 'package:zero_waste/providers/user_data.dart';
-import 'package:zero_waste/res/res.dart';
-import 'package:zero_waste/views/home_screen/home/farmer_types.dart';
-import 'package:zero_waste/widgets/list_views/market_view_builder.dart';
+import '../../../models/user.dart';
+
+import '../../../features/auth/auth_state/user_data.dart';
+import '../../../shared/res.dart';
+import 'farmer_types.dart';
+import '../../../widgets/list_views/market_view_builder.dart';
 
 import '../../../widgets/app_bars/home_appbar.dart';
 
@@ -22,56 +23,58 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final loggedUser = Provider.of<UserAuth>(context);
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
           child: Column(
             children: [
-              FutureBuilder<Farmer?>(
-                future: loggedUser.farmer,
-                builder: (BuildContext context, snapshot) {
-                  if (snapshot.hasData) {
-                    final user = snapshot.data;
-                    return ProfileBar(userName: user!.name);
-                  } else {
-                    return const ProfileBar(userName: '');
-                  }
-                },
-              ),
+              // FutureBuilder<Farmer?>(
+              //   future: loggedUser.farmer,
+              //   builder: (BuildContext context, snapshot) {
+              //     if (snapshot.hasData) {
+              //       final user = snapshot.data;
+              //       return Home(userName: user!.name);
+              //     } else {
+              //       return const Home(userName: '');
+              //     }
+              //   },
+              // ),
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 height: 120,
-                color: Resources.color.primaryColor,
+                color: Resources.color.primary,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'How to use the app.',
-                          style: GoogleFonts.jost(
-                              color: Resources.color.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20),
-                        ),
-                        Text(
-                          'Learn about all the features of the app.',
-                          style: GoogleFonts.jost(
-                              color: Resources.color.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.play_circle),
-                        ),
-                      ],
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            'How to use the app.',
+                            style: GoogleFonts.jost(
+                                color: Resources.color.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20),
+                          ),
+                          Text(
+                            'Learn about all the features of the app.',
+                            style: GoogleFonts.jost(
+                                color: Resources.color.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.play_circle),
+                          ),
+                        ],
+                      ),
                     ),
-                    Image.asset(Resources.iString.book,
+                    Image.asset(Resources.iString.howTo,
                         width: 100, height: 100),
                   ],
                 ),
@@ -113,7 +116,7 @@ class _HomeState extends State<Home> {
                               screen: const UserCategories()),
                           style: TextButton.styleFrom(
                             minimumSize: const Size(87, 37),
-                            backgroundColor: Resources.color.primaryColor,
+                            backgroundColor: Resources.color.primary,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                           ),
@@ -127,7 +130,7 @@ class _HomeState extends State<Home> {
                         )
                       ],
                     ),
-                    Image.asset(Resources.iString.chat,
+                    Image.asset(Resources.iString.contactFarmer,
                         width: 100, height: 120),
                   ],
                 ),

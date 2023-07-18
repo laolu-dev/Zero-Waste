@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-//App Images
-String appImage = "assets/images/appImage.svg";
-String fbSvg = "assets/images/facebook.svg";
-String googleSvg = "assets/images/google.svg";
-String linklnSvg = "assets/images/linkln.svg";
-String accValidSvg = "assets/images/acct_valid.svg";
-String successSvg = "assets/images/success.svg";
-String noteSvg = "assets/images/notes.svg";
-String backGroundJpeg = "assets/images/background.jpeg";
+
 
 //User Type
 const contentOne = "Crop Farmer";
@@ -19,7 +11,7 @@ const contentFour = "Manual Labourers";
 
 //Colors
 const inputWhite = Color.fromRGBO(252, 252, 252, 1);
-const primaryColor = Color.fromRGBO(10, 157, 86, 1);
+const primary = Color.fromRGBO(10, 157, 86, 1);
 const hintTextColor = Color.fromRGBO(151, 151, 151, 1);
 const white = Color.fromRGBO(255, 255, 255, 1);
 const headColor = Color.fromRGBO(0, 0, 0, 1);
@@ -36,13 +28,6 @@ const profileButtonColor = Color.fromRGBO(157, 51, 10, 1);
 const blend = Color.fromRGBO(7, 110, 82, 0.8);
 
 //TextStyles
-TextStyle headerText = GoogleFonts.jost(
-  textStyle: const TextStyle(
-    color: headColor,
-    fontSize: 24,
-    fontWeight: FontWeight.w700,
-  ),
-);
 
 TextStyle contentText = GoogleFonts.jost(
   textStyle: const TextStyle(
@@ -62,7 +47,7 @@ TextStyle contentTextTwo = GoogleFonts.jost(
 
 TextStyle linkText = GoogleFonts.jost(
   textStyle: const TextStyle(
-    color: primaryColor,
+    color: primary,
     fontSize: 16,
     fontWeight: FontWeight.w700,
   ),
@@ -81,14 +66,6 @@ TextStyle userTypeStyle = GoogleFonts.jost(
     color: Color.fromRGBO(22, 22, 29, 1),
     fontSize: 16,
     fontWeight: FontWeight.w700,
-  ),
-);
-
-TextStyle forgotPasswordText = GoogleFonts.jost(
-  textStyle: const TextStyle(
-    color: primaryColor,
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
   ),
 );
 
@@ -142,15 +119,14 @@ TextStyle buttonText = GoogleFonts.jost(
 
 //Button Styles
 ButtonStyle elevatedButtonStyleOne = ElevatedButton.styleFrom(
-  primary: primaryColor,
+  backgroundColor: primary,
   textStyle: buttonTextStyleTwo,
 );
 
 ButtonStyle elevatedButtonStyleTwo = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(10.0),
-  ),
+  ), backgroundColor: primary,
   minimumSize: Size.infinite,
-  primary: primaryColor,
   textStyle: buttonTextStyleTwo,
 );

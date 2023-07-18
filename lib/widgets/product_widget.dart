@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class ProductWidget extends StatelessWidget {
   final String image;
@@ -23,7 +22,7 @@ class ProductWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       height: 173,
       decoration: BoxDecoration(
-        border: Border.all(color: HexColor('#0A9D56')),
+        // border: Border.all(color: HexColor('#0A9D56')),
         boxShadow: [
           BoxShadow(
               color: Colors.black.withOpacity(0.1),
@@ -31,7 +30,7 @@ class ProductWidget extends StatelessWidget {
               offset: const Offset(0.0, 0.5))
         ],
         borderRadius: BorderRadius.circular(20.0),
-        color: HexColor('#E3FFF7'),
+        // color: HexColor('#E3FFF7'),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

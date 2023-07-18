@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/res/res.dart';
-import 'package:zero_waste/widgets/notification_widget.dart';
+
+import '../notification_widget.dart';
+
+import '../../shared/res.dart';
 
 class PageBar extends StatelessWidget {
   final String pageTitle;

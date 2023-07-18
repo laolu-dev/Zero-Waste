@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:zero_waste/constants/constant.dart';
-import 'package:zero_waste/res/res.dart';
-import 'package:zero_waste/widgets/app_bars/search_appbar.dart';
+import '../../../constants/constant.dart';
+
+import '../../../shared/res.dart';
+import '../../../widgets/app_bars/search_appbar.dart';
 
 import 'connections.dart';
 
@@ -23,7 +24,7 @@ class _UserCategoriesState extends State<UserCategories> {
       constraints: BoxConstraints(
           maxHeight: 148, maxWidth: MediaQuery.of(context).size.width),
       decoration: BoxDecoration(
-          border: Border.all(color: primaryColor),
+          border: Border.all(color: primary),
           borderRadius: BorderRadius.circular(10)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -53,7 +54,7 @@ class _UserCategoriesState extends State<UserCategories> {
                   onPressed: () =>
                       pushNewScreen(context, screen: const Connections()),
                   style: TextButton.styleFrom(
-                      backgroundColor: primaryColor,
+                      backgroundColor: primary,
                       minimumSize: const Size(99, 33),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -89,7 +90,7 @@ class _UserCategoriesState extends State<UserCategories> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SearchBar(),
+                // const SearchBar(),
                 const SizedBox(height: 15),
                 userCate(
                   'assets/images/Farmer.png',

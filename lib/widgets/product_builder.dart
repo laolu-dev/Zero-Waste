@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/providers/product_data.dart';
-import 'package:zero_waste/widgets/customer_user_info.dart';
-import 'package:zero_waste/widgets/product_widget.dart';
-import 'package:zero_waste/widgets/sub_user_info_widget.dart';
+
 import '../providers/feed_data.dart';
+import '../providers/product_data.dart';
 import '../views/home_screen/products/product_details.dart';
+import 'customer_user_info.dart';
+import 'product_widget.dart';
+import 'sub_user_info_widget.dart';
 
 class ProductBuilder extends StatelessWidget {
   const ProductBuilder({Key? key}) : super(key: key);
