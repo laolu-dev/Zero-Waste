@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/shared/res.dart';
-import '../../../constants/constant.dart';
-import '../../../providers/list_of_providers.dart';
-import '../widgets/account_appbar.dart';
-import '../../../widgets/profile_widget.dart';
+import '../../../config/constant.dart';
+import '../../../config/res.dart';
+import '../../../provider/user_data.dart';
+import '../../../provider/product_data.dart';
+import '../widgets/profile_widget.dart';
 
 
 class ProfileAccount extends StatefulWidget {
@@ -150,73 +150,90 @@ class _ProfileAccountState extends State<ProfileAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(Icons.arrow_back_ios, color: Resources.color.black),
+          ),
+        ),
+        title: Text(
+          'Profile',
+          style: GoogleFonts.jost(
+              color: Resources.color.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 20),
+        ),
+      ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-            child: Column(
-              children: [
-                const AccountBar(title: 'Profile'),
-                const SizedBox(height: 10),
-                userInfo(context),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ), backgroundColor: Resources.color.primary),
-                      child: Text(
-                        'My Posts',
-                        style: GoogleFonts.jost(
-                            fontSize: 20,
-                            color: Resources.color.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: null,
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ), backgroundColor: const Color.fromRGBO(233, 233, 233, 1)),
-                      child: Text(
-                        'Saved Posts',
-                        style: GoogleFonts.jost(
-                            fontSize: 16,
-                            color: Resources.color.black,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: Consumer<ProductData>(
-                    builder: (context, userPosts, child) => GridView.builder(
-                      shrinkWrap: true,
-                      itemCount: userPosts.products.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 24,
-                              crossAxisSpacing: 18),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          alignment: Alignment.center,
-                          child: Image.network(
-                              userPosts.products[index].productImage),
-                        );
-                      },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+          child: Column(
+            children: [
+            
+              const SizedBox(height: 10),
+              userInfo(context),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ), backgroundColor: Resources.color.primary),
+                    child: Text(
+                      'My Posts',
+                      style: GoogleFonts.jost(
+                          fontSize: 20,
+                          color: Resources.color.white,
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
-                )
-              ],
-            ),
+                  ElevatedButton(
+                    onPressed: null,
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ), backgroundColor: const Color.fromRGBO(233, 233, 233, 1)),
+                    child: Text(
+                      'Saved Posts',
+                      style: GoogleFonts.jost(
+                          fontSize: 16,
+                          color: Resources.color.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Consumer<ProductData>(
+                builder: (context, userPosts, child) {
+                  return Flexible(
+                    child: GridView.builder(
+                                   
+                    itemCount: userPosts.products.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 24,
+                            crossAxisSpacing: 18),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        alignment: Alignment.center,
+                        child: Image.network(
+                            userPosts.products[index].productImage, fit: BoxFit.contain,),
+                      );
+                    },
+                                  ),
+                  );
+                },
+              )
+            ],
           ),
         ),
       ),

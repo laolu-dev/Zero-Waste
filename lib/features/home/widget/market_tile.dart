@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/widgets/profile_image_clipper.dart';
+import '../../../config/res.dart';
+import '../../products/widgets/profile_image_clipper.dart';
 
-import '../../../shared/res.dart';
+
 
 class MarketTile extends StatelessWidget {
   final String imageUrl;

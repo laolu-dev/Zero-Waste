@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import '../../../config/res.dart';
+import '../../../provider/product_data.dart';
+import '../widgets/product_widget.dart';
 
-import '../../../config/app_theme.dart';
-import '../../../shared/res.dart';
 
-import '../widgets/product_builder.dart';
-
-
+import '../../../widgets/notification_widget.dart';
 
 class ProductScreen extends StatefulWidget {
   static const id = 'ProductScreen';
@@ -20,52 +20,39 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-            child: Column(
-              children: [
-                // const PageBar(pageTitle: 'Products'),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: null,
-                        style: ThemeHelper().buttonStyle(50.0, 10.0),
-                        child: Text(
-                          'Active',
-                          style: GoogleFonts.jost(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: null,
-                        style: ThemeHelper()
-                            .buttonStyle(50.0, 10.0, Colors.grey[200]),
-                        child: Text(
-                          'Completed',
-                          style: GoogleFonts.jost(
-                              color: Resources.color.tField,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30.0),
-                const ProductBuilder(),
-              ],
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(Icons.arrow_back_ios, color: Resources.color.black),
           ),
         ),
+        title: Text(
+          'Products',
+          style: GoogleFonts.jost(
+              color: Resources.color.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 20),
+        ),
+        actions: const [
+          Padding(
+              padding: EdgeInsets.only(top: 5, right: 10, bottom: 5),
+              child: NotificationWidget())
+        ],
+      ),
+      body: Consumer<ProductData>(
+        builder: (context, product, child) {
+          return ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            itemCount: product.length,
+            itemBuilder: (context, index) {
+              return ProductWidget(product: product.products[index]);
+            },
+          );
+        },
       ),
     );
   }

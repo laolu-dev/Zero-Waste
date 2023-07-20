@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/shared/res.dart';
+import '../../../config/res.dart';
 
-import '../models/new_conversation.dart';
+
+import '../../../models/new_conversation.dart';
 
 final _initialData = List.generate(
   50,

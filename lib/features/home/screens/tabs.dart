@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:zero_waste/features/account/screens/my_account.dart';
-import '../../../shared/res.dart';
+import 'package:zero_waste/config/res.dart';
+import '../../account/screens/my_account.dart';
+
 import '../../feed/screens/feeds.dart';
-import '../../products/products.dart';
+import '../../products/screens/products.dart';
 import 'dashboard.dart';
 
 class AppPages extends StatefulWidget {

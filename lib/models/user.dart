@@ -2,13 +2,15 @@
 import 'dart:convert';
 
 class Farmer {
-  String? imagePath;
-  String name;
-  String typeOfFarmer;
-  String homeAddress;
-  String state;
-  String phone;
-  String email;
+  final String? imagePath;
+  final String name;
+  final String typeOfFarmer;
+  final String homeAddress;
+  final String state;
+  final String phone;
+  final String email;
+  final List? likedPosts;
+  final double? ratings;
 
   Farmer({
     this.imagePath,
@@ -18,7 +20,11 @@ class Farmer {
     required this.state,
     required this.phone,
     required this.email,
+    this.likedPosts,
+    this.ratings,
   });
+  
+
 
   Farmer copyWith({
     String? imagePath,
@@ -28,6 +34,8 @@ class Farmer {
     String? state,
     String? phone,
     String? email,
+    List? likedPosts,
+    double? ratings,
   }) {
     return Farmer(
       imagePath: imagePath ?? this.imagePath,
@@ -37,6 +45,8 @@ class Farmer {
       state: state ?? this.state,
       phone: phone ?? this.phone,
       email: email ?? this.email,
+      likedPosts: likedPosts ?? this.likedPosts,
+      ratings: ratings ?? this.ratings,
     );
   }
 
@@ -49,6 +59,8 @@ class Farmer {
       'state': state,
       'phone': phone,
       'email': email,
+      'likedPosts': likedPosts,
+      'ratings': ratings,
     };
   }
 
@@ -61,6 +73,8 @@ class Farmer {
       state: map['state'] as String,
       phone: map['phone'] as String,
       email: map['email'] as String,
+      likedPosts: map['likedPosts'] != null ? List.castFrom(map['likedPosts']): null,
+      ratings: map['ratings'] != null ? map['ratings'] as double : null,
     );
   }
 
@@ -70,7 +84,7 @@ class Farmer {
 
   @override
   String toString() {
-    return 'Farmer(imagePath: $imagePath, name: $name, typeOfFarmer: $typeOfFarmer, homeAddress: $homeAddress, state: $state, phone: $phone, email: $email)';
+    return 'Farmer(imagePath: $imagePath, name: $name, typeOfFarmer: $typeOfFarmer, homeAddress: $homeAddress, state: $state, phone: $phone, email: $email, likedPosts: $likedPosts, ratings: $ratings)';
   }
 
   @override
@@ -84,7 +98,9 @@ class Farmer {
       other.homeAddress == homeAddress &&
       other.state == state &&
       other.phone == phone &&
-      other.email == email;
+      other.email == email &&
+      other.likedPosts == likedPosts &&
+      other.ratings == ratings;
   }
 
   @override
@@ -95,6 +111,8 @@ class Farmer {
       homeAddress.hashCode ^
       state.hashCode ^
       phone.hashCode ^
-      email.hashCode;
+      email.hashCode ^
+      likedPosts.hashCode ^
+      ratings.hashCode;
   }
 }

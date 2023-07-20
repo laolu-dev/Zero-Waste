@@ -1,6 +1,6 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
-import '../constants/constant.dart';
+import '../config/constant.dart';
 
 import '../models/feed.dart';
 

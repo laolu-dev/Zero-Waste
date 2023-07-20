@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../shared/res.dart';
+
+import '../../../config/res.dart';
+
 import '../../../widgets/notification_widget.dart';
-import '../widgets/feed_info_widget.dart';
 import '../../home/widget/search_text_field.dart';
-import '../../../providers/feed_data.dart';
+import '../../../provider/feed_data.dart';
 import '../widgets/add_icon.dart';
+import '../widgets/feed_info_widget.dart';
 
 class FeedsPage extends StatelessWidget {
   static const id = 'FeedsPage';

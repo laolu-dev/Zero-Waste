@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/constant.dart';
+import '../../../config/constant.dart';
 
 class ImageViewerWidget extends StatelessWidget {
   final String productImage;

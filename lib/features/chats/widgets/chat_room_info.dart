@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/widgets/user_avatar.dart';
+import '../../../widgets/user_avatar.dart';
 
 class ChatRoomInfo extends StatelessWidget {
   final String name;

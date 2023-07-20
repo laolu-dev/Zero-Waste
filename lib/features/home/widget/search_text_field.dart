@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/utils/logger.dart';
-import '../../../shared/res.dart';
+import '../../../config/res.dart';
+import '../../../utils/logger.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({

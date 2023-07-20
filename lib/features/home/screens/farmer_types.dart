@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import '../../../constants/constant.dart';
-import '../../../shared/res.dart';
+
+import '../../../config/constant.dart';
+import '../../../config/res.dart';
+
 import 'connections.dart';
 
 class UserCategories extends StatelessWidget {

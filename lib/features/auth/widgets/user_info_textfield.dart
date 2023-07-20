@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../shared/res.dart';
+import '../../../config/res.dart';
+
+
 
 class UserInput extends StatefulWidget {
   final String label;

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../constants/constant.dart';
+import '../../../../config/constant.dart';
+import '../../../../config/res.dart';
 import '../../../../models/user.dart';
-import '../../../../shared/res.dart';
+
 import '../../../../widgets/app_button.dart';
 import '../../widgets/social_login.dart';
 import 'login_screen.dart';

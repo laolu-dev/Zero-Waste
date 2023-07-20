@@ -2,9 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/features/auth/widgets/password_textfield.dart';
-import '../../../../constants/constant.dart';
-import '../../../../shared/res.dart';
+import '../../../../config/res.dart';
+import '../../widgets/password_textfield.dart';
+import '../../../../config/constant.dart';
+
 import '../../../home/screens/tabs.dart';
 import '../../widgets/user_info_textfield.dart';
 import 'signup_screen.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../shared/res.dart';
-import '../../../../widgets/app_button.dart';
+import '../../../../config/res.dart';
 
+import '../../../../widgets/app_button.dart';
 import 'login_screen.dart';
 
 class VerifiedAccount extends StatelessWidget {

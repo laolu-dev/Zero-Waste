@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
+import '../features/products/screens/products.dart';
 
-import 'features/account/screens/my_account.dart';
-import 'features/account/screens/profile.dart';
-import 'features/home/screens/connections.dart';
-import 'features/home/screens/farmer_types.dart';
-import 'features/home/screens/tabs.dart';
-import 'models/user.dart';
+import '../features/account/screens/my_account.dart';
+import '../features/account/screens/profile.dart';
+import '../features/home/screens/connections.dart';
+import '../features/home/screens/farmer_types.dart';
+import '../features/home/screens/tabs.dart';
+import '../models/user.dart';
 
-import 'features/auth/screens/signup-login/login_screen.dart';
-import 'features/auth/screens/signup-login/otp_screen.dart';
-import 'features/auth/screens/signup-login/signup_screen.dart';
-import 'features/auth/screens/signup-login/verified_account.dart';
-import 'features/auth/screens/signup-login/type_of_farmer.dart';
-import 'features/auth/screens/forget_password/forgot_password.dart';
-import 'features/auth/screens/forget_password/password_verification.dart';
-import 'features/auth/screens/forget_password/reset_password.dart';
-import 'features/auth/screens/forget_password/reset_success.dart';
-import 'features/feed/screens/feeds.dart';
-import 'features/chats/screens/new_conversation_screen.dart';
-import 'features/products/products.dart';
-import 'features/onboarding/screens/board.dart';
-import 'features/onboarding/screens/splash_screen.dart';
-import 'features/unknown_page.dart';
+import '../features/auth/screens/signup-login/login_screen.dart';
+import '../features/auth/screens/signup-login/otp_screen.dart';
+import '../features/auth/screens/signup-login/signup_screen.dart';
+import '../features/auth/screens/signup-login/verified_account.dart';
+import '../features/auth/screens/signup-login/type_of_farmer.dart';
+import '../features/auth/screens/forget_password/forgot_password.dart';
+import '../features/auth/screens/forget_password/password_verification.dart';
+import '../features/auth/screens/forget_password/reset_password.dart';
+import '../features/auth/screens/forget_password/reset_success.dart';
+import '../features/feed/screens/feeds.dart';
+import '../features/chats/screens/new_conversation_screen.dart';
+
+import '../features/onboarding/screens/board.dart';
+import '../features/onboarding/screens/splash_screen.dart';
+import '../features/unknown_page.dart';
 
 Route<dynamic>? routes(RouteSettings settings) {
   switch (settings.name) {

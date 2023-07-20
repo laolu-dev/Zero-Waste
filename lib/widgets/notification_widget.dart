@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import '../config/res.dart';
 
-import '../shared/res.dart';
+
 
 class NotificationWidget extends StatelessWidget {
   const NotificationWidget({Key? key}) : super(key: key);

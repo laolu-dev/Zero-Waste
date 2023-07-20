@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/widgets/user_avatar.dart';
-import '../../../shared/res.dart';
+import '../../../config/res.dart';
+import '../../../widgets/user_avatar.dart';
+
 import '../../../widgets/notification_widget.dart';
 
 class DashboardBar extends StatelessWidget {

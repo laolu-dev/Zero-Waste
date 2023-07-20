@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/features/chats/widgets/chat_room_info.dart';
-import 'package:zero_waste/shared/res.dart';
+import '../../../config/res.dart';
+import '../../../provider/chat_data.dart';
+import '../widgets/chat_room_info.dart';
+
 import '../widgets/message_bubble.dart';
-import '../controller/chat_data.dart';
+
 
 class ChatScreen extends StatefulWidget {
   static const id = 'ChatScreen';

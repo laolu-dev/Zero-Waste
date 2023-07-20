@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/features/chats/models/new_conversation.dart';
+
+import '../../../models/new_conversation.dart';
 
 class ConversationsProvider extends ChangeNotifier {
   final List<NewConnection> _newUser = [];

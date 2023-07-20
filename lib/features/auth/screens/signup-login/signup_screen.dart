@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zero_waste/features/auth/widgets/password_textfield.dart';
+import '../../../../config/res.dart';
+import '../../widgets/password_textfield.dart';
 
-import '../../../../constants/constant.dart';
-import '../../../../shared/res.dart';
+import '../../../../config/constant.dart';
+
 import '../../../../widgets/app_button.dart';
 
 import '../../widgets/social_login.dart';

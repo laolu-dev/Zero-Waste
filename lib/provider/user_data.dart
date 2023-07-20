@@ -21,17 +21,17 @@ class UserAuth extends ChangeNotifier {
   File? get profileImage => _profileImage;
 
   void submitForm(String name, String phone, String homeAddress, String state) {
-    _userForm.name = name;
-    const countryCode = '+234';
-    final val = phone.substring(1);
-    final formattedPhone = countryCode + val;
-    _userForm.phone = formattedPhone;
-    _userForm.homeAddress = homeAddress;
-    _userForm.state = state;
+    // _userForm.name = name;
+    // const countryCode = '+234';
+    // final val = phone.substring(1);
+    // final formattedPhone = countryCode + val;
+    // _userForm.phone = formattedPhone;
+    // _userForm.homeAddress = homeAddress;
+    // _userForm.state = state;
   }
 
   void getUsertype(String value) {
-    _userForm.typeOfFarmer = value;
+    // _userForm.typeOfFarmer = value;
     notifyListeners();
   }
 

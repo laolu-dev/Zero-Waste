@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../shared/res.dart';
+
+import '../../../config/res.dart';
 import '../../../widgets/user_avatar.dart';
 
 class ConnectionTile extends StatelessWidget {

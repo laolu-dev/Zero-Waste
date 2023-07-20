@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/features/home/widget/home_appbar.dart';
-import '../../../providers/market_data.dart';
-import '../../../shared/res.dart';
-import '../../auth/auth_state/user_data.dart';
+import '../../../config/res.dart';
+import '../../../provider/market_data.dart';
+import '../../../provider/user_data.dart';
+import '../widget/home_appbar.dart';
 import '../widget/market_tile.dart';
 import 'farmer_types.dart';
 

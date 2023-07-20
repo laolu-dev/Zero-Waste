@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import '../models/market_items.dart';
+import '../../../models/market_items.dart';
 
 final List<MarketItems> _initialData = List.generate(
   50,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/constant.dart';
+import '../../../config/constant.dart';
 
 Column userPopularity(String num, String category) {
   return Column(

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/features/chats/controller/add_new_conversation.dart';
-import 'package:zero_waste/features/chats/models/new_conversation.dart';
-import 'package:zero_waste/features/chats/screens/chat_screen.dart';
-import 'package:zero_waste/shared/res.dart';
-import 'package:zero_waste/widgets/user_avatar.dart';
+import 'package:zero_waste/config/res.dart';
+
+import '../../../models/new_conversation.dart';
+import '../../../provider/add_new_conversation.dart';
+import '../../chats/screens/chat_screen.dart';
+
+import '../../../widgets/user_avatar.dart';
 
 import '../../../models/feed.dart';
 

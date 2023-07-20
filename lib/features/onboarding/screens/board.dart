@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../shared/res.dart';
+import '../../../config/res.dart';
+
 import '../widgets/onboard_widget.dart';
 
 import '../../auth/screens/signup-login/login_screen.dart';
