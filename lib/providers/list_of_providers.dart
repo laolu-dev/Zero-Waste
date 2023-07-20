@@ -1,4 +1,4 @@
-export 'chat_data.dart';
+export '../features/chats/controller/chat_data.dart';
 export 'feed_data.dart';
 export 'market_data.dart';
 

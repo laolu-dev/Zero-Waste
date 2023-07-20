@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import '../features/feed/new_conversation_screen.dart';
+import 'package:zero_waste/shared/res.dart';
+import '../../chats/screens/new_conversation_screen.dart';
 
 class ChatIcon extends StatelessWidget {
   const ChatIcon({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class ChatIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       tooltip: 'Chat',
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Resources.color.primary.withOpacity(.5),
       onPressed: () =>
           pushNewScreen(context, screen: const NewConversationScreen()),
       child: const Center(

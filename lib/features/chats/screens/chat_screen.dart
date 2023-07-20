@@ -1,144 +1,166 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../config/app_theme.dart';
-import '../../../constants/constant.dart';
-import '../../../providers/chat_data.dart';
-import '../widgets/customer_user_info.dart';
-import '../../../widgets/messge_stream.dart';
-import '../../../utils/user_preferences.dart';
+import 'package:zero_waste/features/chats/widgets/chat_room_info.dart';
+import 'package:zero_waste/shared/res.dart';
+import '../widgets/message_bubble.dart';
+import '../controller/chat_data.dart';
 
 class ChatScreen extends StatefulWidget {
   static const id = 'ChatScreen';
-  final CustomerUserInfo? customerUserChatInfo;
-  const ChatScreen({
-    Key? key,
-    required this.customerUserChatInfo,
-  }) : super(key: key);
+  final String name;
+  final bool? onlineStatus;
+  final String? profileUrl;
+  const ChatScreen(
+      {Key? key, required this.name, this.onlineStatus, this.profileUrl})
+      : super(key: key);
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  UserPreferences userPreferences = UserPreferences();
-  final textFieldController = TextEditingController();
-  String textValue = '';
+  late TextEditingController _text;
+  late bool _showSend;
+
+  @override
+  void initState() {
+    super.initState();
+    _showSend = false;
+    _text = TextEditingController();
+    _text.addListener(() {
+      if (_text.text.isEmpty) {
+        setState(() {});
+        _showSend = !_showSend;
+      }
+    });
+  }
 
   @override
   void dispose() {
-    textFieldController.dispose();
+    _text.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ChatData>(
-      builder: (context, chatData, child) {
-        return Scaffold(
-          body: SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          GestureDetector(
-                            onTap: () => Navigator.pop(context),
-                            child: const Icon(Icons.arrow_back_ios,
-                                color: Colors.black, size: 20.0),
-                          ),
-                          Flexible(child: widget.customerUserChatInfo!),
-                          const Icon(Icons.search, size: 32)
-                        ],
-                      ),
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(Icons.arrow_back_ios,
+                        color: Colors.black, size: 20.0),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: ChatRoomInfo(
+                      name: widget.name,
+                      profileUrl:
+                          widget.profileUrl ?? Resources.iString.dummyUser,
+                      onlineStatus: widget.onlineStatus ?? false,
                     ),
-                    const Divider(color: primary),
-                  ],
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(CupertinoIcons.search, size: 32),
+                    padding: const EdgeInsets.all(4),
+                    splashRadius: 25,
+                  ),
+                ],
+              ),
+            ),
+            Divider(color: Resources.color.primary, thickness: 1.2),
+            Expanded(
+              child: Consumer<ChatData>(
+                builder: (context, chatData, child) => ListView.builder(
+                  reverse: false,
+                  itemBuilder: (context, index) {
+                    final data = chatData.chatMessage[index];
+                    return MessageBubble(
+                      // sender: data.userProfile,
+                      isMe: true,
+                      messageContent: data.messageContent,
+                    );
+                  },
+                  itemCount: chatData.length,
                 ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Expanded(child: MessagesStream()),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 10.0),
-                        child: Material(
-                          elevation: 20.0,
-                          borderRadius: ThemeHelper().textFieldBorderRadius,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: TextField(
-                                    controller: textFieldController,
-                                    decoration: ThemeHelper()
-                                        .textFieldInputDecoration('Message'),
-                                    onChanged: (value) =>
-                                        setState(() => textValue = value),
-                                  ),
-                                ),
-                                textValue == ''
-                                    ? const Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Icon(
-                                            Icons.add,
-                                            size: 30,
-                                            color: Colors.grey,
-                                          ),
-                                          SizedBox(width: 5.0),
-                                          Icon(Icons.emoji_emotions,
-                                              size: 25, color: Colors.grey),
-                                          SizedBox(width: 5.0),
-                                          Icon(
-                                            Icons.camera_alt,
-                                            size: 25,
-                                            color: Colors.grey,
-                                          ),
-                                        ],
-                                      )
-                                    : GestureDetector(
-                                        onTap: () => {
-                                          setState(
-                                            () {
-                                              textFieldController.clear();
-                                              chatData.addChatMessage(
-                                                  userPreferences,
-                                                  textValue,
-                                                  true,
-                                                  true);
-                                            },
-                                          ),
-                                        },
-                                        child: Image.asset(
-                                          'assets/images/send_icon.png',
-                                          height: 22.5,
-                                          width: 22.47,
-                                          color: Colors.blue,
-                                        ),
-                                      ),
-                              ],
-                            ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+              child: Material(
+                elevation: 10,
+                borderRadius: BorderRadius.circular(20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _text,
+                        onChanged: (value) {
+                          if (value.isEmpty) {
+                            _showSend = !_showSend;
+                          }
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Send a message',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10.0)
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: _showSend
+                          ? IconButton(
+                              onPressed: () {
+                                context
+                                    .read<ChatData>()
+                                    .addChatMessage(_text.text, true, false);
+                                _text.clear();
+                              },
+                              icon: const Icon(Icons.send, color: Colors.green),
+                              padding: const EdgeInsets.all(4),
+                              splashRadius: 25,
+                            )
+                          : Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.add),
+                                  padding: const EdgeInsets.all(4),
+                                  splashRadius: 25,
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon:
+                                      const Icon(Icons.emoji_emotions_outlined),
+                                  padding: const EdgeInsets.all(4),
+                                  splashRadius: 25,
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.mic),
+                                  padding: const EdgeInsets.all(4),
+                                  splashRadius: 25,
+                                )
+                              ],
+                            ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/features/products/screens/product_details.dart';
 
-import '../providers/feed_data.dart';
-import '../providers/product_data.dart';
-import '../features/products/product_details.dart';
-import '../features/chats/widgets/customer_user_info.dart';
-import 'product_widget.dart';
-import 'sub_user_info_widget.dart';
+import '../../../providers/feed_data.dart';
+import '../../../providers/product_data.dart';
+
+import '../../feed/widgets/feed_info_widget.dart';
+import '../../../widgets/product_widget.dart';
+import '../../../widgets/sub_user_info_widget.dart';
 
 class ProductBuilder extends StatelessWidget {
   const ProductBuilder({Key? key}) : super(key: key);
@@ -33,19 +34,19 @@ class ProductBuilder extends StatelessWidget {
                             productWeight: product.productWeight,
                             productRating: product.productRating,
                             typeOfFarmer: feed.typeOfFarmer,
-                            customerUserChatInfo: CustomerUserInfo(
-                              title: SubUserInfo(
-                                title: feed.userName,
-                                title1TextStyle: const TextStyle(
-                                    fontFamily: 'Jost',
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.black),
-                                subtitle2: feed.isOnline ? 'Online' : 'Offline',
-                                subtitle2Color:
-                                    feed.isOnline ? Colors.blue : null,
-                              ),
-                            ),
+                            // customerUserChatInfo: CustomerUserInfo(
+                            //   title: SubUserInfo(
+                            //     title: feed.userName,
+                            //     title1TextStyle: const TextStyle(
+                            //         fontFamily: 'Jost',
+                            //         fontSize: 16.0,
+                            //         fontWeight: FontWeight.w900,
+                            //         color: Colors.black),
+                            //     subtitle2: feed.isOnline ? 'Online' : 'Offline',
+                            //     subtitle2Color:
+                            //         feed.isOnline ? Colors.blue : null,
+                            //   ),
+                            // ),
                             productName: product.productName,
                             productImage: product.productImage,
                           )),

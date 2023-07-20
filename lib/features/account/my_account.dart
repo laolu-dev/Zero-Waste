@@ -12,7 +12,7 @@ import '../../main.dart';
 import '../auth/auth_state/user_data.dart';
 import '../../shared/res.dart';
 
-import '../../widgets/app_bars/account_appbar.dart';
+import 'widgets/account_appbar.dart';
 
 import '../auth/screens/signup-login/login_screen.dart';
 

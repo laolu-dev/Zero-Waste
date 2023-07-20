@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../shared/res.dart';
-import '../chats/widgets/customer_user_info.dart';
-import '../../widgets/product_widget.dart';
-import '../../config/app_theme.dart';
+import '../../../config/app_theme.dart';
+import '../../../shared/res.dart';
 
-import '../../widgets/app_bars/page_appbar.dart';
-import '../../widgets/image_viewer_widget.dart';
-import '../chats/screens/chat_screen.dart';
+import '../../../widgets/image_viewer_widget.dart';
+import '../../../widgets/product_widget.dart';
+import '../../chats/screens/chat_screen.dart';
+import '../../feed/widgets/feed_info_widget.dart';
+
 
 class ProductDetails extends StatefulWidget {
-  final CustomerUserInfo customerUserChatInfo;
+  // final CustomerUserInfo customerUserChatInfo;
   final String? userProfilePicture;
   final String productImage;
   final String productName;
@@ -29,7 +29,7 @@ class ProductDetails extends StatefulWidget {
       required this.productRating,
       required this.userName,
       required this.typeOfFarmer,
-      required this.customerUserChatInfo,
+      // required this.customerUserChatInfo,
       required this.productName,
       required this.productImage})
       : super(key: key);
@@ -49,7 +49,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const PageBar(pageTitle: 'Products'),
+                // const PageBar(pageTitle: 'Products'),
                 const SizedBox(height: 10),
                 Row(
                   children: [
@@ -208,26 +208,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                               ],
                             ),
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChatScreen(
-                                      customerUserChatInfo:
-                                          widget.customerUserChatInfo),
-                                ),
-                              );
-                            },
-                            style: ThemeHelper().buttonStyle(35.0, 10.0),
-                            child: Text(
-                              'Chat',
-                              style: GoogleFonts.jost(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          )
+                          // ElevatedButton(
+                          //   onPressed: () {
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //         builder: (context) => ChatScreen(
+                          //             ),
+                          //       ),
+                          //     );
+                          //   },
+                          //   style: ThemeHelper().buttonStyle(35.0, 10.0),
+                          //   child: Text(
+                          //     'Chat',
+                          //     style: GoogleFonts.jost(
+                          //         color: Colors.white,
+                          //         fontSize: 14,
+                          //         fontWeight: FontWeight.w600),
+                          //   ),
+                          // )
                         ],
                       ),
                     ),

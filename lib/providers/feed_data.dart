@@ -5,9 +5,9 @@ import '../constants/constant.dart';
 import '../models/feed.dart';
 
 class FeedData extends ChangeNotifier {
-  final List<Feed> _feeds = [
+  final List<FeedInfo> _feeds = [
     // Dummy feed data
-    Feed(
+    FeedInfo(
         profileImage:
             'https://images.unsplash.com/photo-1585980516944-df4fcf837ea6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8VGlrbF9DYzdjRTB8fGVufDB8fHx8&dpr=1&auto=format&fit=crop&w=294&q=60',
         userName: 'Tom Pill',
@@ -20,7 +20,7 @@ class FeedData extends ChangeNotifier {
         isOnline: false,
         typeOfFarmer: contentOne,
         numberOfLikes: 3),
-    Feed(
+    FeedInfo(
         profileImage:
             'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
         userName: 'Haim Paul',
@@ -33,7 +33,7 @@ class FeedData extends ChangeNotifier {
         isOnline: true,
         typeOfFarmer: contentTwo,
         numberOfLikes: 3),
-    Feed(
+    FeedInfo(
         profileImage:
             'https://images.unsplash.com/photo-1585980516944-df4fcf837ea6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8VGlrbF9DYzdjRTB8fGVufDB8fHx8&dpr=1&auto=format&fit=crop&w=294&q=60',
         userName: 'Tom Pill',
@@ -46,7 +46,7 @@ class FeedData extends ChangeNotifier {
         isOnline: false,
         typeOfFarmer: contentOne,
         numberOfLikes: 3),
-    Feed(
+    FeedInfo(
         profileImage:
             'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
         userName: 'Haim Paul',
@@ -59,7 +59,7 @@ class FeedData extends ChangeNotifier {
         isOnline: true,
         typeOfFarmer: contentTwo,
         numberOfLikes: 3),
-    Feed(
+    FeedInfo(
         profileImage:
             'https://images.unsplash.com/photo-1585980516944-df4fcf837ea6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8VGlrbF9DYzdjRTB8fGVufDB8fHx8&dpr=1&auto=format&fit=crop&w=294&q=60',
         userName: 'Tom Pill',
@@ -72,7 +72,7 @@ class FeedData extends ChangeNotifier {
         isOnline: false,
         typeOfFarmer: contentOne,
         numberOfLikes: 3),
-    Feed(
+    FeedInfo(
         profileImage:
             'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
         userName: 'Haim Paul',
@@ -86,9 +86,9 @@ class FeedData extends ChangeNotifier {
         typeOfFarmer: contentTwo,
         numberOfLikes: 3),
   ];
-  UnmodifiableListView<Feed> get feeds => UnmodifiableListView(_feeds);
+  UnmodifiableListView<FeedInfo> get feeds => UnmodifiableListView(_feeds);
 
-  void addFeed(Feed feed) {
+  void addFeed(FeedInfo feed) {
     _feeds.add(feed);
     notifyListeners();
   }

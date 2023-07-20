@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:zero_waste/features/account/screens/my_account.dart';
 import '../../../shared/res.dart';
-import '../../feed/feeds.dart';
+import '../../feed/screens/feeds.dart';
 import '../../products/products.dart';
-import 'home.dart';
+import 'dashboard.dart';
 
 class AppPages extends StatefulWidget {
   static const id = '/main_page_with_nav_bar';
@@ -19,7 +19,7 @@ class _AppPagesState extends State<AppPages> {
 
   List<Widget> _navScreens() {
     return [
-      const Home(),
+      const Dashboard(),
       const FeedsPage(),
       const ProductScreen(),
       const MyAccount(),
@@ -29,23 +29,31 @@ class _AppPagesState extends State<AppPages> {
   List<PersistentBottomNavBarItem> _navItems() {
     return [
       PersistentBottomNavBarItem(
-          icon: Image.asset(Resources.iString.home,
-              color: _controller.index == 0 ? Resources.color.primary : null),
+          icon: Image.asset(
+            Resources.iString.home,
+            color: _controller.index == 0 ? Resources.color.primary : null,
+          ),
           title: 'Home',
           activeColorPrimary: Resources.color.primary),
       PersistentBottomNavBarItem(
-          icon: Image.asset(Resources.iString.feed,
-              color: _controller.index == 1 ? Resources.color.primary : null),
+          icon: Image.asset(
+            Resources.iString.feed,
+            color: _controller.index == 1 ? Resources.color.primary : null,
+          ),
           title: 'Feeds',
           activeColorPrimary: Resources.color.primary),
       PersistentBottomNavBarItem(
-          icon: Image.asset(Resources.iString.product,
-              color: _controller.index == 2 ? Resources.color.primary : null),
+          icon: Image.asset(
+            Resources.iString.product,
+            color: _controller.index == 2 ? Resources.color.primary : null,
+          ),
           title: 'Products',
           activeColorPrimary: Resources.color.primary),
       PersistentBottomNavBarItem(
-          icon: Image.asset(Resources.iString.account,
-              color: _controller.index == 3 ? Resources.color.primary : null),
+          icon: Image.asset(
+            Resources.iString.account,
+            color: _controller.index == 3 ? Resources.color.primary : null,
+          ),
           title: 'Account',
           activeColorPrimary: Resources.color.primary)
     ];
@@ -73,7 +81,7 @@ class _AppPagesState extends State<AppPages> {
       onItemSelected: (value) {
         setState(() => _controller.index = value);
       },
-      navBarStyle: NavBarStyle.style6,
+      navBarStyle: NavBarStyle.style1,
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/features/chats/controller/add_new_conversation.dart';
+import 'package:zero_waste/features/chats/controller/connections.dart';
 
 import 'providers/list_of_providers.dart';
 import 'routes.dart';
@@ -12,6 +14,8 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ChatData()),
+        ChangeNotifierProvider(create: (context) => ConnectionsProvider()),
+        ChangeNotifierProvider(create: (context) => ConversationsProvider()),
         ChangeNotifierProvider(create: (context) => FeedData()),
         ChangeNotifierProvider(create: (context) => UserAuth()),
         ChangeNotifierProvider(create: (context) => ProductData()),

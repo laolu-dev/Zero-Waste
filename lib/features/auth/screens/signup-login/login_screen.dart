@@ -8,7 +8,7 @@ import '../../../../shared/res.dart';
 import '../../../home/screens/tabs.dart';
 import '../../widgets/user_info_textfield.dart';
 import 'signup_screen.dart';
-import '../forget_password_screens/forgot_password.dart';
+import '../forget_password/forgot_password.dart';
 import '../../../../widgets/app_button.dart';
 
 import '../../widgets/social_login.dart';

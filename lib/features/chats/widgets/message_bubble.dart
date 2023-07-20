@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../utils/user_preferences.dart';
+import '../../../utils/user_preferences.dart';
 
 class MessageBubble extends StatefulWidget {
-  UserPreferences sender;
-  String messageContent;
-  bool isMe;
-  bool isMessage = false;
-  MessageBubble({
+  final String messageContent;
+  final bool isMe;
+
+  const MessageBubble({
     Key? key,
-    required this.sender,
     required this.messageContent,
     required this.isMe,
-    required this.isMessage,
+    // this.isMessage = false,
   }) : super(key: key);
 
   @override
@@ -20,12 +18,12 @@ class MessageBubble extends StatefulWidget {
 }
 
 class _MessageBubbleState extends State<MessageBubble> {
-  bool _isMessage() => widget.isMessage;
+  // bool _isMessage() => widget.isMessage;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -38,33 +36,35 @@ class _MessageBubbleState extends State<MessageBubble> {
                       topLeft: Radius.circular(30.0),
                       topRight: Radius.circular(10.0),
                       bottomLeft: Radius.circular(30.0),
-                      bottomRight: Radius.circular(30.0))
+                      bottomRight: Radius.circular(30.0),
+                    )
                   : const BorderRadius.only(
                       topRight: Radius.circular(30.0),
                       topLeft: Radius.circular(10.0),
                       bottomLeft: Radius.circular(30.0),
-                      bottomRight: Radius.circular(30.0)),
+                      bottomRight: Radius.circular(30.0),
+                    ),
               elevation: 5.0,
               color: widget.isMe ? Colors.green : Colors.grey[900],
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 20.0),
-                child: _isMessage()
-                    ? Text(
+                child: 
+                    Text(
                         widget.messageContent,
                         style: TextStyle(
                           fontSize: 15.0,
                           color: widget.isMe ? Colors.grey[900] : Colors.green,
                         ),
                       )
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image.network(
-                          widget.messageContent,
-                          alignment: Alignment.center,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
+                    //  ClipRRect(
+                    //     borderRadius: BorderRadius.circular(10.0),
+                    //     child: Image.network(
+                    //       widget.messageContent,
+                    //       alignment: Alignment.center,
+                    //       fit: BoxFit.fill,
+                    //     ),
+                    //   ),
               ),
             ),
           ],

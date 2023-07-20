@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:zero_waste/shared/res.dart';
 import '../../../constants/constant.dart';
 import '../../../providers/list_of_providers.dart';
-import '../../../widgets/app_bars/account_appbar.dart';
+import '../widgets/account_appbar.dart';
 import '../../../widgets/profile_widget.dart';
 
 

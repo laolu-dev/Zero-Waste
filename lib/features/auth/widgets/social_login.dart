@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../service/firebase_social_auth.dart';
-import '../../../../shared/res.dart';
+import '../../../service/firebase_social_auth.dart';
+import '../../../shared/res.dart';
 import '../../home/screens/tabs.dart';
 
 

@@ -1,28 +1,77 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste/features/home/widget/connection_tile.dart';
+import 'package:zero_waste/features/home/widget/search_text_field.dart';
+import '../../../shared/res.dart';
+import '../../chats/controller/add_new_conversation.dart';
+import '../../chats/controller/connections.dart';
+import '../../chats/models/new_conversation.dart';
+import '../../chats/screens/new_conversation_screen.dart';
 
-import '../../../widgets/list_views/user_chat_builder.dart';
-
-
-
-class Connections extends StatefulWidget {
+class Connections extends StatelessWidget {
   static const id = '/Connection';
   const Connections({Key? key}) : super(key: key);
 
   @override
-  State<Connections> createState() => _ConnectionsState();
-}
-
-class _ConnectionsState extends State<Connections> {
-  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            // SearchBar(),
-            SizedBox(height: 25),
-            Flexible(child: UsersChatBuilder()),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: Resources.color.black,
+                      ),
+                    ),
+                    const Flexible(child: SearchTextField()),
+                  ],
+                ),
+              ),
+              Consumer2<ConnectionsProvider, ConversationsProvider>(
+                builder: (context, connections, converse, child) {
+                  return Flexible(
+                    child: ListView.builder(
+                      padding:
+                          const EdgeInsets.only(top: 10, right: 12, left: 6),
+                      itemBuilder: (context, index) {
+                        final connect = connections.users[index];
+                        return ConnectionTile(
+                          key: ValueKey(index),
+                          name: connect.name,
+                          profileUrl: connect.profileUrl,
+                          farmerType: connect.farmerType,
+                          location: connect.location,
+                          btnAction: 'Add',
+                          onTap: () {
+                            converse.addNewConversation(NewConnection(
+                              name: connect.name,
+                              profileUrl: connect.profileUrl,
+                              farmerType: connect.farmerType,
+                              location: connect.location,
+                            ));
+                            pushNewScreen(
+                              context,
+                              screen: const NewConversationScreen(),
+                            );
+                          },
+                        );
+                      },
+                      itemCount: connections.users.length,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

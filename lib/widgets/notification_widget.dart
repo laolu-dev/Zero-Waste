@@ -7,13 +7,16 @@ class NotificationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(38),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(38),
-          border: Border.all(color: Resources.color.primary)),
-      child: IconButton(
-        onPressed: () {},
-        icon: Icon(Icons.notifications_none,
+          border: Border.all(color: Resources.color.primary),
+        ),
+        child: Icon(Icons.notifications_none,
             color: Resources.color.black, size: 30),
       ),
     );

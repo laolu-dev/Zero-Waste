@@ -8,7 +8,7 @@ import '../../../../widgets/app_button.dart';
 
 import '../../widgets/social_login.dart';
 import '../../widgets/user_info_textfield.dart';
-import '../forget_password_screens/forgot_password.dart';
+import '../forget_password/forgot_password.dart';
 import 'login_screen.dart';
 import 'type_of_farmer.dart';
 
