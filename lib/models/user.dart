@@ -2,16 +2,16 @@
 import 'dart:convert';
 
 class Farmer {
-  final String? imagePath;
-  final String name;
-  final String typeOfFarmer;
-  final String homeAddress;
-  final String state;
-  final String phone;
-  final String email;
-  final List? likedPosts;
-  final double? ratings;
-
+  String? imagePath;
+  String name;
+  String typeOfFarmer;
+  String homeAddress;
+  String state;
+  String phone;
+  String email;
+  List? likedPosts;
+  double? ratings;
+  
   Farmer({
     this.imagePath,
     required this.name,
@@ -23,8 +23,6 @@ class Farmer {
     this.likedPosts,
     this.ratings,
   });
-  
-
 
   Farmer copyWith({
     String? imagePath,
@@ -73,7 +71,7 @@ class Farmer {
       state: map['state'] as String,
       phone: map['phone'] as String,
       email: map['email'] as String,
-      likedPosts: map['likedPosts'] != null ? List.castFrom(map['likedPosts']): null,
+      likedPosts: map['likedPosts'] != null ? List.castFrom(map['likedPosts']) : null,
       ratings: map['ratings'] != null ? map['ratings'] as double : null,
     );
   }

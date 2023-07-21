@@ -7,7 +7,6 @@ import '../../../provider/connections.dart';
 import '../widget/connection_tile.dart';
 import '../widget/search_text_field.dart';
 
-
 import '../../../models/new_conversation.dart';
 import '../../chats/screens/new_conversation_screen.dart';
 
@@ -54,16 +53,16 @@ class Connections extends StatelessWidget {
                           location: connect.location,
                           btnAction: 'Add',
                           onTap: () {
-                            converse.addNewConversation(NewConnection(
-                              name: connect.name,
-                              profileUrl: connect.profileUrl,
-                              farmerType: connect.farmerType,
-                              location: connect.location,
-                            ));
-                            pushNewScreen(
-                              context,
-                              screen: const NewConversationScreen(),
+                            converse.addNewConversation(
+                              NewConnection(
+                                name: connect.name,
+                                profileUrl: connect.profileUrl,
+                                farmerType: connect.farmerType,
+                                location: connect.location,
+                              ),
                             );
+                            pushNewScreen(context,
+                                screen: const NewConversationScreen());
                           },
                         );
                       },

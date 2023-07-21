@@ -23,13 +23,7 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.arrow_back_ios, color: Resources.color.black),
-          ),
-        ),
+       
         title: Text(
           'Products',
           style: GoogleFonts.jost(

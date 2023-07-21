@@ -7,10 +7,7 @@ import '../../../widgets/notification_widget.dart';
 
 class DashboardBar extends StatelessWidget {
   final String? user;
-  const DashboardBar({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
+  const DashboardBar({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +15,7 @@ class DashboardBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: [
-          const UserAvatar(image: ''),
+          const UserAvatar(),
           const SizedBox(width: 15),
           Expanded(
             child: Text(

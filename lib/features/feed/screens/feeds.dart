@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import '../../../config/res.dart';
-
 import '../../../widgets/notification_widget.dart';
 import '../../home/widget/search_text_field.dart';
 import '../../../provider/feed_data.dart';
@@ -17,36 +15,30 @@ class FeedsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Resources.color.white,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Feeds',
+          style: GoogleFonts.jost(
+              color: Resources.color.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 20),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(top: 5, right: 10, bottom: 5),
+            child: NotificationWidget(),
+          )
+        ],
+      ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton: const ChatIcon(),
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 12, right: 12, top: 10),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(Icons.arrow_back_ios,
-                        color: Resources.color.black),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'Feeds',
-                      style: GoogleFonts.jost(
-                        color: Resources.color.black,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  const NotificationWidget(),
-                ],
-              ),
-            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: SearchTextField(),

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/user.dart';
+import '../utils/logger.dart';
 
 class UserAuthentication {
   final _auth = FirebaseAuth.instance;
@@ -32,7 +33,8 @@ class UserAuthentication {
           await getUser(value.user?.email);
         },
       );
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (e) {
+      logger.d(e.message);
     }
   }
 
@@ -42,10 +44,45 @@ class UserAuthentication {
     return Farmer.fromMap(info.data()!);
   }
 
+  Future<void> verifyPhone(String phoneNo, String code) async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: phoneNo,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        try {
+          await FirebaseAuth.instance.signInWithCredential(credential);
+        } on FirebaseAuthException catch (e) {
+          logger.d(e.message);
+        }
+      },
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationID, int? resendToken) async {
+        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+            verificationId: verificationID, smsCode: code);
+        try {
+          await FirebaseAuth.instance.signInWithCredential(credential);
+        } on FirebaseAuthException catch (e) {
+          logger.d(e.message);
+        }
+      },
+      codeAutoRetrievalTimeout: (String verificationID) {},
+      timeout: const Duration(seconds: 60),
+    );
+  }
+
+  Future<void> signInUser(String mail, String password) async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: mail, password: password);
+    } on FirebaseAuthException catch (e) {
+      logger.e(e.message);
+    }
+  }
+
   setUserType() async {
     try {
       await database.doc(auth.currentUser?.email).set({'typeOfFarmer': 'Fish'});
     } catch (e) {
+      logger.d(e);
     }
   }
 }

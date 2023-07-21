@@ -60,9 +60,7 @@ class _FeedInfoWidgetState extends State<FeedInfoWidget>
         children: [
           Row(
             children: [
-              UserAvatar(
-                  image:
-                      widget.feed?.profileImage ?? Resources.iString.dummyUser),
+              const UserAvatar(),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(

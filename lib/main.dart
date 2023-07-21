@@ -7,7 +7,7 @@ import 'provider/connections.dart';
 import 'provider/market_data.dart';
 import 'provider/product_data.dart';
 import 'provider/feed_data.dart';
-import 'provider/user_data.dart';
+import 'provider/authenticate.dart';
 import 'utils/routes.dart';
 
 

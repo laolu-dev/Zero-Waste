@@ -5,7 +5,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import '../../../config/constant.dart';
 import '../../../config/res.dart';
 
-import 'connections.dart';
+import '../screens/connections.dart';
 
 class UserCategories extends StatelessWidget {
   static const id = 'UserCategory';
@@ -75,6 +75,21 @@ class UserCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Resources.color.white,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_ios, color: Resources.color.black),
+        ),
+        title: Text(
+          'Connect',
+          style: TextStyle(
+              color: Resources.color.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w700),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),

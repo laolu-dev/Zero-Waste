@@ -20,12 +20,6 @@ class _ResetPasswordState extends State<ResetPassword> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
 
-  void _trySubmit() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, ResetSuccess.id);
-    }
-  }
-
   @override
   void dispose() {
     _password.dispose();

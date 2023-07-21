@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import '../features/products/screens/products.dart';
-
 import '../features/account/screens/my_account.dart';
 import '../features/account/screens/profile.dart';
 import '../features/home/screens/connections.dart';
-import '../features/home/screens/farmer_types.dart';
+import '../features/home/widget/farmer_types.dart';
 import '../features/home/screens/tabs.dart';
-import '../models/user.dart';
-
 import '../features/auth/screens/signup-login/login_screen.dart';
 import '../features/auth/screens/signup-login/otp_screen.dart';
 import '../features/auth/screens/signup-login/signup_screen.dart';
@@ -19,7 +16,6 @@ import '../features/auth/screens/forget_password/reset_password.dart';
 import '../features/auth/screens/forget_password/reset_success.dart';
 import '../features/feed/screens/feeds.dart';
 import '../features/chats/screens/new_conversation_screen.dart';
-
 import '../features/onboarding/screens/board.dart';
 import '../features/onboarding/screens/splash_screen.dart';
 import '../features/unknown_page.dart';
@@ -37,12 +33,9 @@ Route<dynamic>? routes(RouteSettings settings) {
     case SignUpScreen.id:
       return MaterialPageRoute(builder: (context) => const SignUpScreen());
     case WhyAreYouHere.id:
-      return MaterialPageRoute(
-          builder: (context) =>
-              WhyAreYouHere(user: settings.arguments as Farmer?));
+      return MaterialPageRoute(builder: (context) => const WhyAreYouHere());
     case OtpScreen.id:
-      return MaterialPageRoute(
-          builder: (context) => OtpScreen(user: settings.arguments as Farmer?));
+      return MaterialPageRoute(builder: (context) => const OtpScreen());
     case ResetPassword.id:
       return MaterialPageRoute(builder: (context) => const ResetPassword());
     case PasswordVerification.id:

@@ -4,10 +4,10 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import '../../../config/res.dart';
 import '../../../provider/market_data.dart';
-import '../../../provider/user_data.dart';
+import '../../../provider/authenticate.dart';
 import '../widget/home_appbar.dart';
 import '../widget/market_tile.dart';
-import 'farmer_types.dart';
+import '../widget/farmer_types.dart';
 
 class Dashboard extends StatelessWidget {
   static const id = '/home';
@@ -15,7 +15,7 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loggedUser = Provider.of<UserAuth>(context);
+    final loggedUser = Provider.of<UserAuth>(context, listen: false);
     var marketData = context.watch<MarketData>();
     return Scaffold(
       body: SafeArea(
@@ -26,7 +26,7 @@ class Dashboard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DashboardBar(user: loggedUser.userForm.name),
+                  DashboardBar(user: '${loggedUser.user?.name}'),
                   Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
@@ -95,6 +95,7 @@ class Dashboard extends StatelessWidget {
             Flexible(
               child: ListView.builder(
                 itemCount: marketData.length,
+                shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return marketData.items.map((e) {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../../../config/res.dart';
+import '../../../../enums/auth_enum.dart';
+import '../../../../provider/authenticate.dart';
 import '../../widgets/password_textfield.dart';
-
 import '../../../../config/constant.dart';
-
 import '../../../../widgets/app_button.dart';
-
 import '../../widgets/social_login.dart';
 import '../../widgets/user_info_textfield.dart';
 import '../forget_password/forgot_password.dart';
@@ -55,7 +55,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final userAuth = UserAuthentication();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -129,31 +128,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                AppButton(
-                  btn: () {
-                    
-                    // if (_formKey.currentState!.validate()) {
-                    //   // context.read<UserAuth>().submitForm(
-                    //   //     _nameController.text,
-                    //   //     _phoneController.text,
-                    //   //     _homeAddressController.text,
-                    //   //     _stateController.text);
-                    //   // userAuth
-                    //   //     .createUser(
-                    //   //       password: _passwordController.text,
-                    //   //       email: _emailController.text,
-                    //   //       phone: _phoneController.text,
-                    //   //       name: _nameController.text,
-                    //   //       state: _stateController.text,
-                    //   //       homeAddress: _homeAddressController.text,
-                    //   //     )
-                    //   //     .whenComplete(() =>
-                    //   //         Navigator.pushNamed(context, WhyAreYouHere.id));
-
-                    // }
-                    Navigator.pushNamed(context, WhyAreYouHere.id);
-                  },
-                  btnName: 'Next',
+                Consumer<UserAuth>(
+                  builder: ((context, value, child) {
+                    return value.state == AuthState.loading &&
+                            value.state != null
+                        ? const CircularProgressIndicator()
+                        : AppButton(
+                            btn: () async {
+                              if (_formKey.currentState!.validate()) {
+                                await value
+                                    .getUserInfo(
+                                        _nameController.text,
+                                        _phoneController.text,
+                                        _homeAddressController.text,
+                                        _stateController.text,
+                                        _emailController.text)
+                                    .whenComplete(() => Navigator.of(context)
+                                        .pushNamed(WhyAreYouHere.id));
+                              }
+                            },
+                            btnName: 'Next',
+                          );
+                  }),
                 ),
                 const SizedBox(height: 16),
                 Wrap(
@@ -167,8 +163,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () =>
-                          Navigator.pushNamed(context, LoginScreen.id),
+                      onTap: () => Navigator.pushNamed(context, LoginScreen.id),
                       child: Text("Login", style: linkText),
                     ),
                   ],

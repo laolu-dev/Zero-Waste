@@ -15,11 +15,10 @@ class ChatRoomInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        UserAvatar(image: profileUrl),
-         const SizedBox(width: 10),
+        const UserAvatar(),
+        const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          
           children: [
             Text(
               name,

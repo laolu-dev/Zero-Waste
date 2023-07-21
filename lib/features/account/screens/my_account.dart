@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import '../../../config/res.dart';
-import '../../../provider/user_data.dart';
+import '../../../provider/authenticate.dart';
 import 'profile.dart';
 import '../widgets/profile_tile.dart';
 import '../../../main.dart';
@@ -73,10 +73,10 @@ class _MyAccountState extends State<MyAccount> {
       final image = await _picker.pickImage(source: source);
       if (image == null) return;
       final imageTemp = File(image.path);
-      setState(() {
-        context.read<UserAuth>().getProfile(imageTemp);
+    
+        context.read<UserAuth>().getProfileImage(imageTemp);
         this.image = imageTemp;
-      });
+     
     } on PlatformException catch (e) {
       logger.d('Error Code: ${e.code} Message: ${e.message}');
     }
@@ -84,18 +84,11 @@ class _MyAccountState extends State<MyAccount> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserAuth>(context);
+    final account = Provider.of<UserAuth>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.arrow_back_ios, color: Resources.color.black),
-          ),
-        ),
         title: Text(
           'My Account',
           style: GoogleFonts.jost(
@@ -117,7 +110,7 @@ class _MyAccountState extends State<MyAccount> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const UserAvatar(image: ''),
+                      const UserAvatar(),
                       // image != null
                       //     ? ClipRRect(
                       //         borderRadius: BorderRadius.circular(1000),
@@ -160,14 +153,14 @@ class _MyAccountState extends State<MyAccount> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'data',
+                        '${account.user?.name}',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Resources.color.black),
                       ),
                       Text(
-                        'data two',
+                        '${account.user?.typeOfFarmer}',
                         style: TextStyle(color: Resources.color.tField),
                       )
                     ],

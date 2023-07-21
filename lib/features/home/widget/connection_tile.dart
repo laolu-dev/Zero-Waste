@@ -25,7 +25,7 @@ class ConnectionTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        leading: UserAvatar(image: profileUrl),
+        leading: const UserAvatar(),
         title: Text(
           name,
           style: const TextStyle(

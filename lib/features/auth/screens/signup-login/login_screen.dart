@@ -1,26 +1,21 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../../../config/res.dart';
+import '../../../../enums/auth_enum.dart';
+import '../../../../provider/authenticate.dart';
 import '../../widgets/password_textfield.dart';
 import '../../../../config/constant.dart';
-
 import '../../../home/screens/tabs.dart';
 import '../../widgets/user_info_textfield.dart';
 import 'signup_screen.dart';
 import '../forget_password/forgot_password.dart';
 import '../../../../widgets/app_button.dart';
-
 import '../../widgets/social_login.dart';
-
-import '../../../../models/user.dart';
-
 
 class LoginScreen extends StatefulWidget {
   static const id = '/login_screen';
-  final Farmer? user;
-  const LoginScreen({Key? key, this.user}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -44,19 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
     email.dispose();
     password.dispose();
     super.dispose();
-  }
-
-  Future<void> signInUser(String mail, String password) async {
-    try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: mail, password: password)
-          .then(
-              (value) => Navigator.pushReplacementNamed(context, AppPages.id));
-    } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message!)),
-      );
-    }
   }
 
   @override
@@ -84,26 +66,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   UserInput(
                     label: 'Email',
                     controller: email,
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Email cannot not be empty';
-                      }
-                      return null;
-                    },
+                    // validator: (String? value) {
+                    //   if (value!.isEmpty) {
+                    //     return 'Email cannot not be empty';
+                    //   }
+                    //   return null;
+                    // },
                   ),
                   const SizedBox(height: 16),
                   PasswordInput(
                     label: 'Password',
                     controller: password,
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Password cannot not be empty';
-                      }
-                      if (value.length < 8) {
-                        return 'Your password must be at least 8 characters';
-                      }
-                      return null;
-                    },
+                    // validator: (String? value) {
+                    //   if (value!.isEmpty) {
+                    //     return 'Password cannot not be empty';
+                    //   }
+                    //   if (value.length < 8) {
+                    //     return 'Your password must be at least 8 characters';
+                    //   }
+                    //   return null;
+                    // },
                   ),
                   const SizedBox(height: 16),
                   //Forgot Password
@@ -123,18 +105,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  AppButton(
-                    btnName: 'Login',
-                    btn: () {
-                      // if (_formKey.currentState!.validate()) {
-
-                      //   // signInUser(email.text, _password.text);
-                      //   email.clear();
-                      // }
-
-                      Navigator.pushNamed(context, AppPages.id,
-                          );
-                    },
+                  Consumer<UserAuth>(
+                    builder: ((context, value, child) {
+                      return value.state == AuthState.loading &&
+                              value.state != null
+                          ? const CircularProgressIndicator()
+                          : AppButton(
+                              btn: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  await value.login(email.text).whenComplete(
+                                      () => Navigator.pushNamed(
+                                          context, AppPages.id));
+                                }
+                              },
+                              btnName: 'Login',
+                            );
+                    }),
                   ),
                   const SizedBox(height: 16),
                   Row(
