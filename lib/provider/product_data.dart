@@ -13,7 +13,7 @@ class ProductData extends ChangeNotifier {
         harvestDate: 'May, 2022',
         productWeight: '1kg',
         productRating: 4.0,
-        comment: ''),
+        comment: 'This is available and ready to be delivered anywhere.'),
     Product(
         productImage:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
@@ -22,7 +22,7 @@ class ProductData extends ChangeNotifier {
         harvestDate: 'May, 2022',
         productWeight: '1kg',
         productRating: 4.7,
-        comment: ''),
+        comment: 'Come to bauchi state'),
     Product(
         productImage:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
@@ -31,25 +31,7 @@ class ProductData extends ChangeNotifier {
         harvestDate: 'May, 2022',
         productWeight: '1kg',
         productRating: 4.0,
-        comment: ''),
-    Product(
-        productImage:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
-        productName: 'Grains',
-        userLocation: 'Lagos, Nigeria',
-        harvestDate: 'May, 2022',
-        productWeight: '1kg',
-        productRating: 4.7,
-        comment: ''),
-    Product(
-        productImage:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
-        productName: 'Grains',
-        userLocation: 'Lagos, Nigeria',
-        harvestDate: 'May, 2022',
-        productWeight: '1kg',
-        productRating: 4.0,
-        comment: ''),
+        comment: 'This is two weeks old'),
     Product(
         productImage:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
@@ -62,6 +44,13 @@ class ProductData extends ChangeNotifier {
   ];
 
   UnmodifiableListView<Product> get products => UnmodifiableListView(_products);
+
+  void rate(double rating) {
+    for (var product in _products) {
+      rating = product.productRating;
+    }
+    notifyListeners();
+  }
 
   void addProduct(Product product) {
     _products.add(product);

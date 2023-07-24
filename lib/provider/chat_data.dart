@@ -5,6 +5,18 @@ final _mockData = [ChatMessage(messageContent: 'Demo', fromMe: true)];
 
 class ChatData extends ChangeNotifier {
   final List<ChatMessage> _chatMessage = _mockData;
+   bool _showSend = false;
+
+  void showSend(String text) {
+    if (text.isEmpty ) {
+      _showSend = false;
+    } else {
+      _showSend = true;
+    }
+    notifyListeners();
+  }
+
+  bool get send => _showSend;
 
   List<ChatMessage> get chatMessage => _chatMessage;
 
@@ -20,3 +32,4 @@ class ChatData extends ChangeNotifier {
 
   int get length => _chatMessage.length;
 }
+///[]

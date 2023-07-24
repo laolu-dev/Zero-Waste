@@ -1,10 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/provider/camera.dart';
 import '../../../config/res.dart';
 import '../../../provider/authenticate.dart';
 import 'profile.dart';
@@ -12,20 +11,11 @@ import '../widgets/profile_tile.dart';
 import '../../../main.dart';
 import '../../../widgets/user_avatar.dart';
 import '../../../config/constant.dart';
-import '../../../utils/logger.dart';
 import '../../auth/screens/signup-login/login_screen.dart';
 
-class MyAccount extends StatefulWidget {
+class MyAccount extends StatelessWidget {
   static const id = 'MyAccount';
   const MyAccount({Key? key}) : super(key: key);
-
-  @override
-  State<MyAccount> createState() => _MyAccountState();
-}
-
-class _MyAccountState extends State<MyAccount> {
-  File? image;
-  final ImagePicker _picker = ImagePicker();
 
   _showAlertDialog(BuildContext context) async {
     await showDialog(
@@ -43,9 +33,9 @@ class _MyAccountState extends State<MyAccount> {
           ),
           actions: [
             TextButton(
-              onPressed: () async {
-                await getImage(source: ImageSource.camera);
-                // Navigator.pop(context);
+              onPressed: () {
+                context.read<Camera>().getImage(ImageSource.camera);
+                Navigator.pop(context);
               },
               child: Text(
                 'Camera',
@@ -54,8 +44,8 @@ class _MyAccountState extends State<MyAccount> {
             ),
             TextButton(
               onPressed: () async {
-                await getImage(source: ImageSource.gallery);
-                // Navigator.pop(context);
+                context.read<Camera>().getImage(ImageSource.gallery);
+                Navigator.pop(context);
               },
               child: Text(
                 'Gallery',
@@ -66,20 +56,6 @@ class _MyAccountState extends State<MyAccount> {
         );
       },
     );
-  }
-
-  Future getImage({required ImageSource source}) async {
-    try {
-      final image = await _picker.pickImage(source: source);
-      if (image == null) return;
-      final imageTemp = File(image.path);
-    
-        context.read<UserAuth>().getProfileImage(imageTemp);
-        this.image = imageTemp;
-     
-    } on PlatformException catch (e) {
-      logger.d('Error Code: ${e.code} Message: ${e.message}');
-    }
   }
 
   @override
@@ -111,21 +87,6 @@ class _MyAccountState extends State<MyAccount> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const UserAvatar(),
-                      // image != null
-                      //     ? ClipRRect(
-                      //         borderRadius: BorderRadius.circular(1000),
-                      //         child: Image.file(image!,
-                      //             width: 50, height: 50, fit: BoxFit.cover),
-                      //       )
-                      //     : Container(
-                      //         width: 50,
-                      //         height: 50,
-                      //         decoration: BoxDecoration(
-                      //             color: hintTextColor,
-                      //             borderRadius: BorderRadius.circular(70)),
-                      //         child: const Icon(Icons.add_a_photo,
-                      //             color: primary),
-                      //       ),
                       const SizedBox(width: 10),
                       TextButton(
                         onPressed: () => _showAlertDialog(context),

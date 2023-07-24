@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import '../screens/product_details.dart';
 
-
 import '../../../config/res.dart';
 import '../../../models/product.dart';
 
@@ -14,7 +13,7 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        pushNewScreen(context, screen: const ProductDetails());
+        pushNewScreen(context, screen: ProductDetails(productInfo: product));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
@@ -32,31 +31,32 @@ class ProductWidget extends StatelessWidget {
                   height: 120, width: 120, fit: BoxFit.fill),
             ),
             const SizedBox(width: 15.0),
-            Column(
-            
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.productName,
-                  style: const TextStyle(
-                      fontSize: 20.0, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(width: 15.0),
-                Text(product.userLocation),
-                const SizedBox(width: 15.0),
-                Text(product.harvestDate),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      product.productWeight,
-                      style: const TextStyle(fontWeight: FontWeight.w700),
-                    ),
-                    const Icon(Icons.navigate_next)
-                  ],
-                )
-               
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.productName,
+                    style: const TextStyle(
+                        fontSize: 20.0, fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(product.userLocation),
+                  const SizedBox(height: 12),
+                  Text(product.harvestDate),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        product.productWeight,
+                        style: const TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      const Icon(Icons.navigate_next)
+                    ],
+                  )
+                ],
+              ),
             ),
           ],
         ),

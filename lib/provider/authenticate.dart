@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/enums/auth_enum.dart';
@@ -8,11 +7,11 @@ import '../../../models/user.dart';
 class UserAuth extends ChangeNotifier {
   Farmer? _user;
   AuthState? _authState;
-  File? _profileImage;
-  
+
+
   Farmer? get user => _user;
   AuthState? get state => _authState;
-  File? get profileImage => _profileImage;
+
 
   Future getUserInfo(
     String name,
@@ -74,7 +73,6 @@ class UserAuth extends ChangeNotifier {
       await Future.delayed(
         const Duration(seconds: 4),
         () {
-  
           if (email.isNotEmpty) {
             logger.e('Incorrect email');
           }
@@ -88,12 +86,9 @@ class UserAuth extends ChangeNotifier {
     }
   }
 
+
   void getFarmerType(String typeOfFarmer) {
     _user!.typeOfFarmer = typeOfFarmer;
   }
 
-  void getProfileImage(File value) {
-    _profileImage = value;
-    notifyListeners();
-  }
 }

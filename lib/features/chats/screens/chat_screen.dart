@@ -7,7 +7,6 @@ import '../widgets/chat_room_info.dart';
 
 import '../widgets/message_bubble.dart';
 
-
 class ChatScreen extends StatefulWidget {
   static const id = 'ChatScreen';
   final String name;
@@ -23,19 +22,11 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   late TextEditingController _text;
-  late bool _showSend;
 
   @override
   void initState() {
     super.initState();
-    _showSend = false;
     _text = TextEditingController();
-    _text.addListener(() {
-      if (_text.text.isEmpty) {
-        setState(() {});
-        _showSend = !_showSend;
-      }
-    });
   }
 
   @override
@@ -46,6 +37,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final chat = Provider.of<ChatData>(context);
+    _text.addListener(() {
+      chat.showSend(_text.text);
+    });
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -85,8 +80,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   itemBuilder: (context, index) {
                     final data = chatData.chatMessage[index];
                     return MessageBubble(
-                      // sender: data.userProfile,
-                      isMe: true,
+                      isMe: false,
                       messageContent: data.messageContent,
                     );
                   },
@@ -104,11 +98,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     Expanded(
                       child: TextField(
                         controller: _text,
-                        onChanged: (value) {
-                          if (value.isEmpty) {
-                            _showSend = !_showSend;
-                          }
-                        },
+                      
                         decoration: InputDecoration(
                           hintText: 'Send a message',
                           border: OutlineInputBorder(
@@ -120,7 +110,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
-                      child: _showSend
+                      child: chat.send
                           ? IconButton(
                               onPressed: () {
                                 context

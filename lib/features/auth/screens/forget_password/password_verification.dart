@@ -17,11 +17,17 @@ class PasswordVerification extends StatefulWidget {
 }
 
 class _PasswordVerificationState extends State<PasswordVerification> {
-  final TextEditingController _codeController = TextEditingController();
+  late TextEditingController _pinCode;
+
+  @override
+  void initState() {
+    super.initState();
+    _pinCode = TextEditingController();
+  }
 
   @override
   void dispose() {
-    _codeController.dispose();
+    _pinCode.dispose();
     super.dispose();
   }
 
@@ -30,7 +36,7 @@ class _PasswordVerificationState extends State<PasswordVerification> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
             child: Column(
               children: [
                 Image.asset(Resources.iString.appIcon, width: 90, height: 90),
@@ -47,10 +53,9 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                     style: contentTextTwo, textAlign: TextAlign.center),
                 const SizedBox(height: 96),
                 PinCodeTextField(
-                  controller: _codeController,
+                  controller: _pinCode,
                   appContext: context,
                   length: 6,
-                  onChanged: (value) {},
                   keyboardType: TextInputType.phone,
                   autoFocus: true,
                   textStyle: GoogleFonts.jost(

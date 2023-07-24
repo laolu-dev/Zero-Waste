@@ -5,7 +5,6 @@ import '../../../config/res.dart';
 import '../../../provider/product_data.dart';
 import '../widgets/product_widget.dart';
 
-
 import '../../../widgets/notification_widget.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -23,7 +22,6 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-       
         title: Text(
           'Products',
           style: GoogleFonts.jost(
@@ -33,8 +31,9 @@ class _ProductScreenState extends State<ProductScreen> {
         ),
         actions: const [
           Padding(
-              padding: EdgeInsets.only(top: 5, right: 10, bottom: 5),
-              child: NotificationWidget())
+            padding: EdgeInsets.only(top: 5, right: 10, bottom: 5),
+            child: NotificationWidget(),
+          )
         ],
       ),
       body: Consumer<ProductData>(

@@ -96,7 +96,7 @@ class Dashboard extends StatelessWidget {
               child: ListView.builder(
                 itemCount: marketData.length,
                 shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return marketData.items.map((e) {
                     return MarketTile(
