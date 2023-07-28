@@ -1,15 +1,19 @@
 class IntroString {
   String get onBoardTitle1 => 'Exchange Waste Product';
+
   String get onBoardContent1 =>
       'Exchange your farm waste for organic manure\n by supplying a black soldier fly farmer.';
 
   String get onBoardTitle2 => 'Connect With Labourers';
+
   String get onBoardContent2 =>
       'Opportunity to get co-workers and connect with\n labourers to sort out bad crops and waste on\n farms.';
 
   String get onBoardTitle3 => 'Get Source for Feed ';
+
   String get onBoardContent3 =>
       'Get a rich source of insect protein for feeds. ';
+    
 }
 
 class ImageString {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/widgets/user_avatar.dart';
-import '../../../config/constant.dart';
+
 import '../../../config/res.dart';
 import '../../../provider/authenticate.dart';
 import '../../../provider/product_data.dart';
@@ -45,9 +45,9 @@ class ProfileAccount extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 24, vertical: 20),
-                    decoration: const BoxDecoration(
-                      color: primary,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    decoration: BoxDecoration(
+                      color: Resources.color.primary,
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +55,7 @@ class ProfileAccount extends StatelessWidget {
                         const UserAvatar(),
                         const SizedBox(height: 2),
                         Text(
-                          '${profile.user?.name}',
+                          '${profile.user?.username}',
                           style: GoogleFonts.jost(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -63,7 +63,7 @@ class ProfileAccount extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          '${profile.user?.typeOfFarmer}',
+                          '${profile.user?.farmerType}',
                           style: GoogleFonts.jost(color: Resources.color.white),
                         ),
                         const SizedBox(height: 2),

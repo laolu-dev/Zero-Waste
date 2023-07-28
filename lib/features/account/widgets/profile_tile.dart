@@ -14,11 +14,11 @@ class ProfileTileOption extends StatelessWidget {
       onTap: onTap,
       title: Text(option, style: const TextStyle()),
       leading: Icon(icon),
-      trailing: Icon(Icons.navigate_next, color: Resources.color.tField),
+      trailing: Icon(Icons.navigate_next, color: Resources.color.borderTile),
       tileColor: Resources.color.white,
       iconColor: Resources.color.primary,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Resources.color.tField),
+        side: BorderSide(color: Resources.color.borderTile),
         borderRadius: const BorderRadius.all(
           Radius.circular(12),
         ),

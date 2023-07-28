@@ -1,7 +1,5 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
-import '../config/constant.dart';
-
 import '../models/feed.dart';
 
 class FeedData extends ChangeNotifier {
@@ -18,7 +16,7 @@ class FeedData extends ChangeNotifier {
         pictureOfProduct:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
         isOnline: false,
-        typeOfFarmer: contentOne,
+        typeOfFarmer: '',
         numberOfLikes: 3),
     FeedInfo(
         profileImage:
@@ -31,7 +29,7 @@ class FeedData extends ChangeNotifier {
         pictureOfProduct:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
         isOnline: true,
-        typeOfFarmer: contentTwo,
+        typeOfFarmer: '',
         numberOfLikes: 3),
     FeedInfo(
         profileImage:
@@ -44,7 +42,7 @@ class FeedData extends ChangeNotifier {
         pictureOfProduct:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
         isOnline: false,
-        typeOfFarmer: contentOne,
+        typeOfFarmer: '',
         numberOfLikes: 3),
     FeedInfo(
         profileImage:
@@ -57,7 +55,7 @@ class FeedData extends ChangeNotifier {
         pictureOfProduct:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
         isOnline: true,
-        typeOfFarmer: contentTwo,
+        typeOfFarmer: '',
         numberOfLikes: 3),
     FeedInfo(
         profileImage:
@@ -70,7 +68,7 @@ class FeedData extends ChangeNotifier {
         pictureOfProduct:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
         isOnline: false,
-        typeOfFarmer: contentOne,
+        typeOfFarmer: '',
         numberOfLikes: 3),
     FeedInfo(
         profileImage:
@@ -83,7 +81,7 @@ class FeedData extends ChangeNotifier {
         pictureOfProduct:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLdDZlImzbFj-C2HYucrzAcJ7id9WcFWAdA&usqp=CAU',
         isOnline: true,
-        typeOfFarmer: contentTwo,
+        typeOfFarmer: '',
         numberOfLikes: 3),
   ];
   UnmodifiableListView<FeedInfo> get feeds => UnmodifiableListView(_feeds);

@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../config/res.dart';
 import '../../products/widgets/profile_image_clipper.dart';
 
-
-
 class MarketTile extends StatelessWidget {
   final String imageUrl;
   final String title;
@@ -43,7 +41,7 @@ class MarketTile extends StatelessWidget {
       subtitle: Text(
         subTitle,
         style: GoogleFonts.jost(
-            color: Resources.color.tField,
+            color: Resources.color.hintText,
             fontSize: 12,
             fontWeight: FontWeight.w400),
       ),
@@ -54,7 +52,7 @@ class MarketTile extends StatelessWidget {
           Text(
             date,
             style: GoogleFonts.jost(
-                color: Resources.color.tField,
+                color: Resources.color.hintText,
                 fontSize: 14,
                 fontWeight: FontWeight.w600),
           ),

@@ -4,8 +4,9 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/enums/auth_enum.dart';
 import 'package:zero_waste/provider/authenticate.dart';
+import 'package:zero_waste/utils/logger.dart';
 import '../../../../config/res.dart';
-import '../../../../config/constant.dart';
+
 import '../../../../widgets/app_button.dart';
 import 'verified_account.dart';
 
@@ -47,35 +48,34 @@ class _OtpScreenState extends State<OtpScreen> {
                 Text(
                   "Verify your phone number",
                   style: GoogleFonts.jost(
-                      color: headColor,
+                      color: Resources.color.black,
                       fontSize: 24,
                       fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Please, enter the code sent to ${phone.user?.phone} via SMS to validate your account.',
+                  'Please, enter the code sent to ${phone.user?.email} to validate your account.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.jost(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
-                      color: Resources.color.tField),
+                      color: Resources.color.hintText),
                 ),
                 const SizedBox(height: 81),
                 PinCodeTextField(
                   controller: _pinCode,
                   appContext: context,
-                  length: 6,
+                  length: 4,
                   keyboardType: TextInputType.number,
                   pinTheme: PinTheme(
                     activeColor: Resources.color.primary,
                     selectedColor: Resources.color.primary,
-                    inactiveColor: Resources.color.tField,
+                    inactiveColor: Resources.color.hintText,
                     shape: PinCodeFieldShape.box,
                     fieldHeight: 48,
                     fieldWidth: 48,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  onChanged: (val) {},
                 ),
                 const SizedBox(height: 82),
                 Consumer<UserAuth>(
@@ -85,11 +85,13 @@ class _OtpScreenState extends State<OtpScreen> {
                         ? const CircularProgressIndicator()
                         : AppButton(
                             btnName: 'Verify',
-                            btn: () {
-                              value.verifyPhone(_pinCode.text).whenComplete(() {
+                            btn: () async {
+                              logger.d(_pinCode.text);
+                              await value.verify(_pinCode.text);
+                              if (context.mounted) {
                                 Navigator.pushNamed(
                                     context, VerifiedAccount.id);
-                              });
+                              }
                             },
                           );
                   }),
@@ -98,10 +100,21 @@ class _OtpScreenState extends State<OtpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Didn't receive code? ", style: haveAccTextStyle()),
+                    Text(
+                      "Didn't receive code? ",
+                      style:
+                          TextStyle(fontSize: 16, color: Resources.color.black),
+                    ),
                     GestureDetector(
                       onTap: () {},
-                      child: Text("Resend code", style: linkText),
+                      child: Text(
+                        "Resend code",
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Resources.color.primary,
+                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.w700),
+                      ),
                     )
                   ],
                 ),

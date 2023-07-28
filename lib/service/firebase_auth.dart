@@ -21,15 +21,15 @@ class UserAuthentication {
           .createUserWithEmailAndPassword(email: email, password: password)
           .then(
         (value) async {
-          final user = Farmer(
-              name: name,
-              phone: phone,
-              homeAddress: homeAddress,
-              state: state,
-              typeOfFarmer: '',
-              email: value.user!.email!);
-          final userToJson = user.toMap();
-          database.doc(value.user?.email).set(userToJson);
+          // final user = Farmer(
+          //     name: name,
+          //     phone: phone,
+          //     homeAddress: homeAddress,
+          //     state: state,
+          //     typeOfFarmer: '',
+          //     email: value.user!.email!);
+          // final userToJson = user.toMap();
+          // database.doc(value.user?.email).set(userToJson);
           await getUser(value.user?.email);
         },
       );

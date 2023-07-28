@@ -11,7 +11,7 @@ class SearchTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search, color: Resources.color.tField),
+        prefixIcon: Icon(Icons.search, color: Resources.color.hintText),
         suffixIcon: GestureDetector(
           onTap: () {
             logger.i('Recording has started');

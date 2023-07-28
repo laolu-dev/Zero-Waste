@@ -120,15 +120,15 @@ class ProductDetails extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'data',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w600),
                           ),
-                          Text(
+                          const Text(
                             'data',
                           ),
-                          Text(
+                          const Text(
                             'data',
                           ),
                           Row(

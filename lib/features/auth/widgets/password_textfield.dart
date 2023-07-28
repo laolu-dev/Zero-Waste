@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../../config/res.dart';
 
 class PasswordInput extends StatefulWidget {
@@ -20,7 +19,7 @@ class PasswordInput extends StatefulWidget {
 
 class _PasswordInputState extends State<PasswordInput> {
   bool showText = true;
-  
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -31,19 +30,19 @@ class _PasswordInputState extends State<PasswordInput> {
         label: Text(
           widget.label,
           style: TextStyle(
-              color: Resources.color.tField,
+              color: Resources.color.hintText,
               fontSize: 14,
               fontWeight: FontWeight.w400),
         ),
         suffixIcon: IconButton(
           onPressed: () => setState(() => showText = !showText),
           icon: showText
-              ? Icon(Icons.visibility_off, color: Resources.color.tField)
-              : Icon(Icons.visibility, color: Resources.color.tField),
+              ? Icon(Icons.visibility_off, color: Resources.color.hintText)
+              : Icon(Icons.visibility, color: Resources.color.hintText),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 22),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: Resources.color.tField, width: 10),
+          borderSide: BorderSide(color: Resources.color.hintText, width: 10),
           borderRadius: const BorderRadius.all(Radius.circular(12.0)),
         ),
         focusedBorder: OutlineInputBorder(

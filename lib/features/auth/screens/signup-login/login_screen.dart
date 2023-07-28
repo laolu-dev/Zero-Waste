@@ -5,7 +5,6 @@ import '../../../../config/res.dart';
 import '../../../../enums/auth_enum.dart';
 import '../../../../provider/authenticate.dart';
 import '../../widgets/password_textfield.dart';
-import '../../../../config/constant.dart';
 import '../../../home/screens/tabs.dart';
 import '../../widgets/user_info_textfield.dart';
 import 'signup_screen.dart';
@@ -58,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     "Login to your Account",
                     style: GoogleFonts.jost(
-                        color: headColor,
+                        color: Resources.color.black,
                         fontSize: 24,
                         fontWeight: FontWeight.w700),
                   ),
@@ -66,26 +65,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   UserInput(
                     label: 'Email',
                     controller: email,
-                    // validator: (String? value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'Email cannot not be empty';
-                    //   }
-                    //   return null;
-                    // },
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return 'Email cannot not be empty';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 16),
                   PasswordInput(
                     label: 'Password',
                     controller: password,
-                    // validator: (String? value) {
-                    //   if (value!.isEmpty) {
-                    //     return 'Password cannot not be empty';
-                    //   }
-                    //   if (value.length < 8) {
-                    //     return 'Your password must be at least 8 characters';
-                    //   }
-                    //   return null;
-                    // },
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return 'Password cannot not be empty';
+                      }
+                      if (value.length < 8) {
+                        return 'Your password must be at least 8 characters';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 16),
                   //Forgot Password
@@ -97,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         "Forgot password?",
                         style: GoogleFonts.jost(
-                          color: primary,
+                          color: Resources.color.primary,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
@@ -106,21 +105,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 24),
                   Consumer<UserAuth>(
-                    builder: ((context, value, child) {
+                    builder: (context, value, child) {
                       return value.state == AuthState.loading &&
                               value.state != null
                           ? const CircularProgressIndicator()
                           : AppButton(
-                              btn: () async {
+                              btn: () {
                                 if (_formKey.currentState!.validate()) {
-                                  await value.login(email.text).whenComplete(
-                                      () => Navigator.pushNamed(
-                                          context, AppPages.id));
+                                  value.login(email.text, password.text);
+                                  ScaffoldMessenger.of(context)
+                                  
+                                      .clearSnackBars();
+                                  loginUser(value);
+                                  
                                 }
                               },
                               btnName: 'Login',
                             );
-                    }),
+                    },
                   ),
                   const SizedBox(height: 16),
                   Row(
@@ -137,7 +139,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       GestureDetector(
                         onTap: () =>
                             Navigator.pushNamed(context, SignUpScreen.id),
-                        child: Text("Sign up", style: linkText),
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                              color: Resources.color.primary,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700),
+                        ),
                       )
                     ],
                   ),
@@ -152,7 +160,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Resources.color.dividerColor),
                         ),
                         const SizedBox(width: 15),
-                        Text("OR", style: orTextStyle),
+                        Text(
+                          "OR",
+                          style: TextStyle(
+                              color: Resources.color.orColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
+                        ),
                         const SizedBox(width: 15),
                         Expanded(
                           child: Divider(
@@ -181,5 +195,21 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void loginUser(dynamic value) {
+     if (value.token != null) {
+      Navigator.of(context).pushReplacementNamed(AppPages.id);
+    }
+    if (value.error != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(milliseconds: 450),
+          content: Text(value.error!),
+        ),
+      );
+      
+    }
+   
   }
 }

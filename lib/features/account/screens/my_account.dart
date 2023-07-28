@@ -10,7 +10,6 @@ import 'profile.dart';
 import '../widgets/profile_tile.dart';
 import '../../../main.dart';
 import '../../../widgets/user_avatar.dart';
-import '../../../config/constant.dart';
 import '../../auth/screens/signup-login/login_screen.dart';
 
 class MyAccount extends StatelessWidget {
@@ -26,7 +25,7 @@ class MyAccount extends StatelessWidget {
           title: Text(
             'Upload Images',
             style: GoogleFonts.jost(
-              color: headColor,
+              color: Resources.color.black,
               fontSize: 24,
               fontWeight: FontWeight.w700,
             ),
@@ -101,7 +100,7 @@ class MyAccount extends StatelessWidget {
                         child: Text(
                           'Upload Images',
                           style: TextStyle(
-                              color: Resources.color.tField, fontSize: 16),
+                              color: Resources.color.hintText, fontSize: 16),
                         ),
                       )
                     ],
@@ -114,15 +113,15 @@ class MyAccount extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${account.user?.name}',
+                        '${account.user?.username}',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Resources.color.black),
                       ),
                       Text(
-                        '${account.user?.typeOfFarmer}',
-                        style: TextStyle(color: Resources.color.tField),
+                        '${account.user?.farmerType}',
+                        style: TextStyle(color: Resources.color.hintText2),
                       )
                     ],
                   ),
@@ -160,7 +159,7 @@ class MyAccount extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 200),
+            const Expanded(child: SizedBox()),
             ElevatedButton(
               onPressed: () async {
                 // await FirebaseAuth.instance.signOut();

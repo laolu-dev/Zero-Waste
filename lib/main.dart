@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/features/home/screens/tabs.dart';
+import 'package:zero_waste/features/onboarding/screens/splash_screen.dart';
 
 import 'config/res.dart';
 import 'provider/add_new_conversation.dart';
@@ -41,6 +43,9 @@ class ZeroWaste extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateRoute: routes,
+      // initialRoute: context.read<UserAuth>().token != null
+      //     ? AppPages.id
+      //     : SplashScreen.id,
       navigatorKey: mainAppKey,
       theme: ThemeData(primarySwatch: Resources.color.appColor),
       debugShowCheckedModeBanner: false,

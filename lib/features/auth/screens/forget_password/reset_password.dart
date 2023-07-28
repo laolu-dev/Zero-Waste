@@ -6,7 +6,7 @@ import '../../widgets/password_textfield.dart';
 import 'reset_success.dart';
 import '../../../../widgets/app_button.dart';
 
-import '../../../../config/constant.dart';
+
 
 class ResetPassword extends StatefulWidget {
   static const id = 'ResetPassword';
@@ -43,13 +43,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                 Text(
                   'Forget Password',
                   style: GoogleFonts.jost(
-                      color: headColor,
+                      color: Resources.color.black,
                       fontSize: 24,
                       fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 16),
                 Text('Kindly enter a new password to validate your\naccount',
-                    style: contentTextTwo, textAlign: TextAlign.center),
+                    style: TextStyle(fontSize: 16, color: Resources.color.logIn), textAlign: TextAlign.center),
                 const SizedBox(height: 50),
                 PasswordInput(
                   label: 'Password',

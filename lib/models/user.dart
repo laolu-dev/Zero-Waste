@@ -1,78 +1,64 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 class Farmer {
-  String? imagePath;
-  String name;
-  String typeOfFarmer;
-  String homeAddress;
-  String state;
-  String phone;
+  String username;
   String email;
-  List? likedPosts;
-  double? ratings;
-  
+  String? password;
+  String phoneNumber;
+  String state;
+  String homeAddress;
+  String farmerType;
+
   Farmer({
-    this.imagePath,
-    required this.name,
-    required this.typeOfFarmer,
-    required this.homeAddress,
-    required this.state,
-    required this.phone,
+    required this.username,
     required this.email,
-    this.likedPosts,
-    this.ratings,
+   this.password,
+    required this.phoneNumber,
+    required this.state,
+    required this.homeAddress,
+    required this.farmerType,
   });
 
   Farmer copyWith({
-    String? imagePath,
-    String? name,
-    String? typeOfFarmer,
-    String? homeAddress,
-    String? state,
-    String? phone,
+    String? username,
     String? email,
-    List? likedPosts,
-    double? ratings,
+    String? password,
+    String? phoneNumber,
+    String? state,
+    String? homeAddress,
+    String? farmerType,
   }) {
     return Farmer(
-      imagePath: imagePath ?? this.imagePath,
-      name: name ?? this.name,
-      typeOfFarmer: typeOfFarmer ?? this.typeOfFarmer,
-      homeAddress: homeAddress ?? this.homeAddress,
-      state: state ?? this.state,
-      phone: phone ?? this.phone,
+      username: username ?? this.username,
       email: email ?? this.email,
-      likedPosts: likedPosts ?? this.likedPosts,
-      ratings: ratings ?? this.ratings,
+      password: password ?? this.password,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      state: state ?? this.state,
+      homeAddress: homeAddress ?? this.homeAddress,
+      farmerType: farmerType ?? this.farmerType,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imagePath': imagePath,
-      'name': name,
-      'typeOfFarmer': typeOfFarmer,
-      'homeAddress': homeAddress,
-      'state': state,
-      'phone': phone,
+      'username': username,
       'email': email,
-      'likedPosts': likedPosts,
-      'ratings': ratings,
+      'password': password,
+      'phoneNumber': phoneNumber,
+      'state': state,
+      'homeAddress': homeAddress,
+      'farmerType': farmerType,
     };
   }
 
   factory Farmer.fromMap(Map<String, dynamic> map) {
     return Farmer(
-      imagePath: map['imagePath'] != null ? map['imagePath'] as String : null,
-      name: map['name'] as String,
-      typeOfFarmer: map['typeOfFarmer'] as String,
-      homeAddress: map['homeAddress'] as String,
-      state: map['state'] as String,
-      phone: map['phone'] as String,
+      username: map['username'] as String,
       email: map['email'] as String,
-      likedPosts: map['likedPosts'] != null ? List.castFrom(map['likedPosts']) : null,
-      ratings: map['ratings'] != null ? map['ratings'] as double : null,
+      password: map['password'] as String?,
+      phoneNumber: map['phoneNumber'] as String,
+      state: map['state'] as String,
+      homeAddress: map['homeAddress'] as String,
+      farmerType: map['farmerType'] as String,
     );
   }
 
@@ -82,7 +68,7 @@ class Farmer {
 
   @override
   String toString() {
-    return 'Farmer(imagePath: $imagePath, name: $name, typeOfFarmer: $typeOfFarmer, homeAddress: $homeAddress, state: $state, phone: $phone, email: $email, likedPosts: $likedPosts, ratings: $ratings)';
+    return 'Farmer(username: $username, email: $email, password: $password, phoneNumber: $phoneNumber, state: $state, homeAddress: $homeAddress, farmerType: $farmerType)';
   }
 
   @override
@@ -90,27 +76,23 @@ class Farmer {
     if (identical(this, other)) return true;
   
     return 
-      other.imagePath == imagePath &&
-      other.name == name &&
-      other.typeOfFarmer == typeOfFarmer &&
-      other.homeAddress == homeAddress &&
-      other.state == state &&
-      other.phone == phone &&
+      other.username == username &&
       other.email == email &&
-      other.likedPosts == likedPosts &&
-      other.ratings == ratings;
+      other.password == password &&
+      other.phoneNumber == phoneNumber &&
+      other.state == state &&
+      other.homeAddress == homeAddress &&
+      other.farmerType == farmerType;
   }
 
   @override
   int get hashCode {
-    return imagePath.hashCode ^
-      name.hashCode ^
-      typeOfFarmer.hashCode ^
-      homeAddress.hashCode ^
-      state.hashCode ^
-      phone.hashCode ^
+    return username.hashCode ^
       email.hashCode ^
-      likedPosts.hashCode ^
-      ratings.hashCode;
+      password.hashCode ^
+      phoneNumber.hashCode ^
+      state.hashCode ^
+      homeAddress.hashCode ^
+      farmerType.hashCode;
   }
 }

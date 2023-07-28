@@ -55,7 +55,7 @@ class NewConversationScreen extends StatelessWidget {
                     style: GoogleFonts.jost(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
-                      color: Resources.color.tField,
+                      color: Resources.color.hintText,
                     ),
                   ),
                 ],

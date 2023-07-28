@@ -6,7 +6,6 @@ import 'password_verification.dart';
 import '../../../../widgets/app_button.dart';
 import '../../widgets/social_login.dart';
 import '../../widgets/user_info_textfield.dart';
-import '../../../../config/constant.dart';
 import '../signup-login/login_screen.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -42,29 +41,41 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Text(
                 "Forgot Password",
                 style: GoogleFonts.jost(
-                    color: headColor,
+                    color: Resources.color.black,
                     fontSize: 24,
                     fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 16),
-              Text('Enter the phone number you used to register',
-                  style: contentTextTwo),
+              Text(
+                'Enter the phone number you used to register',
+                style: TextStyle(color: Resources.color.logIn, fontSize: 16),
+              ),
               const SizedBox(height: 32),
               UserInput(label: 'Phone Number', controller: _phoneReset),
               const SizedBox(height: 24),
               AppButton(
                   btnName: 'Reset',
                   btn: () async {
-                  Navigator.pushReplacementNamed(
+                    Navigator.pushReplacementNamed(
                         context, PasswordVerification.id);
                   }),
               const SizedBox(height: 16),
               Wrap(
                 children: [
-                  Text("Already have an account? ", style: contentText),
+                  Text(
+                    "Already have an account? ",
+                    style:
+                        TextStyle(color: Resources.color.logIn, fontSize: 16),
+                  ),
                   GestureDetector(
                     onTap: () => Navigator.pushNamed(context, LoginScreen.id),
-                    child: Text("Login", style: linkText),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                          color: Resources.color.primary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
                   )
                 ],
               ),
@@ -73,18 +84,29 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 constraints: const BoxConstraints(maxWidth: 400),
                 child: Row(
                   children: [
-                    const Expanded(
-                        child: Divider(thickness: 1, color: dividerColor)),
+                    Expanded(
+                        child: Divider(
+                            thickness: 1, color: Resources.color.dividerColor)),
                     const SizedBox(width: 15),
-                    Text("OR", style: orTextStyle),
+                    Text(
+                      "OR",
+                      style: TextStyle(
+                          color: Resources.color.orColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                    ),
                     const SizedBox(width: 15),
-                    const Expanded(
-                        child: Divider(thickness: 1, color: dividerColor)),
+                    Expanded(
+                        child: Divider(
+                            thickness: 1, color: Resources.color.dividerColor)),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
-              Text("Login using Social Networks", style: contentText),
+              Text(
+                "Login using Social Networks",
+                style: TextStyle(color: Resources.color.logIn, fontSize: 16),
+              ),
               const SizedBox(height: 16),
               const SocialLogin()
             ],

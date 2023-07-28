@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
-import '../../../config/constant.dart';
+
 import '../../../config/res.dart';
 
 import '../screens/connections.dart';
@@ -16,7 +16,7 @@ class UserCategories extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: primary),
+        border: Border.all(color: Resources.color.primary),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -43,13 +43,13 @@ class UserCategories extends StatelessWidget {
                   style: GoogleFonts.jost(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
-                      color: Resources.color.tField),
+                      color: Resources.color.hintText),
                 ),
                 TextButton(
                   onPressed: () =>
                       pushNewScreen(context, screen: const Connections()),
                   style: TextButton.styleFrom(
-                    backgroundColor: primary,
+                    backgroundColor: Resources.color.primary,
                     minimumSize: const Size(99, 33),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -58,7 +58,7 @@ class UserCategories extends StatelessWidget {
                   child: Text(
                     'Connect',
                     style: GoogleFonts.jost(
-                      color: white,
+                      color: Resources.color.white,
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),
@@ -99,7 +99,7 @@ class UserCategories extends StatelessWidget {
               userCategory(
                 context,
                 Resources.iString.cropFarmer,
-                contentOne,
+                'Crop Farmers',
                 'Stay connected with us \nand get your produce',
               ),
               userCategory(
@@ -117,7 +117,7 @@ class UserCategories extends StatelessWidget {
               userCategory(
                 context,
                 Resources.iString.manualLabourer,
-                contentFour,
+                'Manual Laborers',
                 'Apply as a farm staff and \nworkers today.',
               ),
             ],

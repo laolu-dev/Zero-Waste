@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../config/res.dart';
-import '../../../../enums/auth_enum.dart';
 import '../../../../provider/authenticate.dart';
 import '../../widgets/password_textfield.dart';
-import '../../../../config/constant.dart';
 import '../../../../widgets/app_button.dart';
 import '../../widgets/social_login.dart';
 import '../../widgets/user_info_textfield.dart';
@@ -68,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Text(
                   "Register an Account",
                   style: GoogleFonts.jost(
-                      color: headColor,
+                      color: Resources.color.black,
                       fontSize: 24,
                       fontWeight: FontWeight.w700),
                 ),
@@ -78,12 +76,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 UserInput(
                   label: 'Email',
                   controller: _emailController,
-                  // validator: (String? value) {
-                  //   if (value == null || value.isEmpty) {
-                  //     return 'Email cannot not be empty';
-                  //   }
-                  //   return null;
-                  // },
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Email cannot not be empty';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 UserInput(
@@ -93,22 +91,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 16),
                 UserInput(
-                    label: 'homeAddress', controller: _homeAddressController),
+                  label: 'homeAddress',
+                  controller: _homeAddressController,
+                ),
                 const SizedBox(height: 16),
-                UserInput(label: 'State', controller: _stateController),
+                UserInput(
+                  label: 'State',
+                  controller: _stateController,
+                ),
                 const SizedBox(height: 16),
                 PasswordInput(
                   label: 'Password',
                   controller: _passwordController,
-                  // validator: (String? value) {
-                  //   if (value == null || value.isEmpty) {
-                  //     return 'Password cannot not be empty';
-                  //   }
-                  //   if (value.length < 8) {
-                  //     return 'Password must be at least 8 characters';
-                  //   }
-                  //   return null;
-                  // },
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Password cannot not be empty';
+                    }
+                    if (value.length < 8) {
+                      return 'Password must be at least 8 characters';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 8),
                 Container(
@@ -120,7 +123,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Text(
                       "Forgot password?",
                       style: GoogleFonts.jost(
-                        color: primary,
+                        color: Resources.color.primary,
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
@@ -128,28 +131,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                Consumer<UserAuth>(
-                  builder: ((context, value, child) {
-                    return value.state == AuthState.loading &&
-                            value.state != null
-                        ? const CircularProgressIndicator()
-                        : AppButton(
-                            btn: () async {
-                              if (_formKey.currentState!.validate()) {
-                                await value
-                                    .getUserInfo(
-                                        _nameController.text,
-                                        _phoneController.text,
-                                        _homeAddressController.text,
-                                        _stateController.text,
-                                        _emailController.text)
-                                    .whenComplete(() => Navigator.of(context)
-                                        .pushNamed(WhyAreYouHere.id));
-                              }
-                            },
-                            btnName: 'Next',
-                          );
-                  }),
+                AppButton(
+                  btn: () => validateAndSubmit(context),
+                  btnName: 'Next',
                 ),
                 const SizedBox(height: 16),
                 Wrap(
@@ -164,7 +148,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     GestureDetector(
                       onTap: () => Navigator.pushNamed(context, LoginScreen.id),
-                      child: Text("Login", style: linkText),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Resources.color.primary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
                     ),
                   ],
                 ),
@@ -173,14 +163,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   constraints: const BoxConstraints(maxWidth: 400),
                   child: Row(
                     children: [
-                      const Expanded(
-                        child: Divider(thickness: 1, color: dividerColor),
+                      Expanded(
+                        child: Divider(
+                            thickness: 1, color: Resources.color.dividerColor),
                       ),
                       const SizedBox(width: 15),
-                      Text("OR", style: orTextStyle),
+                      Text(
+                        "OR",
+                        style: TextStyle(
+                            color: Resources.color.orColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
                       const SizedBox(width: 15),
-                      const Expanded(
-                        child: Divider(thickness: 1, color: dividerColor),
+                      Expanded(
+                        child: Divider(
+                            thickness: 1, color: Resources.color.dividerColor),
                       ),
                     ],
                   ),
@@ -202,5 +200,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+   void validateAndSubmit(BuildContext context) {
+    _formKey.currentState!.save();
+    if (_formKey.currentState!.validate()) {
+      context.read<UserAuth>().getUserInfo(
+          _nameController.text,
+          _phoneController.text,
+          _homeAddressController.text,
+          _stateController.text,
+          _emailController.text,
+          _passwordController.text);
+      Navigator.of(context).pushNamed(WhyAreYouHere.id);
+    }
+    _nameController.clear();
+    _phoneController.clear();
+    _homeAddressController.clear();
+    _stateController.clear();
+    _emailController.clear();
+    _passwordController.clear();
   }
 }

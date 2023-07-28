@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 
 import '../../../config/res.dart';
 
-
-
 class UserInput extends StatefulWidget {
   final String label;
   final TextInputType? type;
@@ -37,13 +35,13 @@ class _UserInputState extends State<UserInput> {
         label: Text(
           widget.label,
           style: TextStyle(
-              color: Resources.color.tField,
+              color: Resources.color.hintText,
               fontSize: 14,
               fontWeight: FontWeight.w400),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 22),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: Resources.color.tField, width: 10),
+          borderSide: BorderSide(color: Resources.color.hintText, width: 10),
           borderRadius: const BorderRadius.all(Radius.circular(12.0)),
         ),
         focusedBorder: OutlineInputBorder(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/enums/auth_enum.dart';
 import 'package:zero_waste/provider/authenticate.dart';
-import '../../../../config/constant.dart';
 import '../../../../config/res.dart';
 import '../../../../widgets/app_button.dart';
 import '../../widgets/social_login.dart';
@@ -72,7 +72,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
               Text(
                 "Why are you here?",
                 style: GoogleFonts.jost(
-                    color: headColor,
+                    color: Resources.color.black,
                     fontSize: 24,
                     fontWeight: FontWeight.w700),
               ),
@@ -87,7 +87,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                     text: 'Crop Farmer',
                     tap: () {
                       setState(() => index = 0);
-                      user.getFarmerType('Crop Farmer');
+                      user.getFarmerType('CROP');
                     },
                   ),
                   farmerType(
@@ -95,7 +95,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                     text: 'Black Solder Fly Farmer',
                     tap: () {
                       setState(() => index = 1);
-                      user.getFarmerType('Black Solder Fly Farmer');
+                      user.getFarmerType('BLACK_SOLDIER');
                     },
                   ),
                   farmerType(
@@ -103,7 +103,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                     text: 'Fish/Poultry Farmer',
                     tap: () {
                       setState(() => index = 2);
-                      user.getFarmerType('Fish/Poultry Farmer');
+                      user.getFarmerType('FISH_POULTRY');
                     },
                   ),
                   farmerType(
@@ -111,16 +111,25 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                     text: 'Manual Labourers',
                     tap: () {
                       setState(() => index = 3);
-                      user.getFarmerType('ManualLabourers');
+                      user.getFarmerType('MANUAL');
                     },
                   ),
                 ],
               ),
               const SizedBox(height: 55),
-              AppButton(
-                btnName: 'Sign In',
-                btn: () {
-                  Navigator.pushNamed(context, OtpScreen.id);
+              Consumer<UserAuth>(
+                builder: (context, state, child) {
+                  return state.state != null && state.state == AuthState.loading
+                      ? const CircularProgressIndicator()
+                      : AppButton(
+                          btnName: 'Sign In',
+                          btn: () async {
+                            await state.submitInfo();
+                            if (context.mounted) {
+                              Navigator.pushNamed(context, OtpScreen.id);
+                            }
+                          },
+                        );
                 },
               ),
               const SizedBox(height: 16),
@@ -136,7 +145,13 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                   ),
                   GestureDetector(
                     onTap: () => Navigator.pushNamed(context, LoginScreen.id),
-                    child: Text("Login", style: linkText),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                          color: Resources.color.primary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ],
               ),
@@ -145,13 +160,21 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                 constraints: const BoxConstraints(maxWidth: 400),
                 child: Row(
                   children: [
-                    const Expanded(
-                        child: Divider(thickness: 1, color: dividerColor)),
+                    Expanded(
+                        child: Divider(
+                            thickness: 1, color: Resources.color.dividerColor)),
                     const SizedBox(width: 15),
-                    Text("OR", style: orTextStyle),
+                    Text(
+                      "OR",
+                      style: TextStyle(
+                          color: Resources.color.orColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                    ),
                     const SizedBox(width: 15),
-                    const Expanded(
-                        child: Divider(thickness: 1, color: dividerColor)),
+                    Expanded(
+                        child: Divider(
+                            thickness: 1, color: Resources.color.dividerColor)),
                   ],
                 ),
               ),

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-import '../../../../config/constant.dart';
-
 import '../../../../config/res.dart';
 import '../../../../widgets/app_button.dart';
 import 'reset_password.dart';
@@ -44,13 +41,16 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                 Text(
                   'Forget Password',
                   style: GoogleFonts.jost(
-                      color: headColor,
+                      color: Resources.color.black,
                       fontSize: 24,
                       fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 16),
-                Text('We’ve sent a reset code to your number, kindly \ncheck ',
-                    style: contentTextTwo, textAlign: TextAlign.center),
+                Text(
+                  'We’ve sent a reset code to your number, kindly \ncheck ',
+                  style: TextStyle(fontSize: 16, color: Resources.color.logIn),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 96),
                 PinCodeTextField(
                   controller: _pinCode,
@@ -59,12 +59,12 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                   keyboardType: TextInputType.phone,
                   autoFocus: true,
                   textStyle: GoogleFonts.jost(
-                      color: headColor,
+                      color: Resources.color.black,
                       fontSize: 28,
                       fontWeight: FontWeight.w900),
                   pinTheme: PinTheme(
-                    activeColor: primary,
-                    selectedColor: primary,
+                    activeColor: Resources.color.primary,
+                    selectedColor: Resources.color.primary,
                     inactiveColor: const Color(0xffEBEAED),
                     shape: PinCodeFieldShape.box,
                     fieldHeight: 48,
@@ -81,14 +81,20 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Didn't Receive Code ? ", style: haveAccTextStyle()),
+                    Text(
+                      "Didn't Receive Code ? ",
+                      style:
+                          TextStyle(fontSize: 16, color: Resources.color.black),
+                    ),
                     GestureDetector(
                       onTap: () {},
                       child: Text(
                         "Resend Code",
-                        style: linkText.copyWith(
-                          decoration: TextDecoration.underline,
-                        ),
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Resources.color.primary,
+                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                   ],
