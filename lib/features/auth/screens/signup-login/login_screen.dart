@@ -22,6 +22,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late GlobalKey<FormState> _formKey;
+  late FocusNode _passwordFocus;
   late TextEditingController email;
   late TextEditingController password;
 
@@ -30,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     email = TextEditingController();
     password = TextEditingController();
+    _passwordFocus = FocusNode();
     _formKey = GlobalKey<FormState>();
   }
 
@@ -37,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     email.dispose();
     password.dispose();
+    _passwordFocus.dispose();
     super.dispose();
   }
 
@@ -52,7 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   Image.asset(Resources.iString.appIcon, width: 90, height: 90),
-
                   const SizedBox(height: 15),
                   Text(
                     "Login to your Account",
@@ -76,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   PasswordInput(
                     label: 'Password',
                     controller: password,
+                    focusNode: _passwordFocus,
                     validator: (String? value) {
                       if (value!.isEmpty) {
                         return 'Password cannot not be empty';
@@ -110,14 +113,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               value.state != null
                           ? const CircularProgressIndicator()
                           : AppButton(
-                              btn: () {
+                              btn: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  value.login(email.text, password.text);
-                                  ScaffoldMessenger.of(context)
-                                  
-                                      .clearSnackBars();
+                                  _passwordFocus.unfocus();
+                                  await value.login(email.text, password.text);
                                   loginUser(value);
-                                  
                                 }
                               },
                               btnName: 'Login',
@@ -197,19 +197,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void loginUser(dynamic value) {
-     if (value.token != null) {
-      Navigator.of(context).pushReplacementNamed(AppPages.id);
+  void loginUser(UserAuth value) {
+    if (value.token != null) {
+      email.clear();
+      password.clear();
+      Navigator.of(context).pushNamed(AppPages.id);
     }
-    if (value.error != null) {
+    if (value.state == AuthState.hasError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          duration: const Duration(milliseconds: 450),
+          duration: const Duration(milliseconds: 700),
           content: Text(value.error!),
         ),
       );
-      
     }
-   
+    value.reset();
   }
 }

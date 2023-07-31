@@ -1,29 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste/provider/authenticate.dart';
 import '../../../../config/res.dart';
+import '../../../../enums/auth_enum.dart';
 import '../../widgets/password_textfield.dart';
-
 import 'reset_success.dart';
 import '../../../../widgets/app_button.dart';
 
-
-
 class ResetPassword extends StatefulWidget {
   static const id = 'ResetPassword';
-  const ResetPassword({Key? key}) : super(key: key);
+  final String? email;
+  const ResetPassword({Key? key, this.email}) : super(key: key);
   @override
   State<ResetPassword> createState() => _ResetPasswordState();
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _password = TextEditingController();
-  final TextEditingController _confirmPassword = TextEditingController();
+  late final FocusNode _confirmPasswordNode;
+  late final GlobalKey<FormState> _formKey;
+  late final TextEditingController _password;
+  late final TextEditingController _cPassword;
+
+  @override
+  void initState() {
+    super.initState();
+    _confirmPasswordNode = FocusNode();
+    _formKey = GlobalKey<FormState>();
+    _password = TextEditingController();
+    _cPassword = TextEditingController();
+  }
 
   @override
   void dispose() {
     _password.dispose();
-    _confirmPassword.dispose();
+    _cPassword.dispose();
+    _confirmPasswordNode.dispose();
     super.dispose();
   }
 
@@ -36,7 +48,6 @@ class _ResetPasswordState extends State<ResetPassword> {
           child: Form(
             key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(Resources.iString.appIcon, width: 90, height: 90),
                 const SizedBox(height: 15),
@@ -49,12 +60,15 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
                 const SizedBox(height: 16),
                 Text('Kindly enter a new password to validate your\naccount',
-                    style: TextStyle(fontSize: 16, color: Resources.color.logIn), textAlign: TextAlign.center),
+                    style:
+                        TextStyle(fontSize: 16, color: Resources.color.logIn),
+                    textAlign: TextAlign.center),
                 const SizedBox(height: 50),
                 PasswordInput(
                   label: 'Password',
+                  controller: _password,
                   validator: (String? value) {
-                    if (value == null || value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Password must not be empty';
                     }
                     if (value.length < 8) {
@@ -66,29 +80,60 @@ class _ResetPasswordState extends State<ResetPassword> {
                 const SizedBox(height: 20),
                 PasswordInput(
                   label: 'Confirm Password',
+                  controller: _cPassword,
+                  focusNode: _confirmPasswordNode,
                   validator: (String? value) {
-                    if (value == null || value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Password must not be empty';
                     }
-                    if (value.length < 8) {
-                      return 'Your password must be at least 8 character';
+                    if (value.length != _password.text.length) {
+                      return 'Your password must be at least 8 characters';
                     }
-                    if (_password.text != _confirmPassword.text) {
+                    if (value != _password.text) {
                       return 'Passwords must be the same';
                     }
                     return null;
                   },
                 ),
                 const SizedBox(height: 50),
-                AppButton(
-                    btnName: 'Reset Password',
-                    btn: () => Navigator.pushReplacementNamed(
-                        context, ResetSuccess.id))
+                Consumer<UserAuth>(
+                  builder: (context, reset, child) {
+                    return reset.state == AuthState.loading
+                        ? const CircularProgressIndicator()
+                        : AppButton(
+                            btnName: 'Reset',
+                            btn: () async {
+                              if (_formKey.currentState!.validate()) {
+                                _confirmPasswordNode.unfocus();
+                                await reset.resetPassword(
+                                    _cPassword.text, widget.email!);
+                                checkErrorState(reset);
+                              }
+                            },
+                          );
+                  },
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void checkErrorState(UserAuth email) {
+    if (email.state == AuthState.completed) {
+      _cPassword.clear();
+      _password.clear();
+      Navigator.pushNamed(context, ResetSuccess.id);
+    }
+    if (email.state == AuthState.hasError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(milliseconds: 1000),
+          content: Text(email.error!),
+        ),
+      );
+    }
   }
 }

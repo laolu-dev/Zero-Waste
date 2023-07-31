@@ -4,9 +4,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/enums/auth_enum.dart';
 import 'package:zero_waste/provider/authenticate.dart';
-import 'package:zero_waste/utils/logger.dart';
 import '../../../../config/res.dart';
-
 import '../../../../widgets/app_button.dart';
 import 'verified_account.dart';
 
@@ -29,13 +27,14 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   void dispose() {
+    // context.read<UserAuth>().reset();
     _pinCode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final phone = Provider.of<UserAuth>(context);
+    final email = Provider.of<UserAuth>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -46,7 +45,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 Image.asset(Resources.iString.appIcon, width: 90, height: 90),
                 const SizedBox(height: 15),
                 Text(
-                  "Verify your phone number",
+                  "Verify your email",
                   style: GoogleFonts.jost(
                       color: Resources.color.black,
                       fontSize: 24,
@@ -54,7 +53,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Please, enter the code sent to ${phone.user?.email} to validate your account.',
+                  'Please, enter the code sent to ${email.user?.email} to validate your account.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.jost(
                       fontSize: 16,
@@ -66,7 +65,12 @@ class _OtpScreenState extends State<OtpScreen> {
                   controller: _pinCode,
                   appContext: context,
                   length: 4,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   keyboardType: TextInputType.number,
+                  textStyle: GoogleFonts.jost(
+                      color: Resources.color.black,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w900),
                   pinTheme: PinTheme(
                     activeColor: Resources.color.primary,
                     selectedColor: Resources.color.primary,
@@ -79,22 +83,17 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 const SizedBox(height: 82),
                 Consumer<UserAuth>(
-                  builder: ((context, value, child) {
-                    return value.state == AuthState.loading &&
-                            value.state != null
+                  builder: (context, auth, child) {
+                    return auth.state == AuthState.loading
                         ? const CircularProgressIndicator()
                         : AppButton(
                             btnName: 'Verify',
                             btn: () async {
-                              logger.d(_pinCode.text);
-                              await value.verify(_pinCode.text);
-                              if (context.mounted) {
-                                Navigator.pushNamed(
-                                    context, VerifiedAccount.id);
-                              }
+                              await auth.verifyEmail(_pinCode.text);
+                              verified(auth);
                             },
                           );
-                  }),
+                  },
                 ),
                 const SizedBox(height: 8),
                 Row(
@@ -106,7 +105,9 @@ class _OtpScreenState extends State<OtpScreen> {
                           TextStyle(fontSize: 16, color: Resources.color.black),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        context.read<UserAuth>().signUp();
+                      },
                       child: Text(
                         "Resend code",
                         style: TextStyle(
@@ -124,5 +125,18 @@ class _OtpScreenState extends State<OtpScreen> {
         ),
       ),
     );
+  }
+
+  void verified(UserAuth auth) {
+    if (auth.state == AuthState.hasError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(milliseconds: 700),
+          content: Text(auth.error!),
+        ),
+      );
+    } else {
+      Navigator.pushNamed(context, VerifiedAccount.id);
+    }
   }
 }

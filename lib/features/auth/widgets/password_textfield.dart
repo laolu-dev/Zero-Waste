@@ -5,11 +5,13 @@ import '../../../config/res.dart';
 class PasswordInput extends StatefulWidget {
   final String label;
   final TextEditingController? controller;
+  final FocusNode? focusNode;
   final FormFieldValidator<String>? validator;
   const PasswordInput({
     Key? key,
     required this.label,
     this.controller,
+    this.focusNode,
     this.validator,
   }) : super(key: key);
 
@@ -26,6 +28,7 @@ class _PasswordInputState extends State<PasswordInput> {
       controller: widget.controller,
       validator: widget.validator,
       obscureText: showText,
+     focusNode: widget.focusNode, 
       decoration: InputDecoration(
         label: Text(
           widget.label,

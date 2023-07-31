@@ -3,8 +3,9 @@ import 'package:flutter/services.dart';
 
 import '../../../config/res.dart';
 
-class UserInput extends StatefulWidget {
+class UserInput extends StatelessWidget {
   final String label;
+  final FocusNode? focusNode;
   final TextInputType? type;
   final TextEditingController? controller;
   final List<TextInputFormatter>? formatInput;
@@ -14,26 +15,24 @@ class UserInput extends StatefulWidget {
     Key? key,
     required this.label,
     this.type,
+    this.focusNode,
     this.controller,
     this.formatInput,
     this.validator,
   }) : super(key: key);
 
   @override
-  State<UserInput> createState() => _UserInputState();
-}
-
-class _UserInputState extends State<UserInput> {
-  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller,
-      validator: widget.validator,
-      keyboardType: widget.type,
-      inputFormatters: widget.formatInput,
+      controller: controller,
+      validator: validator,
+      keyboardType: type,
+      inputFormatters: formatInput,
+      focusNode: focusNode,
+      autofocus: true,
       decoration: InputDecoration(
         label: Text(
-          widget.label,
+          label,
           style: TextStyle(
               color: Resources.color.hintText,
               fontSize: 14,

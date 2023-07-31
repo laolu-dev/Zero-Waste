@@ -21,6 +21,7 @@ import '../features/onboarding/screens/splash_screen.dart';
 import '../features/unknown_page.dart';
 
 Route<dynamic>? routes(RouteSettings settings) {
+  final args = settings.arguments;
   switch (settings.name) {
     case SplashScreen.id:
       return MaterialPageRoute(builder: (context) => const SplashScreen());
@@ -37,10 +38,10 @@ Route<dynamic>? routes(RouteSettings settings) {
     case OtpScreen.id:
       return MaterialPageRoute(builder: (context) => const OtpScreen());
     case ResetPassword.id:
-      return MaterialPageRoute(builder: (context) => const ResetPassword());
+      return MaterialPageRoute(builder: (context) => ResetPassword(email: args as String));
     case PasswordVerification.id:
       return MaterialPageRoute(
-          builder: (context) => const PasswordVerification());
+          builder: (context) => PasswordVerification(email: args as String));
     case VerifiedAccount.id:
       return MaterialPageRoute(builder: (context) => const VerifiedAccount());
     case ResetSuccess.id:

@@ -10,7 +10,6 @@ import 'profile.dart';
 import '../widgets/profile_tile.dart';
 import '../../../main.dart';
 import '../../../widgets/user_avatar.dart';
-import '../../auth/screens/signup-login/login_screen.dart';
 
 class MyAccount extends StatelessWidget {
   static const id = 'MyAccount';
@@ -162,12 +161,15 @@ class MyAccount extends StatelessWidget {
             const Expanded(child: SizedBox()),
             ElevatedButton(
               onPressed: () async {
-                // await FirebaseAuth.instance.signOut();
-                mainAppKey.currentState!.popAndPushNamed(LoginScreen.id);
+                mainAppKey.currentState!.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 138, vertical: 14)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 138, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
               child: Text(
                 "Sign out",
                 style: GoogleFonts.jost(

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
+import 'package:zero_waste/enums/auth_enum.dart';
+import 'package:zero_waste/provider/authenticate.dart';
+import 'package:zero_waste/utils/logger.dart';
 import '../../../../config/res.dart';
 import '../../../../widgets/app_button.dart';
 import 'reset_password.dart';
 
 class PasswordVerification extends StatefulWidget {
+  final String? email;
   static const id = 'PasswordVerification';
-  const PasswordVerification({Key? key}) : super(key: key);
+  const PasswordVerification({Key? key, this.email}) : super(key: key);
 
   @override
   State<PasswordVerification> createState() => _PasswordVerificationState();
@@ -15,11 +20,13 @@ class PasswordVerification extends StatefulWidget {
 
 class _PasswordVerificationState extends State<PasswordVerification> {
   late TextEditingController _pinCode;
+  late FocusNode _pinFocusNode;
 
   @override
   void initState() {
     super.initState();
     _pinCode = TextEditingController();
+    _pinFocusNode = FocusNode();
   }
 
   @override
@@ -39,7 +46,7 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                 Image.asset(Resources.iString.appIcon, width: 90, height: 90),
                 const SizedBox(height: 15),
                 Text(
-                  'Forget Password',
+                  'Forgot Password',
                   style: GoogleFonts.jost(
                       color: Resources.color.black,
                       fontSize: 24,
@@ -47,7 +54,7 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'We’ve sent a reset code to your number, kindly \ncheck ',
+                  'We’ve sent a reset code to ${widget.email}, kindly \ncheck ',
                   style: TextStyle(fontSize: 16, color: Resources.color.logIn),
                   textAlign: TextAlign.center,
                 ),
@@ -55,9 +62,11 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                 PinCodeTextField(
                   controller: _pinCode,
                   appContext: context,
-                  length: 6,
+                  length: 4,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   keyboardType: TextInputType.phone,
                   autoFocus: true,
+                  focusNode: _pinFocusNode,
                   textStyle: GoogleFonts.jost(
                       color: Resources.color.black,
                       fontSize: 28,
@@ -73,11 +82,26 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                   ),
                 ),
                 const SizedBox(height: 81.95),
-                AppButton(
-                    btnName: 'Proceed',
-                    btn: () => Navigator.pushReplacementNamed(
-                        context, ResetPassword.id)),
-                const SizedBox(height: 8),
+                Consumer<UserAuth>(
+                  builder: (context, verifyOtp, child) {
+                    return verifyOtp.state == AuthState.loading
+                        ? const CircularProgressIndicator()
+                        : AppButton(
+                            btnName: 'Reset',
+                            btn: () async {
+                              if (_pinCode.text.isEmpty) {
+                                logger.w("Field is empty");
+                              } else {
+                                 _pinFocusNode.unfocus();
+                                await verifyOtp.verifyResetPasswordOtp(
+                                    widget.email!, _pinCode.text);
+                                checkErrorState(verifyOtp);
+                              }
+                            },
+                          );
+                  },
+                ),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -87,7 +111,11 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                           TextStyle(fontSize: 16, color: Resources.color.black),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        context
+                            .read<UserAuth>()
+                            .requestToUpdatePassword(widget.email!);
+                      },
                       child: Text(
                         "Resend Code",
                         style: TextStyle(
@@ -103,5 +131,20 @@ class _PasswordVerificationState extends State<PasswordVerification> {
             )),
       ),
     );
+  }
+
+  void checkErrorState(UserAuth verifyOtp) {
+    if (verifyOtp.state == AuthState.completed) {
+      // context.read<UserAuth>().reset();
+      Navigator.pushNamed(context, ResetPassword.id, arguments: widget.email!);
+    }
+    if (verifyOtp.state == AuthState.hasError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(milliseconds: 1000),
+          content: Text(verifyOtp.error!),
+        ),
+      );
+    }
   }
 }

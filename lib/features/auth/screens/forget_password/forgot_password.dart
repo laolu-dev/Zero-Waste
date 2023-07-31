@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:provider/provider.dart';
+import 'package:zero_waste/provider/authenticate.dart';
 import '../../../../config/res.dart';
+import '../../../../enums/auth_enum.dart';
 import 'password_verification.dart';
 import '../../../../widgets/app_button.dart';
 import '../../widgets/social_login.dart';
@@ -17,14 +19,22 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  final TextEditingController _phoneReset = TextEditingController();
-  // final fire = UserAuthentication();
-  // final phone =
-  //     fire.database.doc(FirebaseAuth.instance.currentUser!.phoneNumber);
+  late final TextEditingController _email;
+  late final GlobalKey<FormState> _form;
+  late final FocusNode _emailNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _form = GlobalKey<FormState>();
+    _emailNode = FocusNode();
+    _email = TextEditingController();
+  }
 
   @override
   void dispose() {
-    _phoneReset.dispose();
+    _email.dispose();
+    _emailNode.dispose();
     super.dispose();
   }
 
@@ -33,6 +43,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
           child: Column(
             children: [
@@ -47,18 +58,41 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               const SizedBox(height: 16),
               Text(
-                'Enter the phone number you used to register',
+                'Enter the email you used to register',
                 style: TextStyle(color: Resources.color.logIn, fontSize: 16),
               ),
               const SizedBox(height: 32),
-              UserInput(label: 'Phone Number', controller: _phoneReset),
+              Form(
+                key: _form,
+                child: UserInput(
+                  label: 'Email',
+                  controller: _email,
+                  focusNode: _emailNode,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter a email";
+                    }
+                    return null;
+                  },
+                ),
+              ),
               const SizedBox(height: 24),
-              AppButton(
-                  btnName: 'Reset',
-                  btn: () async {
-                    Navigator.pushReplacementNamed(
-                        context, PasswordVerification.id);
-                  }),
+              Consumer<UserAuth>(
+                builder: (context, email, child) {
+                  return email.state == AuthState.loading
+                      ? const CircularProgressIndicator()
+                      : AppButton(
+                          btnName: 'Reset',
+                          btn: () async {
+                            if (_form.currentState!.validate()) {
+                              _emailNode.unfocus();
+                              await email.requestToUpdatePassword(_email.text);
+                              checkErrorState(email);
+                            }
+                          },
+                        );
+                },
+              ),
               const SizedBox(height: 16),
               Wrap(
                 children: [
@@ -114,5 +148,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         ),
       ),
     );
+  }
+
+  void checkErrorState(UserAuth email) {
+    if (email.state == AuthState.completed) {
+      Navigator.pushNamed(context, PasswordVerification.id,
+          arguments: _email.text);
+    }
+    if (email.state == AuthState.hasError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(milliseconds: 1000),
+          content: Text(email.error!),
+        ),
+      );
+    }
   }
 }

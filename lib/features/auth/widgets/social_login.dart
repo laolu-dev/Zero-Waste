@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../config/res.dart';
-import '../../../service/firebase_social_auth.dart';
-
-import '../../home/screens/tabs.dart';
-
-
 
 class SocialLogin extends StatelessWidget {
   const SocialLogin({Key? key}) : super(key: key);
@@ -19,23 +14,19 @@ class SocialLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final socialAuth = SocialAuth();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GestureDetector(
           onTap: () {
-            socialAuth.signInWithFacebook().whenComplete(
-                () => Navigator.pushReplacementNamed(context, AppPages.id));
+            // socialAuth.signInWithFacebook().whenComplete(
+            //     () => Navigator.pushReplacementNamed(context, AppPages.id));
           },
           child: _login(Image.asset(Resources.iString.facebook)),
         ),
         const SizedBox(width: 12),
         GestureDetector(
-          onTap: () {
-            socialAuth.signInWithGoogle().whenComplete(
-                () => Navigator.pushReplacementNamed(context, AppPages.id));
-          },
+          onTap: () {},
           child: _login(Image.asset(Resources.iString.google)),
         ),
         const SizedBox(width: 12),

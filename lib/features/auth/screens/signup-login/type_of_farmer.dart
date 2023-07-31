@@ -83,34 +83,34 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                 spacing: 18,
                 children: [
                   farmerType(
-                    selectedFarmer: index == 0,
+                    selectedFarmer: index == 1,
                     text: 'Crop Farmer',
                     tap: () {
-                      setState(() => index = 0);
+                      setState(() => index = 1);
                       user.getFarmerType('CROP');
                     },
                   ),
                   farmerType(
-                    selectedFarmer: index == 1,
+                    selectedFarmer: index == 2,
                     text: 'Black Solder Fly Farmer',
                     tap: () {
-                      setState(() => index = 1);
+                      setState(() => index = 2);
                       user.getFarmerType('BLACK_SOLDIER');
                     },
                   ),
                   farmerType(
-                    selectedFarmer: index == 2,
+                    selectedFarmer: index == 3,
                     text: 'Fish/Poultry Farmer',
                     tap: () {
-                      setState(() => index = 2);
+                      setState(() => index = 3);
                       user.getFarmerType('FISH_POULTRY');
                     },
                   ),
                   farmerType(
-                    selectedFarmer: index == 3,
+                    selectedFarmer: index == 4,
                     text: 'Manual Labourers',
                     tap: () {
-                      setState(() => index = 3);
+                      setState(() => index = 4);
                       user.getFarmerType('MANUAL');
                     },
                   ),
@@ -118,16 +118,14 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
               ),
               const SizedBox(height: 55),
               Consumer<UserAuth>(
-                builder: (context, state, child) {
-                  return state.state != null && state.state == AuthState.loading
+                builder: (context, auth, child) {
+                  return auth.state != null && auth.state == AuthState.loading
                       ? const CircularProgressIndicator()
                       : AppButton(
                           btnName: 'Sign In',
                           btn: () async {
-                            await state.submitInfo();
-                            if (context.mounted) {
-                              Navigator.pushNamed(context, OtpScreen.id);
-                            }
+                            await auth.signUp();
+                            nav(auth);
                           },
                         );
                 },
@@ -193,5 +191,18 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
         ),
       ),
     );
+  }
+
+  void nav(UserAuth auth) {
+    if (auth.state == AuthState.hasError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: const Duration(milliseconds: 700),
+          content: Text(auth.error!),
+        ),
+      );
+    } else {
+      Navigator.pushNamed(context, OtpScreen.id);
+    }
   }
 }

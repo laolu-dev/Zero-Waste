@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+// import 'package:zero_waste/config/validators.dart';
 import '../../../../config/res.dart';
 import '../../../../provider/authenticate.dart';
 import '../../widgets/password_textfield.dart';
@@ -20,13 +21,14 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  late GlobalKey<FormState> _formKey;
-  late TextEditingController _nameController;
-  late TextEditingController _emailController;
-  late TextEditingController _phoneController;
-  late TextEditingController _homeAddressController;
-  late TextEditingController _stateController;
-  late TextEditingController _passwordController;
+  late final GlobalKey<FormState> _formKey;
+  late final TextEditingController _nameController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _phoneController;
+  late final TextEditingController _homeAddressController;
+  late final TextEditingController _stateController;
+  late final TextEditingController _passwordController;
+  late final FocusNode _passwordNode;
 
   @override
   void initState() {
@@ -38,6 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _homeAddressController = TextEditingController();
     _stateController = TextEditingController();
     _passwordController = TextEditingController();
+    _passwordNode = FocusNode();
   }
 
   @override
@@ -81,6 +84,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       return 'Email cannot not be empty';
                     }
                     return null;
+                    // return Validators.validEmail(value)
+                    //     ? 'Enter a valid email address'
+                    //     : null;
                   },
                 ),
                 const SizedBox(height: 16),
@@ -88,21 +94,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   label: 'Phone Number',
                   controller: _phoneController,
                   type: TextInputType.phone,
+                  validator: (String? value) {
+                    var str = value!.trim();
+
+                    if (str.isEmpty) {
+                      return 'Enter your phone number.';
+                    } else if (str.length < 11) {
+                      return 'Enter a valid phone number.';
+                    }
+
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 UserInput(
-                  label: 'homeAddress',
+                  label: 'Home/Work Address',
                   controller: _homeAddressController,
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Enter your home/work address.';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 UserInput(
                   label: 'State',
                   controller: _stateController,
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Enter the state you reside in.';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 PasswordInput(
                   label: 'Password',
                   controller: _passwordController,
+                  focusNode: _passwordNode,
                   validator: (String? value) {
                     if (value!.isEmpty) {
                       return 'Password cannot not be empty';
@@ -132,7 +162,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 24),
                 AppButton(
-                  btn: () => validateAndSubmit(context),
+                  btn: () {
+                     _passwordNode.unfocus();
+                    validateAndSubmit(context);
+                  },
                   btnName: 'Next',
                 ),
                 const SizedBox(height: 16),
@@ -202,7 +235,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-   void validateAndSubmit(BuildContext context) {
+  void validateAndSubmit(BuildContext context) {
     _formKey.currentState!.save();
     if (_formKey.currentState!.validate()) {
       context.read<UserAuth>().getUserInfo(
@@ -214,11 +247,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
           _passwordController.text);
       Navigator.of(context).pushNamed(WhyAreYouHere.id);
     }
-    _nameController.clear();
-    _phoneController.clear();
-    _homeAddressController.clear();
-    _stateController.clear();
-    _emailController.clear();
-    _passwordController.clear();
   }
 }

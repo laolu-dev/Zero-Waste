@@ -1,18 +1,17 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/enums/auth_enum.dart';
-import 'package:zero_waste/service/dio/dio_client.dart';
-import 'package:zero_waste/service/dio/dio_exception.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zero_waste/utils/logger.dart';
 import '../../../models/user.dart';
+import '../service/dio/dio_auth_client.dart';
 
 class UserAuth extends ChangeNotifier {
   Farmer? _user;
   AuthState? _authState;
   String? _error;
-  DioClient dio = DioClient();
+  DioAuthClient dio = DioAuthClient();
   String? _accessToken;
 
   Farmer? get user => _user;
@@ -38,13 +37,23 @@ class UserAuth extends ChangeNotifier {
         password: password);
   }
 
-  void login(String email, String password) async {
+  void getFarmerType(String typeOfFarmer) {
+    _user!.farmerType = typeOfFarmer;
+  }
+
+  void reset() {
+    _authState = null;
+    _error = null;
+    notifyListeners();
+  }
+
+  Future login(String email, String password) async {
+    _authState = AuthState.loading;
+    notifyListeners();
     try {
-      _authState = AuthState.loading;
-      notifyListeners();
       final val = await dio.login(email, password);
-      if (val.containsKey('error')) {
-        _error = val["error"];
+      if (val is String) {
+        _error = val;
         _authState = AuthState.hasError;
         notifyListeners();
       } else {
@@ -60,33 +69,93 @@ class UserAuth extends ChangeNotifier {
     }
   }
 
-  void getFarmerType(String typeOfFarmer) {
-    _user!.farmerType = typeOfFarmer;
-  }
-
-  Future submitInfo() async {
+  Future signUp() async {
+    _authState = AuthState.loading;
+    notifyListeners();
     try {
-      _authState = AuthState.loading;
-      notifyListeners();
-      await dio.signUp(_user!);
-      _authState = AuthState.completed;
-      notifyListeners();
-    } on DioException catch (e) {
-      // var error = AppDioError.fromDioException(e);
-      logger.i(e);
+      final val = await dio.signUp(_user!);
+      if (val is String) {
+        _error = val;
+        _authState = AuthState.hasError;
+        notifyListeners();
+      } else {
+        _authState = AuthState.completed;
+        notifyListeners();
+      }
+    } catch (e) {
+      logger.e(e.toString());
     }
   }
 
-  Future verify(String otp) async {
+  Future verifyEmail(String otp) async {
+    _authState = AuthState.loading;
+    notifyListeners();
     try {
-      _authState = AuthState.loading;
-      notifyListeners();
-      await dio.verify(_user!.email, otp);
-      _authState = AuthState.completed;
-      notifyListeners();
-    } on DioException catch (e) {
-      // var error = AppDioError.fromDioException(e);
-      logger.e(e);
+      final res = await dio.verifyEmail(_user!.email, otp);
+      if (res is String) {
+        _error = res;
+        _authState = AuthState.hasError;
+        notifyListeners();
+      } else {
+        _authState = AuthState.completed;
+        notifyListeners();
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  Future requestToUpdatePassword(String email) async {
+    _authState = AuthState.loading;
+    notifyListeners();
+    try {
+      final res = await dio.requestToResetPassword(email);
+      if (res is String) {
+        _error = res;
+        _authState = AuthState.hasError;
+        notifyListeners();
+      } else {
+        _authState = AuthState.completed;
+        notifyListeners();
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  Future verifyResetPasswordOtp(String email, String otp) async {
+    _authState = AuthState.loading;
+    notifyListeners();
+    try {
+      final res = await dio.verifyResetOtp(email, otp);
+      if (res is String) {
+        _error = res;
+        _authState = AuthState.hasError;
+        notifyListeners();
+      } else {
+        _authState = AuthState.completed;
+        notifyListeners();
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  Future resetPassword(String password, String email) async {
+    _authState = AuthState.loading;
+    notifyListeners();
+    try {
+      final res = await dio.resetPassword(password, email);
+      if (res is String) {
+        _error = res;
+        _authState = AuthState.hasError;
+        notifyListeners();
+      } else {
+        _authState = AuthState.completed;
+        notifyListeners();
+      }
+    } catch (e) {
+      logger.e(e.toString());
     }
   }
 }
