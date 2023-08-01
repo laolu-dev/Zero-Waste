@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import '../screens/product_details.dart';
 
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 import '../../../models/product.dart';
 
 class ProductWidget extends StatelessWidget {

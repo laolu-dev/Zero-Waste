@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 
 class UserInput extends StatelessWidget {
   final String label;

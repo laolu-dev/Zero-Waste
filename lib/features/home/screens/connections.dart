@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/config/res.dart';
+import 'package:zero_waste/utils/config/res.dart';
 import '../../../provider/add_new_conversation.dart';
 import '../../../provider/connections.dart';
 import '../widget/connection_tile.dart';

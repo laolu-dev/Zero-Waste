@@ -6,7 +6,7 @@ import 'package:zero_waste/models/new_conversation.dart';
 import 'package:zero_waste/models/product.dart';
 import 'package:zero_waste/provider/add_new_conversation.dart';
 import 'package:zero_waste/provider/product_data.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 
 class ProductDetails extends StatelessWidget {
   final Product productInfo;

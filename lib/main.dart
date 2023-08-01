@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'config/res.dart';
+import 'package:zero_waste/utils/shared_prefs.dart';
+import 'features/home/screens/tabs.dart';
+import 'features/onboarding/screens/splash_screen.dart';
+import 'utils/config/res.dart';
 import 'provider/add_new_conversation.dart';
 import 'provider/authenticate.dart';
 import 'provider/camera.dart';
@@ -14,6 +16,7 @@ import 'utils/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final token = await SharedPrefs.getAccessToken(SharedPrefsKeys.accessToken);
   runApp(
     MultiProvider(
       providers: [
@@ -26,7 +29,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => MarketData()),
         ChangeNotifierProvider(create: (context) => Camera())
       ],
-      child: const ZeroWaste(),
+      child: ZeroWaste(accessToken: token),
     ),
   );
 }
@@ -34,15 +37,14 @@ void main() async {
 final GlobalKey<NavigatorState> mainAppKey = GlobalKey<NavigatorState>();
 
 class ZeroWaste extends StatelessWidget {
-  const ZeroWaste({Key? key}) : super(key: key);
+  final String? accessToken;
+  const ZeroWaste({Key? key, this.accessToken}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateRoute: routes,
-      // initialRoute: context.read<UserAuth>().token != null
-      //     ? AppPages.id
-      //     : SplashScreen.id,
+      initialRoute: accessToken != null ? AppPages.id : SplashScreen.id,
       navigatorKey: mainAppKey,
       theme: ThemeData(primarySwatch: Resources.color.appColor),
       debugShowCheckedModeBanner: false,

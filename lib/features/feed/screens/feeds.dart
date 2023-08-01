@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 import '../../../widgets/notification_widget.dart';
 import '../../home/widget/search_text_field.dart';
 import '../../../provider/feed_data.dart';

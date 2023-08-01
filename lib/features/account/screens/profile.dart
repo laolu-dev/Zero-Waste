@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/widgets/user_avatar.dart';
 
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 import '../../../provider/authenticate.dart';
 import '../../../provider/product_data.dart';
 import '../widgets/profile_stats_widget.dart';

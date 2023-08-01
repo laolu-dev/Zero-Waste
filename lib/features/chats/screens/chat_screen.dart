@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 import '../../../provider/chat_data.dart';
 import '../widgets/chat_room_info.dart';
 

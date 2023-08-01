@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 
 class ProfileTileOption extends StatelessWidget {
   final void Function()? onTap;

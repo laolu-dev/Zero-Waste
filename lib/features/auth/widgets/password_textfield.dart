@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 
 class PasswordInput extends StatefulWidget {
   final String label;

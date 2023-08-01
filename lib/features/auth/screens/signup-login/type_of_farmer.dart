@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/enums/auth_enum.dart';
 import 'package:zero_waste/provider/authenticate.dart';
-import '../../../../config/res.dart';
+import '../../../../utils/config/res.dart';
 import '../../../../widgets/app_button.dart';
 import '../../widgets/social_login.dart';
 import 'login_screen.dart';

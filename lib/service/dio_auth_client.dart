@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:zero_waste/env/env.dart';
 import 'package:zero_waste/models/user.dart';
 import 'package:zero_waste/utils/logger.dart';
-import 'dio_exception.dart';
+import '../utils/dio_exception.dart';
 
 class DioAuthClient {
   DioAuthClient()

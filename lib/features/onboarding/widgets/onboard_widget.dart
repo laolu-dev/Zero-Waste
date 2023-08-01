@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 
 
 class OnboardPage extends StatelessWidget {

@@ -4,7 +4,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/enums/auth_enum.dart';
 import 'package:zero_waste/provider/authenticate.dart';
-import '../../../../config/res.dart';
+import '../../../../utils/config/res.dart';
 import '../../../../widgets/app_button.dart';
 import 'verified_account.dart';
 
@@ -27,7 +27,6 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   void dispose() {
-    // context.read<UserAuth>().reset();
     _pinCode.dispose();
     super.dispose();
   }

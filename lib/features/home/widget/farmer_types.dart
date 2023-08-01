@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 
 import '../screens/connections.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../../config/res.dart';
+import '../../../../utils/config/res.dart';
 import '../../../../enums/auth_enum.dart';
 import '../../../../provider/authenticate.dart';
 import '../../widgets/password_textfield.dart';

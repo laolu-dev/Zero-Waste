@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/provider/camera.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 import '../../../provider/authenticate.dart';
 import 'profile.dart';
 import '../widgets/profile_tile.dart';

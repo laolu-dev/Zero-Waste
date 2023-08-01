@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 import '../../../widgets/user_avatar.dart';
 
 import '../../../widgets/notification_widget.dart';

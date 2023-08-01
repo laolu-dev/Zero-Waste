@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 
 import '../../../provider/add_new_conversation.dart';
 import 'chat_screen.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import '../../../config/res.dart';
+import '../../../utils/config/res.dart';
 import '../../../provider/market_data.dart';
 import '../../../provider/authenticate.dart';
 import '../widget/home_appbar.dart';
@@ -98,7 +98,7 @@ class Dashboard extends StatelessWidget {
               child: ListView.builder(
                 itemCount: marketData.length,
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return marketData.items.map((e) {
                     return MarketTile(

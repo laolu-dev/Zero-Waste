@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zero_waste/enums/auth_enum.dart';
-
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zero_waste/utils/logger.dart';
+import 'package:zero_waste/utils/shared_prefs.dart';
 import '../../../models/user.dart';
-import '../service/dio/dio_auth_client.dart';
+import '../service/dio_auth_client.dart';
 
 class UserAuth extends ChangeNotifier {
   Farmer? _user;
@@ -58,9 +57,10 @@ class UserAuth extends ChangeNotifier {
         notifyListeners();
       } else {
         _user = Farmer.fromMap(val);
-        final pref = await SharedPreferences.getInstance();
-        pref.setString('accessToken', val["accessToken"]);
-        _accessToken = pref.getString('accessToken');
+        SharedPrefs.setAccessToken(
+            SharedPrefsKeys.accessToken, val['accessToken']);
+        _accessToken =
+            await SharedPrefs.getAccessToken(SharedPrefsKeys.accessToken);
         _authState = AuthState.completed;
         notifyListeners();
       }

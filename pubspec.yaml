@@ -49,10 +49,15 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.6
   envied_generator: ^0.3.0+3
+  flutter_launcher_icons: "^0.13.1"
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
+    
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/logo.png"
 # The following section is specific to Flutter packages.
 flutter:
   # The following line ensures that the Material Icons font is
@@ -73,4 +78,5 @@ flutter_native_splash:
   image: assets/icons/logo_x3.png
   android_12:
     color: "#076e52"
-    image: assets/icons/logo_x3.png
+    image: assets/icons/logo.png
+   

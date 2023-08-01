@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste/config/res.dart';
+import 'package:zero_waste/utils/config/res.dart';
 
 class ProfileStats extends StatelessWidget {
   final int num;

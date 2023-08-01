@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/config/res.dart';
+import 'package:zero_waste/utils/config/res.dart';
 import 'package:zero_waste/provider/camera.dart';
 
 class UserAvatar extends StatelessWidget {
