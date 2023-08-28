@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/utils/shared_prefs.dart';
-import 'features/home/screens/tabs.dart';
+import 'package:zero_waste/config/themes/light_theme.dart';
+import 'core/service/shared_prefs.dart';
+import 'features/home/presentation/screens/tabs.dart';
 import 'features/onboarding/screens/splash_screen.dart';
-import 'utils/config/res.dart';
 import 'provider/add_new_conversation.dart';
-import 'provider/authenticate.dart';
+import 'features/auth/presenation/controller/authenticate.dart';
 import 'provider/camera.dart';
 import 'provider/chat_data.dart';
 import 'provider/connections.dart';
 import 'provider/feed_data.dart';
 import 'provider/market_data.dart';
 import 'provider/product_data.dart';
-import 'utils/routes.dart';
+import 'config/router/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +46,7 @@ class ZeroWaste extends StatelessWidget {
       onGenerateRoute: routes,
       initialRoute: accessToken != null ? AppPages.id : SplashScreen.id,
       navigatorKey: mainAppKey,
-      theme: ThemeData(primarySwatch: Resources.color.appColor),
+      theme: LightTheme.theme,
       debugShowCheckedModeBanner: false,
       title: 'Zero Waste',
     );

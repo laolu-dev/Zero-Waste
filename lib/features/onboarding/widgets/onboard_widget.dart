@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../utils/config/res.dart';
+import '../../../core/constants/styles/colors.dart';
+
 
 
 class OnboardPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class OnboardPage extends StatelessWidget {
         Text(
           title,
           style: GoogleFonts.jost(
-              color: Resources.color.black,
+              color: AppColors.black,
               fontSize: 24,
               fontWeight: FontWeight.w700),
         ),
@@ -33,7 +34,7 @@ class OnboardPage extends StatelessWidget {
           content,
           textAlign: TextAlign.center,
           style: GoogleFonts.jost(
-              color: Resources.color.subTitle,
+              color: AppColors.subTitle,
               fontWeight: FontWeight.w400,
               fontSize: 16),
         ),

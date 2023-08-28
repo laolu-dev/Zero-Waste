@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../../../utils/config/res.dart';
+import '../../../core/constants/constants.dart';
+import '../../../core/constants/styles/colors.dart';
 import 'board.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,14 +28,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(Resources.iString.background),
+            image: AssetImage(AppConstants.background),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(Resources.color.blend, BlendMode.srcOver),
+            colorFilter: ColorFilter.mode(AppColors.blend, BlendMode.srcOver),
           ),
         ),
         child: Center(
-          child:
-              Image.asset(Resources.iString.appIcon, width: 168, height: 168),
+          child: Image.asset(AppConstants.appIcon, width: 168, height: 168),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../core/constants/styles/colors.dart';
 
-import '../utils/config/res.dart';
 
 
 class AppButton extends StatelessWidget {
@@ -19,7 +19,7 @@ class AppButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: btn,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Resources.color.primary,
+        backgroundColor: AppColors.primary,
         minimumSize: const Size(double.infinity, 51),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -30,7 +30,7 @@ class AppButton extends StatelessWidget {
         style: GoogleFonts.jost(
             fontWeight: FontWeight.w700,
             fontSize: 20,
-            color: Resources.color.white),
+            color: AppColors.white),
       ),
     );
   }

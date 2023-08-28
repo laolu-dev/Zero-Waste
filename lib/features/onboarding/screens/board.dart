@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../../utils/config/res.dart';
-
+import '../../../core/constants/constants.dart';
+import '../../../core/constants/styles/colors.dart';
+import '../../auth/presenation/screens/signup-login/login_screen.dart';
 import '../widgets/onboard_widget.dart';
 
-import '../../auth/screens/signup-login/login_screen.dart';
 
 class OnBoardScreen extends StatefulWidget {
   static const id = '/OnBoarding';
@@ -66,7 +64,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                     child: Text(
                       'Skip',
                       style: GoogleFonts.jost(
-                          fontSize: 16, color: Resources.color.black),
+                          fontSize: 16, color: AppColors.black),
                     ),
                   ),
                 ),
@@ -77,19 +75,19 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 controller: _controller,
                 children: [
                   OnboardPage(
-                    image: Resources.iString.image1,
-                    title: Resources.oString.onBoardTitle1,
-                    content: Resources.oString.onBoardContent1,
+                    image: AppConstants.image1,
+                    title: AppConstants.onBoardTitle1,
+                    content: AppConstants.onBoardContent1,
                   ),
                   OnboardPage(
-                    image: Resources.iString.image2,
-                    title: Resources.oString.onBoardTitle2,
-                    content: Resources.oString.onBoardContent2,
+                    image: AppConstants.image2,
+                    title: AppConstants.onBoardTitle2,
+                    content: AppConstants.onBoardContent2,
                   ),
                   OnboardPage(
-                    image: Resources.iString.image3,
-                    title: Resources.oString.onBoardTitle3,
-                    content: Resources.oString.onBoardContent3,
+                    image: AppConstants.image3,
+                    title: AppConstants.onBoardTitle3,
+                    content: AppConstants.onBoardContent3,
                   ),
                 ],
               ),
@@ -114,11 +112,11 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   button
                       ? ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Resources.color.primary,
+                              backgroundColor: AppColors.primary,
                               fixedSize: const Size(35, 35),
                               shape: const CircleBorder()),
                           child: Icon(Icons.arrow_forward_ios,
-                              color: Resources.color.white, size: 16),
+                              color: AppColors.white, size: 16),
                           onPressed: () {
                             _controller.nextPage(
                                 duration: const Duration(milliseconds: 500),
@@ -129,7 +127,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           onPressed: () => Navigator.pushReplacementNamed(
                               context, LoginScreen.id),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Resources.color.primary,
+                            backgroundColor: AppColors.primary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
@@ -137,7 +135,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           child: Text(
                             'Get Started',
                             style: GoogleFonts.jost(
-                                color: Resources.color.white,
+                                color: AppColors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400),
                           ),

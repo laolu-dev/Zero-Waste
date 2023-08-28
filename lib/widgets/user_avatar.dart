@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/utils/config/res.dart';
-import 'package:zero_waste/provider/camera.dart';
+
+import '../core/constants/constants.dart';
+import '../provider/camera.dart';
 
 class UserAvatar extends StatelessWidget {
   const UserAvatar({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class UserAvatar extends StatelessWidget {
               )
             : CircleAvatar(
                 radius: 25,
-                backgroundImage: AssetImage(Resources.iString.dummyUser),
+                backgroundImage: AssetImage(AppConstants.dummyUser),
               );
       },
     );
