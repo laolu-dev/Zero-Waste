@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_star_rating_nsafe/smooth_star_rating.dart';
 import '../../../../core/constants/styles/colors.dart';
-import '../../../../core/models/new_conversation.dart';
-import '../../../../core/models/product.dart';
-import '../../../../provider/add_new_conversation.dart';
-import '../../../../provider/product_data.dart';
+
+import '../../../chats/domain/new_conversation.dart';
+import '../../../chats/presentation/controller/add_new_conversation.dart';
+import '../../domain/product.dart';
+
+import '../controllers/product_data.dart';
 
 
 class ProductDetails extends StatelessWidget {

@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/config/router/route_utils.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/constants/styles/colors.dart';
 import '../../../../../widgets/app_button.dart';
-import '../../controller/authenticate.dart';
+import '../../controller/auth_controller.dart';
 import '../../widgets/password_textfield.dart';
-
 import '../../widgets/social_login.dart';
 import '../../widgets/user_info_textfield.dart';
-import '../forget_password/forgot_password.dart';
-import 'login_screen.dart';
-import 'type_of_farmer.dart';
 
 class SignUpScreen extends StatefulWidget {
-  static const id = '/sign_up';
-  const SignUpScreen({Key? key}) : super(key: key);
+  const SignUpScreen({super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -52,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _phoneController.dispose();
     _homeAddressController.dispose();
     _emailController.dispose();
+    _formKey.currentState?.dispose();
     super.dispose();
   }
 
@@ -85,9 +82,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       return 'Email cannot not be empty';
                     }
                     return null;
-                    // return Validators.validEmail(value)
-                    //     ? 'Enter a valid email address'
-                    //     : null;
                   },
                 ),
                 const SizedBox(height: 16),
@@ -145,27 +139,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
                 const SizedBox(height: 8),
-                Container(
-                  constraints:
-                      const BoxConstraints.expand(height: 15, width: 400),
+                Align(
+                  alignment: Alignment.centerLeft,
                   child: GestureDetector(
                     onTap: () =>
-                        Navigator.pushNamed(context, ForgotPassword.id),
+                        Navigator.pushNamed(context, RouteNames.forgotPassword),
                     child: Text(
                       "Forgot password?",
                       style: GoogleFonts.jost(
-                        color: AppColors.primary,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
+                          fontSize: 14, color: AppColors.primary),
                     ),
                   ),
                 ),
                 const SizedBox(height: 24),
                 AppButton(
                   btn: () {
-                    _passwordNode.unfocus();
-                    validateAndSubmit(context);
+                    if (_formKey.currentState!.validate()) {
+                      _passwordNode.unfocus();
+                      Map<String, dynamic> payload = {
+                        "username": _nameController.text,
+                        "email": _emailController.text,
+                        "password": _passwordController.text,
+                        "phoneNumber": _phoneController.text,
+                        "state": _stateController.text,
+                        "homeAddress": _homeAddressController.text,
+                      };
+                      context.read<AuthController>().setUserInfo(payload);
+                      Navigator.pushNamed(context, RouteNames.whyPage);
+                    }
+                    
                   },
                   btnName: 'Next',
                 ),
@@ -175,13 +177,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Text(
                       "Already have an account? ",
                       style: GoogleFonts.jost(
-                        color: const Color.fromRGBO(34, 34, 34, 1),
                         fontSize: 16,
-                        fontWeight: FontWeight.w400,
+                        color: const Color.fromRGBO(34, 34, 34, 1),
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, LoginScreen.id),
+                      onTap: () =>
+                          Navigator.pushNamed(context, RouteNames.login),
                       child: Text(
                         "Login",
                         style: TextStyle(
@@ -221,9 +223,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Text(
                   "Login using Social Networks",
                   style: GoogleFonts.jost(
-                    color: const Color.fromRGBO(34, 34, 34, 1),
                     fontSize: 16,
-                    fontWeight: FontWeight.w400,
+                    color: const Color.fromRGBO(34, 34, 34, 1),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -234,19 +235,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-  }
-
-  void validateAndSubmit(BuildContext context) {
-    _formKey.currentState!.save();
-    if (_formKey.currentState!.validate()) {
-      context.read<UserAuth>().getUserInfo(
-          _nameController.text,
-          _phoneController.text,
-          _homeAddressController.text,
-          _stateController.text,
-          _emailController.text,
-          _passwordController.text);
-      Navigator.of(context).pushNamed(WhyAreYouHere.id);
-    }
   }
 }

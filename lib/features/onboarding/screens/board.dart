@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import 'package:zero_waste/config/router/route_utils.dart';
+import 'package:zero_waste/core/service/local_storage.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/constants/styles/colors.dart';
-import '../../auth/presenation/screens/signup-login/login_screen.dart';
 import '../widgets/onboard_widget.dart';
 
-
 class OnBoardScreen extends StatefulWidget {
-  static const id = '/OnBoarding';
   const OnBoardScreen({Key? key}) : super(key: key);
 
   @override
@@ -112,9 +112,10 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   button
                       ? ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.primary,
-                              fixedSize: const Size(35, 35),
-                              shape: const CircleBorder()),
+                            backgroundColor: AppColors.primary,
+                            fixedSize: const Size(35, 35),
+                            shape: const CircleBorder(),
+                          ),
                           child: Icon(Icons.arrow_forward_ios,
                               color: AppColors.white, size: 16),
                           onPressed: () {
@@ -124,8 +125,10 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           },
                         )
                       : ElevatedButton(
-                          onPressed: () => Navigator.pushReplacementNamed(
-                              context, LoginScreen.id),
+                          onPressed: () async {
+                            SharedPrefs.setOnboardingStatus(true);
+                            Navigator.pushNamed(context, RouteNames.login);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primary,
                             shape: RoundedRectangleBorder(
@@ -135,9 +138,9 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           child: Text(
                             'Get Started',
                             style: GoogleFonts.jost(
-                                color: AppColors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400),
+                              fontSize: 16,
+                              color: AppColors.white,
+                            ),
                           ),
                         ),
                 ],

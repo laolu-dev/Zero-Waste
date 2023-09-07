@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zero_waste/config/router/route_utils.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../widgets/app_button.dart';
-import '../signup-login/login_screen.dart';
 
 class ResetSuccess extends StatelessWidget {
   static const id = 'ResetSuccess';
@@ -17,7 +17,7 @@ class ResetSuccess extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(AppConstants.success),
-               const SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 'Password Changed Successfully',
                 textAlign: TextAlign.center,
@@ -28,7 +28,7 @@ class ResetSuccess extends StatelessWidget {
               AppButton(
                 btnName: 'Login',
                 btn: () =>
-                    Navigator.pushReplacementNamed(context, LoginScreen.id),
+                    Navigator.pushReplacementNamed(context, RouteNames.login),
               )
             ],
           ),

@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:zero_waste/config/router/route_utils.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/constants/styles/colors.dart';
-import 'board.dart';
+
 
 class SplashScreen extends StatefulWidget {
-  static const id = '/';
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 1),
-      () => Navigator.pushReplacementNamed(context, OnBoardScreen.id),
+      () => Navigator.pushReplacementNamed(context, RouteNames.onboard),
     );
   }
 

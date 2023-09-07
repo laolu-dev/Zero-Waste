@@ -7,7 +7,7 @@ import 'package:zero_waste/core/constants/logger.dart';
 import 'package:zero_waste/core/constants/styles/colors.dart';
 import 'package:zero_waste/core/enums/auth_enum.dart';
 import 'package:zero_waste/widgets/app_button.dart';
-import '../../controller/authenticate.dart';
+import '../../controller/auth_controller.dart';
 import 'reset_password.dart';
 
 class PasswordVerification extends StatefulWidget {
@@ -83,7 +83,7 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                   ),
                 ),
                 const SizedBox(height: 81.95),
-                Consumer<UserAuth>(
+                Consumer<AuthController>(
                   builder: (context, verifyOtp, child) {
                     return verifyOtp.state == AuthState.loading
                         ? const CircularProgressIndicator()
@@ -93,9 +93,9 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                               if (_pinCode.text.isEmpty) {
                                 logger.w("Field is empty");
                               } else {
-                                 _pinFocusNode.unfocus();
-                                await verifyOtp.verifyResetPasswordOtp(
-                                    widget.email!, _pinCode.text);
+                                _pinFocusNode.unfocus();
+                                // await verifyOtp.verifyResetPasswordOtp(
+                                //     widget.email!, _pinCode.text);
                                 checkErrorState(verifyOtp);
                               }
                             },
@@ -108,14 +108,13 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                   children: [
                     Text(
                       "Didn't Receive Code ? ",
-                      style:
-                          TextStyle(fontSize: 16, color: AppColors.black),
+                      style: TextStyle(fontSize: 16, color: AppColors.black),
                     ),
                     GestureDetector(
                       onTap: () {
-                        context
-                            .read<UserAuth>()
-                            .requestToUpdatePassword(widget.email!);
+                        // context
+                        //     .read<AuthController>()
+                        //     .requestToUpdatePassword(widget.email!);
                       },
                       child: Text(
                         "Resend Code",
@@ -134,18 +133,18 @@ class _PasswordVerificationState extends State<PasswordVerification> {
     );
   }
 
-  void checkErrorState(UserAuth verifyOtp) {
+  void checkErrorState(AuthController verifyOtp) {
     if (verifyOtp.state == AuthState.completed) {
-      // context.read<UserAuth>().reset();
+      // context.read<AuthController>().reset();
       Navigator.pushNamed(context, ResetPassword.id, arguments: widget.email!);
     }
     if (verifyOtp.state == AuthState.hasError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(milliseconds: 1000),
-          content: Text(verifyOtp.error!),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(
+      //     duration: const Duration(milliseconds: 1000),
+      //     content: Text(verifyOtp.error!),
+      //   ),
+      // );
     }
   }
 }

@@ -1,68 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
+import 'package:zero_waste/config/router/route_utils.dart';
+import 'package:zero_waste/core/constants/logger.dart';
+import 'package:zero_waste/core/enums/farmer_type.dart';
+import 'package:zero_waste/features/auth/presenation/controller/type_controller.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/constants/styles/colors.dart';
 import '../../../../../core/enums/auth_enum.dart';
 import '../../../../../widgets/app_button.dart';
-import '../../controller/authenticate.dart';
+import '../../controller/auth_controller.dart';
 import '../../widgets/social_login.dart';
-import 'login_screen.dart';
-import 'otp_screen.dart';
 
-class WhyAreYouHere extends StatefulWidget {
-  static const id = '/type_of_farmer';
-  const WhyAreYouHere({Key? key}) : super(key: key);
+class WhyAreYouHere extends StatelessWidget {
+  const WhyAreYouHere({super.key});
 
-  @override
-  State<WhyAreYouHere> createState() => _WhyAreYouHereState();
-}
-
-class _WhyAreYouHereState extends State<WhyAreYouHere> {
-  late int? index;
-
-  Widget farmerType({
-    required bool selectedFarmer,
-    required String text,
-    required tap,
-  }) {
-    return TextButton(
-      onPressed: tap,
-      style: TextButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          side: selectedFarmer
-              ? BorderSide.none
-              : const BorderSide(color: Color.fromRGBO(151, 151, 151, 1)),
+  Widget farmerType(BuildContext context, FarmerType type, String text) {
+    final selected = context.watch<FarmerTypeController>();
+    return GestureDetector(
+      onTap: () => context.read<FarmerTypeController>().changeType(type),
+      child: Container(
+        width: 155,
+        height: 103,
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+        decoration: BoxDecoration(
+          color: selected.selectedType == type
+              ? const Color.fromRGBO(136, 255, 222, 1)
+              : Colors.white,
+          border: selected.selectedType == type
+              ? null
+              : Border.all(color: const Color.fromRGBO(151, 151, 151, 1)),
           borderRadius: BorderRadius.circular(12),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-        fixedSize: const Size(155, 103),
-        backgroundColor:
-            selectedFarmer ? const Color.fromRGBO(136, 255, 222, 1) : null,
-      ),
-      child: Text(
-        text,
-        style: GoogleFonts.jost(
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-          color: selectedFarmer
-              ? const Color.fromRGBO(64, 64, 64, 1)
-              : const Color.fromRGBO(128, 128, 128, 1),
+        child: Center(
+          child: Text(
+            text,
+            style: GoogleFonts.jost(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: selected.selectedType == type
+                  ? const Color.fromRGBO(64, 64, 64, 1)
+                  : const Color.fromRGBO(128, 128, 128, 1),
+            ),
+          ),
         ),
       ),
     );
   }
 
   @override
-  void initState() {
-    super.initState();
-    index = 0;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserAuth>(context, listen: false);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -80,56 +67,46 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
               ),
               const SizedBox(height: 27),
               Wrap(
-                alignment: WrapAlignment.center,
-                runSpacing: 16,
-                spacing: 18,
-                children: [
-                  farmerType(
-                    selectedFarmer: index == 1,
-                    text: 'Crop Farmer',
-                    tap: () {
-                      setState(() => index = 1);
-                      user.getFarmerType('CROP');
-                    },
-                  ),
-                  farmerType(
-                    selectedFarmer: index == 2,
-                    text: 'Black Solder Fly Farmer',
-                    tap: () {
-                      setState(() => index = 2);
-                      user.getFarmerType('BLACK_SOLDIER');
-                    },
-                  ),
-                  farmerType(
-                    selectedFarmer: index == 3,
-                    text: 'Fish/Poultry Farmer',
-                    tap: () {
-                      setState(() => index = 3);
-                      user.getFarmerType('FISH_POULTRY');
-                    },
-                  ),
-                  farmerType(
-                    selectedFarmer: index == 4,
-                    text: 'Manual Labourers',
-                    tap: () {
-                      setState(() => index = 4);
-                      user.getFarmerType('MANUAL');
-                    },
-                  ),
-                ],
-              ),
+                  alignment: WrapAlignment.center,
+                  runSpacing: 16,
+                  spacing: 18,
+                  children: FarmerType.values
+                      .map((e) =>
+                          farmerType(context, e, e.getFarmerTypeString()))
+                      .toList()),
               const SizedBox(height: 55),
-              Consumer<UserAuth>(
-                builder: (context, auth, child) {
-                  return auth.state != null && auth.state == AuthState.loading
-                      ? const CircularProgressIndicator()
-                      : AppButton(
-                          btnName: 'Sign In',
-                          btn: () async {
-                            await auth.signUp();
-                            nav(auth);
-                          },
-                        );
+              Consumer<AuthController>(
+                builder: (context, state, child) {
+                  return state.appState.when(
+                    loading: () => const CircularProgressIndicator(),
+                    idle: () => AppButton(
+                      btnName: 'Sign In',
+                      btn: () {
+                        final info = context.read<AuthController>().userInfo;
+                        final selectedType = context
+                            .read<FarmerTypeController>()
+                            .selectedType
+                            .toBackendType();
+                        final farmerType = {"farmerType": selectedType};
+                        info.addEntries(farmerType.entries);
+                        // context.read<AuthController>().signUp(info);
+                         Navigator.pushNamed(context, RouteNames.otp);
+                      },
+                    ),
+                    error: (error) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration: const Duration(milliseconds: 700),
+                          content: Text(error!),
+                        ),
+                      );
+                      return const SizedBox();
+                    },
+                    data: (data) {
+                      Navigator.pushNamed(context, RouteNames.otp);
+                      return const SizedBox();
+                    },
+                  );
                 },
               ),
               const SizedBox(height: 16),
@@ -144,7 +121,7 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
                         fontWeight: FontWeight.w400),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, LoginScreen.id),
+                    onTap: () => Navigator.pushNamed(context, RouteNames.login),
                     child: Text(
                       "Login",
                       style: TextStyle(
@@ -193,18 +170,5 @@ class _WhyAreYouHereState extends State<WhyAreYouHere> {
         ),
       ),
     );
-  }
-
-  void nav(UserAuth auth) {
-    if (auth.state == AuthState.hasError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(milliseconds: 700),
-          content: Text(auth.error!),
-        ),
-      );
-    } else {
-      Navigator.pushNamed(context, OtpScreen.id);
-    }
   }
 }

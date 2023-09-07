@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/features/feed/presentation/controller/market_data.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/constants/styles/colors.dart';
-import '../../../../provider/market_data.dart';
-import '../../../auth/presenation/controller/authenticate.dart';
+
+import '../../../auth/presenation/controller/auth_controller.dart';
+
 import '../widget/farmer_types.dart';
 import '../widget/home_appbar.dart';
-import '../widget/market_tile.dart';
 
 class Dashboard extends StatelessWidget {
   static const id = '/home';
@@ -16,7 +17,7 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loggedUser = Provider.of<UserAuth>(context, listen: false);
+    final loggedUser = Provider.of<AuthController>(context, listen: false);
     var marketData = context.watch<MarketData>();
     return Scaffold(
       body: SafeArea(
@@ -101,15 +102,17 @@ class Dashboard extends StatelessWidget {
                 shrinkWrap: true,
                 // physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return marketData.items.map((e) {
-                    return MarketTile(
-                      imageUrl: e.imageUrl,
-                      title: e.cropType,
-                      subTitle: e.location,
-                      weight: e.weight,
-                      date: e.date,
-                    );
-                  }).toList()[index];
+                  return null;
+
+                  // return marketData.items.map((e) {
+                  //   return MarketTile(
+                  //     imageUrl: e?.imageUrl,
+                  //     title: e?.cropType,
+                  //     subTitle: e?.location,
+                  //     weight: e?.weight,
+                  //     date: e?.date,
+                  //   );
+                  // }).toList()[index];
                 },
               ),
             ),

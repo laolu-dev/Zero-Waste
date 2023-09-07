@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
-import 'package:zero_waste/provider/add_new_conversation.dart';
+import 'package:zero_waste/features/chats/presentation/controller/add_new_conversation.dart';
+
 import '../../../../core/constants/styles/colors.dart';
 import '../../../../widgets/notification_widget.dart';
-import '../../../home/presentation/widget/connection_tile.dart';
-import 'chat_screen.dart';
 
 
 class NewConversationScreen extends StatelessWidget {
@@ -64,23 +62,25 @@ class NewConversationScreen extends StatelessWidget {
                 child: ListView.builder(
               padding: const EdgeInsets.only(top: 10, right: 12, left: 6),
               itemBuilder: (context, index) {
-                return conversations.users
-                    .map((e) => ConnectionTile(
-                          name: '$index ${e.name}',
-                          profileUrl: e.profileUrl,
-                          farmerType: e.farmerType,
-                          location: e.location,
-                          btnAction: 'Chat',
-                          onTap: () {
-                            pushNewScreen(context,
-                                screen: ChatScreen(
-                                  name: e.name,
-                                  profileUrl: e.profileUrl,
-                                ),
-                                withNavBar: false);
-                          },
-                        ))
-                    .toList()[index];
+                return null;
+              
+                // return conversations.users
+                //     .map((e) => ConnectionTile(
+                //           name: '$index ${e.name}',
+                //           profileUrl: e.profileUrl,
+                //           farmerType: e.farmerType,
+                //           location: e.location,
+                //           btnAction: 'Chat',
+                //           onTap: () {
+                //             pushNewScreen(context,
+                //                 screen: ChatScreen(
+                //                   name: e.name,
+                //                   profileUrl: e.profileUrl,
+                //                 ),
+                //                 withNavBar: false);
+                //           },
+                //         ))
+                //     .toList()[index];
               },
               itemCount: conversations.users.length,
             )),

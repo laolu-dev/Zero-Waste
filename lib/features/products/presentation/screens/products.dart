@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/styles/colors.dart';
-import '../../../../provider/product_data.dart';
+import '../controllers/product_data.dart';
 import '../../../../widgets/notification_widget.dart';
 import '../widgets/product_widget.dart';
 

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/config/router/route_utils.dart';
 import 'package:zero_waste/core/constants/constants.dart';
 import 'package:zero_waste/core/constants/styles/colors.dart';
 import 'package:zero_waste/core/enums/auth_enum.dart';
-import 'package:zero_waste/features/auth/presenation/controller/authenticate.dart';
+import 'package:zero_waste/features/auth/presenation/controller/auth_controller.dart';
 import 'package:zero_waste/widgets/app_button.dart';
 
 import 'password_verification.dart';
 
 import '../../widgets/social_login.dart';
 import '../../widgets/user_info_textfield.dart';
-import '../signup-login/login_screen.dart';
 
 class ForgotPassword extends StatefulWidget {
   static const id = 'ForgotPassword';
@@ -80,7 +80,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
               const SizedBox(height: 24),
-              Consumer<UserAuth>(
+              Consumer<AuthController>(
                 builder: (context, email, child) {
                   return email.state == AuthState.loading
                       ? const CircularProgressIndicator()
@@ -89,7 +89,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           btn: () async {
                             if (_form.currentState!.validate()) {
                               _emailNode.unfocus();
-                              await email.requestToUpdatePassword(_email.text);
+                              // await email.requestToUpdatePassword(_email.text);
                               checkErrorState(email);
                             }
                           },
@@ -101,11 +101,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 children: [
                   Text(
                     "Already have an account? ",
-                    style:
-                        TextStyle(color: AppColors.logIn, fontSize: 16),
+                    style: TextStyle(color: AppColors.logIn, fontSize: 16),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, LoginScreen.id),
+                    onTap: () => Navigator.pushNamed(context, RouteNames.login),
                     child: Text(
                       "Login",
                       style: TextStyle(
@@ -153,18 +152,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     );
   }
 
-  void checkErrorState(UserAuth email) {
+  void checkErrorState(AuthController email) {
     if (email.state == AuthState.completed) {
       Navigator.pushNamed(context, PasswordVerification.id,
           arguments: _email.text);
     }
     if (email.state == AuthState.hasError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(milliseconds: 1000),
-          content: Text(email.error!),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(
+      //     duration: const Duration(milliseconds: 1000),
+      //     content: Text(email.error!),
+      //   ),
+      // );
     }
   }
 }

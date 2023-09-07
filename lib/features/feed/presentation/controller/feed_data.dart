@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
-import '../core/models/feed.dart';
+import 'package:zero_waste/features/feed/domain/feed.dart';
+
 
 class FeedData extends ChangeNotifier {
   final List<FeedInfo> _feeds = [

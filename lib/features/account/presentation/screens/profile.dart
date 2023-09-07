@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/styles/colors.dart';
 import '../../../../widgets/user_avatar.dart';
-import '../../../auth/presenation/controller/authenticate.dart';
-import '../../../../provider/product_data.dart';
+import '../../../auth/presenation/controller/auth_controller.dart';
+import '../../../products/presentation/controllers/product_data.dart';
 import '../widgets/profile_stats_widget.dart';
 
 class ProfileAccount extends StatelessWidget {
@@ -13,7 +13,7 @@ class ProfileAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profile = Provider.of<UserAuth>(context);
+    final profile = Provider.of<AuthController>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

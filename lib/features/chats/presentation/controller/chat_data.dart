@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../core/models/chat_message.dart';
+import 'package:zero_waste/features/chats/domain/chat_message.dart';
+
 
 final _mockData = [ChatMessage(messageContent: 'Demo', fromMe: true)];
 

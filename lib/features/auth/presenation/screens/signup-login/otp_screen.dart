@@ -7,7 +7,7 @@ import '../../../../../core/constants/constants.dart';
 import '../../../../../core/constants/styles/colors.dart';
 import '../../../../../core/enums/auth_enum.dart';
 import '../../../../../widgets/app_button.dart';
-import '../../controller/authenticate.dart';
+import '../../controller/auth_controller.dart';
 import 'verified_account.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -35,7 +35,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final email = Provider.of<UserAuth>(context);
+    final email = Provider.of<AuthController>(context).userInfo;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -54,7 +54,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Please, enter the code sent to ${email.user?.email} to validate your account.',
+                  'Please, enter the code sent to ${email['email']} to validate your account.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.jost(
                       fontSize: 16,
@@ -83,14 +83,14 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                 ),
                 const SizedBox(height: 82),
-                Consumer<UserAuth>(
+                Consumer<AuthController>(
                   builder: (context, auth, child) {
                     return auth.state == AuthState.loading
                         ? const CircularProgressIndicator()
                         : AppButton(
                             btnName: 'Verify',
                             btn: () async {
-                              await auth.verifyEmail(_pinCode.text);
+                              // await auth.verifyEmail(_pinCode.text);
                               verified(auth);
                             },
                           );
@@ -106,7 +106,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        context.read<UserAuth>().signUp();
+                        // context.read<AuthController>().signUp();
                       },
                       child: Text(
                         "Resend code",
@@ -127,14 +127,14 @@ class _OtpScreenState extends State<OtpScreen> {
     );
   }
 
-  void verified(UserAuth auth) {
+  void verified(AuthController auth) {
     if (auth.state == AuthState.hasError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(milliseconds: 700),
-          content: Text(auth.error!),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(
+      //     duration: const Duration(milliseconds: 700),
+      //     content: Text(auth.error!),
+      //   ),
+      // );
     } else {
       Navigator.pushNamed(context, VerifiedAccount.id);
     }

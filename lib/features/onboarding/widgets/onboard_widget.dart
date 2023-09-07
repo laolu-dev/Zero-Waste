@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../core/constants/styles/colors.dart';
-
-
 
 class OnboardPage extends StatelessWidget {
   final String image;
   final String title;
   final String content;
 
-  const OnboardPage(
-      {Key? key,
-      required this.image,
-      required this.title,
-      required this.content})
-      : super(key: key);
+  const OnboardPage({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.content,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +30,7 @@ class OnboardPage extends StatelessWidget {
         Text(
           content,
           textAlign: TextAlign.center,
-          style: GoogleFonts.jost(
-              color: AppColors.subTitle,
-              fontWeight: FontWeight.w400,
-              fontSize: 16),
+          style: GoogleFonts.jost(fontSize: 16, color: AppColors.subTitle),
         ),
       ],
     );

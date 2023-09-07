@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import '../core/models/market_items.dart';
+import 'package:zero_waste/features/feed/domain/market_items.dart';
+
 
 final List<MarketItems> _initialData = List.generate(
   50,

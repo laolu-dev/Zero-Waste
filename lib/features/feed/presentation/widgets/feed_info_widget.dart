@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
+import 'package:zero_waste/features/chats/domain/new_conversation.dart';
+import 'package:zero_waste/features/chats/presentation/controller/add_new_conversation.dart';
 import 'package:zero_waste/widgets/user_avatar.dart';
 
 import '../../../../core/constants/styles/colors.dart';
-import '../../../../core/models/feed.dart';
-import '../../../../core/models/new_conversation.dart';
-import '../../../../provider/add_new_conversation.dart';
+import '../../domain/feed.dart';
+
 import '../../../chats/presentation/screens/chat_screen.dart';
 
 class FeedInfoWidget extends StatefulWidget {

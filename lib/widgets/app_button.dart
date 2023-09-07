@@ -2,17 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../core/constants/styles/colors.dart';
 
-
-
 class AppButton extends StatelessWidget {
   final Function() btn;
   final String btnName;
 
-  const AppButton({
-    Key? key,
-    required this.btnName,
-    required this.btn,
-  }) : super(key: key);
+  const AppButton({super.key, required this.btnName, required this.btn});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +22,7 @@ class AppButton extends StatelessWidget {
       child: Text(
         btnName,
         style: GoogleFonts.jost(
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
-            color: AppColors.white),
+            fontWeight: FontWeight.w700, fontSize: 20, color: AppColors.white),
       ),
     );
   }

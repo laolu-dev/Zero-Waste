@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:zero_waste/core/constants/styles/colors.dart';
-import '../../../../core/models/product.dart';
+import '../../domain/product.dart';
 import '../screens/product_details.dart';
 
 class ProductWidget extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zero_waste/config/router/route_utils.dart';
 import 'package:zero_waste/features/auth/presenation/screens/forget_password/reset_password.dart';
 import 'package:zero_waste/features/auth/presenation/screens/forget_password/reset_success.dart';
 import 'package:zero_waste/features/auth/presenation/screens/signup-login/verified_account.dart';
@@ -23,22 +24,23 @@ import '../../features/unknown_page.dart';
 Route<dynamic>? routes(RouteSettings settings) {
   final args = settings.arguments;
   switch (settings.name) {
-    case SplashScreen.id:
+    case RouteNames.splash:
       return MaterialPageRoute(builder: (context) => const SplashScreen());
-    case OnBoardScreen.id:
+    case RouteNames.onboard:
       return MaterialPageRoute(builder: (context) => const OnBoardScreen());
-    case LoginScreen.id:
+    case RouteNames.login:
       return MaterialPageRoute(builder: (context) => const LoginScreen());
-    case ForgotPassword.id:
+    case RouteNames.forgotPassword:
       return MaterialPageRoute(builder: (context) => const ForgotPassword());
-    case SignUpScreen.id:
+    case RouteNames.signup:
       return MaterialPageRoute(builder: (context) => const SignUpScreen());
-    case WhyAreYouHere.id:
+    case RouteNames.whyPage:
       return MaterialPageRoute(builder: (context) => const WhyAreYouHere());
-    case OtpScreen.id:
+    case RouteNames.otp:
       return MaterialPageRoute(builder: (context) => const OtpScreen());
     case ResetPassword.id:
-      return MaterialPageRoute(builder: (context) => ResetPassword(email: args as String));
+      return MaterialPageRoute(
+          builder: (context) => ResetPassword(email: args as String));
     case PasswordVerification.id:
       return MaterialPageRoute(
           builder: (context) => PasswordVerification(email: args as String));

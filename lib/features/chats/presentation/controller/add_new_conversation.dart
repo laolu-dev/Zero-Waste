@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../core/models/new_conversation.dart';
+import '../../domain/new_conversation.dart';
+
 
 class ConversationsProvider extends ChangeNotifier {
   final List<NewConnection> _newUser = [];

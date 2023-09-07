@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zero_waste/config/router/route_utils.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../widgets/app_button.dart';
-import 'login_screen.dart';
 
 class VerifiedAccount extends StatelessWidget {
   static const id = '/verified_account';
@@ -30,7 +30,7 @@ class VerifiedAccount extends StatelessWidget {
                 AppButton(
                   btnName: 'Login',
                   btn: () =>
-                      Navigator.pushReplacementNamed(context, LoginScreen.id),
+                      Navigator.pushReplacementNamed(context, RouteNames.login),
                 )
               ],
             ),

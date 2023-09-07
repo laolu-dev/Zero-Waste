@@ -4,8 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/core/constants/styles/colors.dart';
-import '../../../../provider/camera.dart';
-import '../../../auth/presenation/controller/authenticate.dart';
+import '../controller/camera.dart';
+import '../../../auth/presenation/controller/auth_controller.dart';
 import 'profile.dart';
 import '../widgets/profile_tile.dart';
 import '../../../../main.dart';
@@ -58,7 +58,7 @@ class MyAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final account = Provider.of<UserAuth>(context, listen: false);
+    final account = Provider.of<AuthController>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

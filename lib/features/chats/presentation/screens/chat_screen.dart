@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/constants/styles/colors.dart';
-import '../../../../provider/chat_data.dart';
+
+import '../controller/chat_data.dart';
 import '../widgets/chat_room_info.dart';
 import '../widgets/message_bubble.dart';
 

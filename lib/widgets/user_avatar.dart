@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../core/constants/constants.dart';
-import '../provider/camera.dart';
+import '../features/account/presentation/controller/camera.dart';
 
 class UserAvatar extends StatelessWidget {
   const UserAvatar({Key? key}) : super(key: key);
