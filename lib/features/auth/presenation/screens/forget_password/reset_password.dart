@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:zero_waste/core/constants/constants.dart';
 import 'package:zero_waste/core/constants/styles/colors.dart';
-import 'package:zero_waste/core/enums/auth_enum.dart';
-import 'package:zero_waste/widgets/app_button.dart';
-import '../../controller/auth_controller.dart';
+
+
 import '../../widgets/password_textfield.dart';
-import 'reset_success.dart';
 
 class ResetPassword extends StatefulWidget {
   static const id = 'ResetPassword';
@@ -96,23 +93,23 @@ class _ResetPasswordState extends State<ResetPassword> {
                   },
                 ),
                 const SizedBox(height: 50),
-                Consumer<AuthController>(
-                  builder: (context, reset, child) {
-                    return reset.state == AuthState.loading
-                        ? const CircularProgressIndicator()
-                        : AppButton(
-                            btnName: 'Reset',
-                            btn: () async {
-                              if (_formKey.currentState!.validate()) {
-                                _confirmPasswordNode.unfocus();
-                                // await reset.resetPassword(
-                                //     _cPassword.text, widget.email!);
-                                checkErrorState(reset);
-                              }
-                            },
-                          );
-                  },
-                ),
+                // Consumer<AuthController>(
+                //   builder: (context, reset, child) {
+                //     return reset.state == AuthState.loading
+                //         ? const CircularProgressIndicator()
+                //         : AppButton(
+                //             btnName: 'Reset',
+                //             btn: () async {
+                //               if (_formKey.currentState!.validate()) {
+                //                 _confirmPasswordNode.unfocus();
+                //                 // await reset.resetPassword(
+                //                 //     _cPassword.text, widget.email!);
+                //                 checkErrorState(reset);
+                //               }
+                //             },
+                //           );
+                //   },
+                // ),
               ],
             ),
           ),
@@ -121,19 +118,19 @@ class _ResetPasswordState extends State<ResetPassword> {
     );
   }
 
-  void checkErrorState(AuthController email) {
-    if (email.state == AuthState.completed) {
-      _cPassword.clear();
-      _password.clear();
-      Navigator.pushNamed(context, ResetSuccess.id);
-    }
-    if (email.state == AuthState.hasError) {
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     duration: const Duration(milliseconds: 1000),
-      //     content: Text(email.error!),
-      //   ),
-      // );
-    }
-  }
+  // void checkErrorState(AuthController email) {
+  //   if (email.state == AuthState.completed) {
+  //     _cPassword.clear();
+  //     _password.clear();
+  //     Navigator.pushNamed(context, ResetSuccess.id);
+  //   }
+  //   if (email.state == AuthState.hasError) {
+  //     // ScaffoldMessenger.of(context).showSnackBar(
+  //     //   SnackBar(
+  //     //     duration: const Duration(milliseconds: 1000),
+  //     //     content: Text(email.error!),
+  //     //   ),
+  //     // );
+  //   }
+  // }
 }

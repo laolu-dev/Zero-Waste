@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:provider/provider.dart';
 import 'package:zero_waste/core/constants/constants.dart';
-import 'package:zero_waste/core/constants/logger.dart';
 import 'package:zero_waste/core/constants/styles/colors.dart';
-import 'package:zero_waste/core/enums/auth_enum.dart';
-import 'package:zero_waste/widgets/app_button.dart';
-import '../../controller/auth_controller.dart';
-import 'reset_password.dart';
+
+
 
 class PasswordVerification extends StatefulWidget {
   final String? email;
@@ -83,25 +79,25 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                   ),
                 ),
                 const SizedBox(height: 81.95),
-                Consumer<AuthController>(
-                  builder: (context, verifyOtp, child) {
-                    return verifyOtp.state == AuthState.loading
-                        ? const CircularProgressIndicator()
-                        : AppButton(
-                            btnName: 'Reset',
-                            btn: () async {
-                              if (_pinCode.text.isEmpty) {
-                                logger.w("Field is empty");
-                              } else {
-                                _pinFocusNode.unfocus();
-                                // await verifyOtp.verifyResetPasswordOtp(
-                                //     widget.email!, _pinCode.text);
-                                checkErrorState(verifyOtp);
-                              }
-                            },
-                          );
-                  },
-                ),
+                // Consumer<AuthController>(
+                //   builder: (context, verifyOtp, child) {
+                //     return verifyOtp.state == AuthState.loading
+                //         ? const CircularProgressIndicator()
+                //         : AppButton(
+                //             btnName: 'Reset',
+                //             btn: () async {
+                //               if (_pinCode.text.isEmpty) {
+                //                 logger.w("Field is empty");
+                //               } else {
+                //                 _pinFocusNode.unfocus();
+                //                 // await verifyOtp.verifyResetPasswordOtp(
+                //                 //     widget.email!, _pinCode.text);
+                //                 checkErrorState(verifyOtp);
+                //               }
+                //             },
+                //           );
+                //   },
+                // ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -133,18 +129,18 @@ class _PasswordVerificationState extends State<PasswordVerification> {
     );
   }
 
-  void checkErrorState(AuthController verifyOtp) {
-    if (verifyOtp.state == AuthState.completed) {
-      // context.read<AuthController>().reset();
-      Navigator.pushNamed(context, ResetPassword.id, arguments: widget.email!);
-    }
-    if (verifyOtp.state == AuthState.hasError) {
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     duration: const Duration(milliseconds: 1000),
-      //     content: Text(verifyOtp.error!),
-      //   ),
-      // );
-    }
-  }
+  // void checkErrorState(AuthController verifyOtp) {
+  //   if (verifyOtp.state == AuthState.completed) {
+  //     // context.read<AuthController>().reset();
+  //     Navigator.pushNamed(context, ResetPassword.id, arguments: widget.email!);
+  //   }
+  //   if (verifyOtp.state == AuthState.hasError) {
+  //     // ScaffoldMessenger.of(context).showSnackBar(
+  //     //   SnackBar(
+  //     //     duration: const Duration(milliseconds: 1000),
+  //     //     content: Text(verifyOtp.error!),
+  //     //   ),
+  //     // );
+  //   }
+  // }
 }

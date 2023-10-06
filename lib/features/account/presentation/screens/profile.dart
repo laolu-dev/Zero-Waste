@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/styles/colors.dart';
 import '../../../../widgets/user_avatar.dart';
-import '../../../auth/presenation/controller/auth_controller.dart';
+
 import '../../../products/presentation/controllers/product_data.dart';
 import '../widgets/profile_stats_widget.dart';
 
@@ -13,7 +13,7 @@ class ProfileAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profile = Provider.of<AuthController>(context);
+    // final profile = Provider.of<AuthController>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -54,7 +54,7 @@ class ProfileAccount extends StatelessWidget {
                         const UserAvatar(),
                         const SizedBox(height: 2),
                         Text(
-                          '${profile.user?.username}',
+                          '',
                           style: GoogleFonts.jost(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -62,12 +62,12 @@ class ProfileAccount extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          '${profile.user?.farmerType}',
+                         '',
                           style: GoogleFonts.jost(color: AppColors.white),
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          '${profile.user?.homeAddress}',
+                          '',
                           style: GoogleFonts.jost(color: AppColors.white),
                         ),
                         const SizedBox(height: 16),

@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+
 import 'package:zero_waste/config/router/route_utils.dart';
 import 'package:zero_waste/config/themes/light_theme.dart';
-import 'package:zero_waste/features/auth/presenation/controller/type_controller.dart';
+import 'package:zero_waste/features/auth/data/auth_repository.dart';
+import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_bloc.dart';
+import 'package:zero_waste/features/auth/presenation/controller/farmer_type_cubit/farmer_type_cubit.dart';
 
+import 'config/router/routes.dart';
 import 'core/service/local_storage.dart';
 import 'core/utils/shared_prefs_keys.dart';
+import 'features/account/presentation/controller/camera.dart';
+
 import 'features/chats/presentation/controller/add_new_conversation.dart';
 import 'features/chats/presentation/controller/chat_data.dart';
+import 'features/chats/presentation/controller/connections.dart';
 import 'features/feed/presentation/controller/feed_data.dart';
 import 'features/feed/presentation/controller/market_data.dart';
-import 'features/auth/presenation/controller/auth_controller.dart';
-import 'features/account/presentation/controller/camera.dart';
-import 'features/chats/presentation/controller/connections.dart';
 import 'features/products/presentation/controllers/product_data.dart';
-import 'config/router/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,11 +31,10 @@ void main() async {
         ChangeNotifierProvider(create: (context) => ConnectionsProvider()),
         ChangeNotifierProvider(create: (context) => ConversationsProvider()),
         ChangeNotifierProvider(create: (context) => FeedData()),
-        ChangeNotifierProvider(create: (context) => AuthController()),
+
         ChangeNotifierProvider(create: (context) => ProductData()),
         ChangeNotifierProvider(create: (context) => MarketData()),
         ChangeNotifierProvider(create: (context) => Camera()),
-        ChangeNotifierProvider(create: (context) => FarmerTypeController()),
       ],
       child: ZeroWaste(initialRoute: initialRoute),
     ),
@@ -46,13 +49,23 @@ class ZeroWaste extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: routes,
-      initialRoute: initialRoute ? RouteNames.login : RouteNames.splash,
-      navigatorKey: mainAppKey,
-      theme: LightTheme.theme,
-      debugShowCheckedModeBanner: false,
-      title: 'Zero Waste',
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => FarmerTypeCubit()),
+        BlocProvider(
+          create: (context) => AuthenticationBloc(
+            repo: AuthRepository(),
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        onGenerateRoute: routes,
+        initialRoute: initialRoute ? RouteNames.login : RouteNames.splash,
+        navigatorKey: mainAppKey,
+        theme: LightTheme.theme,
+        debugShowCheckedModeBanner: false,
+        title: 'Zero Waste',
+      ),
     );
   }
 }

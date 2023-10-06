@@ -6,7 +6,7 @@ import 'package:zero_waste/features/feed/presentation/controller/market_data.dar
 import '../../../../core/constants/constants.dart';
 import '../../../../core/constants/styles/colors.dart';
 
-import '../../../auth/presenation/controller/auth_controller.dart';
+
 
 import '../widget/farmer_types.dart';
 import '../widget/home_appbar.dart';
@@ -17,7 +17,7 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loggedUser = Provider.of<AuthController>(context, listen: false);
+    // final loggedUser = Provider.of<AuthController>(context, listen: false);
     var marketData = context.watch<MarketData>();
     return Scaffold(
       body: SafeArea(
@@ -28,7 +28,7 @@ class Dashboard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DashboardBar(user: '${loggedUser.user?.username}'),
+                  const DashboardBar(user: ''),
                   Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:zero_waste/config/router/route_utils.dart';
+import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_bloc.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/constants/styles/colors.dart';
 import '../../../../../widgets/app_button.dart';
-import '../../controller/auth_controller.dart';
 import '../../widgets/password_textfield.dart';
 import '../../widgets/social_login.dart';
 import '../../widgets/user_info_textfield.dart';
@@ -153,22 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 24),
                 AppButton(
-                  btn: () {
-                    if (_formKey.currentState!.validate()) {
-                      _passwordNode.unfocus();
-                      Map<String, dynamic> payload = {
-                        "username": _nameController.text,
-                        "email": _emailController.text,
-                        "password": _passwordController.text,
-                        "phoneNumber": _phoneController.text,
-                        "state": _stateController.text,
-                        "homeAddress": _homeAddressController.text,
-                      };
-                      context.read<AuthController>().setUserInfo(payload);
-                      Navigator.pushNamed(context, RouteNames.whyPage);
-                    }
-                    
-                  },
+                  btn: next,
                   btnName: 'Next',
                 ),
                 const SizedBox(height: 16),
@@ -235,5 +220,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  void next() {
+    if (_formKey.currentState!.validate()) {
+      _passwordNode.unfocus();
+      Map<String, dynamic> payload = {
+        "username": _nameController.text,
+        "email": _emailController.text,
+        "password": _passwordController.text,
+        "phoneNumber": _phoneController.text,
+        "state": _stateController.text,
+        "homeAddress": _homeAddressController.text,
+      };
+      _formKey.currentState?.save();
+      context.read<AuthenticationBloc>().setUserInfo(payload);
+      Navigator.pushNamed(context, RouteNames.whyPage);
+    }
   }
 }

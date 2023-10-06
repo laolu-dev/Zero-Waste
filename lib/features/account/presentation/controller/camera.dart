@@ -2,9 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../../core/constants/logger.dart';
-
-
 
 class Camera extends ChangeNotifier {
   File? _profileImage;
@@ -18,7 +15,7 @@ class Camera extends ChangeNotifier {
       _profileImage = File(image!.path);
       notifyListeners();
     } catch (e) {
-      logger.e(e);
+      debugPrint(e.toString());
     }
   }
 }

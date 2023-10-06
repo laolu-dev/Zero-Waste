@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/logger.dart';
 import '../../../../core/constants/styles/colors.dart';
 
 
@@ -16,7 +15,7 @@ class SearchTextField extends StatelessWidget {
         prefixIcon: Icon(Icons.search, color: AppColors.hintText),
         suffixIcon: GestureDetector(
           onTap: () {
-            logger.i('Recording has started');
+         
           },
           child: Icon(Icons.mic_none, color: AppColors.black),
         ),

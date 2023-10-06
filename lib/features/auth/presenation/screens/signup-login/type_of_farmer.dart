@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:zero_waste/config/router/route_utils.dart';
-import 'package:zero_waste/core/constants/logger.dart';
 import 'package:zero_waste/core/enums/farmer_type.dart';
-import 'package:zero_waste/features/auth/presenation/controller/type_controller.dart';
+import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_bloc.dart';
+import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_state.dart';
+import 'package:zero_waste/features/auth/presenation/controller/farmer_type_cubit/farmer_type_cubit.dart';
+import 'package:zero_waste/widgets/custom_loading.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/constants/styles/colors.dart';
-import '../../../../../core/enums/auth_enum.dart';
 import '../../../../../widgets/app_button.dart';
-import '../../controller/auth_controller.dart';
+
 import '../../widgets/social_login.dart';
 
 class WhyAreYouHere extends StatelessWidget {
   const WhyAreYouHere({super.key});
 
   Widget farmerType(BuildContext context, FarmerType type, String text) {
-    final selected = context.watch<FarmerTypeController>();
+    final selected = context.watch<FarmerTypeCubit>();
     return GestureDetector(
-      onTap: () => context.read<FarmerTypeController>().changeType(type),
+      onTap: () => context.read<FarmerTypeCubit>().selectType(type),
       child: Container(
         width: 155,
         height: 103,
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         decoration: BoxDecoration(
-          color: selected.selectedType == type
+          color: selected.state.type == type
               ? const Color.fromRGBO(136, 255, 222, 1)
               : Colors.white,
-          border: selected.selectedType == type
+          border: selected.state.type == type
               ? null
               : Border.all(color: const Color.fromRGBO(151, 151, 151, 1)),
           borderRadius: BorderRadius.circular(12),
@@ -38,7 +39,7 @@ class WhyAreYouHere extends StatelessWidget {
             style: GoogleFonts.jost(
               fontSize: 16,
               fontWeight: FontWeight.w700,
-              color: selected.selectedType == type
+              color: selected.state.type == type
                   ? const Color.fromRGBO(64, 64, 64, 1)
                   : const Color.fromRGBO(128, 128, 128, 1),
             ),
@@ -75,40 +76,51 @@ class WhyAreYouHere extends StatelessWidget {
                           farmerType(context, e, e.getFarmerTypeString()))
                       .toList()),
               const SizedBox(height: 55),
-              Consumer<AuthController>(
-                builder: (context, state, child) {
-                  return state.appState.when(
-                    loading: () => const CircularProgressIndicator(),
-                    idle: () => AppButton(
-                      btnName: 'Sign In',
-                      btn: () {
-                        final info = context.read<AuthController>().userInfo;
-                        final selectedType = context
-                            .read<FarmerTypeController>()
-                            .selectedType
-                            .toBackendType();
-                        final farmerType = {"farmerType": selectedType};
-                        info.addEntries(farmerType.entries);
-                        // context.read<AuthController>().signUp(info);
-                         Navigator.pushNamed(context, RouteNames.otp);
-                      },
-                    ),
-                    error: (error) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          duration: const Duration(milliseconds: 700),
-                          content: Text(error!),
-                        ),
-                      );
-                      return const SizedBox();
-                    },
-                    data: (data) {
-                      Navigator.pushNamed(context, RouteNames.otp);
-                      return const SizedBox();
-                    },
-                  );
+              BlocBuilder<AuthenticationBloc, AuthState>(
+                builder: (context, state) {
+                  return state.isLoading
+                      ? const CustomLoading()
+                      : AppButton(
+                          btnName: 'Sign In',
+                          btn: () => signup(context),
+                        );
                 },
               ),
+              // Consumer<AuthController>(
+              //   builder: (context, state, child) {
+              //     return state.appState.when(
+              //       loading: () => const CircularProgressIndicator(),
+              //       idle: () => AppButton(
+              //         btnName: 'Sign In',
+              //         btn: () {
+              //           final info = context.read<AuthController>().userInfo;
+              //           final selectedType = context
+              //               .read<FarmerTypeCubit>()
+              //               .state
+              //               .type
+              //               .toBackendType();
+              //           final farmerType = {"farmerType": selectedType};
+              //           info.addEntries(farmerType.entries);
+              //           // context.read<AuthController>().signUp(info);
+              //           Navigator.pushNamed(context, RouteNames.otp);
+              //         },
+              //       ),
+              //       error: (error) {
+              //         ScaffoldMessenger.of(context).showSnackBar(
+              //           SnackBar(
+              //             duration: const Duration(milliseconds: 700),
+              //             content: Text(error!),
+              //           ),
+              //         );
+              //         return const SizedBox();
+              //       },
+              //       data: (data) {
+              //         Navigator.pushNamed(context, RouteNames.otp);
+              //         return const SizedBox();
+              //       },
+              //     );
+              //   },
+              // ),
               const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -170,5 +182,16 @@ class WhyAreYouHere extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signup(BuildContext context) {
+    final selectedType =
+        context.read<FarmerTypeCubit>().state.type.toBackendType();
+    final info = context.read<AuthenticationBloc>().userInfo;
+    info.addAll({"farmerType": selectedType});
+    // debugPrint(info.toString());
+    context.read<AuthenticationBloc>().add(
+          SignupEvent(payload: info),
+        );
   }
 }

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/constants/styles/colors.dart';
-import '../../../../../core/enums/auth_enum.dart';
-import '../../../../../widgets/app_button.dart';
-import '../../controller/auth_controller.dart';
-import 'verified_account.dart';
+
+
 
 class OtpScreen extends StatefulWidget {
   static const id = '/verify_phone';
@@ -35,7 +32,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final email = Provider.of<AuthController>(context).userInfo;
+    // final email = Provider.of<AuthController>(context).userInfo;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -54,7 +51,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Please, enter the code sent to ${email['email']} to validate your account.',
+                  'Please, enter the code sent to {user email} to validate your account.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.jost(
                       fontSize: 16,
@@ -83,19 +80,19 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                 ),
                 const SizedBox(height: 82),
-                Consumer<AuthController>(
-                  builder: (context, auth, child) {
-                    return auth.state == AuthState.loading
-                        ? const CircularProgressIndicator()
-                        : AppButton(
-                            btnName: 'Verify',
-                            btn: () async {
-                              // await auth.verifyEmail(_pinCode.text);
-                              verified(auth);
-                            },
-                          );
-                  },
-                ),
+                // Consumer<AuthController>(
+                //   builder: (context, auth, child) {
+                //     return auth.state == AuthState.loading
+                //         ? const CircularProgressIndicator()
+                //         : AppButton(
+                //             btnName: 'Verify',
+                //             btn: () async {
+                //               // await auth.verifyEmail(_pinCode.text);
+                //               verified(auth);
+                //             },
+                //           );
+                //   },
+                // ),
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -127,16 +124,16 @@ class _OtpScreenState extends State<OtpScreen> {
     );
   }
 
-  void verified(AuthController auth) {
-    if (auth.state == AuthState.hasError) {
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     duration: const Duration(milliseconds: 700),
-      //     content: Text(auth.error!),
-      //   ),
-      // );
-    } else {
-      Navigator.pushNamed(context, VerifiedAccount.id);
-    }
-  }
+  // void verified(AuthController auth) {
+  //   if (auth.state == AuthState.hasError) {
+  //     // ScaffoldMessenger.of(context).showSnackBar(
+  //     //   SnackBar(
+  //     //     duration: const Duration(milliseconds: 700),
+  //     //     content: Text(auth.error!),
+  //     //   ),
+  //     // );
+  //   } else {
+  //     Navigator.pushNamed(context, VerifiedAccount.id);
+  //   }
+  // }
 }
