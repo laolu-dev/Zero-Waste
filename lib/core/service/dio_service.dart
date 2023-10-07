@@ -14,6 +14,7 @@ class DioService {
   )..interceptors.add(
       PrettyDioLogger(
         requestHeader: true,
+        maxWidth: 125,
       ),
     );
 

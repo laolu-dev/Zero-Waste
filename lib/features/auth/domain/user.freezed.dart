@@ -34,7 +34,7 @@ mixin _$User {
     required TResult Function(
             @JsonKey(name: 'success') bool status, UserModel? user)
         success,
-    required TResult Function(String? message, String error, int? statusCode)
+    required TResult Function(String? message, String? error, int? statusCode)
         error,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,14 +42,14 @@ mixin _$User {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(@JsonKey(name: 'success') bool status, UserModel? user)?
         success,
-    TResult? Function(String? message, String error, int? statusCode)? error,
+    TResult? Function(String? message, String? error, int? statusCode)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(@JsonKey(name: 'success') bool status, UserModel? user)?
         success,
-    TResult Function(String? message, String error, int? statusCode)? error,
+    TResult Function(String? message, String? error, int? statusCode)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -194,7 +194,7 @@ class _$SuccessUser implements SuccessUser {
     required TResult Function(
             @JsonKey(name: 'success') bool status, UserModel? user)
         success,
-    required TResult Function(String? message, String error, int? statusCode)
+    required TResult Function(String? message, String? error, int? statusCode)
         error,
   }) {
     return success(status, user);
@@ -205,7 +205,7 @@ class _$SuccessUser implements SuccessUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(@JsonKey(name: 'success') bool status, UserModel? user)?
         success,
-    TResult? Function(String? message, String error, int? statusCode)? error,
+    TResult? Function(String? message, String? error, int? statusCode)? error,
   }) {
     return success?.call(status, user);
   }
@@ -215,7 +215,7 @@ class _$SuccessUser implements SuccessUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(@JsonKey(name: 'success') bool status, UserModel? user)?
         success,
-    TResult Function(String? message, String error, int? statusCode)? error,
+    TResult Function(String? message, String? error, int? statusCode)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -285,7 +285,7 @@ abstract class _$$ErrorUserCopyWith<$Res> {
           _$ErrorUser value, $Res Function(_$ErrorUser) then) =
       __$$ErrorUserCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? message, String error, int? statusCode});
+  $Res call({String? message, String? error, int? statusCode});
 }
 
 /// @nodoc
@@ -300,7 +300,7 @@ class __$$ErrorUserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
-    Object? error = null,
+    Object? error = freezed,
     Object? statusCode = freezed,
   }) {
     return _then(_$ErrorUser(
@@ -308,10 +308,10 @@ class __$$ErrorUserCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      error: null == error
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       statusCode: freezed == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
@@ -324,7 +324,7 @@ class __$$ErrorUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ErrorUser implements ErrorUser {
   const _$ErrorUser(
-      {this.message, required this.error, this.statusCode, final String? $type})
+      {this.message, this.error, this.statusCode, final String? $type})
       : $type = $type ?? 'error';
 
   factory _$ErrorUser.fromJson(Map<String, dynamic> json) =>
@@ -333,7 +333,7 @@ class _$ErrorUser implements ErrorUser {
   @override
   final String? message;
   @override
-  final String error;
+  final String? error;
   @override
   final int? statusCode;
 
@@ -372,7 +372,7 @@ class _$ErrorUser implements ErrorUser {
     required TResult Function(
             @JsonKey(name: 'success') bool status, UserModel? user)
         success,
-    required TResult Function(String? message, String error, int? statusCode)
+    required TResult Function(String? message, String? error, int? statusCode)
         error,
   }) {
     return error(message, this.error, statusCode);
@@ -383,7 +383,7 @@ class _$ErrorUser implements ErrorUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(@JsonKey(name: 'success') bool status, UserModel? user)?
         success,
-    TResult? Function(String? message, String error, int? statusCode)? error,
+    TResult? Function(String? message, String? error, int? statusCode)? error,
   }) {
     return error?.call(message, this.error, statusCode);
   }
@@ -393,7 +393,7 @@ class _$ErrorUser implements ErrorUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(@JsonKey(name: 'success') bool status, UserModel? user)?
         success,
-    TResult Function(String? message, String error, int? statusCode)? error,
+    TResult Function(String? message, String? error, int? statusCode)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -444,13 +444,13 @@ class _$ErrorUser implements ErrorUser {
 abstract class ErrorUser implements User {
   const factory ErrorUser(
       {final String? message,
-      required final String error,
+      final String? error,
       final int? statusCode}) = _$ErrorUser;
 
   factory ErrorUser.fromJson(Map<String, dynamic> json) = _$ErrorUser.fromJson;
 
   String? get message;
-  String get error;
+  String? get error;
   int? get statusCode;
   @JsonKey(ignore: true)
   _$$ErrorUserCopyWith<_$ErrorUser> get copyWith =>

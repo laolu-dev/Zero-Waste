@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:zero_waste/config/router/route_utils.dart';
-import '../../../../../core/constants/constants.dart';
-import '../../../../../widgets/app_button.dart';
+import 'package:zero_waste/core/constants/constants.dart';
+import 'package:zero_waste/main.dart';
+import 'package:zero_waste/widgets/app_button.dart';
 
 class VerifiedAccount extends StatelessWidget {
-  static const id = '/verified_account';
-  const VerifiedAccount({Key? key}) : super(key: key);
+  const VerifiedAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,9 @@ class VerifiedAccount extends StatelessWidget {
                 const SizedBox(height: 57.5),
                 AppButton(
                   btnName: 'Login',
-                  btn: () =>
-                      Navigator.pushReplacementNamed(context, RouteNames.login),
+                  btn: () => mainAppKey.currentState!.pushNamedAndRemoveUntil(
+                      RouteNames.login,
+                      (route) => route.settings.name == RouteNames.login),
                 )
               ],
             ),

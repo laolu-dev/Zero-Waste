@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'auth_bloc.dart';
 
 class AuthEvent extends Equatable {
@@ -22,10 +21,19 @@ class SignupEvent extends AuthEvent {
   const SignupEvent({required super.payload, this.userInfo});
 }
 
-class ResetPasswordEvent extends AuthEvent {
-  const ResetPasswordEvent({required super.payload});
+class RequestPasswordResetEvent extends AuthEvent {
+  const RequestPasswordResetEvent({required super.payload});
 }
 
-class VerifyOtpEvent extends AuthEvent {
-  const VerifyOtpEvent({required super.payload});
+class VerifyPasswordOtpEvent extends AuthEvent {
+  const VerifyPasswordOtpEvent({required super.payload});
+}
+
+class PasswordResetEvent extends AuthEvent {
+  const PasswordResetEvent({required super.payload});
+}
+
+class VerifyEmailEvent extends AuthEvent {
+  final String? otp;
+  const VerifyEmailEvent({required super.payload, this.otp});
 }

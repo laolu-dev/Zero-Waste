@@ -8,14 +8,13 @@ part 'user.g.dart';
 class User with _$User {
   @JsonSerializable(explicitToJson: true)
   const factory User.success({
-    @JsonKey(name: 'success')
-    required bool status,
+    @JsonKey(name: 'success') required bool status,
     UserModel? user,
   }) = SuccessUser;
 
   const factory User.error({
     String? message,
-    required String error,
+    String? error,
     int? statusCode,
   }) = ErrorUser;
 

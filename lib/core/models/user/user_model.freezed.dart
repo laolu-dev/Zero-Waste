@@ -30,6 +30,7 @@ mixin _$UserModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   String get farmerType => throw _privateConstructorUsedError;
+  String? get accessToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +53,8 @@ abstract class $UserModelCopyWith<$Res> {
       bool isVerified,
       DateTime createdAt,
       DateTime updatedAt,
-      String farmerType});
+      String farmerType,
+      String? accessToken});
 }
 
 /// @nodoc
@@ -78,6 +80,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? farmerType = null,
+    Object? accessToken = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -120,6 +123,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.farmerType
           : farmerType // ignore: cast_nullable_to_non_nullable
               as String,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -141,7 +148,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       bool isVerified,
       DateTime createdAt,
       DateTime updatedAt,
-      String farmerType});
+      String farmerType,
+      String? accessToken});
 }
 
 /// @nodoc
@@ -165,6 +173,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? farmerType = null,
+    Object? accessToken = freezed,
   }) {
     return _then(_$_UserModel(
       id: null == id
@@ -207,6 +216,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.farmerType
           : farmerType // ignore: cast_nullable_to_non_nullable
               as String,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -224,7 +237,8 @@ class _$_UserModel implements _UserModel {
       required this.isVerified,
       required this.createdAt,
       required this.updatedAt,
-      required this.farmerType});
+      required this.farmerType,
+      this.accessToken});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -249,10 +263,12 @@ class _$_UserModel implements _UserModel {
   final DateTime updatedAt;
   @override
   final String farmerType;
+  @override
+  final String? accessToken;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, username: $username, phoneNumber: $phoneNumber, state: $state, homeAddress: $homeAddress, isVerified: $isVerified, createdAt: $createdAt, updatedAt: $updatedAt, farmerType: $farmerType)';
+    return 'UserModel(id: $id, email: $email, username: $username, phoneNumber: $phoneNumber, state: $state, homeAddress: $homeAddress, isVerified: $isVerified, createdAt: $createdAt, updatedAt: $updatedAt, farmerType: $farmerType, accessToken: $accessToken)';
   }
 
   @override
@@ -276,13 +292,26 @@ class _$_UserModel implements _UserModel {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.farmerType, farmerType) ||
-                other.farmerType == farmerType));
+                other.farmerType == farmerType) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, username, phoneNumber,
-      state, homeAddress, isVerified, createdAt, updatedAt, farmerType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      email,
+      username,
+      phoneNumber,
+      state,
+      homeAddress,
+      isVerified,
+      createdAt,
+      updatedAt,
+      farmerType,
+      accessToken);
 
   @JsonKey(ignore: true)
   @override
@@ -309,7 +338,8 @@ abstract class _UserModel implements UserModel {
       required final bool isVerified,
       required final DateTime createdAt,
       required final DateTime updatedAt,
-      required final String farmerType}) = _$_UserModel;
+      required final String farmerType,
+      final String? accessToken}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -334,6 +364,8 @@ abstract class _UserModel implements UserModel {
   DateTime get updatedAt;
   @override
   String get farmerType;
+  @override
+  String? get accessToken;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

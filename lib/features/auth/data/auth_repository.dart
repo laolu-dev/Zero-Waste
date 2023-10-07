@@ -25,10 +25,7 @@ class AuthRepository {
     }
   }
 
-  //[PATCH] requests
-
   Future<User> verifyEmail(Map<String, dynamic> payload) async {
-    // {"email": email, "otp": otp}
     try {
       final res = await _service.dio
           .patch('auth/verify-email', queryParameters: payload);
@@ -42,7 +39,6 @@ class AuthRepository {
 
   Future<User> resetPassword(Map<String, dynamic> payload) async {
     try {
-      // {"password": password, "email": email}
       final res =
           await _service.dio.patch('farmers/update-password/', data: payload);
 
@@ -53,10 +49,7 @@ class AuthRepository {
     }
   }
 
-  //[GET] requests
-
   Future<User> verifyResetOtp(Map<String, dynamic> payload) async {
-    // {"email": email, "otp": otp}
     try {
       final res = await _service.dio
           .get('farmers/verify-password-otp/', queryParameters: payload);
@@ -69,7 +62,6 @@ class AuthRepository {
   }
 
   Future<User> requestToResetPassword(Map<String, dynamic> payload) async {
-    // {"email": email}
     try {
       final res = await _service.dio
           .get('farmers/request-update/', queryParameters: payload);

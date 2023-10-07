@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/constants.dart';
+import 'package:zero_waste/core/constants/constants.dart';
 
 class SocialLogin extends StatelessWidget {
-  const SocialLogin({Key? key}) : super(key: key);
+  const SocialLogin({super.key});
+
   Container _login(Widget child) {
     return Container(
         width: 55,
         height: 55,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+        ),
         child: child);
   }
 
@@ -18,10 +21,7 @@ class SocialLogin extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GestureDetector(
-          onTap: () {
-            // socialAuth.signInWithFacebook().whenComplete(
-            //     () => Navigator.pushReplacementNamed(context, AppPages.id));
-          },
+          onTap: () {},
           child: _login(Image.asset(AppConstants.facebook)),
         ),
         const SizedBox(width: 12),

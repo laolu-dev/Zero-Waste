@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'package:zero_waste/config/router/route_utils.dart';
-import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_bloc.dart';
-import '../../../../../core/constants/constants.dart';
-import '../../../../../core/constants/styles/colors.dart';
-import '../../../../../widgets/app_button.dart';
-import '../../widgets/password_textfield.dart';
-import '../../widgets/social_login.dart';
-import '../../widgets/user_info_textfield.dart';
+import 'package:zero_waste/core/constants/constants.dart';
+import 'package:zero_waste/core/constants/helpers.dart';
+import 'package:zero_waste/core/constants/styles/colors.dart';
+import 'package:zero_waste/features/auth/presenation/blocs/auth_bloc/auth_bloc.dart';
+import 'package:zero_waste/features/auth/presenation/widgets/password_textfield.dart';
+import 'package:zero_waste/features/auth/presenation/widgets/social_login.dart';
+import 'package:zero_waste/features/auth/presenation/widgets/user_info_textfield.dart';
+import 'package:zero_waste/widgets/app_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -25,7 +27,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late final TextEditingController _homeAddressController;
   late final TextEditingController _stateController;
   late final TextEditingController _passwordController;
-  late final FocusNode _passwordNode;
 
   @override
   void initState() {
@@ -37,7 +38,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _homeAddressController = TextEditingController();
     _stateController = TextEditingController();
     _passwordController = TextEditingController();
-    _passwordNode = FocusNode();
   }
 
   @override
@@ -127,7 +127,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 PasswordInput(
                   label: 'Password',
                   controller: _passwordController,
-                  focusNode: _passwordNode,
                   validator: (String? value) {
                     if (value!.isEmpty) {
                       return 'Password cannot not be empty';
@@ -224,7 +223,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void next() {
     if (_formKey.currentState!.validate()) {
-      _passwordNode.unfocus();
       Map<String, dynamic> payload = {
         "username": _nameController.text,
         "email": _emailController.text,
@@ -233,9 +231,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         "state": _stateController.text,
         "homeAddress": _homeAddressController.text,
       };
-      _formKey.currentState?.save();
       context.read<AuthenticationBloc>().setUserInfo(payload);
+      context.read<AuthenticationBloc>().setEmail(_emailController.text);
       Navigator.pushNamed(context, RouteNames.whyPage);
+      dropKeyboard();
     }
   }
 }

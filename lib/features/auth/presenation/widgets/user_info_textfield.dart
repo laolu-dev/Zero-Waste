@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../core/constants/styles/colors.dart';
+import 'package:zero_waste/core/constants/styles/colors.dart';
 
 class UserInput extends StatelessWidget {
   final String label;

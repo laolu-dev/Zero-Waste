@@ -24,7 +24,7 @@ Map<String, dynamic> _$$SuccessUserToJson(_$SuccessUser instance) =>
 
 _$ErrorUser _$$ErrorUserFromJson(Map<String, dynamic> json) => _$ErrorUser(
       message: json['message'] as String?,
-      error: json['error'] as String,
+      error: json['error'] as String?,
       statusCode: json['statusCode'] as int?,
       $type: json['runtimeType'] as String?,
     );

@@ -6,8 +6,7 @@ import 'package:zero_waste/config/router/route_utils.dart';
 import 'package:zero_waste/core/constants/constants.dart';
 import 'package:zero_waste/core/constants/helpers.dart';
 import 'package:zero_waste/core/constants/styles/colors.dart';
-import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_bloc.dart';
-import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_state.dart';
+import 'package:zero_waste/features/auth/presenation/blocs/auth_bloc/auth_bloc.dart';
 
 import 'package:zero_waste/features/auth/presenation/widgets/password_textfield.dart';
 import 'package:zero_waste/features/auth/presenation/widgets/social_login.dart';
@@ -49,11 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthenticationBloc, AuthState>(
-      listenWhen: (previous, current) {
-        return current.hasError == true && current.isLoading == false;
-      },
       listener: (context, state) {
-        state.hasError ? showAppError(context, state.error!) : null;
+        state is ErrorState ? showAppError(context, state.error!) : null;
       },
       child: Scaffold(
         body: SafeArea(
@@ -118,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   BlocBuilder<AuthenticationBloc, AuthState>(
                     builder: (context, state) {
-                      return state.isLoading
+                      return state is LoadingState
                           ? const CustomLoading()
                           : AppButton(
                               btnName: 'Login',

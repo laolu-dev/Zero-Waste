@@ -125,7 +125,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           },
                         )
                       : ElevatedButton(
-                          onPressed: () async {
+                          onPressed: () {
                             SharedPrefs.setOnboardingStatus(true);
                             Navigator.pushNamed(context, RouteNames.login);
                           },

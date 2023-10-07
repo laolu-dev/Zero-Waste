@@ -5,12 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:zero_waste/config/router/route_utils.dart';
 import 'package:zero_waste/config/themes/light_theme.dart';
 import 'package:zero_waste/features/auth/data/auth_repository.dart';
-import 'package:zero_waste/features/auth/presenation/controller/auth_bloc/auth_bloc.dart';
-import 'package:zero_waste/features/auth/presenation/controller/farmer_type_cubit/farmer_type_cubit.dart';
+import 'package:zero_waste/features/auth/presenation/blocs/auth_bloc/auth_bloc.dart';
+import 'package:zero_waste/features/auth/presenation/blocs/farmer_type_cubit/farmer_type_cubit.dart';
 
 import 'config/router/routes.dart';
 import 'core/service/local_storage.dart';
-import 'core/utils/shared_prefs_keys.dart';
 import 'features/account/presentation/controller/camera.dart';
 
 import 'features/chats/presentation/controller/add_new_conversation.dart';
@@ -22,8 +21,7 @@ import 'features/products/presentation/controllers/product_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final initialRoute =
-      await SharedPrefs.getOnboardingStatus(SharedPrefsKeys.onBoarded);
+  final initialRoute = await SharedPrefs.getOnboardingStatus();
   runApp(
     MultiProvider(
       providers: [
@@ -31,7 +29,6 @@ void main() async {
         ChangeNotifierProvider(create: (context) => ConnectionsProvider()),
         ChangeNotifierProvider(create: (context) => ConversationsProvider()),
         ChangeNotifierProvider(create: (context) => FeedData()),
-
         ChangeNotifierProvider(create: (context) => ProductData()),
         ChangeNotifierProvider(create: (context) => MarketData()),
         ChangeNotifierProvider(create: (context) => Camera()),

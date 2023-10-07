@@ -17,6 +17,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       farmerType: json['farmerType'] as String,
+      accessToken: json['accessToken'] as String?,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -31,4 +32,5 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
       'farmerType': instance.farmerType,
+      'accessToken': instance.accessToken,
     };
